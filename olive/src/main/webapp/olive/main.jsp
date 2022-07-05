@@ -5,10 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <title>잘하셨조 - 올리브영 온라인몰</title>
 <style>
 @font-face{
@@ -1698,231 +1698,873 @@ rate_span{
     line-height: 16px;
 }
 </style>
+
+	<%--카테고리 출력 부분 스타일--%>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		body, html {
+			word-spacing: -1px;
+			color: #666;
+			font-size: 14px;
+			line-height: 20px;
+			font-family: Montserrat,-apple-system,NotoSansCJKkr,AppleSDGothicNeo,Roboto,dotum,'돋움',sans-serif;
+			letter-spacing: -.04em;
+		}
+		a, address, blockquote, body, dd, div, dl, dt, em, fieldset, form, h1, h2, h3, h4, h5, h6, img, input, label, li, ol, p, pre, select, span, strong, textarea, ul {
+			margin: 0;
+			padding: 0;
+			border: 0;
+		}
+		#gnbWrap {
+			position: relative;
+			width: 1020px;
+			margin: 0 auto;
+			top: 0;
+		}
+		#gnbWrap:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+		#Gnb {
+			position: relative;
+			width: 100%;
+			min-width: 1020px;
+			height: 47px;
+			background: #fff;
+			border-top: 1px solid #ddd;
+			border-bottom: 2px solid #555;
+			z-index: 10;
+		}
+		#btnGnbOpen.active {
+			background-color: #2f3030;
+			border-color: #2f3030;
+			color: #fff;
+		}
+		#btnGnbOpen.active:before {
+			background: url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_menu_on.png) no-repeat 0 14px!important;
+		}
+		#btnGnbOpen:before {
+			content: '';
+			display: inline-block;
+			margin: 0 8px 0 0;
+			background: url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_menu_off.png) no-repeat 0 14px;
+			width: 24px;
+			height: 44px;
+			vertical-align: middle;
+		}
+		#btnGnbOpen {
+			float: left;
+			width: 170px;
+			height: 44px;
+			padding-left: 27px;
+			border-right: 1px solid #ddd;
+			border-left: 1px solid #ddd;
+			line-height: 44px;
+			color: #000;
+			font-size: 15px;
+			font-weight: 700;
+			text-align: left;
+		}
+
+		#Gnb .layer_all_menu.active {
+			display: block;
+		}
+		#Gnb .layer_all_menu {
+			position: absolute;
+			top: 44px;
+			width: 1020px;
+			border: 2px solid #2f3030;
+			background: #fff;
+			z-index: 20;
+			display: none;
+		}
+		#Gnb .all_menu_wrap {
+			display: table;
+			width: 100%;
+			background: #fff;
+		}
+		#Gnb .all_menu_wrap:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+		#Gnb .all_menu_wrap>li:first-child {
+			width: 508px;
+			border-left: none;
+		}
+		#Gnb .all_menu_wrap>li {
+			display: table-cell;
+			height: 100%;
+			width: 254px;
+			padding: 18px 20px 22px;
+			border-left: 1px solid #ddd;
+			vertical-align: top;
+		}
+		h2 {
+			display: block;
+			font-size: 1.5em;
+			margin-block-start: 0.83em;
+			margin-block-end: 0.83em;
+			margin-inline-start: 0px;
+			margin-inline-end: 0px;
+			font-weight: bold;
+		}
+
+		#Gnb .all_menu_wrap>li h2 {
+			float: left;
+			width: 100%;
+			font-size: 16px;
+			margin-bottom: 17px;
+			padding: 0 22px 12px;
+			border-bottom: 1px solid #666;
+			color: #000;
+		}
+		div {
+			display: block;
+		}
+		#Gnb .all_menu_wrap>li h2+.sub_menu_box {
+			padding: 0 9px 0 22px;
+		}
+		#Gnb .all_menu_wrap>li .sub_menu_box {
+			width: 155px;
+		}
+		#Gnb .all_menu_wrap>li .sub_menu_box {
+			float: left;
+			min-height: 400px;
+			padding: 0 10px 0 30px;
+		}
+		p {
+			display: block;
+			margin-block-start: 1em;
+			margin-block-end: 1em;
+			margin-inline-start: 0px;
+			margin-inline-end: 0px;
+		}
+		#Gnb .all_menu_wrap .sub_menu_box .sub_depth {
+			margin-top: 18px;
+		}
+		#Gnb .all_menu_wrap .sub_menu_box .sub_depth:first-child {
+			margin-top: 0;
+		}
+		#Gnb.gen1 .all_menu_wrap .sub_menu_box .sub_depth a:after {
+			content: "";
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 0;
+			height: 1px;
+			background-color: #000;
+			transition: .1s width;
+		}
+		a {
+			color: #666;
+			text-decoration: none;
+		}
+		#Gnb .all_menu_wrap .sub_menu_box .sub_depth a {
+			color: #000;
+			font-weight: 700;
+		}
+		#Gnb.gen1 .all_menu_wrap .sub_menu_box a {
+			display: inline-block;
+			border-bottom-color: transparent;
+		}
+		#Gnb.gen1 .all_menu_wrap .sub_menu_box .sub_depth a {
+			position: relative;
+			height: 22px;
+			padding-right: 15px;
+			padding-bottom: 2px;
+			font-weight: 700;
+			color: #000;
+			background: url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/arrow_12_21_02.png) no-repeat 100% 5px;
+			background-size: 5.5px;
+		}
+
+		ol, ul {
+			list-style: none;
+		}
+		ul {
+			display: block;
+			margin-block-start: 1em;
+			margin-block-end: 1em;
+			margin-inline-start: 0px;
+			margin-inline-end: 0px;
+			/*padding-inline-start: 40px;*/
+		}
+
+		#Gnb .gnb_menu_list {
+			position: relative;
+			top: 0;
+			right: 0;
+		}
+		li {
+			display: list-item;
+			text-align: -webkit-match-parent;
+		}
+		#Gnb .gnb_menu_list>li {
+			float: left;
+			margin-left: 45px;
+		}
+		#Gnb .gnb_menu_list>li:first-child {
+			margin-left: 50px;
+		}
+		#Gnb .gnb_menu_list>li>a {
+			display: block;
+			height: 44px;
+			line-height: 44px;
+			color: #000;
+			font-size: 16px;
+			font-weight: 700;
+			letter-spacing: -.04em;
+		}
+		#Gnb .gnb_menu_list {
+			position: relative;
+			top: 0;
+			right: 0;
+			margin:0;
+		}
+		#Gnb .gnb_menu_list>li:first-child {
+			margin-left: 50px;
+		}
+
+		#Gnb .gnb_menu_list>li {
+			float: left;
+			margin-left: 45px;
+		}
+	</style>
+
+	<%--메인베너 스타일--%>
+	<style>
+
+		.main_full_banner {
+			width: 100%;
+			height: 450px;
+		}
+
+		.main_full_banner .banner_wrap {
+			position: absolute;
+			width: 100%;
+			left: 0;
+			background: #f5f5f5;
+			z-index: 0;
+			height: 450px;
+			min-width: 1020px;
+			overflow: hidden;
+		}
+
+		.main_full_banner .banner_wrap .slick-arrow.slick-next {
+			left: 50%;
+			margin-left: -200px;
+		}
+		.main_full_banner .banner_wrap .slick-arrow.slick-prev {
+			left: 50%;
+			margin-left: -290px;
+		}
+		.main_full_banner .banner_wrap .slick-arrow {
+			position: absolute;
+			bottom: 30px;
+			z-index: 2;
+		}
+		.slick-arrow.slick-next {
+			background-position: -40px 0;
+		}
+		.slick-arrow.slick-prev {
+			background-position: 0 0;
+		}
+		.slick-arrow {
+			display: inline-block;
+			width: 40px;
+			height: 40px;
+			background: url("https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_arrow40x40_2.png") no-repeat 0 0;
+			text-indent: -9999px;
+		}
+		button {
+			text-align: center;
+			color: #fff;
+		}
+		button, input[type=submit] {
+			border: 0;
+			padding: 0;
+			box-shadow: none;
+			cursor: pointer;
+			font-family: Montserrat,-apple-system,NotoSansCJKkr,AppleSDGothicNeo,Roboto,sans-serif;
+			font-weight: 700;
+		}
+
+		.slick-track:after, .slick-track:before {
+			display: table;
+			content: '';
+		}
+		.slick-track:after {
+			clear: both;
+		}
+		.slick-track:after, .slick-track:before {
+			display: table;
+			content: '';
+		}
+		.main_full_banner .banner_link {
+			display: block;
+			position: relative;
+			height: 450px;
+			overflow: hidden;
+		}
+		.main_full_banner .banner_link .banner_desc .tit {
+			display: block;
+			font-size: 18px;
+			color: #000;
+		}
+		.main_full_banner .banner_link .banner_desc .tit:after {
+			content: '';
+			display: block;
+			width: 12px;
+			height: 1px;
+			margin: 20px 0;
+			background: #b0afb6;
+		}
+		.main_full_banner .banner_link .banner_desc {
+			font-size: 18px;
+			color: #666;
+			font-weight: 700;
+		}
+		.main_full_banner .banner_link .banner_desc strong {
+			display: block;
+			width: 360px;
+			margin-bottom: 10px;
+			font-size: 48px;
+			color: #1f1f1f;
+			line-height: 56px;
+			word-break: keep-all;
+			font-weight: 400;
+		}
+		.main_full_banner .banner_link .banner_desc {
+			position: absolute;
+			top: 52px;
+			left: 50%;
+			font-size: 18px;
+			color: #666;
+			z-index: 1;
+			margin-left: -290px;
+			font-weight: 700;
+		}
+		.main_full_banner .banner_wrap #mainSliderBtn {
+			position: absolute;
+			bottom: 30px;
+			left: 50%;
+			width: 40px;
+			height: 40px;
+			margin-left: -155px;
+			background: url("https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_autoplay.png") no-repeat 0 0;
+			text-indent: -9999px;
+			z-index: 2;
+		}
+	</style>
+
+	<%--배너좌측(네비div안) 카테고리 스타일--%>
+	<style>
+		.main_cate_wrap {
+			position: absolute;
+			top: 46px;
+			left: 50%;
+			height: 450px;
+			margin-left: -510px;
+			background: rgba(51,51,51,.5);
+			z-index: 10;
+		}
+		.main_cate_wrap .main_cate_list {
+			width: 170px;
+			margin-top: 15px;
+		}
+		.main_cate_wrap .main_cate_list>li .main_menu {
+			display: block;
+			width: 170px;
+			height: 28.5px;
+			line-height: 28.5px;
+			padding: 0 23px 0;
+			font-size: 14px;
+			color: #fff;
+			font-weight: 700;
+		}
+		.main_cate_wrap .lnb_ban_box {
+			display: none;
+			position: absolute;
+			top: 0;
+			left: 450px;
+			height: 450px;
+			width: 213px;
+			background-color: #fff;
+			border-left: 1px solid #f4f5f7;
+			border-right: 1px solid #f4f5f7;
+			border-bottom: 1px solid #f4f5f7;
+		}
+		a {
+			color: #666;
+			text-decoration: none;
+		}
+		.main_cate_wrap .lnb_ban_box a {
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+		.main_cate_wrap .lnb_ban_box .ban_info {
+			padding: 35px 19px 0;
+			margin : 0;
+		}
+		.main_cate_wrap .lnb_ban_box .ban_name {
+			display: inline-block;
+			margin-bottom: 18px;
+			font-size: 13px;
+			font-weight: 700;
+			color: #222;
+			margin : 0;
+		}
+		.main_cate_wrap .lnb_ban_box .tit_group {
+			margin-bottom: 7px;
+		}
+		.main_cate_wrap .lnb_ban_box .price_s {
+			margin-bottom: 4px;
+			font-size: 17px;
+			color: #b5b5b5;
+			text-decoration: line-through;
+			font-weight: 300;
+			margin : 0;
+		}
+		.main_cate_wrap .lnb_ban_box .price_s em {
+			font-size: 14px;
+			margin : 0;
+		}
+		.main_cate_wrap .lnb_ban_box .price_group em {
+			font-style: normal;
+			vertical-align: 1px;
+			margin : 0;
+		}
+		.main_cate_wrap .lnb_ban_box .price_m {
+			font-size: 24px;
+			color: #e02020;
+			font-weight: 700;
+			margin : 0;
+		}
+		.main_cate_wrap .lnb_ban_box .price_m em {
+			font-size: 17px;
+		}
+		.main_cate_wrap .lnb_ban_box .price_group em {
+			font-style: normal;
+			vertical-align: 1px;
+		}
+		.main_cate_wrap .main_cate_list>li.lst .main_menu {
+			line-height: 33px;
+			height: 33px;
+		}
+		.main_cate_wrap .main_cate_list>li.lst {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 170px;
+			height: 33px;
+			margin-top: 5px;
+			background-color: rgba(0,0,0,.2);
+		}
+		.main_cate_wrap .main_cate_list>li .main_menu {
+			display: block;
+			width: 170px;
+			height: 28.5px;
+			line-height: 28.5px;
+			padding: 0 23px 0;
+			font-size: 14px;
+			color: #fff;
+			font-weight: 700;
+		}
+		.main_cate_wrap .main_cate_list>li.lst .main_menu .icon_awards {
+			padding-left: 16px;
+			background: url("https://www.oliveyoung.co.kr/pc-static-root/image/comm/icon_awards_32.png") no-repeat 0 0;
+			background-size: 15px;
+		}
+		.main_cate_wrap.active .main_cate_list>li.on .main_menu{
+			position : relative;
+			z-index: 1;
+			background-color: #2f3030;
+		}
+		.main_cate_wrap .lnb_ban_box.on {
+			display: block;
+		}
+		.main_cate_wrap .lnb_ban_box .ban_thum img {
+			width: auto!important;
+			max-width: 203px;
+			height: auto!important;
+			max-height: 203px;
+		}
+		.main_cate_wrap .lnb_ban_box .ban_thum {
+			position: absolute;
+			left: 4px;
+			bottom: 4px;
+			width: 203px;
+			height: 203px;
+			text-align: center;
+		}
+		.main_cate_wrap .lnb_ban_box .tit_group .tit_m {
+			width: 173px;
+			height: 25px;
+			margin-bottom: 5px;
+			font-size: 20px;
+			font-weight: 700;
+			color: #333;
+			line-height: 1.3;
+			overflow: hidden;
+		}
+		.main_cate_wrap .lnb_ban_box .tit_group .tit_s {
+			width: 173px;
+			height: 22px;
+			font-size: 16px;
+			color: #333;
+			line-height: 1.4;
+			overflow: hidden;
+			margin : 0;
+		}
+	</style>
+
 </head>
 <body>
 
 <div id="Wrapper">
 <div id="Header">
-		<div class="top_util">
-			<ul class="menu_list" id="menu_list_header">
-				<li class="join"><a href="javascript:common.link.moveJoinMember();" data-attr="공통^헤더^회원가입">회원가입</a></li>
-				<li class="login"><a href="javascript:common.link.moveLoginPage();" data-attr="공통^헤더^로그인">로그인</a></li>
-				<li class="cart"><a href="javascript:common.link.moveCartPage();" data-attr="공통^헤더^장바구니">장바구니<span id="cartToCnt"></span></a></li>
-				<li class="order"><a href="javascript:common.link.moveOrderList();" data-attr="공통^헤더^주문배송">주문배송</a></li>
-				<li class="customer"><a href="javascript:common.faq.getFaqList('99');" data-attr="공통^헤더^고객센터">고객센터</a></li>
-				<li class="store"><a href="javascript:common.link.moveStoreMain();" data-attr="공통^헤더^매장안내">매장안내</a></li>
-				<li class="global"><a href="http://global.oliveyoung.com" target="_blank" title="올리브영 글로벌 새창으로 열기" data-attr="공통^헤더^Global">Global</a></li>
-			</ul>
-		</div>
-		
-		<div class="header_inner">
-            <h1><a href="#"><img src="https://image.oliveyoung.co.kr/pc-static-root/image/comm/h1_logo.png" alt="올리브영"></a></h1>
-			
-			<div class="search_box" id="w_search_box">
-				<input type="hidden" name="chkButton" id="chkButton" value="">		
-	
-				<div class="placeholder_area">
-					<!-- onkeypress="javascript:pressCheck_WEB_MainSearch((event),this);" onkeydown="javascript:downCheck_WEB_MainSearch((event));" -->
-					<label for="query">검색어를 입력하세요</label><input type="text" id="query" name="" value="" class="inp_placeholder" data-placeholder="사티아 나그참파 단독증정🌿" data-ref-linkurl="https://www.oliveyoung.co.kr/store/planshop/getPlanShopDetail.do?dispCatNo=500000101440224" autocomplete="off">
-				</div>
-				
-				<button id="searchSubmit">검색</button>
-
-				<!-- 검색 레이어 영역 (디자인 수정 예정) -->
-				<div class="search_layer">
-					<span class="search_layer_before"></span><!-- !!!!! 예린 추가 -->
-					<div class="layer_inner">
-						<!-- 2017-02-07 수정 : 자동완성기능 영역 -->
-						<div class="auto_search_cont">
-							<div class="brand_area" id="ark_brand"></div>							
-							<div class="auto_list" id="ark_w"></div>
-						</div>
-						<!--// 2017-02-07 수정 : 자동완성기능 영역 -->
-					
-						<!-- 최근 검색어 -->						
-						<a href="#" class="search_tab tab01" id="searchRecent">최근 검색어</a><!-- 현재 보여지는 탭에 클래스 on 넣어주세요 -->
-						<div class="search_tab_cont" id="recent_cont">
-							<ul id="mykeyword">							
-								<!-- 검색 기록이 없을 경우 -->								 
- 							<li class="no_data" id="recent_no_data" style="display:none;">최근 검색한 기록이 없습니다.</li>
-								<!--// 검색 기록이 없을 경우 -->
-								<!-- 검색 저장 기능이 꺼져있을 경우 -->
-<!-- 							<li class="no_data" id="recent_no_save" style="display:none;">최근 검색어 저장 기능이 꺼져있습니다.</li> -->
-								<!--// 검색 저장 기능이 꺼져있을 경우 -->								
-							</ul>
-							<div class="search_set_area">
-								<a href="#" class="sch_all_del" onclick="javascript:deleteCookies();">전체 삭제</a>																						
-<!-- 										<a href="#" class="sch_save"></a>																		 -->
-										<a href="#" class="sch_save">검색어 저장 끄기</a>																		
-							</div>
-						</div>
-						
-						<!--// 최근 검색어 -->
-						<!-- 급상승 검색어 -->
-						<a href="#" class="search_tab tab02" id="searchPop">급상승 검색어</a>
-						<div class="search_tab_cont sharp_rise" id="w_pop_cont" style="display: none;">
-							<ul id="mainPopword">
-								<li class="top">
-            						<a href="#" onclick="javascript:popwordSearchdo('롬앤','Pop_PROD');" data-attr="공통^통합검색_급상승검색어^롬앤">
-                						<span>1</span>
-										<strong>롬앤</strong>
-										<span class="rate"><span>&nbsp;</span></span>
-									</a>
-       							 </li>
-								<li class="top">
-            						<a href="#" onclick="javascript:popwordSearchdo('롬앤','Pop_PROD');" data-attr="공통^통합검색_급상승검색어^롬앤">
-                						<span>2</span>
-										<strong>롬앤</strong>
-										<span class="rate"><span>&nbsp;</span></span>
-									</a>
-       							 </li>
-								<li class="top">
-            						<a href="#" onclick="javascript:popwordSearchdo('롬앤','Pop_PROD');" data-attr="공통^통합검색_급상승검색어^롬앤">
-                						<span>3</span>
-										<strong>롬앤</strong>
-										<span class="rate"><span>&nbsp;</span></span>
-									</a>
-       							 </li>
-								<li class="">
-            						<a href="#" onclick="javascript:popwordSearchdo('롬앤','Pop_PROD');" data-attr="공통^통합검색_급상승검색어^롬앤">
-                						<span>4</span>
-										<strong>롬앤</strong>
-										<span class="rate"><span>&nbsp;</span></span>
-									</a>
-       							 </li>
-								<li class="">
-            						<a href="#" onclick="javascript:popwordSearchdo('롬앤','Pop_PROD');" data-attr="공통^통합검색_급상승검색어^롬앤">
-                						<span>5</span>
-										<strong>롬앤</strong>
-										<span class="rate"><span>&nbsp;</span></span>
-									</a>
-       							 </li>
-								<li class="">
-            						<a href="#" onclick="javascript:popwordSearchdo('롬앤','Pop_PROD');" data-attr="공통^통합검색_급상승검색어^롬앤">
-                						<span>6</span>
-										<strong>롬앤</strong>
-										<span class="rate dn"><span>2</span></span>
-									</a>
-       							 </li>
-								<li class="">
-            						<a href="#" onclick="javascript:popwordSearchdo('롬앤','Pop_PROD');" data-attr="공통^통합검색_급상승검색어^롬앤">
-                						<span>7</span>
-										<strong>롬앤</strong>
-										<span class="rate"><span>&nbsp;</span></span>
-									</a>
-       							 </li>
-								<li class="">
-            						<a href="#" onclick="javascript:popwordSearchdo('롬앤','Pop_PROD');" data-attr="공통^통합검색_급상승검색어^롬앤">
-                						<span>8</span>
-										<strong>롬앤</strong>
-										<span class="rate"><span>&nbsp;</span></span>
-									</a>
-       							 </li>
-								<li class="">
-            						<a href="#" onclick="javascript:popwordSearchdo('롬앤','Pop_PROD');" data-attr="공통^통합검색_급상승검색어^롬앤">
-                						<span>9</span>
-										<strong>롬앤</strong>
-										<span class="rate up"><span>5</span></span>
-									</a>
-       							 </li>
-								<li class="">
-            						<a href="#" onclick="javascript:popwordSearchdo('롬앤','Pop_PROD');" data-attr="공통^통합검색_급상승검색어^롬앤">
-                						<span>10</span>
-										<strong>롬앤</strong>
-										<span class="rate"><span>&nbsp;</span></span>
-									</a>
-       							 </li>       							        							        							        							        							        							        							 
-							</ul>
-							<div class="search_set_area"> 
-								<a href="#" class="sch_pop_close">닫기</a>
-							</div>
-						</div>
-						
-						<!--// 인기 검색어 -->						
-						<!-- 검색창 TOP3 상품 뿌리기 -->
-						<div class="scp_cont" id="scp_cont_id" style="display: block;">
-							<h3>할인 TOP3 상품</h3>
-							<div class="scp_slide"><!-- 배너 이미지 사이즈 -->
-							
-							  <div class="FadeDot banner_wrap slick-initialized slick-slider slick-dotted" role="toolbar">
-							  
-							  	<button type="button" data-role="none" class="slick-prev slick-arrow slick-disabled" aria-label="Previous" role="button" aria-disabled="true" style="display: inline-block;">Previous</button>
-					  		  	<div aria-live="polite" class="slick-list draggable">
-			                  		<div class="slick-track" style="opacity: 1; width: 780px;" role="listbox">
-							        	
-							        	<c:if test="${not empty searchTop3List }">
-							                <c:forEach items="${searchTop3List }" var="top3List">
-							                <div class="moveGoodsBtn slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 260px; position: relative; left: 0px; top: 0px; z-index: 999; opacity: 1;" tabindex="-1" role="option" aria-describedby="slick-slide90">
-												<a href="#"><!-- 상품이미지 클릭시 상품 상세페이지로 이동시키기 -->
-													<div class="scp_thumb">
-														<img src="${top3List.prm_url }" alt="TOP3 상품이미지">
-													</div>
-											  	<div class="scp_txt">
-													<span class="brand">${top3List.br_name }</span>
-													<span class="tit">${top3List.pr_name }</span>
-													<span class="price"><span class="sale_pr">${top3List.prpri_price }<em>원</em></span> ${top3List.realPrice }<em>원</em></span>
-											 	</div>
-											  	<input type="hidden" name="goodsNo" value="A000000006670" tabindex="0">
-									          	<input type="hidden" name="idxNo" value="0" tabindex="0">
-											   </a>
-											</div>
-							                </c:forEach>
-							            </c:if>
-									</div><!-- slick-track -->
-								</div><!-- polite -->
-
-								<button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: block;" aria-disabled="false"> </button>
-								
-								<ul class="slick-dots" style="display: block;" role="tablist">
-									<li class="slick-active" aria-hidden="false" role="presentation" aria-selected="true" aria-controls="navigation90" id="slick-slide90">
-										<button type="button" data-role="none" role="button" tabindex="0">1</button>
-									</li>
-									<li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation91" id="slick-slide91">
-										<button type="button" data-role="none" role="button" tabindex="0">2</button>
-									</li>
-								
-									<li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation92" id="slick-slide92">
-										<button type="button" data-role="none" role="button" tabindex="0">3</button>
-									</li>
-								</ul>
-								</div><!-- FadeDot banner_wrap slick-initialized slick-slider slick-dotted -->
-							</div><!-- scp_slide -->
-						</div><!-- scp_cont -->
-						<!-- //SCP추가 -->
-						<span class="search_layer_after"></span><!-- !!!!! 예린 추가 -->
-					</div>
-				</div>
-				<!--// 검색 레이어 영역 -->
-			</div>
-			<!--// 검색영역 -->
-			
-			<ul class="mymenu_area">
-				<!-- 오늘드림 플래그 개인화 노출 2차 POC 추가 -->
-				<li id="todayDeliveryContainer" class="delivery"><a href="javascript:;" id="tddlvr_header_today_icon" class="mymenu_layer" title="오늘드림 자세히보기 열기/닫기">오늘드림</a>     <!-- 배송지 미등록 / 배송주소 출력-->     <div class="delivery_box_wrap" style="display: none;"><div class="delivery_box"><p class="dTxt">배송지를 등록하고 오늘드림으로 구매 가능한 상품을 확인하세요!</p></div></div>     <!--// 배송지 미등록 / 배송주소 출력-->     <!-- 배송지 설정-->     <div class="delivery_addr" style="display:none">      <div class="addr_box">       <div class="inner box-head">        <h3 class="tit01">배송지<span>배송지에 따라 상품 정보가 달라질 수 있습니다.</span></h3>        <div class="set-box">         <strong>오늘드림 배송 설정 하기</strong>         <p>상세 페이지에서 오늘드림 배송으로 선택돼요</p>         <div class="toggleInput">          <label id="tddlvr_switch" class="switch">           <input id="tddlvr_todayDeliveryFlagCheckbox" type="checkbox">           <span id="tddlvr_slider" class="slider"></span>          </label>         </div>        </div>       </div>       <div class="inner box-cont">        <div class="addr-list-wrap">         <div class="mCustomScrollbar _mCS_1 mCS_no_scrollbar"><div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: 300px;" tabindex="0"><div id="mCSB_1_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr">          <ul class="addr-list"></ul>         </div><div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: none;"><div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; top: 0px;"><div class="mCSB_dragger_bar" style="line-height: 30px;"></div></div><div class="mCSB_draggerRail"></div></div></div></div></div>        </div>       </div>       <div id="callRegDeliveryAddressButton" class="add-address-box">        <a class="btnTy btn-plus" data-rel="layer" href="#">새 배송지 추가</a>       </div>      </div>     </div></li>
-				<!-- // 오늘드림 플래그 개인화 노출 2차 POC 추가 -->
-				<li class="store">
-					<a href="#" class="mymenu_layer" title="관심 매장소식 자세히보기 열기/닫기">관심 매장소식</a>
-					<div class="alim_box">
-						<p class="store_desc"><span>로그인</span>하시면 자주가는 매장을 <br>관심 매장으로 설정 할 수 있습니다.</p>
-						<button class="mymenu_btn" onclick="javascript:common.link.moveLoginPage();">로그인</button>
-					</div>
-				</li>
-				<li class="recent">
-					<a href="javascript:;" class="mymenu_layer" title="최근 본 상품 자세히보기 열기/닫기">최근 본 상품</a>
-					<div class="recent_prd_box" style="min-height:510px;">
-						<p class="recent_tit">전체 <span>0</span>개
-						</p><div class="no_data" style="display:block;">
-							최근 본 상품이 없습니다.
-						</div>
-					</div>
-				</li>
-			</ul>
-		</div>
-		<div class="header_design_area"></div>
+	<div class="top_util">
+		<ul class="menu_list" id="menu_list_header">
+			<li class="join"><a href="javascript:common.link.moveJoinMember();" data-attr="공통^헤더^회원가입">회원가입</a></li>
+			<li class="login"><a href="javascript:common.link.moveLoginPage();" data-attr="공통^헤더^로그인">로그인</a></li>
+			<li class="cart"><a href="javascript:common.link.moveCartPage();" data-attr="공통^헤더^장바구니">장바구니<span id="cartToCnt"></span></a></li>
+			<li class="order"><a href="javascript:common.link.moveOrderList();" data-attr="공통^헤더^주문배송">주문배송</a></li>
+			<li class="customer"><a href="javascript:common.faq.getFaqList('99');" data-attr="공통^헤더^고객센터">고객센터</a></li>
+			<li class="store"><a href="javascript:common.link.moveStoreMain();" data-attr="공통^헤더^매장안내">매장안내</a></li>
+			<li class="global"><a href="http://global.oliveyoung.com" target="_blank" title="올리브영 글로벌 새창으로 열기" data-attr="공통^헤더^Global">Global</a></li>
+		</ul>
 	</div>
-	
+
+	<div class="header_inner">
+		<h1><a href="#"><img src="https://image.oliveyoung.co.kr/pc-static-root/image/comm/h1_logo.png" alt="올리브영"></a></h1>
+
+		<div class="search_box" id="w_search_box">
+			<input type="hidden" name="chkButton" id="chkButton" value="">
+
+			<div class="placeholder_area">
+				<!-- onkeypress="javascript:pressCheck_WEB_MainSearch((event),this);" onkeydown="javascript:downCheck_WEB_MainSearch((event));" -->
+				<label for="query">검색어를 입력하세요</label><input type="text" id="query" name="" value="" class="inp_placeholder" data-placeholder="사티아 나그참파 단독증정🌿" data-ref-linkurl="https://www.oliveyoung.co.kr/store/planshop/getPlanShopDetail.do?dispCatNo=500000101440224" autocomplete="off">
+			</div>
+
+			<button id="searchSubmit">검색</button>
+
+			<!-- 검색 레이어 영역 (디자인 수정 예정) -->
+			<div class="search_layer">
+				<span class="search_layer_before"></span><!-- !!!!! 예린 추가 -->
+				<div class="layer_inner">
+					<!-- 2017-02-07 수정 : 자동완성기능 영역 -->
+					<div class="auto_search_cont">
+						<div class="brand_area" id="ark_brand"></div>
+						<div class="auto_list" id="ark_w"></div>
+					</div>
+					<!--// 2017-02-07 수정 : 자동완성기능 영역 -->
+
+					<!-- 최근 검색어 -->
+					<a href="#" class="search_tab tab01" id="searchRecent">최근 검색어</a><!-- 현재 보여지는 탭에 클래스 on 넣어주세요 -->
+					<div class="search_tab_cont" id="recent_cont">
+						<ul id="mykeyword">
+							<!-- 검색 기록이 없을 경우 -->
+						<li class="no_data" id="recent_no_data" style="display:none;">최근 검색한 기록이 없습니다.</li>
+							<!--// 검색 기록이 없을 경우 -->
+							<!-- 검색 저장 기능이 꺼져있을 경우 -->
+<!-- 							<li class="no_data" id="recent_no_save" style="display:none;">최근 검색어 저장 기능이 꺼져있습니다.</li> -->
+							<!--// 검색 저장 기능이 꺼져있을 경우 -->
+						</ul>
+						<div class="search_set_area">
+							<a href="#" class="sch_all_del" onclick="javascript:deleteCookies();">전체 삭제</a>
+<!-- 										<a href="#" class="sch_save"></a>																		 -->
+									<a href="#" class="sch_save">검색어 저장 끄기</a>
+						</div>
+					</div>
+
+					<!--// 최근 검색어 -->
+					<!-- 급상승 검색어 -->
+					<a href="#" class="search_tab tab02" id="searchPop">급상승 검색어</a>
+					<div class="search_tab_cont sharp_rise" id="w_pop_cont" style="display: none;">
+						<ul id="mainPopword">
+							<li class="top">
+								<a href="#" onclick="javascript:popwordSearchdo('롬앤','Pop_PROD');" data-attr="공통^통합검색_급상승검색어^롬앤">
+									<span>1</span>
+									<strong>롬앤</strong>
+									<span class="rate"><span>&nbsp;</span></span>
+								</a>
+							 </li>
+							<li class="top">
+								<a href="#" onclick="javascript:popwordSearchdo('롬앤','Pop_PROD');" data-attr="공통^통합검색_급상승검색어^롬앤">
+									<span>2</span>
+									<strong>롬앤</strong>
+									<span class="rate"><span>&nbsp;</span></span>
+								</a>
+							 </li>
+							<li class="top">
+								<a href="#" onclick="javascript:popwordSearchdo('롬앤','Pop_PROD');" data-attr="공통^통합검색_급상승검색어^롬앤">
+									<span>3</span>
+									<strong>롬앤</strong>
+									<span class="rate"><span>&nbsp;</span></span>
+								</a>
+							 </li>
+							<li class="">
+								<a href="#" onclick="javascript:popwordSearchdo('롬앤','Pop_PROD');" data-attr="공통^통합검색_급상승검색어^롬앤">
+									<span>4</span>
+									<strong>롬앤</strong>
+									<span class="rate"><span>&nbsp;</span></span>
+								</a>
+							 </li>
+							<li class="">
+								<a href="#" onclick="javascript:popwordSearchdo('롬앤','Pop_PROD');" data-attr="공통^통합검색_급상승검색어^롬앤">
+									<span>5</span>
+									<strong>롬앤</strong>
+									<span class="rate"><span>&nbsp;</span></span>
+								</a>
+							 </li>
+							<li class="">
+								<a href="#" onclick="javascript:popwordSearchdo('롬앤','Pop_PROD');" data-attr="공통^통합검색_급상승검색어^롬앤">
+									<span>6</span>
+									<strong>롬앤</strong>
+									<span class="rate dn"><span>2</span></span>
+								</a>
+							 </li>
+							<li class="">
+								<a href="#" onclick="javascript:popwordSearchdo('롬앤','Pop_PROD');" data-attr="공통^통합검색_급상승검색어^롬앤">
+									<span>7</span>
+									<strong>롬앤</strong>
+									<span class="rate"><span>&nbsp;</span></span>
+								</a>
+							 </li>
+							<li class="">
+								<a href="#" onclick="javascript:popwordSearchdo('롬앤','Pop_PROD');" data-attr="공통^통합검색_급상승검색어^롬앤">
+									<span>8</span>
+									<strong>롬앤</strong>
+									<span class="rate"><span>&nbsp;</span></span>
+								</a>
+							 </li>
+							<li class="">
+								<a href="#" onclick="javascript:popwordSearchdo('롬앤','Pop_PROD');" data-attr="공통^통합검색_급상승검색어^롬앤">
+									<span>9</span>
+									<strong>롬앤</strong>
+									<span class="rate up"><span>5</span></span>
+								</a>
+							 </li>
+							<li class="">
+								<a href="#" onclick="javascript:popwordSearchdo('롬앤','Pop_PROD');" data-attr="공통^통합검색_급상승검색어^롬앤">
+									<span>10</span>
+									<strong>롬앤</strong>
+									<span class="rate"><span>&nbsp;</span></span>
+								</a>
+							 </li>
+						</ul>
+						<div class="search_set_area">
+							<a href="#" class="sch_pop_close">닫기</a>
+						</div>
+					</div>
+
+					<!--// 인기 검색어 -->
+					<!-- 검색창 TOP3 상품 뿌리기 -->
+					<div class="scp_cont" id="scp_cont_id" style="display: block;">
+						<h3>할인 TOP3 상품</h3>
+						<div class="scp_slide"><!-- 배너 이미지 사이즈 -->
+
+						  <div class="FadeDot banner_wrap slick-initialized slick-slider slick-dotted" role="toolbar">
+
+							<button type="button" data-role="none" class="slick-prev slick-arrow slick-disabled" aria-label="Previous" role="button" aria-disabled="true" style="display: inline-block;">Previous</button>
+							<div aria-live="polite" class="slick-list draggable">
+								<div class="slick-track" style="opacity: 1; width: 780px;" role="listbox">
+
+									<c:if test="${not empty searchTop3List }">
+										<c:forEach items="${searchTop3List }" var="top3List">
+										<div class="moveGoodsBtn slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 260px; position: relative; left: 0px; top: 0px; z-index: 999; opacity: 1;" tabindex="-1" role="option" aria-describedby="slick-slide90">
+											<a href="#"><!-- 상품이미지 클릭시 상품 상세페이지로 이동시키기 -->
+												<div class="scp_thumb">
+													<img src="${top3List.prm_url }" alt="TOP3 상품이미지">
+												</div>
+											<div class="scp_txt">
+												<span class="brand">${top3List.br_name }</span>
+												<span class="tit">${top3List.pr_name }</span>
+												<span class="price"><span class="sale_pr">${top3List.prpri_price }<em>원</em></span> ${top3List.realPrice }<em>원</em></span>
+											</div>
+											<input type="hidden" name="goodsNo" value="A000000006670" tabindex="0">
+											<input type="hidden" name="idxNo" value="0" tabindex="0">
+										   </a>
+										</div>
+										</c:forEach>
+									</c:if>
+								</div><!-- slick-track -->
+							</div><!-- polite -->
+
+							<button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: block;" aria-disabled="false"> </button>
+
+							<ul class="slick-dots" style="display: block;" role="tablist">
+								<li class="slick-active" aria-hidden="false" role="presentation" aria-selected="true" aria-controls="navigation90" id="slick-slide90">
+									<button type="button" data-role="none" role="button" tabindex="0">1</button>
+								</li>
+								<li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation91" id="slick-slide91">
+									<button type="button" data-role="none" role="button" tabindex="0">2</button>
+								</li>
+
+								<li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation92" id="slick-slide92">
+									<button type="button" data-role="none" role="button" tabindex="0">3</button>
+								</li>
+							</ul>
+							</div><!-- FadeDot banner_wrap slick-initialized slick-slider slick-dotted -->
+						</div><!-- scp_slide -->
+					</div><!-- scp_cont -->
+					<!-- //SCP추가 -->
+					<span class="search_layer_after"></span><!-- !!!!! 예린 추가 -->
+				</div>
+			</div>
+			<!--// 검색 레이어 영역 -->
+		</div>
+		<!--// 검색영역 -->
+
+		<ul class="mymenu_area">
+			<!-- 오늘드림 플래그 개인화 노출 2차 POC 추가 -->
+			<li id="todayDeliveryContainer" class="delivery"><a href="javascript:;" id="tddlvr_header_today_icon" class="mymenu_layer" title="오늘드림 자세히보기 열기/닫기">오늘드림</a>     <!-- 배송지 미등록 / 배송주소 출력-->     <div class="delivery_box_wrap" style="display: none;"><div class="delivery_box"><p class="dTxt">배송지를 등록하고 오늘드림으로 구매 가능한 상품을 확인하세요!</p></div></div>     <!--// 배송지 미등록 / 배송주소 출력-->     <!-- 배송지 설정-->     <div class="delivery_addr" style="display:none">      <div class="addr_box">       <div class="inner box-head">        <h3 class="tit01">배송지<span>배송지에 따라 상품 정보가 달라질 수 있습니다.</span></h3>        <div class="set-box">         <strong>오늘드림 배송 설정 하기</strong>         <p>상세 페이지에서 오늘드림 배송으로 선택돼요</p>         <div class="toggleInput">          <label id="tddlvr_switch" class="switch">           <input id="tddlvr_todayDeliveryFlagCheckbox" type="checkbox">           <span id="tddlvr_slider" class="slider"></span>          </label>         </div>        </div>       </div>       <div class="inner box-cont">        <div class="addr-list-wrap">         <div class="mCustomScrollbar _mCS_1 mCS_no_scrollbar"><div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: 300px;" tabindex="0"><div id="mCSB_1_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr">          <ul class="addr-list"></ul>         </div><div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: none;"><div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; top: 0px;"><div class="mCSB_dragger_bar" style="line-height: 30px;"></div></div><div class="mCSB_draggerRail"></div></div></div></div></div>        </div>       </div>       <div id="callRegDeliveryAddressButton" class="add-address-box">        <a class="btnTy btn-plus" data-rel="layer" href="#">새 배송지 추가</a>       </div>      </div>     </div></li>
+			<!-- // 오늘드림 플래그 개인화 노출 2차 POC 추가 -->
+			<li class="store">
+				<a href="#" class="mymenu_layer" title="관심 매장소식 자세히보기 열기/닫기">관심 매장소식</a>
+				<div class="alim_box">
+					<p class="store_desc"><span>로그인</span>하시면 자주가는 매장을 <br>관심 매장으로 설정 할 수 있습니다.</p>
+					<button class="mymenu_btn" onclick="javascript:common.link.moveLoginPage();">로그인</button>
+				</div>
+			</li>
+			<li class="recent">
+				<a href="javascript:;" class="mymenu_layer" title="최근 본 상품 자세히보기 열기/닫기">최근 본 상품</a>
+				<div class="recent_prd_box" style="min-height:510px;">
+					<p class="recent_tit">전체 <span>0</span>개
+					</p><div class="no_data" style="display:block;">
+						최근 본 상품이 없습니다.
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="header_design_area"></div>
+</div>
+	<div id="Gnb" class="main gen1">
+		<div id="gnbWrap">
+			<a href="#" id="btnGnbOpen">카테고리</a>
+			<div class = "layer_all_menu">
+				<ul class="all_menu_wrap">
+					<c:forEach items="${totMap}" var="totMap">
+						<li>
+							<h2>${totMap.key.ca_name}</h2>
+							<c:forEach items="${totMap.value}" var="midMap" varStatus="i">
+								<c:if test="${i.begin or i.index%4 == 0}"><div class="sub_menu_box"></c:if>
+								<p class="sub_depth"><a>${midMap.key.ca_name}</a></p>
+								<ul>
+									<c:forEach items="${midMap.value}" var="bottList">
+										<li><a href="">${bottList.ca_name}</a></li>
+									</c:forEach>
+								</ul>
+								<c:if test="${i.end or i.index%4 == 3}"></div></c:if>
+							</c:forEach>
+						</li>
+					</c:forEach>
+				</ul>
+			</div>
+			<ul class="gnb_menu_list">
+				<li><a href="<%=request.getContextPath()%>main/getHotdealList.do"><span>오특</span></a></li>
+				<li><a href="<%=request.getContextPath()%>main/getNewList.do"><span>신상</span></a></li>
+				<li><a href="<%=request.getContextPath()%>main/getBestList.do"><span>랭킹</span></a></li>
+				<li><a href="<%=request.getContextPath()%>planshop/getSpcShopDetail.do?dispCatNo=500000200080001"><span>프리미엄관</span></a></li>
+				<li><a href="<%=request.getContextPath()%>main/getPlanShopList.do"><span>기획전</span></a></li>
+				<li><a href="<%=request.getContextPath()%>main/getSaleList.do"><span>세일</span></a></li>
+				<li><a href="<%=request.getContextPath()%>giftCardGuide/getGiftCardGuide.do"><span>기프트카드</span></a></li>
+				<li><a href="<%=request.getContextPath()%>main/getMembership.do"><span>멤버십/쿠폰</span></a></li>
+				<li><a href="<%=request.getContextPath()%>main/getEventList.do"><span>이벤트</span></a></li>
+			</ul>
+		</div>
+		<div class="main_cate_wrap">
+			<ul class="main_cate_list">
+
+				<c:forEach items="${midCaPrMap}" var="midCaPrEntity">
+					<li class="type2">
+						<a href="" class="main_menu">${midCaPrEntity.key.ca_name}</a>
+						<div class="lnb_ban_box" style="left:170px;">
+							<a href="https://www.oliveyoung.co.kr/store/goods/getGoodsDetail.do?${midCaPrEntity.value.pr_code}" >
+								<div class="ban_info">
+									<p class="ban_name">MD's Pick</p>
+									<div class="tit_group">
+										<p class="tit_m">${midCaPrEntity.value.br_name}</p>
+										<p class="tit_s">${midCaPrEntity.value.pr_name}</p>
+									</div>
+									<div class="price_group">
+										<p class="price_s">${midCaPrEntity.value.prpri_price}<em>원</em></p>
+										<p class="price_m">${midCaPrEntity.value.realPrice}<em>원</em></p>
+									</div>
+								</div>
+								<div class="ban_thum">
+									<img src="${midCaPrEntity.value.prm_url}" alt="">
+								</div>
+							</a>
+						</div>
+					</li>
+				</c:forEach>
+
+				<li class="lst">
+					<a href="javascript:common.link.commonMoveUrl('amusement/intro.do')" class="main_menu" data-attr="공통^메인롤링^AWARDS" data-trk="/">
+						<span class="icon_awards">AWARDS</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<script>
+		$("#btnGnbOpen").click(function (event) {
+			event.preventDefault(); //클릭 시, #으로 새로고침 되는 상황 제거
+			$(this).toggleClass("active"); // 카테고리 버튼 색 주는 css 토글
+			$(".layer_all_menu").toggleClass("active"); // 카테고리 메뉴 block-none 토글
+		})
+	</script>
+
+	<script>
+		$(".main_cate_wrap").mouseover(function (event) {
+			$(this).addClass("active");
+		})
+		$(".main_cate_wrap").mouseout(function (event) {
+			$(this).removeClass("active");
+		})
+		$(".main_cate_list>li").mouseover(function (event) {
+			$(this).addClass("on")
+			$(this).children(".lnb_ban_box").addClass("on");
+		})
+		$(".main_cate_list>li").mouseout(function (event) {
+			$(this).removeClass("on")
+			$(this).children(".lnb_ban_box").removeClass("on");
+		})
+	</script>
+
 <div id="Container">
  <div id="Contents">
+	 <%--메인 배너--%>
+		 <div class="main_full_banner">
+			 <div class="banner_wrap slick_slider slick-initialized slick-slider" id="mainFullSlider">
+				 <div aria-live="polite" class="slick-list draggable">
+					 <div class="slick-track">
+						 <c:forEach items="${mainFullBannerDTOList}" var="mainFullBanner">
+							 <div>
+								 <a class="banner_link"  href="">
+									 <p class="banner_desc">
+										 <span class="tit" style="color: #fff;">올영P!CK</span>
+										 <strong style="color: #fff;">${mainFullBanner.banner_title}</strong>
+										 <span style="color: #fff;">${mainFullBanner.banner_desc}</span>
+									 </p>
+									 <img src="${mainFullBanner.banner_img}" alt="${mainFullBanner.banner_title}">
+								 </a>
+							 </div>
+						 </c:forEach>
+					 </div>
+				 </div>
+				 <button id="mainSliderBtn">멈춤</button>
+			 </div>
+		 </div>
  <!-- Catch Keyword -->
  <div class="catch_keyword_wrap">
   <h3 class="main_sub_tit"><strong>Catch Keyword</strong></h3>
@@ -2218,6 +2860,18 @@ rate_span{
 	</div><!-- Footer -->
 </div><!-- Wrapper -->
 
+
+<%--메인배너 슬릭--%>
+
+<script>
+	$(".main_full_banner .slick-track").slick({
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		fade: true,
+		autoplay: true,
+		autoplaySpeed: 6000,
+	});
+</script>
 <script>	
 // 검색창 부분
  	$(".inp_placeholder").on("click", function () {

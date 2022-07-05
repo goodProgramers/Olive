@@ -1,16 +1,13 @@
 package command;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import domain.ExhibitionDTO;
-import domain.MainOnlyoneDTO;
-import domain.ProductBrandPriceDTO;
-import service.ExhibitionService;
-import service.MainOnlyoneService;
-import service.SearchTOP3ProductService;
+import domain.*;
+import service.*;
 
 public class MainHandler implements CommandHandler{
 
@@ -29,8 +26,22 @@ public class MainHandler implements CommandHandler{
 		SearchTOP3ProductService searchTop3ProductService = SearchTOP3ProductService.getInstance();
 		List<ProductBrandPriceDTO> searchTop3List = searchTop3ProductService.serachTop3ProductSelect();
 		request.setAttribute("searchTop3List", searchTop3List);
-				
-		return "/olive_yelin/main.jsp";
+
+
+		CategoryMainService categoryMainService = CategoryMainService.getInstance();
+		Map<CategoryDTO, Map<CategoryDTO, List<CategoryDTO>>> totMap = categoryMainService.selectTopCate();
+		request.setAttribute("totMap", totMap);
+
+		MainFullBannerService mainFullBannerService = MainFullBannerService.getInstance();
+		List<MainFullBannerDTO> mainFullBannerDTOList = mainFullBannerService.selectMainFullBanner();
+		request.setAttribute("mainFullBannerDTOList", mainFullBannerDTOList);
+
+		CategoryMidService categoryMidService = CategoryMidService.getInstance();
+		Map<CategoryDTO, ProductBrandPriceDTO> midCaPrMap = categoryMidService.selectBannerCaPr();
+		request.setAttribute("midCaPrMap", midCaPrMap);
+
+
+		return "/olive/main.jsp";
 	}
 
 }
