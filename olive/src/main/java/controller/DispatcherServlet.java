@@ -34,7 +34,7 @@ public class DispatcherServlet extends HttpServlet {
 		// WEB-INF/commandHandler.properties 파일을 읽어와서 요청URL=CommandHandler를 읽어와서 commandHandlerMap에 추가 작업 필요(web.xml에 추가)
 		String path = this.getInitParameter("path"); // 읽고자 하는 commandHandler.properties 파일을 읽어옴
 		String realPath = this.getServletContext().getRealPath(path); // 실제 물리적인 경로 ***
-
+		
 		Properties prop = new Properties();
 		try(FileReader fr = new FileReader(realPath)) {
 			prop.load(fr);			

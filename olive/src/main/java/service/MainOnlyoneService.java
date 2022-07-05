@@ -10,7 +10,7 @@ import com.util.ConnectionProvider;
 import com.util.JdbcUtil;
 
 import domain.MainOnlyoneDTO;
-import persistence.OliveDAOImpl;
+import persistence.OnlyOneDAOImpl;
 
 public class MainOnlyoneService {
 	// 싱글톤
@@ -25,7 +25,7 @@ public class MainOnlyoneService {
 		
 		try {
 			con = ConnectionProvider.getConnection();
-			OliveDAOImpl dao = OliveDAOImpl.getInstance();
+			OnlyOneDAOImpl dao = OnlyOneDAOImpl.getInstance();
 			
 			List<MainOnlyoneDTO> mainonlyoneList = null;
 			mainonlyoneList = dao.mainOnlyone(con);

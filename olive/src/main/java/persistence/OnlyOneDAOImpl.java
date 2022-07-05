@@ -11,14 +11,14 @@ import com.util.JdbcUtil;
 import domain.ExhibitionDTO;
 import domain.MainOnlyoneDTO;
 
-public class OliveDAOImpl implements OliveDAO{
+public class OnlyOneDAOImpl implements OnlyOneDAO{
 
 	// 싱글톤
-	private OliveDAOImpl() {}
-	private static OliveDAOImpl instance = null;
-	public static OliveDAOImpl getInstance() {
+	private OnlyOneDAOImpl() {}
+	private static OnlyOneDAOImpl instance = null;
+	public static OnlyOneDAOImpl getInstance() {
 		if(instance == null) {
-			instance = new OliveDAOImpl();
+			instance = new OnlyOneDAOImpl();
 		}
 		return instance;
 	}
