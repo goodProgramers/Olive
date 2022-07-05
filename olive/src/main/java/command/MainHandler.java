@@ -30,7 +30,7 @@ public class MainHandler implements CommandHandler{
 		List<ProductBrandPriceDTO> searchTop3List = searchTop3ProductService.serachTop3ProductSelect();
 		request.setAttribute("searchTop3List", searchTop3List);
 				
-		return "/olive_yelin/main.jsp";
+		return "/olive/main.jsp";
 	}
 
 }
