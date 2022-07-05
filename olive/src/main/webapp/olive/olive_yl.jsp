@@ -1536,7 +1536,7 @@ rate_span{
 						<!--// 인기 검색어 -->						
 						<!-- SCP추가 -->
 						<div class="scp_cont" id="scp_cont_id" style="display: block;">
-							<h3>주간 특가 상품</h3>
+							<h3>TOP3 할인 상품</h3>
 							<div class="scp_slide"><!-- 배너 이미지 사이즈 -->
 							
 							  <div class="FadeDot banner_wrap slick-initialized slick-slider slick-dotted" role="toolbar">
