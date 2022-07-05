@@ -4,5 +4,5 @@
 * 국내 1위 드러그 스토어인 `올리브영`을 벤치마킹 하여 쇼핑몰 구현하는 프로젝트
 
 > ## 요구분석
-* [요구분석 내용](requirements_analysis/requirements_analysis.md)
+* [요구분석 내용](ect/requirements_analysis/requirements_analysis.md)
 
