@@ -1919,7 +1919,7 @@ rate_span{
 			</ul>
 		</div>
 		<div class="header_design_area"></div>
-	</div>
+	</div><!-- Header -->
 	
 <div id="Container">
  <div id="Contents">
