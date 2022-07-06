@@ -18,8 +18,8 @@ public class OrderHandler implements CommandHandler{
 		
 		// 회원 배송지 정보
 		OrderPaymentService orderPaymentService = OrderPaymentService.getInstance();
-		List<OrderMemberInfoDTO> addrInfoList = orderPaymentService.selectOrderMemInfo(memberID);
-		request.setAttribute("addrInfoList", addrInfoList);
+		List<OrderMemberInfoDTO> memberAddrList = orderPaymentService.selectMemberAddr(memberID);
+		request.setAttribute("memberAddrList", memberAddrList);
 		
 		return "/olive/order.jsp";
 	}

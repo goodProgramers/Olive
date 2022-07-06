@@ -2764,13 +2764,11 @@ element.style {
 				<h2 class="sub-title2">배송지정보</h2>
 			</div>
 			<table class="tbl_inp_form important" id="dlvpInfo">
-							<caption></caption>
+				<caption></caption>
 				<colgroup>
 					<col style="width:170px">
 					<col style="width:*">
 				</colgroup>
-				<c:forEach items="${addrInfoList}" var="addrInfo">
-				<c:if test="${addrInfo.ad_main == 1}">
 				<tbody>
 				<tr>
 					<th scope="row">배송지선택</th>
@@ -2778,24 +2776,24 @@ element.style {
 						<div class="show" id="dlvpSelect_div">
 							<input type="hidden" name="selectDlvSeq" value="">
 							<select id="dlvpSelect" name="mbrDlvpSeq" class="selH28" title="배송지를 선택해주세요." style="width:200px">
-<%-- 								<c:forEach items="${addrInfoList}" var="addrInfo">
-									<c:if test="${addrInfo.ad_main == 1}"> --%>
-									<option value="1">${addrInfo.ad_name }</option>
-<%-- 								</c:if>								
-								</c:forEach>	 --%>
+							<c:forEach items="${memberAddrList}" var="memberAddrList">
+								<option value="">${memberAddrList.ad_name }</option>
+							</c:forEach>
 							</select>
 						</div>
 					</td>
-				</tr>
+				</tr><!-- 배송지선택부분 -->
+				<c:forEach items="${memberAddrList}" var="memberAddrList">
+				<c:if test="${memberAddrList.ad_main == 1}">
 				<tr type="exist" style="display: table-row;">
 					<th scope="row">배송지명</th>
-					<td id="dlvpNm_exist_span">집</td>
-					<input type="hidden" id="dlvpNm_exist" name="dlvpNm" value="집" title="배송지명을 입력해주세요." style="width:200px" this="배송지명은">
+					<td id="dlvpNm_exist_span">${ memberAddrList.ad_name}</td>
+					<input type="hidden" id="dlvpNm_exist" name="dlvpNm" value="${ memberAddrList.ad_name}" title="배송지명을 입력해주세요." style="width:200px" this="배송지명은">
 				</tr>
 				<tr id="pickupHide1" type="exist" style="display: table-row;">
 					<th scope="row">받는분</th>
 					<td class="imp_data">
-						<input type="text" id="rmitNm_exist" name="rmitNm" value="${addrInfo.ad_member }" class="inpH28" title="받는분 이름을 입력해주세요." style="width:200px" this="받는분 이름은" data-attr="배송지정보^1_받는분">
+						<input type="text" id="rmitNm_exist" name="rmitNm" value="${ memberAddrList.ad_member}" class="inpH28" title="받는분 이름을 입력해주세요." style="width:200px" this="받는분 이름은" data-attr="배송지정보^1_받는분">
 					</td>
 				</tr>
 				<tr class="sumtr1" id="pickupHide2" type="exist" style="display: table-row;">
@@ -2837,8 +2835,8 @@ element.style {
 							<option value="0506">0506</option>								
 							<option value="0507">0507</option>								
 						</select>
-						- <input type="text" id="rmitCellTxnoNo_exist" name="rmitCellTxnoNo" value="6777" orgvalue="" class="inpH28" title="연락처1 가운데 자리를 입력해주세요." this="연락처1 가운데 자리는" style="width:90px" data-attr="배송지정보^1_연락처1">
-						- <input type="text" id="rmitCellEndNo_exist" name="rmitCellEndNo" value="7428" orgvalue="" class="inpH28" title="연락처1 마지막 4자리를 입력해주세요." this="연락처1 마지막 자리는" style="width:90px" data-attr="배송지정보^1_연락처1">
+						- <input type="text" id="rmitCellTxnoNo_exist" name="rmitCellTxnoNo" value="${ memberAddrList.midtel }" class="inpH28" title="연락처1 가운데 자리를 입력해주세요." this="연락처1 가운데 자리는" style="width:90px" data-attr="배송지정보^1_연락처1">
+						- <input type="text" id="rmitCellEndNo_exist" name="rmitCellEndNo" value="${ memberAddrList.endtel }" class="inpH28" title="연락처1 마지막 4자리를 입력해주세요." this="연락처1 마지막 자리는" style="width:90px" data-attr="배송지정보^1_연락처1">
 						<span class="info_security"><button type="button" data-rel="layer" data-target="securityInfo" class="chk_area">안심번호 서비스 안내</button></span>
 					</td>
 				</tr>
@@ -2848,33 +2846,25 @@ element.style {
 						<input type="text" id="stnmRmitPostNo_exist" name="rmitPostNo" value="16387" class="inpH28" title="우편번호를 검색해주세요." style="width:90px" readonly="readonly">
 						<input type="hidden" id="rmitPostNo_exist" name="stnmRmitPostNo" value="16387" title="우편번호를 검색해주세요.">
 						
-							<button type="button" class="btnSmall wGreen w100" id="search-zipcode-pop_exist" style="display:none;" data-attr="배송지정보^1_주소"><span>우편번호 찾기 (기존)</span></button>
-							<button type="button" class="btnSmall wGreen w100" id="search-zipcode-pop_exist_r" data-attr="배송지정보^1_주소"><span>우편번호 찾기</span></button>
+						<button type="button" class="btnSmall wGreen w100" id="search-zipcode-pop_exist" style="display:none;" data-attr="배송지정보^1_주소"><span>우편번호 찾기 (기존)</span></button>
+						<button type="button" class="btnSmall wGreen w100" id="search-zipcode-pop_exist_r" data-attr="배송지정보^1_주소"><span>우편번호 찾기</span></button>
 						
 						<div class="addr_box">
-							<input type="hidden" id="stnmRmitPostAddr_exist" name="stnmRmitPostAddr" value="경기 수원시 권선구 금곡로140번길 29 (금곡동, 수원호매실휴먼시아8단지아파트)" class="inpH28" title="우편번호를 검색해주세요." readonly="readonly">
-							<input type="hidden" id="rmitBaseAddr_exist" name="rmitPostAddr" value="경기 수원시 권선구 금곡동 1095" class="inpH28" title="우편번호를 검색해주세요." readonly="readonly">
-							<!-- 주소 입력 시 보여지는 부분 -->
 							<p class="addr_new">
-								<span class="tx_tit">도로명</span> :
-								<span class="tx_addr" id="stnmPostAddr_exist">경기 수원시 권선구 금곡로140번길 29 (금곡동, 수원호매실휴먼시아8단지아파트)</span><!--  도로명주소를 넣어주세요 -->
-							</p>
-							<p class="addr_old">
-								<span class="tx_tit">지번</span> :
-								<span class="tx_addr" id="baseAddr_exist">경기 수원시 권선구 금곡동 1095</span><!--  지번주소를 넣어주세요 -->
+								<span class="tx_addr" id="stnmPostAddr_exist">${ memberAddrList.ad_address }</span><!--  도로명주소를 넣어주세요 -->
 							</p>
 							<!--// 주소 입력 시 보여지는 부분 -->
 						</div>
-						<input type="text" id="tempRmitDtlAddr_exist" value="806-2005" class="inpH28" title="상세주소를 입력해주세요." style="width:500px;" this="상세 주소는" maxlength="30">
-						<input type="hidden" id="stnmRmitDtlAddr_exist" name="stnmRmitDtlAddr" value="806-2005" orgvalue="806-2005" class="inpH28" title="상세주소를 입력해주세요." style="width:500px" this="상세 주소는">
-						<input type="hidden" id="rmitDtlAddr_exist" name="rmitDtlAddr" value="806-2005" orgvalue="806-2005" class="inpH28" title="상세주소를 입력해주세요." style="width:500px">
-						<input type="hidden" id="emdNm_exist" name="emdNm" value="금곡동">
-						<input type="hidden" id="admrNm_exist" name="admrNm" value="금곡동">
+						<input type="text" id="tempRmitDtlAddr_exist" value="${ memberAddrList.ad_address }" class="inpH28" title="상세주소를 입력해주세요." style="width:500px;" this="상세 주소는" maxlength="30">
+						<input type="hidden" id="stnmRmitDtlAddr_exist" name="stnmRmitDtlAddr" value="" class="inpH28" title="상세주소를 입력해주세요." style="width:500px" this="상세 주소는">
+						<input type="hidden" id="rmitDtlAddr_exist" name="rmitDtlAddr" value="" class="inpH28" title="상세주소를 입력해주세요." style="width:500px">
+						<input type="hidden" id="emdNm_exist" name="emdNm" value="">
+						<input type="hidden" id="admrNm_exist" name="admrNm" value="">
 					</td>
 				</tr>				
 				</tbody>
-				</c:if>								
-				</c:forEach>	
+				</c:if>
+				</c:forEach>							
 			</table>
 			<!--// 배송지 정보 -->
 
@@ -3027,12 +3017,15 @@ element.style {
 							<td>
 								<div>
 									<span class="inp_point_wrap">
-										<input type="text" id="cjonePntAplyAmt" class="inpH28 cjonePoint" title="사용하실 포인트를 입력해주세요." style="width:100px" this="CJ ONE 포인트는 " minownamt="1000" unit="P" unitamt="10" minaplyamt="0" data-attr="포인트/기프트카드사용^CJONE포인트"> 원 / <span id="cjonePnt_span" class="tx_num colorOrange"><span id="cjonePnt">2,052</span>P</span>
+										<input type="text" id="cjonePntAplyAmt" class="inpH28 cjonePoint" title="사용하실 포인트를 입력해주세요." style="width:100px" min="0"> 원 /
+												<span id="cjonePnt_span" class="tx_num colorOrange">
+													<span id="cjonePnt" value="${memberAddrList[0].my_point }">${memberAddrList[0].my_point }</span>P
+												</span>
 										<input type="hidden" name="cjonePntAplyAmt" value="0">
 										<input type="hidden" name="cjonePntNonPosCnt" value="0">
 									</span>
 									<button type="button" class="btnSmall wGray3" id="cjonePnt_btn" >전액사용</button>
-									<p class="tx_point_info">포인트는 최소 1,000원 이상 보유 시 10원 단위로 사용 가능합니다. </p>									
+									<p class="tx_point_info">포인트는 최소 1,000원 이상 보유 시 사용 가능합니다. </p>									
 								</div>
 							</td>
 						</tr>
@@ -3050,15 +3043,15 @@ element.style {
 						<li class="bg_area"><!-- 2017-01-18 수정 : 클래스 추가 -->
 							<input type="hidden" id="payCouponIndex" value="" paycd="">
 							<input type="hidden" id="easyPayCd" value="">
-							<span><input type="radio" id="payMethod_11" name="payMethod" value="11" cashreceipt="N" checked="checked" data-attr="결제수단선택^결제수단선택"><label id="payMethodLabel_11" for="payMethod_11">신용카드<span class="flag bn">혜택</span></label></span>
+							<span><input type="radio" id="payMethod_11" name="payMethod" value="11" cashreceipt="N" checked="checked"><label id="payMethodLabel_11" for="payMethod_11">신용카드<span class="flag bn">혜택</span></label></span>
 							<span class="pay_24h_sh"><input type="radio" id="payMethod_61" name="payMethod" value="61" cashreceipt="Y" data-attr="결제수단선택^결제수단선택"><label id="payMethodLabel_61" for="payMethod_61">무통장입금</label></span>
-							<span><input type="radio" id="payMethod_25" name="payMethod" value="25" cashreceipt="N" data-attr="결제수단선택^결제수단선택"><label id="payMethodLabel_25" for="payMethod_25">PAYCO</label></span>
-							<span><input type="radio" id="payMethod_26" name="payMethod" value="26" cashreceipt="N" data-attr="결제수단선택^결제수단선택"><label id="payMethodLabel_26" for="payMethod_26">카카오페이</label></span>
-							<span><input type="radio" id="payMethod_29" name="payMethod" value="29" cashreceipt="N" data-attr="결제수단선택^결제수단선택"><label id="payMethodLabel_29" for="payMethod_29">네이버페이</label></span>
-							<span><input type="radio" id="payMethod_22" name="payMethod" value="22" cashreceipt="N" data-attr="결제수단선택^결제수단선택"><label id="payMethodLabel_22" for="payMethod_22">휴대폰결제</label></span>
-							<span><input type="radio" id="payMethod_21" name="payMethod" value="21" cashreceipt="Y" data-attr="결제수단선택^결제수단선택"><label id="payMethodLabel_21" for="payMethod_21">계좌이체</label></span>
-							<span><input type="radio" id="payMethod_24" name="payMethod" value="24" cashreceipt="Y" data-attr="결제수단선택^결제수단선택"><label id="payMethodLabel_24" for="payMethod_24">도서상품권</label></span>
-							<span><input type="radio" id="payMethod_23" name="payMethod" value="23" cashreceipt="N" data-attr="결제수단선택^결제수단선택"><label id="payMethodLabel_23" for="payMethod_23">문화상품권</label></span>
+							<span><input type="radio" id="payMethod_25" name="payMethod" value="25" cashreceipt="N" ><label id="payMethodLabel_25" for="payMethod_25">PAYCO</label></span>
+							<span><input type="radio" id="payMethod_26" name="payMethod" value="26" cashreceipt="N" ><label id="payMethodLabel_26" for="payMethod_26">카카오페이</label></span>
+							<span><input type="radio" id="payMethod_29" name="payMethod" value="29" cashreceipt="N" ><label id="payMethodLabel_29" for="payMethod_29">네이버페이</label></span>
+							<span><input type="radio" id="payMethod_22" name="payMethod" value="22" cashreceipt="N" ><label id="payMethodLabel_22" for="payMethod_22">휴대폰결제</label></span>
+							<span><input type="radio" id="payMethod_21" name="payMethod" value="21" cashreceipt="Y" ><label id="payMethodLabel_21" for="payMethod_21">계좌이체</label></span>
+							<span><input type="radio" id="payMethod_24" name="payMethod" value="24" cashreceipt="Y" ><label id="payMethodLabel_24" for="payMethod_24">도서상품권</label></span>
+							<span><input type="radio" id="payMethod_23" name="payMethod" value="23" cashreceipt="N" ><label id="payMethodLabel_23" for="payMethod_23">문화상품권</label></span>
 						</li>	
 					</ul>
 				</div>
@@ -3075,7 +3068,7 @@ element.style {
 						</li>
 						
 						<li class="line_top2">
-							<span class="tx_tit">총 배송비 <button type="button" class="btnSmall wGray" onclick="fnLayerSet('deliveryInfo', 'open');"><span>상세보기</span></button></span>
+							<span class="tx_tit">총 배송비</span>
 							<span class="tx_cont"><span class="tx_num" id="dlexPayAmt_span">0</span>원</span>
 							<input type="hidden" name="dlexPayAmt" value="0">
 						</li>
@@ -3242,6 +3235,74 @@ element.style {
 	</div><!-- Footer -->
 </div><!-- Wrapper -->
 
+
+<!-- script 코딩 부분 -->
+<script>
+// 포인트 전액사용 버튼 클릭시 cjonePnt_btn
+$(function () {
+	$("#cjonePnt_btn").on("click", function () {
+	// $("#cjonePnt_btn").click(function () {
+		var totalpoint = $("#cjonePnt").text();
+		$("#cjonePntAplyAmt").attr("value", totalpoint); // 인풋태그 변경
+		$("#cjonePntAplyAmt_span").text(totalpoint); // 최종 결제정보 변경
+		$("#cjonePntAplyAmt").attr()
+	});
+});
+
+// 포인트 금액 직접 입력
+$(function () {
+	$("#cjonePntAplyAmt").on("keyup", function () {
+		
+		var totalpoint = $("#cjonePntAplyAmt").val();
+		var maxpoint = ${ memberAddrList[0].my_point }
+		console.log(maxpoint);
+		
+		if(totalpoint > ${ memberAddrList[0].my_point }) {
+			alert("보유하신 포인트를 초과하였습니다.");
+			$("#cjonePntAplyAmt").attr("value", 0);
+			$("#cjonePntAplyAmt").val(0);
+			$("#cjonePntAplyAmt_span").text( 0 );
+		} else{
+			$("#cjonePntAplyAmt").attr("value", totalpoint); // 인풋태그 변경
+			$("#cjonePntAplyAmt").val(totalpoint);
+			$("#cjonePntAplyAmt_span").text(totalpoint); // 최종 결제정보 변경
+		} // if
+		
+	});
+});
+</script>
+<script>
+// 배송지명 옵션태그 선택시
+$(function () {
+	$("#dlvpSelect").change(function (event) {
+		let selAddrName = $("#dlvpSelect option:selected").text();
+        $.ajax({ 
+            url:"<%= request.getContextPath() %>/olive/memberinfo.do", 
+            dataType:"json", 
+             type:"POST",
+             data:{
+            	 selAddrName
+             },
+             cache:false, // 꼭 기억
+             success:function (data){ 
+                $( data.memberAddrInfo ).each( function ( i , elem ){
+				   $("#dlvpNm_exist_span").text(elem.ad_name); 
+				   $("#rmitNm_exist").attr("value", elem.ad_name);
+                   $("#stnmPostAddr_exist").text(elem.ad_address);
+                   $("#rmitNm_exist").attr("value", elem.ad_member);
+                   $("#rmitCellTxnoNo_exist").attr("value", elem.midtel);
+                   $("#rmitCellEndNo_exist").attr("value", elem.endtel);
+                   $("#tempRmitDtlAddr_exist").attr("value", elem.ad_address);
+                });
+             }, 
+             error:function (){
+                alert("에러발생");
+             }
+         });
+	}); // change
+}); // ready
+
+</script>
 <script>	
 // 검색창 부분
  	$(".inp_placeholder").on("click", function () {

@@ -1,26 +1,23 @@
 package domain;
 
-public class OrderMemberInfoDTO {
-	private String me_code; // 회원코드
-	private String me_id; // 회원 ID
+public class MemberAddrDTO {
+	private String me_code;
+	private String me_id;
 	private int ad_main; // 기본배송지여부
 	private String ad_name; // 배송지명
 	private String ad_member; // 받는분
 	private String ad_tel; // 받는사람연락처
-	private String midtel; // 받는사람연락처가운데4자리
-	private String endtel; // 받는사람연락처끝4자리
 	private String ad_address; // 받는주소
 	private int my_point; // 마이페이지에 있는 포인트
 	private String mbs_code; // 멤버십 등급코드
 	private double mbs_pointrate; // 적립율
 	
-	public OrderMemberInfoDTO() {
+	public MemberAddrDTO() {
 		super();
 	}
 
-	public OrderMemberInfoDTO(String me_code, String me_id, int ad_main, String ad_name, String ad_member,
-			String ad_tel, String midtel, String endtel, String ad_address, int my_point, String mbs_code,
-			double mbs_pointrate) {
+	public MemberAddrDTO(String me_code, String me_id, int ad_main, String ad_name, String ad_member, String ad_tel,
+			String ad_address, int my_point, String mbs_code, double mbs_pointrate) {
 		super();
 		this.me_code = me_code;
 		this.me_id = me_id;
@@ -28,8 +25,6 @@ public class OrderMemberInfoDTO {
 		this.ad_name = ad_name;
 		this.ad_member = ad_member;
 		this.ad_tel = ad_tel;
-		this.midtel = midtel;
-		this.endtel = endtel;
 		this.ad_address = ad_address;
 		this.my_point = my_point;
 		this.mbs_code = mbs_code;
@@ -114,23 +109,13 @@ public class OrderMemberInfoDTO {
 
 	public void setMbs_pointrate(double mbs_pointrate) {
 		this.mbs_pointrate = mbs_pointrate;
-	}	
-
-	public String getMidtel() {
-		return midtel;
 	}
 
-	public void setMidtel(String midtel) {
-		this.midtel = midtel;
+	@Override
+	public String toString() {
+		return "OrderMemberInfo [me_code=" + me_code + ", me_id=" + me_id + ", ad_main=" + ad_main + ", ad_name="
+				+ ad_name + ", ad_member=" + ad_member + ", ad_tel=" + ad_tel + ", ad_address=" + ad_address
+				+ ", my_point=" + my_point + ", mbs_code=" + mbs_code + ", mbs_pointrate=" + mbs_pointrate + "]";
 	}
-
-	public String getEndtel() {
-		return endtel;
-	}
-
-	public void setEndtel(String endtel) {
-		this.endtel = endtel;
-	}
-
 		
 } // class

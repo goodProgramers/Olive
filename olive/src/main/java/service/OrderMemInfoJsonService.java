@@ -12,28 +12,28 @@ import com.util.JdbcUtil;
 import domain.OrderMemberInfoDTO;
 import persistence.OrderPaymentDAOImpl;
 
-public class OrderPaymentService {
+public class OrderMemInfoJsonService {
 	// 싱글톤
-	private OrderPaymentService() {}
-	private static OrderPaymentService instance = null;
-	public static OrderPaymentService getInstance() {
+	private OrderMemInfoJsonService() {}
+	private static OrderMemInfoJsonService instance = null;
+	public static OrderMemInfoJsonService getInstance() {
 		if (instance == null) {
-			instance = new OrderPaymentService();
+			instance = new OrderMemInfoJsonService();
 		}
 		return instance;
 	}
 
-	public List<OrderMemberInfoDTO> selectMemberAddr(String memberID) {
+	public List<OrderMemberInfoDTO> selectMemAddrInfo(String memberID, String addrName) {
 		Connection con = null;
 
 		try {
 			con = ConnectionProvider.getConnection();
 			OrderPaymentDAOImpl dao = OrderPaymentDAOImpl.getInstance();
 
-			List<OrderMemberInfoDTO> memberAddrList = null;
-			memberAddrList = dao.selectMemberAddr(con, memberID);
+			List<OrderMemberInfoDTO> addrInfoList = null;
+			addrInfoList = dao.selectMemAddrInfo(con, memberID, addrName);
 
-			return memberAddrList;
+			return addrInfoList;
 
 		} catch (NamingException | SQLException e) {
 			throw new RuntimeException(e);
@@ -41,6 +41,6 @@ public class OrderPaymentService {
 			JdbcUtil.close(con);
 		}
 		
-	} // selectOrderMemInfo
+	} // selectMemAddrInfo
 	
 } // class
