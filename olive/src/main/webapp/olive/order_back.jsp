@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -2764,25 +2764,20 @@ element.style {
 				<h2 class="sub-title2">배송지정보</h2>
 			</div>
 			<table class="tbl_inp_form important" id="dlvpInfo">
-							<caption></caption>
+				<caption></caption>
 				<colgroup>
 					<col style="width:170px">
 					<col style="width:*">
 				</colgroup>
-				<c:forEach items="${addrInfoList}" var="addrInfo">
-				<c:if test="${addrInfo.ad_main == 1}">
 				<tbody>
 				<tr>
 					<th scope="row">배송지선택</th>
 					<td>
 						<div class="show" id="dlvpSelect_div">
 							<input type="hidden" name="selectDlvSeq" value="">
-							<select id="dlvpSelect" name="mbrDlvpSeq" class="selH28" title="배송지를 선택해주세요." style="width:200px">
-<%-- 								<c:forEach items="${addrInfoList}" var="addrInfo">
-									<c:if test="${addrInfo.ad_main == 1}"> --%>
-									<option value="1">${addrInfo.ad_name }</option>
-<%-- 								</c:if>								
-								</c:forEach>	 --%>
+							<select id="dlvpSelect" name="mbrDlvpSeq" class="selH28" title="배송지를 선택해주세요." style="width:200px">				
+								<option value="2">집</option>								
+								<option value="1">회사</option>									
 							</select>
 						</div>
 					</td>
@@ -2795,7 +2790,7 @@ element.style {
 				<tr id="pickupHide1" type="exist" style="display: table-row;">
 					<th scope="row">받는분</th>
 					<td class="imp_data">
-						<input type="text" id="rmitNm_exist" name="rmitNm" value="${addrInfo.ad_member }" class="inpH28" title="받는분 이름을 입력해주세요." style="width:200px" this="받는분 이름은" data-attr="배송지정보^1_받는분">
+						<input type="text" id="rmitNm_exist" name="rmitNm" value="박예린" orgvalue="" class="inpH28" title="받는분 이름을 입력해주세요." style="width:200px" this="받는분 이름은" data-attr="배송지정보^1_받는분">
 					</td>
 				</tr>
 				<tr class="sumtr1" id="pickupHide2" type="exist" style="display: table-row;">
@@ -2873,8 +2868,6 @@ element.style {
 					</td>
 				</tr>				
 				</tbody>
-				</c:if>								
-				</c:forEach>	
 			</table>
 			<!--// 배송지 정보 -->
 

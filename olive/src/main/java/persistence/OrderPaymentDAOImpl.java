@@ -9,10 +9,7 @@ import java.util.List;
 
 import com.util.JdbcUtil;
 
-import domain.ExhibitionDTO;
-import domain.MainOnlyoneDTO;
 import domain.OrderMemberInfoDTO;
-import domain.ProductBrandPriceDTO;
 
 public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 
@@ -29,7 +26,7 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 	@Override
 	public List<OrderMemberInfoDTO> selectOrderMemInfo(Connection conn, String memberID) throws SQLException {
 		
-		memberID = "pyl1234";
+		// memberID = "pyl1234";
 		
 		String sql = "SELECT m.me_code, me_id, ad_main, ad_name, ad_member, ad_tel, ad_address "
 					+ "FROM member m JOIN address a ON m.me_code = a.me_code "
@@ -49,7 +46,7 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(0, memberID);
+			pstmt.setString(1, memberID);
 			rs = pstmt.executeQuery();
 
 			if(rs.next()) {
@@ -61,6 +58,12 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 					dto = new OrderMemberInfoDTO();
 
 					dto.setMe_code(rs.getString("me_code"));
+					dto.setMe_id(rs.getString("me_id"));
+					dto.setAd_main(rs.getInt("ad_main"));
+					dto.setAd_name(rs.getString("ad_name"));
+					dto.setAd_member(rs.getString("ad_member"));
+					dto.setAd_tel(rs.getString("ad_tel"));
+					dto.setAd_address(rs.getString("ad_address"));					
 					
 					addrInfoList.add(dto);
 				} while (rs.next());

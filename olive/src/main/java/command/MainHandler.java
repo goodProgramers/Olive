@@ -5,10 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import domain.ExhibitionDTO;
 import domain.MainOnlyoneDTO;
 import domain.ProductBrandPriceDTO;
-import service.ExhibitionService;
 import service.MainOnlyoneService;
 import service.SearchTOP3ProductService;
 
@@ -16,9 +14,6 @@ public class MainHandler implements CommandHandler{
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		//ExhibitionService exhibitionService = ExhibitionService.getInstance();
-		//List<ExhibitionDTO> onlyoneList = exhibitionService.select();
-		//request.setAttribute("onlyoneList", onlyoneList);
 		
 		// 오직 올리브영에서만
 		MainOnlyoneService mainOnlyoneService = MainOnlyoneService.getInstance();

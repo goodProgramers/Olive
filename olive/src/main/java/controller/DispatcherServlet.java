@@ -34,6 +34,7 @@ public class DispatcherServlet extends HttpServlet {
 		// WEB-INF/commandHandler.properties 파일을 읽어와서 요청URL=CommandHandler를 읽어와서 commandHandlerMap에 추가 작업 필요(web.xml에 추가)
 		String path = this.getInitParameter("path"); // 읽고자 하는 commandHandler.properties 파일을 읽어옴
 		String realPath = this.getServletContext().getRealPath(path); // 실제 물리적인 경로 ***
+		System.out.println(realPath);
 		
 		Properties prop = new Properties();
 		try(FileReader fr = new FileReader(realPath)) {
@@ -73,7 +74,8 @@ public class DispatcherServlet extends HttpServlet {
 
 		// requestURI 변수에서 contextPath 제거 -> 왜? properties에 /board/list.do 이렇게 요청URL이 있기 때문에
 		String contextPath = request.getContextPath();
-
+		System.out.println(contextPath);
+		
 		if(requestURI.indexOf(contextPath) == 0) { // contextPath가 앞에 붙어 있다면
 			requestURI = requestURI.substring(contextPath.length()); // contextPath 문자열 길이부터 읽으면 잘려짐 -> /board/list.do = Key 값
 		} // if	
