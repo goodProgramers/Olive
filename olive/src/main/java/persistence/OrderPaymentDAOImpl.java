@@ -12,6 +12,7 @@ import com.util.JdbcUtil;
 import domain.ExhibitionDTO;
 import domain.MainOnlyoneDTO;
 import domain.OrderMemberInfoDTO;
+import domain.ProductBrandPriceDTO;
 
 public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 
@@ -26,41 +27,42 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 	}
 
 	@Override
-	public List<OrderMemberInfoDTO> selectOrderMemInfo(Connection conn) throws SQLException {
+	public List<OrderMemberInfoDTO> selectOrderMemInfo(Connection conn, String memberID) throws SQLException {
 		
-		String sql = "SELECT ROWNUM, t.* "
-					+ "FROM( "
-					+ "    SELECT e1.ex_code, ex_name, exi_img, exd_path "
-					+ "    FROM exhibition e1, exhibitionimg e2, exhibitiondet e3 "
-					+ "    WHERE e1.ex_code = e2.ex_code AND e1.ex_code = e3.ex_code "
-					+ ") t "
-					+ "WHERE ROWNUM <= 6";
+		memberID = "pyl1234";
+		
+		String sql = "SELECT m.me_code, me_id, ad_main, ad_name, ad_member, ad_tel, ad_address "
+					+ "FROM member m JOIN address a ON m.me_code = a.me_code "
+					+ "WHERE m.me_id = ? ";
 
-		ArrayList<OrderMemberInfoDTO> onlyoneList = null;
+		ArrayList<OrderMemberInfoDTO> addrInfoList = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		int rownum;
-		String ex_code, ex_name, exi_img, exd_path;
+		String me_code;
+		String me_id;
+		int ad_main; // 기본배송지여부
+		String ad_name; // 배송지명
+		String ad_member; // 받는분
+		String ad_tel; // 받는사람연락처
+		String ad_address; // 받는주소
 
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(0, memberID);
 			rs = pstmt.executeQuery();
 
 			if(rs.next()) {
-				onlyoneList = new ArrayList<OrderMemberInfoDTO>();
+				addrInfoList = new ArrayList<OrderMemberInfoDTO>();
 				OrderMemberInfoDTO dto = null;
 				
 				do {
-					rownum = rs.getInt("rownum");
-					ex_code = rs.getString("ex_code");
-					ex_name = rs.getString("ex_name");
-					exi_img = rs.getString("exi_img");
-					exd_path = rs.getString("exd_path");
 					
-					dto = new ExhibitionDTO(rownum, ex_code, ex_name, exi_img, exd_path);
+					dto = new OrderMemberInfoDTO();
+
+					dto.setMe_code(rs.getString("me_code"));
 					
-					onlyoneList.add(dto);
+					addrInfoList.add(dto);
 				} while (rs.next());
 			} // if 
 
@@ -69,7 +71,7 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 			JdbcUtil.close(rs); 
 		}
 
-		return onlyoneList;
+		return addrInfoList;
 	}
 
 }

@@ -7,6 +7,6 @@ import java.util.List;
 import domain.OrderMemberInfoDTO;
 
 public interface OrderPaymentDAO {
-	public List<OrderMemberInfoDTO> selectOrderMemInfo(Connection conn) throws SQLException;
+	public List<OrderMemberInfoDTO> selectOrderMemInfo(Connection conn, String memberID) throws SQLException;
 
 }
