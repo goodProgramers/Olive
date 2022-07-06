@@ -12,10 +12,13 @@ public class MCategoryHandler implements  CommandHandler{
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         String ca_code = request.getParameter("ca_code");
+
         MCategoryService mCategoryService= MCategoryService.getInstance();
-        List<ProductBrandPriceDTO> top5list = mCategoryService.selectMCateProduct(ca_code);
+        List<ProductBrandPriceDTO> top5list = mCategoryService.selectMCateTop5Product(ca_code);
         request.setAttribute("top5list", top5list);
 
+        List<ProductBrandPriceDTO> topViewlist = mCategoryService.selectMCateTopVeiwProduct(ca_code);
+        request.setAttribute("topViewlist", topViewlist);
 
         return "/olive/productMCate.jsp";
     }
