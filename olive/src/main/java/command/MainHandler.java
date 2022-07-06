@@ -1,14 +1,14 @@
 package command;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import domain.ExhibitionDTO;
 import domain.MainOnlyoneDTO;
 import domain.ProductBrandPriceDTO;
-import service.ExhibitionService;
+import service.BrandProductService;
 import service.MainOnlyoneService;
 import service.SearchTOP3ProductService;
 
@@ -29,8 +29,12 @@ public class MainHandler implements CommandHandler{
 		SearchTOP3ProductService searchTop3ProductService = SearchTOP3ProductService.getInstance();
 		List<ProductBrandPriceDTO> searchTop3List = searchTop3ProductService.serachTop3ProductSelect();
 		request.setAttribute("searchTop3List", searchTop3List);
+		
+		BrandProductService brandProductService = BrandProductService.getInstance();
+		Map<String, List<ProductBrandPriceDTO>> brProduct = brandProductService.brandProductSelect();
+		request.setAttribute("brProduct", brProduct);
 				
-		return "/olive_yelin/main.jsp";
+		return "/olive/main.jsp";
 	}
 
 }

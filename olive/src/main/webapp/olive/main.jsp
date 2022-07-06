@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -1360,6 +1361,365 @@ rate_span{
     margin-top: -3px;
     background: 0 0;
 }
+
+/* 주목해야 할 브랜드 */
+
+.main_sub_tit {
+	height: 40px;
+	margin: 51px 0 8px;
+	font-size: 26px;
+	color: #000;
+	text-align: center;
+	line-height: 40px;
+}
+
+.main_brand_wrap .brand_wrapper {
+	overflow: hidden;
+	width: 1020px;
+}
+
+.main_brand_wrap .brand_wrapper .inner_unit>div {
+	float: left;
+	width: 1020px;
+}
+
+.comm3sTabs:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.comm3sTabs.sixSet>li {
+	width: 171px;
+}
+
+.comm3sTabs>li {
+	float: left;
+	margin-left: -1px;
+	border: 1px solid #ddd;
+}
+
+.comm3sTabs.sixSet>li:first-child {
+	width: 170px;
+}
+
+.comm3sTabs>li:first-child {
+	margin: 0;
+}
+
+.comm3sTabs>li>a {
+	display: block;
+	height: 52px;
+	line-height: 52px;
+	color: #888;
+	font-size: 16px;
+	text-align: center;
+	background: #fff;
+}
+
+.comm3sTabs>li.on>a {
+	position: relative;
+	color: #9bce26;
+	height: 54px;
+	line-height: 52px;
+	border: 2px solid #9bce26;
+	margin: -1px;
+	z-index: 0;
+	font-weight: 700;
+}
+
+.cate_prd_list>li {
+	position: relative;
+	float: left;
+	width: 255px;
+	padding: 30px 20px 35px;
+}
+
+.cate_prd_list>li .prd_info .prd_name .tx_brand {
+	display: block;
+	height: 20px;
+	line-height: 20px;
+	color: #777;
+	font-weight: 700;
+}
+
+.cate_prd_list>li .prd_info {
+	text-align: center;
+	font-size: 14px;
+}
+
+.cate_prd_list>li .prd_info .prd_name .tx_name {
+	overflow: hidden;
+	height: 40px;
+	margin-top: 5px;
+	padding: 2px 0;
+	-webkit-box-orient: vertical;
+	line-height: 18px;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	word-break: keep-all;
+	color: #000;
+	font-size: 14px;
+	text-align: center;
+}
+
+.cate_prd_list>li .prd_info .prd_price {
+	height: 25px;
+	line-height: 22px;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_cur {
+	display: inline-block;
+	color: #e02020;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_org>span {
+	display: inline-block;
+	font-size: 14px;
+	text-decoration: line-through;
+	vertical-align: 0;
+	letter-spacing: -.02em;
+}
+
+.tx_num {
+	letter-spacing: -.02em !important;
+	font-weight: 500;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_cur>span {
+	display: inline-block;
+	font-size: 20px;
+	vertical-align: -1px;
+}
+
+.cate_prd_list>li .prd_info .prd_flag {
+	margin-top: 5px;
+	padding-bottom: 0;
+	overflow: hidden;
+}
+
+.icon_flag {
+	display: inline-block;
+	width: 40px;
+	height: 18px;
+	border-radius: 9px;
+	line-height: 17px !important;
+	color: #fff !important;
+	font-size: 12px !important;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none !important;
+	margin: 0 !important;
+}
+
+.icon_flag.sale {
+	background-color: #f65c60;
+}
+
+.icon_flag.coupon {
+	background-color: #9bce26;
+}
+
+.icon_flag.gift {
+	background-color: #6fcff7;
+}
+
+.icon_flag.delivery {
+	width: 60px;
+	background-color: #f374b7;
+}
+
+.cate_prd_list>li .prd_info .prd_flag>.icon_flag {
+	float: none;
+}
+
+button, img, input, select, textarea {
+	border: 0;
+	vertical-align: top;
+	color: #666;
+}
+
+.thumb_flag {
+	display: inline-block;
+	width: 48px;
+	height: 48px;
+	font-size: 14px;
+	background: #fff;
+	border-radius: 24px;
+	border-width: 2px;
+	border-style: solid;
+	text-align: center;
+	font-weight: 700;
+}
+
+button, input.button, input.image, input.submit, label {
+	cursor: pointer;
+}
+
+.cate_prd_list>li .prd_info .prd_thumb>img {
+	width: auto !important;
+	max-width: 215px;
+	height: auto !important;
+	max-height: 215px;
+}
+
+.thumb_flag.best {
+	color: #f05a5e;
+	line-height: 44px;
+	border-color: #f05a5e;
+}
+
+.cate_prd_list>li .prd_info .prd_thumb .thumb_flag {
+	position: absolute;
+	top: 10px;
+	left: 12px;
+	line-height: 44px !important;
+}
+
+.cate_prd_list>li .prd_info .btn_zzim {
+	position: absolute;
+	top: 205px;
+	left: 195px;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #ebebeb;
+	text-indent: -999999px;
+	font-size: 0;
+	background: #fff
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_zzim.png)
+		no-repeat 50% 50%;
+}
+
+.cate_prd_list:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.main_brand_wrap .main_brand .cate_prd_list {
+	display: none;
+	min-height: 405px;
+	border-bottom: 0;
+	min-height: 405px;
+}
+
+.main_brand_wrap .main_brand .cate_prd_list.show {
+	display: block;
+}
+
+.main_brand_wrap .main_brand .cate_prd_list>li {
+	padding-bottom: 30px;
+}
+
+.main_brand_wrap .main_brand .brand_more.show {
+	display: block;
+}
+
+.main_brand_wrap .main_brand .brand_more {
+	font-size: 16px;
+	text-align: center;
+	display: none;
+}
+
+.cate_prd_list>li {
+	position: relative;
+	float: left;
+	width: 255px;
+	padding: 30px 20px 35px;
+}
+
+button, input[type=submit] {
+	font-family: Montserrat, -apple-system, NotoSansCJKkr, AppleSDGothicNeo,
+		Roboto, sans-serif;
+	font-weight: 700;
+}
+
+button, input[type=submit] {
+	border: 0;
+	padding: 0;
+	box-shadow: none;
+	cursor: pointer;
+}
+
+.main_brand_wrap .main_brand .brand_more>a {
+	display: inline-block;
+	width: 335px;
+	margin: 0 auto;
+	line-height: 38px;
+	border-radius: 4px;
+	border: 1px solid #ddd;
+	font-size: 14px;
+	color: #454c53;
+	white-space: nowrap;
+	font-weight: 500;
+}
+
+#Container .main_brand_wrap .main_brand .brand_more>a:after {
+	content: '';
+	display: inline-block;
+	width: 15px;
+	height: 14px;
+	margin-left: 6px;
+	background:
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/main/ico_arrow_main_gray.png)
+		no-repeat;
+	background-size: 100% auto;
+	vertical-align: -2px;
+}
+
+/* 시작 - 전체 감싸는 div 태그 ( 주목해야 할 브랜드 빼고 ) */
+.main_brand_wrap {
+	position: relative;
+	width: 1020px;
+}
+
+.main_brand_wrap .brand_wrapper .inner_unit {
+	overflow: hidden;
+	width: 2040px;
+	transition: all ease 0.5s;
+}
+
+.main_brand_wrap .brand_paging {
+	position: absolute;
+	top: -38px;
+	right: 0;
+	overflow: hidden;
+}
+
+/* 끝 -전체 감싸는 div 태그 ( 주목해야 할 브랜드 빼고 ) */
+.main_brand_wrap .brand_paging>a {
+	float: left;
+	display: inline-block;
+	color: #666;
+	width: 24px;
+	height: 24px;
+	background: 0 0;
+	font-size: 14px;
+	line-height: 24px;
+	text-align: center;
+	font-weight: 700;
+}
+
+.main_brand_wrap .brand_paging>a.on {
+	color: #fff;
+	background: #2f3030;
+	border-radius: 12px;
+}
+
+.tx_num {
+	letter-spacing: -.02em !important;
+	font-weight: 500;
+}
+
+.cate_prd_list>li .prd_info .prd_name>a {
+	display: block;
+}
+
+.cate_prd_list>li .prd_info .prd_name {
+	margin-top: 15px;
+}
+
 </style>
 <style>
 /* 푸터부분 */
@@ -2077,7 +2437,9 @@ rate_span{
 	<div class="banner_wrap slick_slider slick-initialized slick-slider slick-dotted" id="OnlyoneSlider" role="toolbar">
 		<div aria-live="polite" class="slick-list draggable">
 			<div class="slick-track onlyoneslick" role="listbox" style="opacity: 1; width: 4116px;">
-			
+			<c:if test="${empty mainOnlyoneList }">
+			<strong>데이터안나옴......</strong>
+			</c:if>
 			<c:if test="${not empty mainOnlyoneList }">
 				 <c:forEach items="${mainOnlyoneList }" var="onlyonedto">
 				 	<div class="slick-slide slick-cloned onlyoneimgdiv" data-slick-index="-3" aria-hidden="true" style="width: 343px;">
@@ -2108,6 +2470,187 @@ rate_span{
   </div><!-- OnlyoneSlider -->
  </div><!-- main_onlyone_wrap -->
  
+ <!-- 주목해야 할 브랜드 -->
+ <div>
+ <h3 class="main_sub_tit">
+		<strong>주목해야 할 브랜드</strong>
+</h3>
+<div class="main_brand_wrap">
+		<div class="brand_wrapper">
+			<div class="inner_unit" style="margin-left: 0px">
+				<div>
+					<ul class="comm3sTabs sixSet" id="tabList">
+						<c:if test="${ not empty brProduct }" >
+							<c:forEach items="${ brProduct }" var="br_dto" begin="0" end="5">
+								<li class="" value="${ br_dto.getKey() }"
+									data-ref-brndno="A001465"><a href="javascript:;"
+									data-attr="홈^주목브랜드^${ br_dto.getKey() }^1">${ br_dto.getKey() }</a></li>
+							</c:forEach>
+						</c:if>
+					</ul>
+
+					<div class="main_brand_tab main_brand brndList"
+						data-ref-brndno="A001465">
+						<c:if test="${ not empty brProduct }">
+							<c:forEach items="${ brProduct }" var="dto" begin="0" end="5">
+								<!-- 브랜드 이름 6개 -->
+								<ul class="cate_prd_list">
+
+									<c:forEach items="${ brProduct.get(dto.getKey()) }"
+										var="brPr_dto" begin="0" end="3" varStatus="status">
+										<li class="flag">
+											<div class="prd_info">
+												<a
+													href="https://www.oliveyoung.co.kr/store/goods/getGoodsDetail.do?goodsNo=A000000162183&amp;dispCatNo=90000010001&amp;trackingCd=Home_Brand&amp;curation&amp;egcode&amp;rccode&amp;egrankcode"
+													class="prd_thumb goodsList"
+													data-ref-goodsno="A000000162183"
+													data-attr="홈^주목브랜드^${ brPr_dto.pr_name }^1"
+													data-ref-dispcatno="90000010001" data-ref-itemno="001"
+													data-trk="null" data-impression="A000000162183^홈_주목브랜드^1"
+													data-impression-visibility="1"><span
+													class="thumb_flag best">베스트</span><img
+													src="${ brPr_dto.prm_url }"
+													alt="${ brPr_dto.pr_name }"
+													onerror="common.errorImg(this);"></a>
+												<div class="prd_name">
+													<a href="javascript:;" name="Home_Brand" class="goodsList"
+														data-ref-goodsno="A000000162183"
+														data-attr="홈^주목브랜드^${ brPr_dto.pr_name }^1"
+														data-ref-dispcatno="90000010001" data-ref-itemno="001"
+														data-trk="null"><span class="tx_brand">${ brPr_dto.br_name }</span>
+														<p class="tx_name">${ brPr_dto.pr_name }</p></a>
+												</div>
+												<button class="btn_zzim jeem"
+													data-ref-goodsno="A000000162183">
+													<span>찜하기전</span>
+												</button>
+												<p class="prd_price">
+													<c:set var="pr_pri" value="${ brPr_dto.prpri_price }"></c:set>
+													<c:set var="real_pri" value="${ brPr_dto.realPrice }"></c:set>
+													<c:if test="${ pr_pri ne real_pri }">
+														<span class="tx_org"><span class="tx_num"><fmt:formatNumber
+																	value="${ brPr_dto.prpri_price }" pattern="#,###"></fmt:formatNumber></span>원
+														</span>
+													</c:if>
+													<span class="tx_cur"><span class="tx_num"><fmt:formatNumber
+																value="${ brPr_dto.realPrice }" pattern="#,###"></fmt:formatNumber></span>원
+													</span>
+												</p>
+												<p class="prd_flag">
+													<span class="icon_flag sale">세일</span><span
+														class="icon_flag coupon">쿠폰</span><span
+														class="icon_flag gift">증정</span><span
+														class="icon_flag delivery">오늘드림</span>
+												</p>
+											</div>
+										</li>
+									</c:forEach>
+
+								</ul>
+								<div class="brand_more">
+									<a
+										href="javascript:common.link.moveBrandShop('A001728', 'Home_Brand_Banner');">
+										<span>${ dto.getKey() }</span> 브랜드 상품 전체보기
+									</a>
+								</div>
+							</c:forEach>
+						</c:if>
+					</div>
+				</div>
+				<div>
+					<ul class="comm3sTabs sixSet" id="tabList">
+						<c:if test="${ not empty brProduct }">
+							<c:forEach items="${ brProduct }" var="br_dto" begin="6" end="11">
+								<li class="" value="${ br_dto.getKey() }"
+									data-ref-brndno="A001465"><a href="javascript:;"
+									data-attr="홈^주목브랜드^${ br_dto.getKey() }^1">${ br_dto.getKey() }</a></li>
+							</c:forEach>
+						</c:if>
+					</ul>
+
+					<div class="main_brand_tab main_brand brndList"
+						data-ref-brndno="A001465">
+						<c:if test="${ not empty brProduct }">
+							<c:forEach items="${ brProduct }" var="dto" begin="6" end="11">
+								<!-- 브랜드 이름 6개 -->
+								<ul class="cate_prd_list">
+
+									<c:forEach items="${ brProduct.get(dto.getKey()) }"
+										var="brPr_dto" begin="0" end="3" varStatus="status">
+										<li class="flag">
+											<div class="prd_info">
+												<a
+													href="https://www.oliveyoung.co.kr/store/goods/getGoodsDetail.do?goodsNo=A000000162183&amp;dispCatNo=90000010001&amp;trackingCd=Home_Brand&amp;curation&amp;egcode&amp;rccode&amp;egrankcode"
+													class="prd_thumb goodsList"
+													data-ref-goodsno="A000000162183"
+													data-attr="홈^주목브랜드^${ brPr_dto.pr_name }^1"
+													data-ref-dispcatno="90000010001" data-ref-itemno="001"
+													data-trk="null" data-impression="A000000162183^홈_주목브랜드^1"
+													data-impression-visibility="1"><span
+													class="thumb_flag best">베스트</span><img
+													src="${ brPr_dto.prm_url }"
+													alt="${ brPr_dto.pr_name }"
+													onerror="common.errorImg(this);"></a>
+												<div class="prd_name">
+													<a href="javascript:;" name="Home_Brand" class="goodsList"
+														data-ref-goodsno="A000000162183"
+														data-attr="홈^주목브랜드^${ brPr_dto.pr_name }^1"
+														data-ref-dispcatno="90000010001" data-ref-itemno="001"
+														data-trk="null"><span class="tx_brand">${ brPr_dto.br_name }</span>
+														<p class="tx_name">${ brPr_dto.pr_name }</p></a>
+												</div>
+												<button class="btn_zzim jeem"
+													data-ref-goodsno="A000000162183">
+													<span>찜하기전</span>
+												</button>
+												<p class="prd_price">
+													<c:set var="pr_pri" value="${ brPr_dto.prpri_price }"></c:set>
+													<c:set var="real_pri" value="${ brPr_dto.realPrice }"></c:set>
+													<c:if test="${ pr_pri ne real_pri }">
+														<span class="tx_org"> <span class="tx_num">
+																<fmt:formatNumber value="${ brPr_dto.prpri_price }"
+																	pattern="#,###">
+																</fmt:formatNumber>
+														</span>원
+														</span>
+													</c:if>
+													<span class="tx_cur"> <span class="tx_num"> <fmt:formatNumber
+																value="${ brPr_dto.realPrice }" pattern="#,###"></fmt:formatNumber>
+													</span>원
+													</span>
+												</p>
+												<p class="prd_flag">
+													<span class="icon_flag sale">세일</span><span
+														class="icon_flag coupon">쿠폰</span><span
+														class="icon_flag gift">증정</span><span
+														class="icon_flag delivery">오늘드림</span>
+												</p>
+
+											</div>
+										</li>
+									</c:forEach>
+
+								</ul>
+								<div class="brand_more">
+									<a
+										href="javascript:common.link.moveBrandShop('A001728', 'Home_Brand_Banner');">
+										<span>${ dto.getKey() }</span> 브랜드 상품 전체보기
+									</a>
+								</div>
+							</c:forEach>
+						</c:if>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="brand_paging">
+			<a href="javascript:;" class="on">1</a> <a href="javascript:;"
+				class="">2</a>
+		</div>
+	</div>
+</div>
+
 </div><!-- Contents -->
 </div><!-- Container -->
 
@@ -2311,6 +2854,51 @@ $(function () {
 			}		 		
 	});
 </script>
+
+<!-- 주목해야 할 브랜드 -->
+<script>
+		$(".cate_prd_list").eq(0).addClass("show");
+		$(".cate_prd_list").eq(6).addClass("show");
+		$("#tabList li").eq(0).addClass("on");
+		$("#tabList li").eq(6).addClass("on");
+		$(".brand_more").eq(0).addClass("show");
+		$(".brand_more").eq(6).addClass("show");
+
+		// 브랜드 탭 버튼 클릭
+		$("#tabList a").click(
+				function() {
+					$(this).parent().parent("#tabList").children()
+							.removeClass();
+					$(this).parent().addClass("on");
+
+					for (var i = 0; i < $(".cate_prd_list").length; i++) {
+						// alert( $(".cate_prd_list").eq(i).find(".tx_brand:eq(0)").text() );
+						if ($(".cate_prd_list").eq(i).find(".tx_brand:eq(0)")
+								.text() == $(this).parent().text()) {
+							$(".cate_prd_list").eq(i).parent().children()
+									.removeClass("show");
+							$(".cate_prd_list").eq(i).addClass("show");
+							$(".brand_more").eq(i).addClass("show");
+							break;
+						}
+					}
+
+				});
+
+		// 1,2번 버튼 클릭
+		$(".brand_paging a").click(function() {
+			if (!$(this).hasClass("on")) {
+				$(".brand_paging a").removeClass();
+				$(this).addClass("on");
+
+				if ($(".inner_unit").css("margin-left") == "0px") {
+					$(".inner_unit").css("margin-left", "-1020px");
+				} else {
+					$(".inner_unit").css("margin-left", "0px");
+				}
+			}
+		});
+	</script>
 
 </body>
 </html>
