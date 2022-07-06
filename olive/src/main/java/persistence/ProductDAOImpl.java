@@ -65,7 +65,6 @@ public class ProductDAOImpl implements ProductDAO{
 			}
 		} 
 
-		// System.out.println("dao"+recomProductlist);
 		return searchTop3ProductList;
 	} // selectProducts
 

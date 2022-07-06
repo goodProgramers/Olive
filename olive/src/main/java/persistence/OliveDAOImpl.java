@@ -94,7 +94,6 @@ public class OliveDAOImpl implements OliveDAO{
 			if(rs.next()) {
 				mainOnlyoneList = new ArrayList<MainOnlyoneDTO>();
 				MainOnlyoneDTO dto = null;
-				
 				do {
 					rownum = rs.getInt("rownum");
 					ex_code = rs.getString("ex_code");
@@ -106,9 +105,9 @@ public class OliveDAOImpl implements OliveDAO{
 					
 					dto = new MainOnlyoneDTO(rownum, ex_code, ex_name, exi_img, exi_type, exi_title, exi_desc);
 					
+					
 					mainOnlyoneList.add(dto);
 					
-					// System.out.println(dto.getEx_name());
 				} while (rs.next());
 			} // if 
 			
@@ -117,6 +116,7 @@ public class OliveDAOImpl implements OliveDAO{
 			JdbcUtil.close(pstmt);
 			JdbcUtil.close(rs); 
 		}
+		
 
 		return mainOnlyoneList;
 	}

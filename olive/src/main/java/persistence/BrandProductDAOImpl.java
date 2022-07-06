@@ -68,7 +68,6 @@ public class BrandProductDAOImpl implements BrandProductDAO{
 				brlist += ",";
 			}
 		}
-		System.out.println( brlist );
 		
 		String sql ="SELECT p.pr_name, b.br_name, prpri_price, prm_url, prpri_price*(1-NVL(s.sa_rate,0)) realPrice "
 				+ "FROM product p JOIN prprice pr ON p.pr_code = pr.pr_code "
@@ -93,7 +92,6 @@ public class BrandProductDAOImpl implements BrandProductDAO{
 				ProductBrandPriceDTO dto = null;
 				dto =  new ProductBrandPriceDTO();
 				list = new ArrayList<ProductBrandPriceDTO>();
-				System.out.println( brands.length );
 				
 				for (int i= 0; i < brands.length; i++) {
 					
@@ -127,7 +125,6 @@ public class BrandProductDAOImpl implements BrandProductDAO{
 						brProduct.put(brands[i], list);
 					}
 					
-					// System.out.println( i + "-" +  brProduct + " ---- " + list);
 					rs.next();
 				} // for
 				
