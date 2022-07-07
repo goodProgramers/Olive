@@ -15,5 +15,6 @@ public interface OrderPaymentDAO {
 	
 	// 회원의 총포인트를 가져오는 메서드
 	public List<OrderMemberInfoDTO> selectMemberTotPoint(Connection conn, String memberID) throws SQLException;
+	
 
 }
