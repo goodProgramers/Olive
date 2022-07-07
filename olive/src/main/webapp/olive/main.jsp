@@ -2227,7 +2227,6 @@ rate_span{
 
 </head>
 <body>
-
 <div id="Wrapper">
 <div id="Header">
 	<div class="top_util">

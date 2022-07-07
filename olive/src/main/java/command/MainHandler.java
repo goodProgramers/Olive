@@ -28,9 +28,6 @@ public class MainHandler implements CommandHandler{
 		request.setAttribute("searchTop3List", searchTop3List);
 
 
-		CategoryMainService categoryMainService = CategoryMainService.getInstance();
-		Map<CategoryDTO, Map<CategoryDTO, List<CategoryDTO>>> totMap = categoryMainService.selectTopCate();
-		request.setAttribute("totMap", totMap);
 
 		MainFullBannerService mainFullBannerService = MainFullBannerService.getInstance();
 		List<MainFullBannerDTO> mainFullBannerDTOList = mainFullBannerService.selectMainFullBanner();
