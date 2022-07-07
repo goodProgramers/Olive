@@ -587,6 +587,109 @@
             display: block;
             clear: both;
         }
+        .ct-curation-wrap .cate_prd_list .btnbag {
+            position: absolute;
+            z-index: 3;
+            top: 234px;
+            right: 10px;
+            width: 16px;
+            height: 18px;
+            margin: 0;
+            background: url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/icon_bag.png) no-repeat 0;
+            font-size: 0;
+            color: transparent;
+        }
+        button {
+            text-align: center;
+            color: #fff;
+        }
+        button, input[type=submit] {
+            border: 0;
+            padding: 0;
+            box-shadow: none;
+            cursor: pointer;
+        }
+        button, input[type=submit] {
+            font-family: Montserrat,-apple-system,NotoSansCJKkr,AppleSDGothicNeo,Roboto,sans-serif;
+            font-weight: 700;
+        }
+        .ct-menu .list a {
+            color: #333;
+            font-size: 14px;
+            line-height: 18px;
+            letter-spacing: -.86px;
+        }
+        a {
+            color: #666;
+            text-decoration: none;
+        }
+        .ct-menu .list li {
+            height: 18px;
+        }
+        .ct-menu .list {
+            padding-top: 19px;
+            border-top: 1px solid #e5e5e5;
+        }
+        ul {
+            display: block;
+            list-style-type: disc;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            padding-inline-start: 40px;
+        }
+        .ct-menu .ct-heading {
+            margin-bottom: 38px;
+            font-size: 32px;
+            line-height: 40px;
+            letter-spacing: -1.3px;
+            font-weight: 700;
+            color: #000;
+            word-break: keep-all;
+            word-wrap: break-word;
+        }
+        p {
+            display: block;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+        }
+        .ct-main .ct-menu {
+            float: left;
+            width: 141px;
+            margin-right: 49px;
+        }
+        .ct-main {
+            width: 980px;
+            margin: 48px auto 0;
+            letter-spacing: 0;
+        }
+        #Contents {
+            width: 1020px;
+            height: 100%;
+            margin: 0 auto;
+        }
+        #Container {
+            overflow: hidden;
+        }
+        #Container, #Footer, #Header, #Wrapper {
+            width: 100%;
+            min-width: 1020px;
+        }
+        .ct-main .ct-content-wrapper {
+            float: left;
+            width: 790px;
+        }
+        a, address, blockquote, body, dd, div, dl, dt, em, fieldset, form, h1, h2, h3, h4, h5, h6, img, input, label, li, ol, p, pre, select, span, strong, textarea, ul {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+        ol, ul {
+            list-style: none;
+        }
     </style>
 
 </head>
@@ -594,10 +697,22 @@
 <div id="Container">
     <div id="Contents">
         <div class="ct-main">
+            <div class="ct-menu">
+                <p class="ct-heading">
+                    ${MSCatelist[0].ca_name}
+                </p>
+                <ul class="list">
+                    <c:forEach items="${MSCatelist}" begin="1" var="MSCatelist">
+                        <li><a href="">
+                            <span>${MSCatelist.ca_name}</span>
+                        </a></li>
+                    </c:forEach>
+                </ul>
+            </div>
             <div class="ct-content-wrapper">
                 <div class="ct-content bg-white">
                     <div class="ct-best">
-                        <p class="ct-tit">스킨케어의 BEST만 모아봤어요</p>
+                        <p class="ct-tit">${MSCatelist[0].ca_name}의 BEST만 모아봤어요</p>
                         <div class="col-wrap">
                             <div class="col ct-tab-wrap">
                                 <%--미구현 영역 : 브랜드 탑 5--%>
@@ -670,7 +785,7 @@
                                             </div>
                                         </c:forEach>
                                         <a href="/store/main/getBestList.do?" class="ct-link-arrow">
-                                            <span>스킨케어 베스트상품 더보기</span>
+                                            <span>${MSCatelist[0].ca_name} 베스트상품 더보기</span>
                                         </a>
                                     </div>
                                 </div>
@@ -680,7 +795,7 @@
                 </div>
                 <div class="ct-content bg-white">
                     <div class="ct-best-product">
-                        <p class="ct-tit">스킨케어에서 많이 본 상품이에요</p>
+                        <p class="ct-tit">${MSCatelist[0].ca_name}에서 많이 본 상품이에요</p>
 
                         <div class="ct-curation-wrap">
                             <div>

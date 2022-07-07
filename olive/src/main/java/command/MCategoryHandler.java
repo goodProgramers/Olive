@@ -1,5 +1,6 @@
 package command;
 
+import domain.CategoryDTO;
 import domain.ProductBrandPriceDTO;
 import service.MCategoryService;
 
@@ -14,6 +15,10 @@ public class MCategoryHandler implements  CommandHandler{
         String ca_code = request.getParameter("ca_code");
 
         MCategoryService mCategoryService= MCategoryService.getInstance();
+
+        List<CategoryDTO> MSCatelist = mCategoryService.selectMSCategory(ca_code);
+        request.setAttribute("MSCatelist", MSCatelist);
+
         List<ProductBrandPriceDTO> top5list = mCategoryService.selectMCateTop5Product(ca_code);
         request.setAttribute("top5list", top5list);
 

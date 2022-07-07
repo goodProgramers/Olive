@@ -1,5 +1,6 @@
 package persistence;
 
+import domain.CategoryDTO;
 import domain.ProductBrandPriceDTO;
 
 import java.sql.Connection;
@@ -137,6 +138,59 @@ public class ProductListDAOImpl implements ProductListDAO {
             }
 
         }
+        return list;
+    }
+
+    @Override
+    public List<CategoryDTO> selectMSCategory(Connection connection, String ca_code) {
+        List<CategoryDTO> list = null;
+        PreparedStatement pstmt1 = null;
+        PreparedStatement pstmt2 = null;
+        ResultSet rs1 = null;
+        ResultSet rs2 = null;
+
+        String sql1 = "SELECT * FROM category WHERE ca_code = ? ";
+        String sql2 = "SELECT * FROM category WHERE ca_topcode = ? ";
+
+        try {
+            pstmt1 = connection.prepareStatement(sql1);
+            pstmt1.setString(1,ca_code);
+            rs1 = pstmt1.executeQuery();
+            if (rs1.next()){
+                list = new ArrayList<>();
+                CategoryDTO dto = new CategoryDTO();
+                dto.setCa_code(rs1.getString("ca_code"));
+                dto.setCa_name(rs1.getString("ca_name"));
+                dto.setCa_topcode(rs1.getString("ca_topcode"));
+                dto.setCa_level(rs1.getInt("ca_level"));
+                list.add(dto);
+                pstmt2 = connection.prepareStatement(sql2);
+                pstmt2.setString(1,ca_code);
+                rs2 = pstmt2.executeQuery();
+                if (rs2.next()){
+                    do {
+                        dto = new CategoryDTO();
+                        dto.setCa_code(rs2.getString("ca_code"));
+                        dto.setCa_name(rs2.getString("ca_name"));
+                        dto.setCa_topcode(rs2.getString("ca_topcode"));
+                        dto.setCa_level(rs2.getInt("ca_level"));
+                        list.add(dto);
+                    } while (rs2.next());
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                rs1.close();
+                rs2.close();
+                pstmt1.close();
+                pstmt2.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
         return list;
     }
 }
