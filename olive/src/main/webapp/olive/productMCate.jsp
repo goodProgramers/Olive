@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>hwan/2022/07/06-11:58 AM</title>
     <link rel="shortcut icon" type="image/x-icon" href="../images/SiSt.ico">
+    <link rel="stylesheet" href="/css/module.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <%--중분류 탑 5 --%>
@@ -674,10 +675,7 @@
         #Container {
             overflow: hidden;
         }
-        #Container, #Footer, #Header, #Wrapper {
-            width: 100%;
-            min-width: 1020px;
-        }
+
         .ct-main .ct-content-wrapper {
             float: left;
             width: 790px;
@@ -840,6 +838,7 @@
             </div>
         </div>
     </div>
+    <jsp:include page="layout/footer.jsp"></jsp:include>
 </div>
 </body>
 </html>

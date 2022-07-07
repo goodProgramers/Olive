@@ -14,7 +14,7 @@
     </div>
 
     <div class="header_inner">
-        <h1><a href="#"><img src="https://image.oliveyoung.co.kr/pc-static-root/image/comm/h1_logo.png" alt="올리브영"></a></h1>
+        <h1><a href="/olive/main.do"><img src="https://image.oliveyoung.co.kr/pc-static-root/image/comm/h1_logo.png" alt="올리브영"></a></h1>
 
         <div class="search_box" id="w_search_box">
             <input type="hidden" name="chkButton" id="chkButton" value="">
@@ -228,7 +228,7 @@
                         <h2>${totMap.key.ca_name}</h2>
                         <c:forEach items="${totMap.value}" var="midMap" varStatus="i">
                             <c:if test="${i.begin or i.index%4 == 0}"><div class="sub_menu_box"></c:if>
-                            <p class="sub_depth"><a>${midMap.key.ca_name}</a></p>
+                            <p class="sub_depth"><a href="/olive/productMCate.do?ca_code=${midMap.key.ca_code}">${midMap.key.ca_name}</a></p>
                             <ul>
                                 <c:forEach items="${midMap.value}" var="bottList">
                                     <li><a href="">${bottList.ca_name}</a></li>
