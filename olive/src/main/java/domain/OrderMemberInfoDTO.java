@@ -4,6 +4,7 @@ public class OrderMemberInfoDTO {
 	private String me_code; // 회원코드
 	private String me_id; // 회원 ID
 	private int ad_main; // 기본배송지여부
+	private String ad_code; // 배송지코드
 	private String ad_name; // 배송지명
 	private String ad_member; // 받는분
 	private String ad_tel; // 받는사람연락처
@@ -18,13 +19,14 @@ public class OrderMemberInfoDTO {
 		super();
 	}
 
-	public OrderMemberInfoDTO(String me_code, String me_id, int ad_main, String ad_name, String ad_member,
-			String ad_tel, String midtel, String endtel, String ad_address, int my_point, String mbs_code,
-			double mbs_pointrate) {
+	public OrderMemberInfoDTO(String me_code, String me_id, int ad_main, String ad_code, String ad_name,
+			String ad_member, String ad_tel, String midtel, String endtel, String ad_address, int my_point,
+			String mbs_code, double mbs_pointrate) {
 		super();
 		this.me_code = me_code;
 		this.me_id = me_id;
 		this.ad_main = ad_main;
+		this.ad_code = ad_code;
 		this.ad_name = ad_name;
 		this.ad_member = ad_member;
 		this.ad_tel = ad_tel;
@@ -60,6 +62,14 @@ public class OrderMemberInfoDTO {
 		this.ad_main = ad_main;
 	}
 
+	public String getAd_code() {
+		return ad_code;
+	}
+
+	public void setAd_code(String ad_code) {
+		this.ad_code = ad_code;
+	}
+
 	public String getAd_name() {
 		return ad_name;
 	}
@@ -82,6 +92,22 @@ public class OrderMemberInfoDTO {
 
 	public void setAd_tel(String ad_tel) {
 		this.ad_tel = ad_tel;
+	}
+
+	public String getMidtel() {
+		return midtel;
+	}
+
+	public void setMidtel(String midtel) {
+		this.midtel = midtel;
+	}
+
+	public String getEndtel() {
+		return endtel;
+	}
+
+	public void setEndtel(String endtel) {
+		this.endtel = endtel;
 	}
 
 	public String getAd_address() {
@@ -114,23 +140,6 @@ public class OrderMemberInfoDTO {
 
 	public void setMbs_pointrate(double mbs_pointrate) {
 		this.mbs_pointrate = mbs_pointrate;
-	}	
-
-	public String getMidtel() {
-		return midtel;
 	}
-
-	public void setMidtel(String midtel) {
-		this.midtel = midtel;
-	}
-
-	public String getEndtel() {
-		return endtel;
-	}
-
-	public void setEndtel(String endtel) {
-		this.endtel = endtel;
-	}
-
 		
 } // class

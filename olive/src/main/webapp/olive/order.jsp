@@ -2672,28 +2672,15 @@ element.style {
 			</ul>
 		</div>
 		<!--// title_box -->
-		
-		<form name="pickupOrderForm" id="pickupOrderForm">
-		</form>
-		<form name="orderForm" id="orderForm">
-			<input type="hidden" id="o2oGiftBoxAmtRm" name="o2oGiftBoxAmtRm" value="30000">
-			<input type="hidden" id="o2oGiftBoxAmtDc" name="o2oGiftBoxAmtDc" value="2000">
-			<input type="hidden" id="o2oGiftBoxAmtDf" name="o2oGiftBoxAmtDf" value="2000">
-			<input type="hidden" id="o2oGiftBoxAmt" name="o2oGiftBoxAmt" value="0">
-			<input type="hidden" id="quickYn" name="quickYn" value="N">
-			<input type="hidden" id="pickupDirectYn" name="pickupDirectYn" value="N">
-			<input type="hidden" id="quickInfoYn" name="quickInfoYn" value="N">
-			<input type="hidden" id="ocbValidChk" name="ocbValidChk" value="N">			
-			<input type="hidden" id="o2oVisitTypeVal" name="o2oVisitTypeVal" value="">
-			<input type="hidden" id="mhCnt" name="mhCnt" value="0">
 
-			<!-- 2020-08-06 o2oJJ 24H 주문 가능한지 여부, 주문서 진입시 오늘드림인지 여부 -->
-			<input type="hidden" id="orgIs24HCheckable" name="orgIs24HCheckable" value="Y">
-			<input type="hidden" id="is24HCheckable" name="is24HCheckable" value="Y">
-			<input type="hidden" id="orgQuickYn" name="orgQuickYn" value="N">
-
-			<!-- 주문자 정보 -->
-			<h2 class="sub-title2 mgT20" style="display: none;">주문자정보</h2><!-- 2017-02-21 수정 : mgT20 클래스 추가 -->
+		<form name="orderForm" id="orderForm" action="orderform.jsp" method="post">
+			<input type="hidden" id="memberID" name="memberID" value='<% request.getParameter("memberID"); %>'><!-- 회원ID(코드일수도..) -->
+			<input type="hidden" id="todayGift" name="todayGift" value="0"><!-- 일반배송(오늘드림X) -->
+			<input type="hidden" id="priceCode" name="priceCode" value="<% request.getParameter("priceCode"); %>'">
+			<input type="hidden" id="saleCode" name="saleCode" value="<% request.getParameter("saleCode"); %>'">
+			
+			<!-- 주문자 정보 : 삭제해도될듯 why? 회원코드로 주문자 정보 가져올수.. 잇... (예린)-->
+			<h2 class="sub-title2 mgT20" style="display: none;">주문자정보</h2>
 			<table class="tbl_inp_form" style="display: none;">
 				<caption></caption>
 				<colgroup>
@@ -2781,6 +2768,7 @@ element.style {
 				<tr type="exist" style="display: table-row;">
 					<th scope="row">배송지명</th>
 					<td id="dlvpNm_exist_span">${ memberAddrList.ad_name}</td>
+					<input type="hidden" id="member_ad_code" name="member_ad_code" value="${ memberAddrList.ad_code}">
 					<input type="hidden" id="dlvpNm_exist" name="dlvpNm" value="${ memberAddrList.ad_name}" title="배송지명을 입력해주세요." style="width:200px" this="배송지명은">
 				</tr>
 				<tr id="pickupHide1" type="exist" style="display: table-row;">
@@ -2849,7 +2837,7 @@ element.style {
 							<!--// 주소 입력 시 보여지는 부분 -->
 						</div>
 						<input type="text" id="tempRmitDtlAddr_exist" value="${ memberAddrList.ad_address }" class="inpH28" title="상세주소를 입력해주세요." style="width:500px;" this="상세 주소는" maxlength="30">
-						<input type="hidden" id="stnmRmitDtlAddr_exist" name="stnmRmitDtlAddr" value="" class="inpH28" title="상세주소를 입력해주세요." style="width:500px" this="상세 주소는">
+						<input type="hidden" id="stnmRmitDtlAddr_exist" name="stnmRmitDtlAddr" value="${ memberAddrList.ad_address }" class="inpH28" title="상세주소를 입력해주세요." style="width:500px" this="상세 주소는">
 						<input type="hidden" id="rmitDtlAddr_exist" name="rmitDtlAddr" value="" class="inpH28" title="상세주소를 입력해주세요." style="width:500px">
 						<input type="hidden" id="emdNm_exist" name="emdNm" value="">
 						<input type="hidden" id="admrNm_exist" name="admrNm" value="">
@@ -2874,8 +2862,14 @@ element.style {
 					<tr>
 						<th scope="row">배송 메시지</th>
 						<td>
-							<select id="mbrMemoCont" class="selH28" title="택배배송 메시지를 선택해주세요." style="width:350px" data-attr="배송요청사항^배송메세지"><option name="배송메시지를 선택해주세요." value="MH">배송메시지를 선택해주세요.</option><option value="10">부재시 경비실에 맡겨주세요.</option>/n<option value="20">부재시 문앞에 놓아주세요.</option>/n<option value="30">파손의 위험이 있는 상품이오니,  배송 시 주의해주세요.</option>/n<option value="40">배송전에 연락주세요.</option>/n<option value="50">택배함에 넣어주세요.</option>/n<option value="O2O">직접 입력하기</option></select>
-							<input type="text" name="mbrMemoCont" value="" class="inpH28 mgT6" title="배송메시지를 입력해주세요." style="width:700px; display: none;">
+							<select id="mbrMemoCont" name="orderMemo" class="selH28" title="택배배송 메시지를 선택해주세요." style="width:350px" data-attr="배송요청사항^배송메세지">
+								<option name="배송메시지를 선택해주세요." value="없음">배송메시지를 선택해주세요.</option>
+								<option value="부재시 경비실에 맡겨주세요.">부재시 경비실에 맡겨주세요.</option>/n
+								<option value="부재시 문앞에 놓아주세요.">부재시 문앞에 놓아주세요.</option>/n
+								<option value="파손의 위험이 있는 상품이오니,  배송 시 주의해주세요.">파손의 위험이 있는 상품이오니,  배송 시 주의해주세요.</option>/n
+								<option value="배송전에 연락주세요.">배송전에 연락주세요.</option>/n
+								<option value="택배함에 넣어주세요.">택배함에 넣어주세요.</option>/n
+							</select>
 						</td>
 					</tr>
 					</tbody>
@@ -2904,45 +2898,7 @@ element.style {
 					</tr>
 				</thead>
 				<tbody>
-				
-				<c:if test="${ not empty prImg }"><!-- 제품상세보기에서 바로구매 클릭시 -->
-					<tr>				
-					<input type="hidden" name="cartNo" value="361736854">
-					<td colspan="5" dispcatno="" stdcatno="040202" goodsno="A000000163992" itemno="003" entrno="C14909" brndcd="1604" tradeshpcd="1" staffdscntyn="Y" pntrsrvyn="Y" ordqty="1" thnlpathnm="https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0016/A00000016399217ko.jpg?l=ko" goodsnm="아로마티카 바디오일 100ml 리츄얼 기획(괄사증정) 3종 택1_어웨이크닝,서렌, 임브레이스)" cartno="361736854"><!-- 2017-01-13 수정 -->
-						<div class="tbl_cont_area">							
-							<div class="tbl_cell w700">
-								<div class="prd_info">
-									<div class="prd_img">
-										<img src="${prImg }" alt="장바구니 상품 임시 이미지">
-									</div>
-									<div class="prd_name">
-										<span>${brand}</span>
-										<p>${product}</p>
-									</div>
-										<p class="prd_flag">
-											<span class="icon_flag sale">세일</span>
-											<span class="icon_flag delivery">오늘드림</span><!-- 15 -->											
-										</p>									
-									</div>
-								</div>
-							
-								<div class="tbl_cell w110">
-									<span class="cur_price"><span class="tx_num"><fmt:formatNumber value="${prPrice}" pattern="###,###" /></span>원</span>
-								</div>
-								<div class="tbl_cell w100">${prCount }</div>
-								<div class="tbl_cell w110">
-									<span class="org_price"><span class="tx_num" id="normPrc_A000000163992/003"><fmt:formatNumber value="${prPriceCnt}" pattern="###,###" /></span>원</span>
-									<span class="pur_price"><span class="tx_num" id="salePrc_A000000163992/003"><fmt:formatNumber value="${realPrice}" pattern="###,###" /></span>원</span>
-									<input type="hidden" id="orgNormPrc_A000000163992/003" value="44000">
-									<input type="hidden" id="orgSalePrc_A000000163992/003" value="30800">
-									<input type="hidden" id="imdtDscntAmt_A000000163992/003" value="0">
-								</div>
-							</div>							
-					</td>
-					</tr>
-					</c:if>
-
-	 				<c:if test="${ not empty cartProductList }"><!-- 장바구니에 주문하기 클릭시 -->
+	 				<c:if test="${ not empty cartProductList }">
 					<c:forEach items="${cartProductList }" var="cartProductList">
 					<tr>					
 					<input type="hidden" name="cartNo" value="353176271">
@@ -2973,9 +2929,8 @@ element.style {
 							<div class="tbl_cell w110">
 								<span class="org_price"><span class="tx_num" id="normPrc_A000000116034/001"><fmt:formatNumber value="${cartProductList.cart_prPriceCnts }" pattern="###,###" /></span>원</span><!-- 2017-01-24 수정 : 추가 -->
 								<span class="pur_price"><span class="tx_num" id="salePrc_A000000116034/001"><fmt:formatNumber value="${cartProductList.cart_realPrices }" pattern="###,###" /></span>원</span>
-								<input type="hidden" id="orgNormPrc_A000000116034/001" value="18000">
-								<input type="hidden" id="orgSalePrc_A000000116034/001" value="15300">
-								<input type="hidden" id="imdtDscntAmt_A000000116034/001" value="0">
+								<input type="hidden" id="prCounts" name="prCounts" value="${cartProductList.cart_prCounts }">
+								<input type="hidden" id="realPricehiddens" name="realPricehiddens" value="${cartProductList.cart_realPricehiddens }">
 							</div>
 						</div>							
 					</td>
@@ -3035,15 +2990,15 @@ element.style {
 						<li class="bg_area"><!-- 2017-01-18 수정 : 클래스 추가 -->
 							<input type="hidden" id="payCouponIndex" value="" paycd="">
 							<input type="hidden" id="easyPayCd" value="">
-							<span><input type="radio" id="payMethod_11" name="payMethod" value="11" cashreceipt="N" checked="checked"><label id="payMethodLabel_11" for="payMethod_11">신용카드<span class="flag bn">혜택</span></label></span>
+							<span><input type="radio" id="payMethod_11" name="payMethod" value="신용카드" cashreceipt="N" checked="checked"><label id="payMethodLabel_11" for="payMethod_11">신용카드<span class="flag bn">혜택</span></label></span>
 							<span class="pay_24h_sh"><input type="radio" id="payMethod_61" name="payMethod" value="61" cashreceipt="Y" data-attr="결제수단선택^결제수단선택"><label id="payMethodLabel_61" for="payMethod_61">무통장입금</label></span>
-							<span><input type="radio" id="payMethod_25" name="payMethod" value="25" cashreceipt="N" ><label id="payMethodLabel_25" for="payMethod_25">PAYCO</label></span>
-							<span><input type="radio" id="payMethod_26" name="payMethod" value="26" cashreceipt="N" ><label id="payMethodLabel_26" for="payMethod_26">카카오페이</label></span>
-							<span><input type="radio" id="payMethod_29" name="payMethod" value="29" cashreceipt="N" ><label id="payMethodLabel_29" for="payMethod_29">네이버페이</label></span>
-							<span><input type="radio" id="payMethod_22" name="payMethod" value="22" cashreceipt="N" ><label id="payMethodLabel_22" for="payMethod_22">휴대폰결제</label></span>
-							<span><input type="radio" id="payMethod_21" name="payMethod" value="21" cashreceipt="Y" ><label id="payMethodLabel_21" for="payMethod_21">계좌이체</label></span>
-							<span><input type="radio" id="payMethod_24" name="payMethod" value="24" cashreceipt="Y" ><label id="payMethodLabel_24" for="payMethod_24">도서상품권</label></span>
-							<span><input type="radio" id="payMethod_23" name="payMethod" value="23" cashreceipt="N" ><label id="payMethodLabel_23" for="payMethod_23">문화상품권</label></span>
+							<span><input type="radio" id="payMethod_25" name="payMethod" value="PAYCO" cashreceipt="N" ><label id="payMethodLabel_25" for="payMethod_25">PAYCO</label></span>
+							<span><input type="radio" id="payMethod_26" name="payMethod" value="카카오페이" cashreceipt="N" ><label id="payMethodLabel_26" for="payMethod_26">카카오페이</label></span>
+							<span><input type="radio" id="payMethod_29" name="payMethod" value="네이버페이" cashreceipt="N" ><label id="payMethodLabel_29" for="payMethod_29">네이버페이</label></span>
+							<span><input type="radio" id="payMethod_22" name="payMethod" value="휴대폰결제" cashreceipt="N" ><label id="payMethodLabel_22" for="payMethod_22">휴대폰결제</label></span>
+							<span><input type="radio" id="payMethod_21" name="payMethod" value="계좌이체" cashreceipt="Y" ><label id="payMethodLabel_21" for="payMethod_21">계좌이체</label></span>
+							<span><input type="radio" id="payMethod_24" name="payMethod" value="도서상품권" cashreceipt="Y" ><label id="payMethodLabel_24" for="payMethod_24">도서상품권</label></span>
+							<span><input type="radio" id="payMethod_23" name="payMethod" value="문화상품권" cashreceipt="N" ><label id="payMethodLabel_23" for="payMethod_23">문화상품권</label></span>
 						</li>	
 					</ul>
 				</div>
@@ -3055,27 +3010,26 @@ element.style {
 					<ul class="total_payment_box">
 						<li>
 							<span class="tx_tit">총 상품금액</span>
-							<span class="tx_cont"><span class="tx_num">46,100</span>원</span>
-							<input type="hidden" name="goodsAmt" value="46100">
+							<span class="tx_cont"><span class="tx_num">114,600</span>원</span>
+							<input type="hidden" name="totalProductAmt" value="114600">
 						</li>
 						
 						<li class="line_top2">
 							<span class="tx_tit">총 배송비</span>
 							<span class="tx_cont"><span class="tx_num" id="dlexPayAmt_span">0</span>원</span>
-							<input type="hidden" name="dlexPayAmt" value="0">
+							<input type="hidden" name="deliveryCharge" value="0">
 						</li>
 
 						<li>
 							<span class="tx_tit">포인트 사용 금액</span>
-							<span class="tx_cont colorOrange"><span class="tx_num" id="cjonePntAplyAmt_span">0</span>원</span>
+							<span class="tx_cont colorOrange"><span class="tx_num" id="cjonePntAplyAmt_span">2,000</span>원</span>
 						</li>
 						
 						<li class="total">
 							<span class="tx_tit">최종 결제금액</span>
-							<span class="tx_cont"><span class="tx_num" id="totPayAmt_sum_span">44,100</span>원</span>
-							<input type="hidden" name="remainAmt" value="44100">
-							<input type="hidden" name="ordPayAmt" value="44100">
-							<input type="hidden" name="goodsNm" value="아로마티카 바디오일 100ml 리츄얼 기획(괄사증정) 3종 택1_어웨이크닝,서렌, 임브레이스) 외 1건">
+							<span class="tx_cont"><span class="tx_num" id="totPayAmt_sum_span">112,600</span>원</span>
+							<input type="hidden" name="pointAmt" value="2000">
+							<input type="hidden" name="orderPayAmt" value="112600">
 						</li>
 						
 						<li>
@@ -3229,12 +3183,17 @@ element.style {
 
 <!-- script 코딩 부분 -->
 <script>
+// 주문페이지 전송
+$("#btnPay").on("click", function () {
+	$("#orderForm").submit();
+});
+
 // 포인트 전액사용 버튼 클릭시 cjonePnt_btn
 $(function () {
 	$("#cjonePnt_btn").on("click", function () {
 	// $("#cjonePnt_btn").click(function () {
 		var totalpoint = $("#cjonePnt").text();
-		$("#cjonePntAplyAmt").val(addComma(totalpoint)); // 인풋태그 변경
+		$("#cjonePntAplyAmt").val(totalpoint); // 인풋태그 변경
 		$("#cjonePntAplyAmt_span").text(addComma(totalpoint)); // 최종 결제정보 변경
 	});
 });
@@ -3245,11 +3204,10 @@ $(function () {
 		
 		var totalpoint = $("#cjonePntAplyAmt").val();
 		var maxpoint = ${ memberAddrList[0].my_point };
-		
 		if(totalpoint > ${ memberAddrList[0].my_point }) {
-			alert("[알림] 보유하신 포인트를 초과하였습니다.");
+			alert("보유하신 포인트를 초과하였습니다.");
 			$("#cjonePntAplyAmt").val(maxpoint);
-			$("#cjonePntAplyAmt_span").text(maxpoint);
+			$("#cjonePntAplyAmt_span").text(addComma(maxpoint));
 		} else{
 			$("#cjonePntAplyAmt").attr("value", totalpoint); // 인풋태그 변경
 			$("#cjonePntAplyAmt").val(totalpoint);
@@ -3287,6 +3245,8 @@ $(function () {
                    $("#rmitCellTxnoNo_exist").attr("value", elem.midtel);
                    $("#rmitCellEndNo_exist").attr("value", elem.endtel);
                    $("#tempRmitDtlAddr_exist").attr("value", elem.ad_address);
+                   $("#member_ad_code").attr("value", elem.ad_code);
+                   // $("#orderForm").append($('<input/>', {type: 'text', name: 'member_ad_code', value:elem.ad_code }));
                 });
              }, 
              error:function (){

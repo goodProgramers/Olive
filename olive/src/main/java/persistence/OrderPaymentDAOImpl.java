@@ -33,7 +33,7 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 		
 		String sql = "SELECT t.*, mbs_pointrate "
 					+ "FROM( "
-					+ "    SELECT m.me_code, me_id, ad_main, ad_name, ad_member, ad_tel, SUBSTR(ad_tel,5,4) midtel, SUBSTR(ad_tel,5,4) endtel, ad_address, my_point, mp.mbs_code "
+					+ "    SELECT m.me_code, me_id, ad_main, ad_code, ad_name, ad_member, ad_tel, SUBSTR(ad_tel,5,4) midtel, SUBSTR(ad_tel,5,4) endtel, ad_address, my_point, mp.mbs_code "
 					+ "    FROM member m JOIN address a ON m.me_code = a.me_code "
 					+ "    JOIN mypage mp ON m.me_code = mp.me_code "
 					+ ") t JOIN membership ms ON t.mbs_code = ms.mbs_code "
@@ -46,6 +46,7 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 		String me_code;
 		String me_id;
 		int ad_main; // 기본배송지여부
+		String ad_code; // 배송지코드
 		String ad_name; // 배송지명
 		String ad_member; // 받는분
 		String ad_tel; // 받는사람연락처
@@ -55,7 +56,6 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 		int my_point; // 회원의 총포인트
 		String mbs_code; // 회원등급코드
 		double mbs_pointrate; // 적립율
-		
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -72,6 +72,7 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 					dto.setMe_code(rs.getString("me_code"));
 					dto.setMe_id(rs.getString("me_id"));
 					dto.setAd_main(rs.getInt("ad_main"));
+					dto.setAd_code(rs.getString("ad_code"));
 					dto.setAd_name(rs.getString("ad_name"));
 					dto.setAd_member(rs.getString("ad_member"));
 					dto.setAd_tel(rs.getString("ad_tel"));
@@ -99,7 +100,7 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 	@Override
 	public List<OrderMemberInfoDTO> selectMemAddrInfo(Connection conn, String memberID, String addrName) throws SQLException {
 
-		String sql = "SELECT m.me_code, me_id, ad_main, ad_name, ad_member, ad_tel, SUBSTR(ad_tel,5,4) midtel, SUBSTR(ad_tel,5,4) endtel, ad_address "
+		String sql = "SELECT m.me_code, me_id, ad_main, ad_code, ad_name, ad_member, ad_tel, SUBSTR(ad_tel,5,4) midtel, SUBSTR(ad_tel,5,4) endtel, ad_address "
 				+ "FROM member m JOIN address a ON m.me_code = a.me_code "
 				+ "WHERE m.me_id = ? AND ad_name = ?";
 
@@ -110,6 +111,7 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 		String me_code;
 		String me_id;
 		int ad_main; // 기본배송지여부
+		String ad_code; // 배송지코드
 		String ad_name; // 배송지명
 		String ad_member; // 받는분
 		String ad_tel; // 받는사람연락처
@@ -134,6 +136,7 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 					dto.setMe_code(rs.getString("me_code"));
 					dto.setMe_id(rs.getString("me_id"));
 					dto.setAd_main(rs.getInt("ad_main"));
+					dto.setAd_code(rs.getString("ad_code"));
 					dto.setAd_name(rs.getString("ad_name"));
 					dto.setAd_member(rs.getString("ad_member"));
 					dto.setAd_tel(rs.getString("ad_tel"));

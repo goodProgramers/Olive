@@ -12,6 +12,8 @@ public class CartProductDTO {
     private int cart_prCounts; // 수량
     private int cart_realPrices; // 수량 * 구매가
     private int cart_realPricehiddens; // 1개 실구매가
+    private String priceCode; // 단가코드
+    private String saleCode; // 할인코드
     
 	public CartProductDTO() {
 		super();

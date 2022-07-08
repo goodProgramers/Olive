@@ -2433,7 +2433,8 @@ a {
 </div><!-- Header -->
 
 <div id="Container">
-  <form name="cartForm" id="cartForm" action="order.do" method="post">		
+		
+	<form name="cartForm" id="cartForm" action="order.do" method="post">		
 	<div id="Contents"><!-- #Contents -->
 			<!-- title_box -->
 			<div class="title_box">
@@ -2450,13 +2451,13 @@ a {
 			<div class="membership_box  iconGrade4">
 				<p class="tx_grade_info"><strong>회원</strong>님의 멤버십 등급은 <span class="grade">PINK OLIVE</span>입니다 </p>
 				<ul class="membership_info_list">
-					<li><a href="#" class="grade_benefit"><span>등급혜택</span></a></li>
-					<li><a href="#"><strong><span class="tx_num"></span> 포인트</strong> 
+					<li><a href="https://www.oliveyoung.co.kr/store/main/getMembershipBenefitInfo.do" class="grade_benefit"><span>등급혜택</span></a></li>
+					<li><a href="https://www.oliveyoung.co.kr/store/mypage/getCJOnePointInfo.do"><strong><span class="tx_num"></span> 포인트</strong> 
 						<span class="own_point">						
 							<span class="tx_num" value="5000">5,000</span>P
 						</span></a></li>
-					<li><a href="#"><strong>할인쿠폰</strong> <span class="own_point"><span class="tx_num">0</span>개</span></a></li>
-					<li><a href="#"><strong>예치금</strong> <span class="own_point"><span class="tx_num">0</span>원</span></a></li>
+					<li><a href="https://www.oliveyoung.co.kr/store/mypage/getCouponList.do"><strong>할인쿠폰</strong> <span class="own_point"><span class="tx_num">0</span>개</span></a></li>
+					<li><a href="https://www.oliveyoung.co.kr/store/mypage/getDepositList.do"><strong>예치금</strong> <span class="own_point"><span class="tx_num">0</span>원</span></a></li>
 				</ul>
 			</div>
 			<!--// membership_box -->
@@ -2499,16 +2500,13 @@ a {
 								<!-- 장바구니 상품 정보를 핸들러로 보내기 위해서 input 태그에 담기 -->
 								<div class="tbl_cell w40">
 									<input type="checkbox" checked="checked" id="inp_prd_chk1" name="s_checkbox1" value="0" class="chkSmall">
-									<input type="hidden" class="prCode" name="prCode" value="pr001002"><br>
-									<input type="hidden" class="prImg" name="prImg" value="https://image.oliveyoung.co.kr/uploads/images/goods/220/10/0000/0015/A00000015606001ko.jpg?l=ko">
-									<input type="hidden" class="brand" name="brand" value="돌체앤가바나">
-									<input type="hidden" class="product" name="product" value="돌체앤가바나 라이트블루 오드뚜왈렛 100ml">
-									<input type="hidden" class="prPrice" name="prPrice" value="129000">
-									<input type="hidden" class="prPriceCnt" name="prPriceCnt" value="129000">
-									<input type="hidden" class="realPrice" name="realPrice" value="83800">
-									<input type="hidden" class="realPricehidden" name="realPricehidden" value="83800">
-									<input type="hidden" class="priceCode" name="priceCode" value="prpr000003"><!-- 단가코드 -->
-									<input type="hidden" class="saleCode" name="saleCode" value="sa000003"><!-- 할인코드 -->
+									<input type="hidden" class="cart_prImg" name="cart_prImg" value="https://image.oliveyoung.co.kr/uploads/images/goods/220/10/0000/0015/A00000015606001ko.jpg?l=ko" style="display:none;">
+									<input type="hidden" class="cart_brand" name="cart_brand" value="돌체앤가바나" style="display:none;">
+									<input type="hidden" class="cart_product" name="cart_product" value="돌체앤가바나 라이트블루 오드뚜왈렛 100ml" style="display:none;">
+									<input type="hidden" class="cart_prPrice" name="cart_prPrice" value="129000" style="display:none;">
+									<input type="hidden" class="cart_prPriceCnt" name="cart_prPriceCnt" value="129000" style="display:none;" >
+									<input type="hidden" class="cart_realPrice" name="cart_realPrice" value="83800" style="display:none;">
+									<input type="hidden" class="cart_realPricehidden" name="cart_realPricehidden" value="83800" style="display:none;">
 								</div>
 								
 								<div class="tbl_cell w390">
@@ -2536,7 +2534,7 @@ a {
 								
 								<div class="tbl_cell w100">
 									<div class="prd_cnt">
-											<select class="amount" name="prCount" prdtp="1" prdcnt="0" ordpsbminqty="1" ordpsbmaxqty="999" qtyaddunit="1" ordqty="1" title="상품 수량 선택">
+											<select class="amount" name="cart_prCount" prdtp="1" prdcnt="0" ordpsbminqty="1" ordpsbmaxqty="999" qtyaddunit="1" ordqty="1" title="상품 수량 선택">
 												<option value="1" selected="selected">1</option>											
 												<option value="2">2</option>
 												<option value="3">3</option>
@@ -2552,7 +2550,12 @@ a {
 									<button type="button" class="btnSmall wGray" style="display: none;" name="btnQtyMod"><span>변경</span></button>
 								</div>
 								
-								<div class="tbl_cell w110"><span class="org_price" value="129000"><span class="tx_num">129,000</span>원</span><span class="pur_price" value="83800"><span class="tx_num">83,800</span>원</span></div>
+								<div class="tbl_cell w110">
+										<span class="org_price">
+											<span class="tx_num">129,000</span>원
+										</span>
+										<span class="pur_price"><span class="tx_num">83,800</span>원</span>
+								</div>
 								
 								<div class="tbl_cell w120  "><!-- 합배송, 배송 예정 class / sum   delay추가 하기 -->
 									<p class="prd_delivery">
@@ -2577,13 +2580,13 @@ a {
 						<div class="tbl_cont_area">		
 								<div class="tbl_cell w40">
 								<input type="checkbox" checked="checked" id="inp_prd_chk1" name="s_checkbox1" value="0" class="chkSmall">
-									<input type="hidden" class="prImg" name="prImg" value="https://image.oliveyoung.co.kr/uploads/images/goods/220/10/0000/0016/A00000016399217ko.jpg?l=ko" style="display:none;">
-									<input type="hidden" class="brand" name="brand" value="아로마티카" style="display:none;">
-									<input type="hidden" class="product" name="product" value="아로마티카 바디오일 100ml 리츄얼 기획(괄사증정) 3종 택1_어웨이크닝,서렌, 임브레이스)" style="display:none;">
-									<input type="hidden" class="prPrice" name="prPrice" value="44000" style="display:none;">
-									<input type="hidden" class="prPriceCnt" name="prPriceCnt" value="44000" style="display:none;" >
-									<input type="hidden" class="realPrice" name="realPrice" value="30800" style="display:none;">
-									<input type="text" class="realPricehidden" name="realPricehidden" value="30800" style="display:none;">
+									<input type="hidden" class="cart_prImg" name="cart_prImg" value="https://image.oliveyoung.co.kr/uploads/images/goods/220/10/0000/0016/A00000016399217ko.jpg?l=ko" style="display:none;">
+									<input type="hidden" class="cart_brand" name="cart_brand" value="아로마티카" style="display:none;">
+									<input type="hidden" class="cart_product" name="cart_product" value="아로마티카 바디오일 100ml 리츄얼 기획(괄사증정) 3종 택1_어웨이크닝,서렌, 임브레이스)" style="display:none;">
+									<input type="hidden" class="cart_prPrice" name="cart_prPrice" value="44000" style="display:none;">
+									<input type="hidden" class="cart_prPriceCnt" name="cart_prPriceCnt" value="44000" style="display:none;" >
+									<input type="hidden" class="cart_realPrice" name="cart_realPrice" value="30800" style="display:none;">
+									<input type="text" class="cart_realPricehidden" name="cart_realPricehidden" value="30800" style="display:none;">
 								</div>
 								
 								<div class="tbl_cell w390">
@@ -2604,14 +2607,12 @@ a {
 								</div>
 								
 								<div class="tbl_cell w110">
-									<span class="cur_price" value="44000">
-										<span class="tx_num">44,000</span>원
-									</span><!-- 1개의 판매가 -->
+									<span class="cur_price" value="44000"><span class="tx_num">44,000</span>원</span><!-- 판매가 -->
 								</div>
 								
 								<div class="tbl_cell w100">
 									<div class="prd_cnt">
-											<select class="amount" name="prCount" prdtp="1" prdcnt="0" ordpsbminqty="1" ordpsbmaxqty="999" qtyaddunit="1" ordqty="1" title="상품 수량 선택">
+											<select class="amount" name="cart_prCount" prdtp="1" prdcnt="0" ordpsbminqty="1" ordpsbmaxqty="999" qtyaddunit="1" ordqty="1" title="상품 수량 선택">
 												<option value="1" selected="selected">1</option>											
 												<option value="2">2</option>
 												<option value="3">3</option>
@@ -2628,10 +2629,10 @@ a {
 								</div>
 								
 								<div class="tbl_cell w110">
-										<span class="org_price" value="44000">
-											<span class="tx_num">44,000</span>원<!-- 수량*판매가 -->
+										<span class="org_price">
+											<span class="tx_num" value="44000">44,000</span>원
 										</span>
-										<span class="pur_price" value="30800"><span class="tx_num">30,800</span>원</span><!-- 수량*구매가 -->
+										<span class="pur_price" value="30800"><span class="tx_num">30,800</span>원</span>
 								</div>
 								
 								<div class="tbl_cell w120  "><!-- 합배송, 배송 예정 class / sum   delay추가 하기 -->
@@ -2685,9 +2686,10 @@ a {
 			<p>장바구니 상품은 90일동안, 판매종료 된 상품은 10일동안 보관됩니다.</p>
 		</div>
 
-		</div><!-- //#Contents -->
-	  </form><!-- form -->
-	</div><!-- Container -->
+		</div>
+		</form><!-- form -->
+		<!-- //#Contents -->	
+	</div>
 
 <div id="Footer" class="m2105">
 		<div class="oneConts">
@@ -2827,28 +2829,13 @@ $(".btnSmall .wGreen").on("click", function () {
 	
 });
 
-//선택주문
-$("checkOrder").on("click", function () {
-	$("#cart").submit(function () {
-		$("#cart :checked").val().submit();
-	});
-});
-</script>
 
-<script>
 // 수량이 바뀌면 해당 상품의 구매가와 총 판매가, 총 할인금액, 배송비, 총 결제예상금액 바꾸는 작업(구현해야함)
 $(".amount").on("change", function () {
 	alert($(this).find("option:selected").val());
-	// var prPrice = $(this).parent().parent().prev().find("span.cur_price").val(); // 129000
-	// var prPrice = $(this).parent().parent().prev().children().text(); // 129000
-	var prPrice = $(this).parent().parent().prev().find("span.cur_price").val(); // 129000
-	// alert(prPrice);
+	var prPrice = $(this).find("option:selected"); // cur_price
 	var realPrice = $(this).find("option:selected") // pur_price
 	var count = $(this).find("option:selected").val(); 
-	
-	// cur_price : 1개 판매가
-	// org_price : 수량 * 판매가
-	// pur_price : 수량 * 구매가
 	
 	/*
 	var prPrice = $(this).prev().prev().prev().prev().val(); // 판매가
@@ -2858,6 +2845,21 @@ $(".amount").on("change", function () {
 	$(this).prev().prev().val(prPrice * count);
 	*/
 });
+
+
+/*
+$(".productCheck").on("click", function () {
+	$(this).prev().checkbox.prop("checked", $(this).prop("checked"));
+});
+
+// 선택주문
+$("checkOrder").on("click", function () {
+	$("#cart").submit(function () {
+		$("#cart :checked").val().submit();
+	});
+});
+
+*/
 </script>	
 </body>
 </html>

@@ -23,6 +23,7 @@
 	while (ir.hasNext()) {
 		OrderMemberInfoDTO dto = ir.next();
 		int ad_main = dto.getAd_main();
+		String ad_code = dto.getAd_code();
 		String ad_name = dto.getAd_name();
 		String ad_member = dto.getAd_member();
 		String ad_tel = dto.getAd_tel();
@@ -31,8 +32,9 @@
 		String ad_address = dto.getAd_address();
 		
 	    JSONObject jsonMemberInfo = new JSONObject();
-	    
+
 	    jsonMemberInfo.put("ad_main", ad_main);
+	    jsonMemberInfo.put("ad_code", ad_code);
 	    jsonMemberInfo.put("ad_name", ad_name);
 	    jsonMemberInfo.put("ad_member", ad_member);
 	    jsonMemberInfo.put("ad_tel", ad_tel);
