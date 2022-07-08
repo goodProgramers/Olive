@@ -1,7 +1,7 @@
+<%@page import="domain.ProductDetailDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<@ taglib
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,20 +9,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 <script
-   src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <style>
 #Container, #Footer, #Header, #Wrapper {
-   width: 100%;
-   min-width: 1020px;
+	width: 100%;
+	min-width: 1020px;
 }
 #Container {
-   overflow: hidden;
+	overflow: hidden;
 }
 #Contents {
-   width: 1020px;
-   height: 100%;
-   margin: 0 auto;
+	width: 1020px;
+	height: 100%;
+	margin: 0 auto;
 }
 
 a, address, blockquote, body, dd, div, dl, dt, em, fieldset, form, h1, h2, h3, h4, h5, h6, img, input, label, li, ol, p, pre, select, span, strong, textarea, ul {
@@ -613,7 +613,7 @@ button, input.button, input.image, input.submit, label {
     cursor: pointer;
 }
 button, img, input, select, textarea {
-   width: 100%;
+	width: 100%;
     border: 0;
     vertical-align: top;
     color: #666;
@@ -766,529 +766,832 @@ button {
     font-size: 20px;
     color: #fff;
 }
+</style>
+<!-- 리뷰 모달부분 -->
+<style>
+.tabConts.show {
+    display: block;
+}
+.prd_detail_cont {
+    padding: 40px 0 0;
+}
+.product_rating_area {
+    margin-top: 20px;
+    border-top: 2px solid #333;
+}
+.product_rating_area .inner {
+    height: 231px;
+    border-bottom: 1px solid #ddd;
+}
+.product_rating_area .grade_img {
+    float: left;
+    width: 170px;
+    height: 231px;
+    border-right: 1px solid #ddd;
+}
+.product_rating_area .grade_img .img_face {
+    margin: 54px 0 0 0;
+    font-size: 16px;
+    color: #000;
+    font-weight: 700;
+    text-align: center;
+}
+.product_rating_area .grade_img .img_face>span.grade.grade5 {
+    background-position: 0 0;
+}
+.product_rating_area .grade_img .img_face>span.grade {
+    background: url(https://www.oliveyoung.co.kr/pc-static-root/image/product/face_grade_1.png) no-repeat 0 0;
+}
+.product_rating_area .grade_img .img_face>span.grade {
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    margin-bottom: 8px;
+}
+.product_rating_area .grade_img .img_face>em {
+    display: block;
+    text-align: center;
+    font-style: normal;
+}
+.product_rating_area .star_area {
+    float: left;
+    width: 254px;
+    padding: 43px 0 0 0;
+}
+.product_rating_area .star_area .total {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 16px;
+    color: #000;
+    font-weight: 700;
+}
+.product_rating_area .star_area .num {
+    margin-bottom: 24px;
+    line-height: 40px;
+    color: #000;
+    font-weight: 700;
+    text-align: center;
+}
+.product_rating_area .star_area .num>strong {
+    font-size: 40px;
+}
+.product_rating_area .star_area .num>strong+span {
+    font-size: 24px;
+    padding-left: 6px;
+}
+.product_rating_area .star_area .star_list {
+    text-align: center;
+}
+.product_rating_area .star_area .star_list li:first-child {
+    margin-left: 0;
+}
+.product_rating_area .star_area .star_list li {
+    position: relative;
+    display: inline-block;
+    width: 26px;
+    height: 25px;
+    margin-left: 3px;
+}
+.product_rating_area .graph_area {
+    float: left;
+    width: 255px;
+    height: 231px;
+    padding-top: 38px;
+    border-right: 1px solid #ddd;
+}
+.product_rating_area .graph_area .graph_list {
+    text-align: center;
+}
+.product_rating_area .graph_area .graph_list li {
+    position: relative;
+    display: inline-block;
+    width: 38px;
+    padding: 27px 0 0 0;
+    text-align: center;
+}
+.product_rating_area .write_info {
+    float: left;
+    width: 339px;
+}
+.renew .product_rating_area .write_info dl {
+    padding-top: 85px;
+}
+.product_rating_area .write_info dl {
+    padding: 58px 0 0 0;
+}
+.product_rating_area .write_info dt {
+    margin-bottom: 13px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #000;
+    text-align: center;
+}
+.alignCenter {
+    text-align: center!important;
+}
+.product_rating_area .write_info .btnInquiry {
+    height: 34px;
+    padding: 0 18px 0 44px;
+    font-size: 16px;
+    background: #00c8b5 url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/icon_write.png) no-repeat 20px 6px;
+    line-height: 34px;
+    border-radius: 5px;
+}
+button {
+    text-align: center;
+    color: #fff;
+}
 
+button, input[type=submit] {
+    border: 0;
+    padding: 0;
+    box-shadow: none;
+    cursor: pointer;
+}
+button, input[type=submit] {
+    font-family: Montserrat,-apple-system,NotoSansCJKkr,AppleSDGothicNeo,Roboto,sans-serif;
+    font-weight: 700;
+}
+button, input.button, input.image, input.submit, label {
+    cursor: pointer;
+}
+button, img, input, select, textarea {
+    border: 0;
+    vertical-align: top;
+    color: #666;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+user agent stylesheet
+button {
+    appearance: auto;
+    writing-mode: horizontal-tb !important;
+    font-style: ;
+    font-variant-ligatures: ;
+    font-variant-caps: ;
+    font-variant-numeric: ;
+    font-variant-east-asian: ;
+    font-weight: ;
+    font-stretch: ;
+    font-size: ;
+    font-family: ;
+    text-rendering: auto;
+    color: buttontext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    box-sizing: border-box;
+    background-color: buttonface;
+    margin: 0em;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-image: initial;
+}
+.clrfix:after {
+    content: '';
+    display: block;
+    clear: both;
+}
 </style>
 
 </head>
 <body>
-<h3>상품 상세페이지</h3>
-${img_Name.pr_name} <!-- 제품이름 -->
-<br />
-${img_Name.prm_url}  <!-- 제품대표이미지 -->
-<br />
-${ img_Name.br_name } <!-- 브랜드명 -->
 
 
+<div id="Container">
+  <div id="Contents">
+	<!-- <div id="Wrapper"> -->
+<!-- 상단 카테고리 -->
+
+
+	<div class="prd_detail_box renew">
+		<div class="left_area">
+
+			<div class="prd_img">
+
+				<span class="thumb_flag best">베스트</span> <img id="mainImg"
+					src="${img_Name.prm_url}"
+					alt="상품명 이미지" onerror="common.errorImg(this);"> <input
+					type="hidden" id="mainImgSize" value="550">
+
+
+
+
+				<!-- 20200526 상품개선 : 추가 / 발색비교 옵션 선택 시 옵션명 변경 및 관련 썸네일로 변경 -->
+				<div class="prd-option-name">
+					<!-- 노출 시 is-active class 추가 -->
+					<span class="txt" id="goodstxt">03. 얼모스트 핑크</span>
+				</div>
+			</div>
+
+
+
+			<ul class="prd_thumb_list" id="prd_thumb_list">
+
+
+
+
+
+				<!-- <input type="hidden" id="snsImgUrl"
+					value="https://image.oliveyoung.co.kr/uploads/images/goods/550/10/0000/0015/A00000015231406ko.jpg?l=ko">
+ -->
+				<li class="sel"><a href="javascript:;"
+					data-img="https://image.oliveyoung.co.kr/uploads/images/goods/550/10/0000/0015/A00000015231406ko.jpg?l=ko"><img
+						src="${img_Name.prm_url}"
+						alt="썸네일이미지" onerror="common.errorImg(this);"></a></li>
+
+			</ul>
+
+
+			<!-- 202005 상품개선 : 위치 변경 및 마크업 변경 -->
+			<!-- 고객 만족도 및 공유, 재고확인 -->
+			<div class="prd_social_info">
+				<!-- 평점 및 리뷰 건수 추가 -->
+				<p id="repReview">
+					<strong>고객 리뷰</strong> <span class="review_point"> <span
+						class="point" style="width: 0.0%"> </span>
+					</span> <b> 0.0 </b> <em>(0건)</em>
+				</p>
+				<!-- 위치 변경 <p><a href="#" class="btn_off_store" data-rel="layer" data-target="offlineStore">올리브영 오프라인 매장 재고확인</a></p>-->
+				<p>
+					<!-- 							<strong>공유하기</strong> -->
+					<a href="javascript:common.sns.doShare('kakaostory');"
+						class="link_social kakao goods_share_kakao">카카오톡 공유하기(새창)</a> <a
+						href="javascript:common.sns.doShare('facebook');"
+						class="link_social facebook goods_share_facebook">페이스북
+						공유하기(새창)</a> <a href="javascript:common.sns.doShare('url');"
+						class="link_social url goods_share_url">URL공유하기</a>
+				</p>
+			</div>
+			<!--// 고객 만족도 및 공유, 재고확인 -->
+
+		</div>
+		<div class="right_area">
+			<div class="prd_info">
+
+
+
+				<p class="prd_brand">
+
+					<a href="#" id="moveBrandShop" class="pd_arrow_link">${img_Name.br_name }</a>
+				</p>
+
+				<p class="prd_name">${ img_Name.pr_name }</p>
+
+
+
+
+
+
+				<!-- 202005 상품개선 : 추가 -->
+				<!-- 					<p class="prd-txt1">1회 최대 구매수량 5개 입니다.</p> -->
+
+				<div class="price">
+
+					<span class="price-1"> <strike></strike> <span>원</span>
+
+
+
+					</span> <span class="price-2"> <strong></strong> <span>원</span>
+					</span>
+
+
+
+
+
+
+					<button type="button" id="btnSaleOpen" class="btn_more">혜택
+						정보</button>
+					<div id="saleLayer" class="sale_list" style="display: none">
+						<p class="tit">혜택 정보</p>
+						<div class="detail">
+							<div class="list">
+								<div class="flex-item">
+									<span class="label">판매가</span> <span class="price">20,000<em>원</em></span>
+								</div>
+
+								<div class="price_child">
+
+
+									<div class="flex-item">
+										<span class="label">세일 (22.07.01 ~ 22.08.31)</span> <span
+											class="price">- 4,000<em>원</em></span>
+									</div>
+
+
+
+
+									<div class="flex-item">
+
+
+
+
+
+
+
+
+										<span class="label">15% 쿠폰 (22.07.05 ~ 22.07.05)</span> <span
+											class="price">- 2,400<em>원</em></span>
+									</div>
+
+
+
+								</div>
+							</div>
+
+							<div class="list">
+								<div class="flex-item">
+									<span class="label"><b>최적가</b></span> <span class="price total">13,600<em>원</em></span>
+								</div>
+
+
+							</div>
+						</div>
+						<button type="button" id="btnSaleClose" class="btn_close">레이어
+							닫기</button>
+					</div>
+
+				</div>
+
+
+
+
+
+
+				<p class="prd_flag">
+
+
+
+
+					<span class="icon_flag sale">세일</span> <span
+						class="icon_flag coupon">쿠폰</span>
+
+
+
+					<!-- 기간계 상품, 브랜드 증정품만 아이콘 노출 -->
+
+					<span class="icon_flag gift">증정</span> <span
+						class="icon_flag delivery">오늘드림</span>
+
+				</p>
+
+
+				<!-- 프로 모션 쿠폰영역-->
+
+
+
+
+
+
+
+
+
+				<!-- 프로 모션 쿠폰영역-->
+
+				<!-- EP 쿠폰영역-->
+
+
+				<!-- EP 쿠폰영역-->
+
+				<div class="viewArea" id="div_goodsViewNumArea" style="">
+					<span><span class="viewNum" id="goodsViewNum">51</span>명이
+						보고있어요</span>
+				</div>
+
+				<div class="prd_more_info">
+
+					<div class="row">
+						<p class="tit">
+							배송정보<a href="javascript:goods.detail.openDlexFullPop('20','1');"
+								class="ico_info" style="margin: 5px 0 0 7px">배송정보 레이어 열기</a>
+						</p>
+						<p></p>
+
+						<ul class="bl_list">
+
+							<li><span>일반배송</span>
+								<div>
+
+
+
+									2,500원 ( 20,000 원 이상 무료배송 ) <br>
+									<em>올리브영 배송 </em> <em>평균 3일 이내 배송</em>
+
+
+
+
+									<!-- 												<b>무료배송</b>  -->
+
+									<!-- 														 <br><b>업체배송</b> -->
+
+
+
+
+									<!-- 															<em><b>합배송 불가</b></em> -->
+
+
+									<!-- 															<em><b>합배송 불가</b></em> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+								</div></li>
+
+
+							<li><span>오늘드림</span>
+								<div>
+									2,500원 또는 5,000원 <a
+										href="javascript:goods.detail.todayDelivery.openQuickPopMidle('question');"
+										class="ico_info">배송정보 안내 레이어열기</a>
+								</div></li>
+
+							<!-- 202005 상품개선 : 오늘드림 빠름배송 -->
+							<li class="liQuickAI" style="display: none;"><span
+								class="tx_tit"> 오늘드림 빠름 배송 AI 예측 <!-- 202005 상품개선 : 자세히 보기 위치 변경 -->
+									<a
+									href="javascript:goods.detail.todayDelivery.openQuickDeliAI();"
+									class="ico_infoMore">자세히 보기</a>
+							</span>
+
+								<p class="tx_addre">
+									<span>┖ </span><span class="quickUsrAddr">서울특별시 도봉구
+										도봉로112길</span> 기준
+									<!-- 202005 상품개선 : tx_cont 위치 변경 -->
+									<span class="tx_cont"> <span class="span_dlvTitlNm">1시간
+											내</span> <span class="span_maxDeliPer">63%</span>
+									</span>
+								</p></li>
+
+						</ul>
+					</div>
+
+
+					<div class="row">
+						<p class="tit">결제혜택</p>
+						<div class="txt_list">
+
+							<p>
+								THE CJ 카드 추가 10%할인 <a
+									href="javascript:goods.detail.openCardFullPop();"
+									class="ico_info">카드혜택가 안내 레이어 열기</a>
+							</p>
+
+
+
+
+
+							<p>
+								CJ ONE 포인트 <span class=""></span> 최대 2% 적립 예상 <a
+									href="javascript:goods.detail.openCjonepntPop();"
+									class="ico_info">CJ ONE 포인트 예상적립 레이어 열기</a>
+							</p>
+
+
+
+						</div>
+					</div>
+
+
+				</div>
+
+
+
+				<div class="option_add_area">
+
+
+					<div class="prd_cnt_box">
+
+
+						<div class="tit_area">
+							<span>구매수량</span>
+						</div>
+						<div class="cont_area">
+
+<!-- 바로구매 시 보낼 값들. -->
+<form id="order_hidden_value" method="post" action="/Olivett/olive/order.jsp">  
+	<input type="hidden" name="prImg" value="${img_Name.prm_url}"/> <!-- 이미지 -->
+	<input type="hidden" name="brand" value="${img_Name.br_name }"/> <!-- 브랜드 -->
+	<input type="hidden" name="product" value="${img_Name.pr_name}"/> <!-- 제품명 -->
+	<input type="hidden" name="prPrice" value=""/> <!-- 1개 원가 -->
+	<input type="hidden" name="prPriceCnt" value=""/> <!-- 수량 * 원가 -->
+	<input type="hidden" name="realPrice" value="${ prd_price.price }"/> <!-- 1개 구매가 -->
+	<input type="hidden" name="realPricehidden" value=""/> <!-- 수량 * 구매가 -->
+	<input type="hidden" name="prCount" value=""/> <!-- 수량 -->
+</form>
+
+							<span class="option_cnt_box">
+								<button class="btnCalc minus" id="minusbutton">수량1감소</button> 
+									<input type="text" id="cartCnt_A000000152314001"
+									name="cartCnt_A000000152314001" value="1" class="tx_num"
+									title="구매수량"> <!-- 수량 --> <!-- id,name값이 상품코드랑 수량으로 날라가 ? -->
+								<button class="btnCalc plus"
+									onclick="plus();">수량
+									1증가</button>
+							</span>
+<!-- 							<span class="option_cnt_box">
+								<button class="btnCalc minus"
+									onclick="goods.detail.cart.prevVal('A000000152314001','13600','1');">수량
+									1감소</button> <input type="text" id="cartCnt_A000000152314001"
+								name="cartCnt_A000000152314001" value="1" class="tx_num"
+								title="구매수량">
+								<button class="btnCalc plus"
+									onclick="goods.detail.cart.nextVal('A000000152314001','13600','1');">수량
+									1증가</button>
+							</span> -->
+
+						</div>
+					</div>
+
+
+				</div>
+
+
+
+
+
+
+
+
+				<div class="prd_total_price">
+					<span class="tx_tit">상품금액 합계</span> <input type="hidden"
+						id="totalCnt" value="1" name="totalCnt"> <input
+						type="hidden" id="totalPrc" value="13600" name="totalPrc">
+
+
+					<span class="tx_cont"><span class="tx_num" id="totalPrcTxt"></span>원</span>
+																			<!-- ${ prd_price.price } -->
+				</div>
+
+
+			
+			<div class="today_dv">
+		
+				<div class="prd_btn_area">
+					<button class="btnBasket  goods_cart"
+						onclick="javascript:common.popLayer.todayDelivery.openTodayDeliveryNotice('goodsdetail.cart');"
+						data-attr="상품상세^주문유형^장바구니">장바구니</button>
+					<!-- <button class="btnBuy goods_buy" id="cartBtn" onClick="javascript:goods.detail.bindBtnBuy();">구매하기</button> -->
+
+					<button class="btnBuy goods_buy" id="cartBtn"
+						data-attr="상품상세^주문유형^바로구매">바로구매</button>
+					<button class="btnSoldout dupItem goods_cart"
+						style="display: none;" onclick="javascript:;">일시품절</button>
+					<button class="goods_buy btnReStock" style="display: none;"
+						onclick="javascript:;"
+						data-attr="상품상세^재입고알림신청^[1+1]SNP UV 퍼펙트 에어쿨 선크림 더블 기획 (50ml+50ml)_클릭"
+						data-trk="/Home_Planshop3">재입고 알림신청</button>
+					
+				</div>
+
+
+
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<script> /* 원가 세일가 뿌리는 스크립트 */
+		var sale_price = ${ prd_price.price };
+		$(".price-2 strong").text(sale_price.toLocaleString());
+		var price= ${ prd_price.prpri_price };
+		$(".price-1 strike").text(price.toLocaleString());
+		$("#totalPrcTxt").text(sale_price.toLocaleString()); /* 첫 토탈 가격 */
+		
+		/* input 태그에 하나원가 , 하나 실구매가 세팅 */
+			var num = 1;
+		 
+		 $("input[name=realPricehidden]").attr("value", sale_price.toLocaleString());
+		 $("input[name=prPriceCnt]").attr("value", price.toLocaleString());
+		 //alert(sale_price.toLocaleString());
+		 $("input[name=prCount]").attr("value", num);
+		 $("input[name=prPrice]").attr("value", price.toLocaleString());
+		 		 
+</script>		
+		
+<script> /* 총 구매가 구현 스크립트 */
+		
+			//var num = 1;
+			
+		function plus() {
+			//alert("+클릭");
+			//id =  cartCnt_A000000152314001 의 value의값 증가 
+			num=num+1;
+			document.getElementById("cartCnt_A000000152314001").setAttribute("value", num);
+			/* +버튼 클릭시 총 구매 가격 */
+			$("#totalPrcTxt").text((sale_price*num).toLocaleString());
+			
+			/* 바로구매시 총구매가 넘겨줄 input태그의 value값 셋해주는 부분. */
+			var realPrice = (sale_price*num).toLocaleString();
+			$("input[name=realPricehidden]").attr("value", realPrice);
+			//alert(realPrice); 성공
+			/* 총구매량 원가 */
+			var prPriceCnt = (price*num).toLocaleString();
+			$("input[name=prPriceCnt]").attr("value", prPriceCnt);
+			//alert(prPriceCnt);
+		}
+			
+			$('#minusbutton').on("click", function() {
+			//alert("-클릭");
+			//id =  cartCnt_A000000152314001 의 value의값 감소 
+			num=num-1;
+			if (num<=0) {
+				alert('1개 이상부터 구매할 수 있는 상품입니다.')
+				num=1;
+			}else{
+				$("#cartCnt_A000000152314001").attr("value", num);
+				$("#totalPrcTxt").text((sale_price*num).toLocaleString());
+				
+				/* 바로구매시 총구매가 넘겨줄 input태그의 value값 셋해주는 부분. */
+				var realPrice = (sale_price*num).toLocaleString();
+				$("input[name=realPricehidden]").attr("value", realPrice);
+				//alert(realPrice);
+				/*  총구매량 원가  */
+				var prPriceCnt = (price*num).toLocaleString();
+				$("input[name=prPriceCnt]").attr("value", prPriceCnt);
+				//alert(prPriceCnt);
+			}
+		});
+		
+</script>
+<script> /* 바로구매 버튼을 클릭하면 히든된 input값들을 담은 form태그 서브밋 하는 곳. */
+			
+			$("#cartBtn").on("click", function() {
+				$("#order_hidden_value").submit();
+			});
+</script>
+<!--상단 페이지 최종  -->
+			
+			
+			
+
+
+
+
+<!--  -->
+	<!-- </div> -->
+	   </div> 
+		 </div>
 
 
 
 <div id="Container">
-         <div id="Contents">
-<!-- 상단 카테고리 -->
-
-
-<div id="Wrapper">
-   <div class="prd_detail_box renew">
-      <div class="left_area">
-
-         <div class="prd_img">
-
-            <span class="thumb_flag best">베스트</span> <img id="mainImg"
-               src="${img_Name.prm_url}"
-               alt="상품명 이미지" onerror="common.errorImg(this);"> <input
-               type="hidden" id="mainImgSize" value="550">
-
-
-
-
-            <!-- 20200526 상품개선 : 추가 / 발색비교 옵션 선택 시 옵션명 변경 및 관련 썸네일로 변경 -->
-            <div class="prd-option-name">
-               <!-- 노출 시 is-active class 추가 -->
-               <span class="txt" id="goodstxt">03. 얼모스트 핑크</span>
-            </div>
-         </div>
-
-
-
-         <ul class="prd_thumb_list" id="prd_thumb_list">
-
-
-
-
-
-            <!-- <input type="hidden" id="snsImgUrl"
-               value="https://image.oliveyoung.co.kr/uploads/images/goods/550/10/0000/0015/A00000015231406ko.jpg?l=ko">
- -->
-            <li class="sel"><a href="javascript:;"
-               data-img="https://image.oliveyoung.co.kr/uploads/images/goods/550/10/0000/0015/A00000015231406ko.jpg?l=ko"><img
-                  src="${img_Name.prm_url}"
-                  alt="썸네일이미지" onerror="common.errorImg(this);"></a></li>
-
-         </ul>
-
-
-         <!-- 202005 상품개선 : 위치 변경 및 마크업 변경 -->
-         <!-- 고객 만족도 및 공유, 재고확인 -->
-         <div class="prd_social_info">
-            <!-- 평점 및 리뷰 건수 추가 -->
-            <p id="repReview">
-               <strong>고객 리뷰</strong> <span class="review_point"> <span
-                  class="point" style="width: 0.0%"> </span>
-               </span> <b> 0.0 </b> <em>(0건)</em>
-            </p>
-            <!-- 위치 변경 <p><a href="#" class="btn_off_store" data-rel="layer" data-target="offlineStore">올리브영 오프라인 매장 재고확인</a></p>-->
-            <p>
-               <!--                      <strong>공유하기</strong> -->
-               <a href="javascript:common.sns.doShare('kakaostory');"
-                  class="link_social kakao goods_share_kakao">카카오톡 공유하기(새창)</a> <a
-                  href="javascript:common.sns.doShare('facebook');"
-                  class="link_social facebook goods_share_facebook">페이스북
-                  공유하기(새창)</a> <a href="javascript:common.sns.doShare('url');"
-                  class="link_social url goods_share_url">URL공유하기</a>
-            </p>
-         </div>
-         <!--// 고객 만족도 및 공유, 재고확인 -->
-
-      </div>
-      <div class="right_area">
-         <div class="prd_info">
-
-
-
-            <p class="prd_brand">
-
-               <a href="#" id="moveBrandShop" class="pd_arrow_link">${img_Name.br_name }</a>
-            </p>
-
-            <p class="prd_name">${ img_Name.pr_name }</p>
-
-
-
-
-
-
-            <!-- 202005 상품개선 : 추가 -->
-            <!--                <p class="prd-txt1">1회 최대 구매수량 5개 입니다.</p> -->
-
-            <div class="price">
-
-               <span class="price-1"> <strike></strike> <span>원</span>
-
-
-
-               </span> <span class="price-2"> <strong></strong> <span>원</span>
-               </span>
-
-
-
-
-
-
-               <button type="button" id="btnSaleOpen" class="btn_more">혜택
-                  정보</button>
-               <div id="saleLayer" class="sale_list" style="display: none">
-                  <p class="tit">혜택 정보</p>
-                  <div class="detail">
-                     <div class="list">
-                        <div class="flex-item">
-                           <span class="label">판매가</span> <span class="price">20,000<em>원</em></span>
-                        </div>
-
-                        <div class="price_child">
-
-
-                           <div class="flex-item">
-                              <span class="label">세일 (22.07.01 ~ 22.08.31)</span> <span
-                                 class="price">- 4,000<em>원</em></span>
-                           </div>
-
-
-
-
-                           <div class="flex-item">
-
-
-
-
-
-
-
-
-                              <span class="label">15% 쿠폰 (22.07.05 ~ 22.07.05)</span> <span
-                                 class="price">- 2,400<em>원</em></span>
-                           </div>
-
-
-
-                        </div>
-                     </div>
-
-                     <div class="list">
-                        <div class="flex-item">
-                           <span class="label"><b>최적가</b></span> <span class="price total">13,600<em>원</em></span>
-                        </div>
-
-
-                     </div>
-                  </div>
-                  <button type="button" id="btnSaleClose" class="btn_close">레이어
-                     닫기</button>
-               </div>
-
-            </div>
-
-
-
-
-
-
-            <p class="prd_flag">
-
-
-
-
-               <span class="icon_flag sale">세일</span> <span
-                  class="icon_flag coupon">쿠폰</span>
-
-
-
-               <!-- 기간계 상품, 브랜드 증정품만 아이콘 노출 -->
-
-               <span class="icon_flag gift">증정</span> <span
-                  class="icon_flag delivery">오늘드림</span>
-
-            </p>
-
-
-            <!-- 프로 모션 쿠폰영역-->
-
-
-
-
-
-
-
-
-
-            <!-- 프로 모션 쿠폰영역-->
-
-            <!-- EP 쿠폰영역-->
-
-
-            <!-- EP 쿠폰영역-->
-
-            <div class="viewArea" id="div_goodsViewNumArea" style="">
-               <span><span class="viewNum" id="goodsViewNum">51</span>명이
-                  보고있어요</span>
-            </div>
-
-            <div class="prd_more_info">
-
-               <div class="row">
-                  <p class="tit">
-                     배송정보<a href="javascript:goods.detail.openDlexFullPop('20','1');"
-                        class="ico_info" style="margin: 5px 0 0 7px">배송정보 레이어 열기</a>
-                  </p>
-                  <p></p>
-
-                  <ul class="bl_list">
-
-                     <li><span>일반배송</span>
-                        <div>
-
-
-
-                           2,500원 ( 20,000 원 이상 무료배송 ) <br>
-                           <em>올리브영 배송 </em> <em>평균 3일 이내 배송</em>
-
-
-
-
-                           <!--                                     <b>무료배송</b>  -->
-
-                           <!--                                            <br><b>업체배송</b> -->
-
-
-
-
-                           <!--                                              <em><b>합배송 불가</b></em> -->
-
-
-                           <!--                                              <em><b>합배송 불가</b></em> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        </div></li>
-
-
-                     <li><span>오늘드림</span>
-                        <div>
-                           2,500원 또는 5,000원 <a
-                              href="javascript:goods.detail.todayDelivery.openQuickPopMidle('question');"
-                              class="ico_info">배송정보 안내 레이어열기</a>
-                        </div></li>
-
-                     <!-- 202005 상품개선 : 오늘드림 빠름배송 -->
-                     <li class="liQuickAI" style="display: none;"><span
-                        class="tx_tit"> 오늘드림 빠름 배송 AI 예측 <!-- 202005 상품개선 : 자세히 보기 위치 변경 -->
-                           <a
-                           href="javascript:goods.detail.todayDelivery.openQuickDeliAI();"
-                           class="ico_infoMore">자세히 보기</a>
-                     </span>
-
-                        <p class="tx_addre">
-                           <span>┖ </span><span class="quickUsrAddr">서울특별시 도봉구
-                              도봉로112길</span> 기준
-                           <!-- 202005 상품개선 : tx_cont 위치 변경 -->
-                           <span class="tx_cont"> <span class="span_dlvTitlNm">1시간
-                                 내</span> <span class="span_maxDeliPer">63%</span>
-                           </span>
-                        </p></li>
-
-                  </ul>
-               </div>
-
-
-               <div class="row">
-                  <p class="tit">결제혜택</p>
-                  <div class="txt_list">
-
-                     <p>
-                        THE CJ 카드 추가 10%할인 <a
-                           href="javascript:goods.detail.openCardFullPop();"
-                           class="ico_info">카드혜택가 안내 레이어 열기</a>
-                     </p>
-
-
-
-
-
-                     <p>
-                        CJ ONE 포인트 <span class=""></span> 최대 2% 적립 예상 <a
-                           href="javascript:goods.detail.openCjonepntPop();"
-                           class="ico_info">CJ ONE 포인트 예상적립 레이어 열기</a>
-                     </p>
-
-
-
-                  </div>
-               </div>
-
-
-            </div>
-
-
-
-            <div class="option_add_area">
-
-
-               <div class="prd_cnt_box">
-
-
-                  <div class="tit_area">
-                     <span>구매수량</span>
-                  </div>
-                  <div class="cont_area">
-
-
-<%-- <form id="order_hidden_value" method="post" action="order.do">  
-<input type="hidden" name="prImg" value="${img_Name.prm_url}"/> <!-- 이미지 -->
-<input type="hidden" name="brand" value="${img_Name.br_name }"/> <!-- 브랜드 -->
-<input type="hidden" name="product" value="${img_Name.pr_name}"/> <!-- 제품명 -->
-<input type="hidden" name="prPrice" value="${ prd_price.prpri_price }"/> <!-- 1개 원가 -->
-<input type="hidden" name="prPriceCnt" value=""/> <!-- 수량 * 원가 -->
-<input type="hidden" name="realPrice" value="${ prd_price.price }"/> <!-- 1개 구매가 -->
-<input type="hidden" name="realPricehidden" value=""/> <!-- 수량 * 구매가 -->
-<input type="hidden" name="prCount" value=""/> <!-- 수량 -->
-</form> --%>
-
-<form id="order_hidden_value" method="post" action="order.do">  
-<input type="hidden" name="prImg" value="https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0014/A00000014170417ko.jpg?l=ko"/> <!-- 이미지 -->
-<input type="hidden" name="brand" value="브링그린"/> <!-- 브랜드 -->
-<input type="hidden" name="product" value="브링그린 티트리시카 수딩토너 510ml"/> <!-- 제품명 -->
-<input type="hidden" name="prPrice" value="22000"/> <!-- 1개 원가 -->
-<input type="hidden" name="prPriceCnt" value="22000"/> <!-- 수량 * 원가 -->
-<input type="hidden" name="realPrice" value="18000"> <!-- 1개 구매가 -->
-<input type="hidden" name="realPricehidden" value="36000" /> <!-- 수량 * 구매가 -->
-<input type="hidden" name="prCount" value="2"/> <!-- 수량 -->
- <input type="hidden" class="prCode" name="prCode" value="pr001002"><br><!-- 상품코드(추가) -->
- <input type="hidden" class="priceCode" name="priceCode" value="prpr000003"><!-- 단가코드(추가) -->
- <input type="hidden" class="saleCode" name="saleCode" value="sa000003"><!-- 할인코드(추가) -->
-</form>
-
-                     <span class="option_cnt_box">
-                        <button class="btnCalc minus" id="minusbutton">수량1감소</button> 
-                           <input type="text" id="cartCnt_A000000152314001"
-                           name="cartCnt_A000000152314001" value="1" class="tx_num"
-                           title="구매수량"> <!-- 수량 --> <!-- id,name값이 상품코드랑 수량으로 날라가 ? -->
-                        <button class="btnCalc plus"
-                           onclick="plus();">수량
-                           1증가</button>
-                     </span>
-<!--                      <span class="option_cnt_box">
-                        <button class="btnCalc minus"
-                           onclick="goods.detail.cart.prevVal('A000000152314001','13600','1');">수량
-                           1감소</button> <input type="text" id="cartCnt_A000000152314001"
-                        name="cartCnt_A000000152314001" value="1" class="tx_num"
-                        title="구매수량">
-                        <button class="btnCalc plus"
-                           onclick="goods.detail.cart.nextVal('A000000152314001','13600','1');">수량
-                           1증가</button>
-                     </span> -->
-
-                  </div>
-               </div>
-
-
-            </div>
-
-
-
-
-
-
-
-
-            <div class="prd_total_price">
-               <span class="tx_tit">상품금액 합계</span> <input type="hidden"
-                  id="totalCnt" value="1" name="totalCnt"> <input
-                  type="hidden" id="totalPrc" value="13600" name="totalPrc">
-
-
-               <span class="tx_cont"><span class="tx_num" id="totalPrcTxt"></span>원</span>
-                                                         <!-- ${ prd_price.price } -->
-            </div>
-
-
-         
-         <div class="today_dv">
-      
-            <div class="prd_btn_area">
-               <button class="btnBasket  goods_cart"
-                  onclick="javascript:common.popLayer.todayDelivery.openTodayDeliveryNotice('goodsdetail.cart');"
-                  data-attr="상품상세^주문유형^장바구니">장바구니</button>
-               <!-- <button class="btnBuy goods_buy" id="cartBtn" onClick="javascript:goods.detail.bindBtnBuy();">구매하기</button> -->
-
-               <button class="btnBuy goods_buy" id="cartBtn"
-                  data-attr="상품상세^주문유형^바로구매">바로구매</button>
-               <button class="btnSoldout dupItem goods_cart"
-                  style="display: none;" onclick="javascript:;">일시품절</button>
-               <button class="goods_buy btnReStock" style="display: none;"
-                  onclick="javascript:;"
-                  data-attr="상품상세^재입고알림신청^[1+1]SNP UV 퍼펙트 에어쿨 선크림 더블 기획 (50ml+50ml)_클릭"
-                  data-trk="/Home_Planshop3">재입고 알림신청</button>
-               
-            </div>
-
-
-
-         </div>
-
-      </div>
-   </div>
-<!--상단 페이지 최종  -->
-
+  <div id="Contents">
+<!-- 리뷰 모달창 만들기 목표 -->
+<!-- 
+ <div class="tabConts prd_detail_cont show" id="gdasContentsArea">
+ <div class="review_wrap renew review-reward-notice">
+ 
+	<div class="product_rating_area">
+	 <div class="inner clrfix">
+			<div class="grade_img">
+				<p class="img_face"><span class="grade grade5"></span><em>최고</em></p>grade5 : 최고, grade4 : 좋음, grade3 : 보통, grade2 : 별로, grade1 : 나쁨 
+			</div>
+			<div class="star_area">
+			<p class="total">총 <em>4,933 </em>건</p> ## 리뷰 고도화 2차 ## 리뷰 전체 건수(본상품+연관상품)
+				<p class="num"><strong>4.8</strong><span>점</span></p>
+				<ul class="star_list">
+					
+						
+							
+								<li><span class="rating"></span><img src="https://image.oliveyoung.co.kr/pc-static-root/image//product/bg_rating_star.png"></li>
+							
+							
+							
+							
+					
+						
+							
+								<li><span class="rating"></span><img src="https://image.oliveyoung.co.kr/pc-static-root/image//product/bg_rating_star.png"></li>
+							
+							
+							
+							
+					
+						
+							
+								<li><span class="rating"></span><img src="https://image.oliveyoung.co.kr/pc-static-root/image//product/bg_rating_star.png"></li>
+							
+							
+							
+							
+					
+						
+							
+								<li><span class="rating"></span><img src="https://image.oliveyoung.co.kr/pc-static-root/image//product/bg_rating_star.png"></li>
+							
+							
+							
+							
+					
+						
+							
+							
+								<li><span class="rating" style="width:80%;"></span><img src="https://image.oliveyoung.co.kr/pc-static-root/image//product/bg_rating_star.png"></li>
+							
+							
+							
+					
+				</ul>
+			</div>
+			<div class="graph_area">
+					<ul class="graph_list">
+						
+							
+								
+									
+									<li>
+										<span class="per">87%</span>
+										<div class="graph"><span style="height:87%;"></span></div>
+										<span class="txt">5점</span>
+									</li>
+								
+									
+									<li>
+										<span class="per">11%</span>
+										<div class="graph"><span style="height:11%;"></span></div>
+										<span class="txt">4점</span>
+									</li>
+								
+									
+									<li>
+										<span class="per">2%</span>
+										<div class="graph"><span style="height:2%;"></span></div>
+										<span class="txt">3점</span>
+									</li>
+								
+									
+									<li>
+										<span class="per">0%</span>
+										<div class="graph"><span style="height:0%;"></span></div>
+										<span class="txt">2점</span>
+									</li>
+								
+									
+									<li>
+										<span class="per">0%</span>
+										<div class="graph"><span style="height:0%;"></span></div>
+										<span class="txt">1점</span>
+									</li>
+								
+							
+							
+						
+					</ul>
+				</div>
+	
+			<div class="write_info">
+				<dl>
+					<dt>리뷰를 써보세요</dt>
+				</dl>
+				<p class="alignCenter"><button class="btnInquiry" id="gdasWrite" data-rel="layer" data-target="layWrite" data-attr="상품상세^리뷰작성^리뷰 작성">리뷰 작성</button></p>
+			</div>
+		</div>
+	</div> 
+ </div>
 </div>
-   </div>
-      </div>
-      
-<script> /* 원가 세일가 뿌리는 스크립트 */
-var sale_price = ${ prd_price.price };
-$(".price-2 strong").text(sale_price.toLocaleString());
-var price= ${ prd_price.prpri_price };
-$(".price-1 strike").text(price.toLocaleString());
-$("#totalPrcTxt").text(sale_price.toLocaleString()); /* 첫 토탈 가격 */
-
-/* input 태그에 하나원가 , 하나 실구매가 세팅 */
-   var num = 1;
- 
- $("input[name=realPricehidden]").attr("value", sale_price.toLocaleString());
- $("input[name=prPriceCnt]").attr("value", price.toLocaleString());
- //alert(sale_price.toLocaleString());
- $("input[name=prCount]").attr("value", num);
- 
- 
-</script>      
-
-<script> /* 총 구매가 구현 스크립트 */
-
-   //var num = 1;
-   
-function plus() {
-   //alert("+클릭");
-   //id =  cartCnt_A000000152314001 의 value의값 증가 
-   num=num+1;
-   document.getElementById("cartCnt_A000000152314001").setAttribute("value", num);
-   /* +버튼 클릭시 총 구매 가격 */
-   $("#totalPrcTxt").text((sale_price*num).toLocaleString());
-   
-   /* 바로구매시 총구매가 넘겨줄 input태그의 value값 셋해주는 부분. */
-   var realPrice = (sale_price*num).toLocaleString();
-   $("input[name=realPricehidden]").attr("value", realPrice);
-   //alert(realPrice); 성공
-   /* 총구매량 원가 */
-   var prPriceCnt = (price*num).toLocaleString();
-   $("input[name=prPriceCnt]").attr("value", prPriceCnt);
-   //alert(prPriceCnt);
-}
-   
-   $('#minusbutton').on("click", function() {
-   //alert("-클릭");
-   //id =  cartCnt_A000000152314001 의 value의값 감소 
-   num=num-1;
-   if (num<=0) {
-      alert('1개 이상부터 구매할 수 있는 상품입니다.')
-      num=1;
-   }else{
-      $("#cartCnt_A000000152314001").attr("value", num);
-      $("#totalPrcTxt").text((sale_price*num).toLocaleString());
-      
-      /* 바로구매시 총구매가 넘겨줄 input태그의 value값 셋해주는 부분. */
-      var realPrice = (sale_price*num).toLocaleString();
-      $("input[name=realPricehidden]").attr("value", realPrice);
-      //alert(realPrice);
-      /*  총구매량 원가  */
-      var prPriceCnt = (price*num).toLocaleString();
-      $("input[name=prPriceCnt]").attr("value", prPriceCnt);
-      //alert(prPriceCnt);
-   }
-});
-
-</script>
-<script> /* 바로구매 버튼을 클릭하면 히든된 input값들을 담은 form태그 서브밋 하는 곳. */
-   
-   $("#cartBtn").on("click", function() {
-      $("#order_hidden_value").submit();
-   });
-   
-   
-</script>
+  
+  </div> 
+		 </div>		 
+	 -->
 </body>
 </html>
