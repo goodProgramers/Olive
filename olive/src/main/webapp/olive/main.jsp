@@ -9,6 +9,7 @@
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
 <title>잘하셨조 - 올리브영 온라인몰</title>
 <style>
 @font-face{
@@ -2459,7 +2460,7 @@ rate_span{
 								<p class="sub_depth"><a href="/olive/productMCate.do?ca_code=${midMap.key.ca_code}">${midMap.key.ca_name}</a></p>
 								<ul>
 									<c:forEach items="${midMap.value}" var="bottList">
-										<li><a href="">${bottList.ca_name}</a></li>
+										<li><a href="/olive/productSCate.do?ca_code=${bottList.ca_code}">${bottList.ca_name}</a></li>
 									</c:forEach>
 								</ul>
 								<c:if test="${i.end or i.index%4 == 3}"></div></c:if>
@@ -2508,7 +2509,7 @@ rate_span{
 				</c:forEach>
 
 				<li class="lst">
-					<a href="javascript:common.link.commonMoveUrl('amusement/intro.do')" class="main_menu" data-attr="공통^메인롤링^AWARDS" data-trk="/">
+					<a href="" class="main_menu">
 						<span class="icon_awards">AWARDS</span>
 					</a>
 				</li>

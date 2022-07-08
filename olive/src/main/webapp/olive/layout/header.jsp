@@ -231,7 +231,7 @@
                             <p class="sub_depth"><a href="/olive/productMCate.do?ca_code=${midMap.key.ca_code}">${midMap.key.ca_name}</a></p>
                             <ul>
                                 <c:forEach items="${midMap.value}" var="bottList">
-                                    <li><a href="">${bottList.ca_name}</a></li>
+                                    <li><a href="/olive/productSCate.do?ca_code=${bottList.ca_code}">${bottList.ca_name}</a></li>
                                 </c:forEach>
                             </ul>
                             <c:if test="${i.end or i.index%4 == 3}"></div></c:if>

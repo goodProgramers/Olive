@@ -160,7 +160,6 @@ public class CategoryMainDAOImpl implements CategoryMainDAO {
                         prDTO = new ProductBrandPriceDTO();
                         prDTO.setPr_code(rs2.getString("pr_code"));
                         prDTO.setPr_name(rs2.getString("pr_name"));
-                        prDTO.setPr_name(rs2.getString("pr_name"));
                         prDTO.setPrpri_price(rs2.getInt("price"));
                         prDTO.setSa_rate(rs2.getDouble("sale_rate"));
                         prDTO.setRealPrice(rs2.getInt("realprice"));
