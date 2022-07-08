@@ -1,6 +1,8 @@
 package service;
 
 import com.util.ConnectionProvider;
+import com.util.JdbcUtil;
+
 import domain.BrandDTO;
 import domain.CategoryDTO;
 import domain.ProductBrandPriceDTO;
@@ -34,11 +36,14 @@ public class SCategoryService {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
+        	JdbcUtil.close(connection);
+        	/*
             try {
                 connection.close();
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
+            */
         }
         return list;
     }
@@ -55,14 +60,18 @@ public class SCategoryService {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
+        	JdbcUtil.close(connection);
+        	/*
             try {
                 connection.close();
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
+            */
         }
         return list;
     }
+    
     public List<BrandDTO> selectSCateBrand(String ca_code) {
         List<BrandDTO> list = null;
         Connection connection = null;
@@ -74,6 +83,15 @@ public class SCategoryService {
             throw new RuntimeException(e);
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+        	JdbcUtil.close(connection);
+        	/*
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            */
         }
 
         return list;
@@ -90,7 +108,17 @@ public class SCategoryService {
             throw new RuntimeException(e);
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+        	JdbcUtil.close(connection);
+        	/*
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            */
         }
+        
         return list;
     }
 }
