@@ -20,14 +20,12 @@ public class SearchHandler implements CommandHandler {
         } else {
             //임시
             response.sendRedirect("/olive/main.do");
-            return null;
         }
 
-        /*
-        HttpSession session = request.getSession();
+/*        HttpSession session = request.getSession();
         if(session.getAttribute("auth") != null){
-        }
-        */
+
+        }*/
 
         SearchService searchService = SearchService.getInstance();
         List<ProductBrandPriceDTO> searchProductList = searchService.selectSearchProduct(keyword);

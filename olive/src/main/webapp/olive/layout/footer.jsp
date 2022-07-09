@@ -52,7 +52,7 @@
         <div class="conts">
             <ul class="list-area">
                 <li>
-                    <p class="logo"><a href="javascript:common.link.moveMainHome();"><img src="/images/logo/olive_zero_logo.png" alt="OLIVEYOUNG"></a></p>
+                    <p class="logo"><a href="javascript:common.link.moveMainHome();"><img src="https://image.oliveyoung.co.kr/pc-static-root/image/footer/foot_logo.png" alt="OLIVEYOUNG"></a></p>
                     <h2>씨제이올리브영 주식회사</h2>
                     <p>대표이사 : 구창근 | 사업자등록번호 : 809-81-01574</p>
                     <p>주소 : (04323) 서울특별시 용산구 한강대로 372, 24층 <br>(동자동, KDB타워)</p>
