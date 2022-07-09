@@ -2,38 +2,37 @@ package service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
 
 import javax.naming.NamingException;
 
 import com.util.ConnectionProvider;
 import com.util.JdbcUtil;
 
-import domain.OrderMemberInfoDTO;
+import domain.OrderDetailPaymentDTO;
 import persistence.OrderPaymentDAOImpl;
 
-public class OrderMemInfoJsonService {
+public class OrderFormService {
 	// 싱글톤
-	private OrderMemInfoJsonService() {}
-	private static OrderMemInfoJsonService instance = null;
-	public static OrderMemInfoJsonService getInstance() {
+	private OrderFormService() {}
+	private static OrderFormService instance = null;
+	public static OrderFormService getInstance() {
 		if (instance == null) {
-			instance = new OrderMemInfoJsonService();
+			instance = new OrderFormService();
 		}
 		return instance;
 	}
-
-	public List<OrderMemberInfoDTO> selectMemAddrInfo(String memberCode, String addrName) {
+	
+	public int insertOrder(OrderDetailPaymentDTO orderDetailPaymentDTO) {
 		Connection con = null;
 
 		try {
 			con = ConnectionProvider.getConnection();
 			OrderPaymentDAOImpl dao = OrderPaymentDAOImpl.getInstance();
 
-			List<OrderMemberInfoDTO> addrInfoList = null;
-			addrInfoList = dao.selectMemAddrInfo(con, memberCode, addrName);
+			int result;
+			result = dao.insertOrder(con, orderDetailPaymentDTO);
 
-			return addrInfoList;
+			return result;
 
 		} catch (NamingException | SQLException e) {
 			throw new RuntimeException(e);
@@ -41,6 +40,6 @@ public class OrderMemInfoJsonService {
 			JdbcUtil.close(con);
 		}
 		
-	} // selectMemAddrInfo
+	} // insertOrder
 	
 } // class

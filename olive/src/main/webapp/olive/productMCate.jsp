@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>hwan/2022/07/06-11:58 AM</title>
     <link rel="shortcut icon" type="image/x-icon" href="../images/SiSt.ico">
-    <link rel="stylesheet" href="/css/module.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/module.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <%--중분류 탑 5 --%>

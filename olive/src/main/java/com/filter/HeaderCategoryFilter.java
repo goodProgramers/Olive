@@ -1,7 +1,9 @@
 package com.filter;
 
 import domain.CategoryDTO;
+import domain.ProductBrandPriceDTO;
 import service.CategoryMainService;
+import service.SearchTOP3ProductService;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -21,6 +23,12 @@ public class HeaderCategoryFilter implements Filter {
         CategoryMainService categoryMainService = CategoryMainService.getInstance();
         Map<CategoryDTO, Map<CategoryDTO, List<CategoryDTO>>> totMap = categoryMainService.selectTopCate();
         servletRequest.setAttribute("totMap", totMap);
+        
+		// 검색창 할인 TOP3 제품
+		SearchTOP3ProductService searchTop3ProductService = SearchTOP3ProductService.getInstance();
+		List<ProductBrandPriceDTO> searchTop3List = searchTop3ProductService.serachTop3ProductSelect();
+		servletRequest.setAttribute("searchTop3List", searchTop3List);
+		
         filterChain.doFilter(servletRequest, servletResponse);
     }
 

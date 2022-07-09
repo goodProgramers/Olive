@@ -12,7 +12,7 @@
 <body>
 <h3>제품상세보기 페이지</h3>
 <form action="order.do" method="post">
-	<input type="text" name="memberID" value="pyl1234" style="display:none;">
+	<input type="hidden" name="memberCode" value="me000004">
 	상품코드 : <input type="text" class="prCode" name="prCode" value="pr001002"><br>
 	상품이미지 : <input type="text" class="prImg" name="prImg" value="https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0014/A00000014170417ko.jpg?l=ko"><br>
 	상품브랜드 : <input type="text" class="brand" name="brand" value="브링그린"><br>
@@ -33,6 +33,8 @@
 	</select><br>
 	<input type="text" class="realPricehidden" name="realPricehidden" value="17820" style="display:none;">
 	구매가 : <input type="text" class="realPrice" name="realPrice" value="17820"><br>
+	<input type="hidden" name="priceCode" value="테스트값">
+	<input type="hidden" name="saleCode" value="테스트값">
 	<button type="submit">바로구매</button>
 </form>
 

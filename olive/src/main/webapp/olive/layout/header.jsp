@@ -228,10 +228,10 @@
                         <h2>${totMap.key.ca_name}</h2>
                         <c:forEach items="${totMap.value}" var="midMap" varStatus="i">
                             <c:if test="${i.begin or i.index%4 == 0}"><div class="sub_menu_box"></c:if>
-                            <p class="sub_depth"><a href="/olive/productMCate.do?ca_code=${midMap.key.ca_code}">${midMap.key.ca_name}</a></p>
+                            <p class="sub_depth"><a href="<%=request.getContextPath()%>/olive/productMCate.do?ca_code=${midMap.key.ca_code}">${midMap.key.ca_name}</a></p>
                             <ul>
                                 <c:forEach items="${midMap.value}" var="bottList">
-                                    <li><a href="/olive/productSCate.do?ca_code=${bottList.ca_code}">${bottList.ca_name}</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/olive/productSCate.do?ca_code=${bottList.ca_code}">${bottList.ca_name}</a></li>
                                 </c:forEach>
                             </ul>
                             <c:if test="${i.end or i.index%4 == 3}"></div></c:if>
@@ -241,15 +241,15 @@
             </ul>
         </div>
         <ul class="gnb_menu_list">
-            <li><a href="<%=request.getContextPath()%>main/getHotdealList.do"><span>오특</span></a></li>
-            <li><a href="<%=request.getContextPath()%>main/getNewList.do"><span>신상</span></a></li>
-            <li><a href="<%=request.getContextPath()%>main/getBestList.do"><span>랭킹</span></a></li>
-            <li><a href="<%=request.getContextPath()%>planshop/getSpcShopDetail.do?dispCatNo=500000200080001"><span>프리미엄관</span></a></li>
-            <li><a href="<%=request.getContextPath()%>main/getPlanShopList.do"><span>기획전</span></a></li>
-            <li><a href="<%=request.getContextPath()%>main/getSaleList.do"><span>세일</span></a></li>
-            <li><a href="<%=request.getContextPath()%>giftCardGuide/getGiftCardGuide.do"><span>기프트카드</span></a></li>
-            <li><a href="<%=request.getContextPath()%>main/getMembership.do"><span>멤버십/쿠폰</span></a></li>
-            <li><a href="<%=request.getContextPath()%>main/getEventList.do"><span>이벤트</span></a></li>
+            <li><a href="<%=request.getContextPath()%>/main/getHotdealList.do"><span>오특</span></a></li>
+            <li><a href="<%=request.getContextPath()%>/main/getNewList.do"><span>신상</span></a></li>
+            <li><a href="<%=request.getContextPath()%>/main/getBestList.do"><span>랭킹</span></a></li>
+            <li><a href="<%=request.getContextPath()%>/planshop/getSpcShopDetail.do?dispCatNo=500000200080001"><span>프리미엄관</span></a></li>
+            <li><a href="<%=request.getContextPath()%>/main/getPlanShopList.do"><span>기획전</span></a></li>
+            <li><a href="<%=request.getContextPath()%>/main/getSaleList.do"><span>세일</span></a></li>
+            <li><a href="<%=request.getContextPath()%>/giftCardGuide/getGiftCardGuide.do"><span>기프트카드</span></a></li>
+            <li><a href="<%=request.getContextPath()%>/main/getMembership.do"><span>멤버십/쿠폰</span></a></li>
+            <li><a href="<%=request.getContextPath()%>/main/getEventList.do"><span>이벤트</span></a></li>
         </ul>
     </div>
 
@@ -262,3 +262,29 @@
     })
 </script>
 
+<script>	
+// 검색창 부분
+ 	$(".inp_placeholder").on("click", function () {
+		$(".search_layer").css("display", "block");
+		// $(".header_inner .search_box .search_layer .search_tab_cont").css("display", "block");
+		$(".inp_placeholder").focus();
+		$(".inp_placeholder").prev().css("display", "none");/* label 태그 숨김 */
+		$("#searchRecent").addClass('on');
+		$("#searchPop").removeClass("on");
+		$(".no_data").css("display", "block"); // 급상승검색어 일 때는 안뜨게 바꾸기 **
+	}); 
+	
+	$("#searchRecent").on("click", function () {
+		$(this).addClass('on');
+		$("#searchPop").removeClass("on");
+		$(".no_data").css("display", "block");
+		$("#w_pop_cont").css("display", "none");
+	});
+	
+	$("#searchPop").on("click", function () {
+		$(this).addClass('on');
+		$("#searchRecent").removeClass("on");
+		$(".no_data").css("display", "none");
+		$("#w_pop_cont").css("display", "block");
+	});
+</script>
