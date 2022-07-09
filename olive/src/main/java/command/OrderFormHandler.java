@@ -18,11 +18,11 @@ public class OrderFormHandler implements CommandHandler{
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		String memberCode = request.getParameter("memberCode") == null ? "pyl1234" : request.getParameter("memberCode"); // pyl1234
+		String memberCode = request.getParameter("memberCode") == null ? "me000004" : request.getParameter("memberCode"); // pyl1234
 		System.out.println(memberCode);
 		request.setAttribute("memberCode", memberCode);
 		
-		
+		System.out.println("주문완료~~~!");
 		
 		return "/olive/orderform.jsp";
 		

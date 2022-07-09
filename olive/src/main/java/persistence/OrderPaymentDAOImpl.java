@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import com.util.JdbcUtil;
 
@@ -23,18 +24,18 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 		}
 		return instance;
 	}
-	
+
 	// 회원의 배송지 리스트
 	@Override
 	public List<OrderMemberInfoDTO> selectMemberAddr(Connection conn, String memberCode) throws SQLException {
 		String sql = "SELECT t.*, mbs_pointrate "
-					+ "FROM( "
-					+ "    SELECT m.me_code, me_id, ad_main, ad_code, ad_name, ad_member, ad_tel, SUBSTR(ad_tel,5,4) midtel, SUBSTR(ad_tel,5,4) endtel, ad_address, my_point, mp.mbs_code "
-					+ "    FROM member m JOIN address a ON m.me_code = a.me_code "
-					+ "    JOIN mypage mp ON m.me_code = mp.me_code "
-					+ ") t JOIN membership ms ON t.mbs_code = ms.mbs_code "
-					+ "WHERE t.me_code = ? ";
-		
+				+ "FROM( "
+				+ "    SELECT m.me_code, me_id, ad_main, ad_code, ad_name, ad_member, ad_tel, SUBSTR(ad_tel,5,4) midtel, SUBSTR(ad_tel,5,4) endtel, ad_address, my_point, mp.mbs_code "
+				+ "    FROM member m JOIN address a ON m.me_code = a.me_code "
+				+ "    JOIN mypage mp ON m.me_code = mp.me_code "
+				+ ") t JOIN membership ms ON t.mbs_code = ms.mbs_code "
+				+ "WHERE t.me_code = ? ";
+
 		ArrayList<OrderMemberInfoDTO> memberAddrList = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -52,7 +53,7 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 		int my_point; // 회원의 총포인트
 		String mbs_code; // 회원등급코드
 		double mbs_pointrate; // 적립율
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, memberCode);
@@ -154,8 +155,8 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 	@Override
 	public List<OrderMemberInfoDTO> selectMemberTotPoint(Connection conn, String memberCode) throws SQLException {
 		String sql = "SELECT m.me_code, me_id, my_point, mp.mbs_code "
-					+ "FROM member m JOIN mypage mp ON m.me_code = mp.me_code "
-					+ "WHERE m.me_code = ? ";
+				+ "FROM member m JOIN mypage mp ON m.me_code = mp.me_code "
+				+ "WHERE m.me_code = ? ";
 
 		ArrayList<OrderMemberInfoDTO> memberTotPoint = null;
 		PreparedStatement pstmt = null;
@@ -193,20 +194,21 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 		}
 
 		return memberTotPoint;
-		
+
 	} // selectMemberTotPoint
 
 	// 주문 테이블 insert
 	@Override
-	public int insertOrder(Connection conn, OrderDetailPaymentDTO orderDetailPaymentDTO) throws SQLException {
+	public OrderDetailPaymentDTO insertOrder(Connection conn, OrderDetailPaymentDTO orderDetailPaymentDTO) throws SQLException {
 		PreparedStatement pstmt = null;
-		int result;
+		ResultSet rs = null;
+		OrderDetailPaymentDTO dto = null;
 
 		String sql = "INSERT INTO o_order (or_code, or_price, or_date, or_shippay, or_pay, or_todaygive, me_code, or_addresrequest, ad_code) "
-					+ "VALUES(('or' || LPAD(order_seq.nextval, 6, '0')),  ?, TRUNC(SYSDATE), ?, ?, ?, ?, ?, ?)";
+				+ "VALUES(('or' || LPAD(order_seq.nextval, 6, '0')),  ?, TRUNC(SYSDATE), ?, ?, ?, ?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
+
 			pstmt.setInt(1, orderDetailPaymentDTO.getOr_price());
 			pstmt.setInt(2, orderDetailPaymentDTO.getOr_shippay());
 			pstmt.setInt(3, orderDetailPaymentDTO.getOr_pay());
@@ -214,33 +216,46 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 			pstmt.setString(5, orderDetailPaymentDTO.getMe_code());
 			pstmt.setString(6, orderDetailPaymentDTO.getOr_addresrequest());
 			pstmt.setString(7, orderDetailPaymentDTO.getAd_code());
-			
-			result = pstmt.executeUpdate();  // 인서트가 완료되면 1을 넘겨줌
+
+			pstmt.executeUpdate();  // 인서트가 완료되면 1을 넘겨줌
+
+			sql = "SELECT 'or' || LPAD(order_seq.currval, 6, '0') or_code FROM dual";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+				dto = new OrderDetailPaymentDTO();
+				dto.setOr_code(rs.getString("or_code"));								
+			} // if 
 
 		} finally {
 			JdbcUtil.close(pstmt);
+			JdbcUtil.close(rs); 
 		}
 
-		return result;
+		return dto;
+
 	} // insertOrder
-	
-	// 주문 상세 테이블 insert
+
+	// 주문상세테이블 인서트
 	@Override
-	public int insertOrderDetail(Connection conn, OrderDetailPaymentDTO orderDetailPaymentDTO) throws SQLException {
+	public int insertOrderDetail(Connection conn, String or_code, String pr_code, String ord_count, String ord_price, String prpri_code, String sa_code) throws SQLException {
 		PreparedStatement pstmt = null;
 		int result;
 
 		String sql = "INSERT INTO orderdetail (ord_code, or_code, pr_code, ord_count, ord_price, prpri_code, sa_code) "
-					+ "VALUES ( ('ord' || LPAD(orderdetail_seq.nextval, 6, '0')), ('or' || LPAD(order_seq.currval, 6, '0')), ?, ?, ?, ?, ?)";
+				+ "VALUES ( ('ord' || LPAD(orderdetail_seq.nextval, 6, '0')), ?, ?, ?, ?, ?, ?)";
+		// + "VALUES ( ('ord' || LPAD(orderdetail_seq.nextval, 6, '0')), ('or' || LPAD(order_seq.currval, 6, '0')), ?, ?, ?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1, orderDetailPaymentDTO.getPr_code());
-			pstmt.setInt(2, orderDetailPaymentDTO.getOrd_count());
-			pstmt.setInt(3, orderDetailPaymentDTO.getOrd_price());
-			pstmt.setString(4, orderDetailPaymentDTO.getPrpri_code());
-			pstmt.setString(5, orderDetailPaymentDTO.getSa_code());
-			
+
+			pstmt.setString(1, or_code);
+			pstmt.setString(2, pr_code);
+			pstmt.setInt(3, Integer.parseInt(ord_count));
+			pstmt.setInt(4, Integer.parseInt(ord_price));
+			pstmt.setString(5, prpri_code);
+			pstmt.setString(6, sa_code);
+
 			result = pstmt.executeUpdate();  // 인서트가 완료되면 1을 넘겨줌
 
 		} finally {
@@ -248,6 +263,41 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 		}
 
 		return result;
-	} // insertOrderDetail
-	
+	}
+
+	// 결제 테이블 insert
+	@Override
+	public int insertPayment(Connection conn, String pa_way, String pa_amount, String or_code) throws SQLException {
+		PreparedStatement pstmt = null;
+		int result;
+		
+		int authNo = 0;
+		String cardNumber = "";
+		for (int i = 1; i <= 4; i++) {
+			authNo = (int)(Math.random() * (9999 - 1000 + 1)) + 1000;
+			cardNumber += (cardNumber == "" ? authNo + "" : "-" + authNo);
+		}
+
+		String sql = "INSERT INTO payment (pa_code, pa_way, pa_amount, pa_date, pa_cardnumber, pa_status, or_code) "
+				+ "	VALUES(('pa' || LPAD(payment_seq.nextval, 6, '0')), ?, ?, TRUNC(SYSDATE), ?, 0, ?)";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, pa_way);
+			pstmt.setInt(2, Integer.parseInt(pa_amount));
+			pstmt.setString(3, cardNumber); // 카드번호는 랜덤
+			pstmt.setString(4, or_code);
+
+			result = pstmt.executeUpdate();  // 인서트가 완료되면 1을 넘겨줌
+
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+
+		return result;
+
+	}
+
+
 } // class

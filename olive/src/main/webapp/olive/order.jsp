@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" type="image/x-icon" href="../images/SiSt.ico">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/module.css">
+<script>history.replaceState({}, null, location.pathname);</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <title>2022. 6. 27. - 오전 9:06:35</title>
 <style>
@@ -1240,7 +1241,7 @@ element.style {
 								<option name="배송메시지를 선택해주세요." value="없음">배송메시지를 선택해주세요.</option>
 								<option value="부재시 경비실에 맡겨주세요.">부재시 경비실에 맡겨주세요.</option>/n
 								<option value="부재시 문앞에 놓아주세요.">부재시 문앞에 놓아주세요.</option>/n
-								<option value="파손의 위험이 있는 상품이오니,  배송 시 주의해주세요.">파손의 위험이 있는 상품이오니,  배송 시 주의해주세요.</option>/n
+								<option value="파손의 위험이 있는 상품이오니, 배송 시 주의해주세요.">파손의 위험이 있는 상품이오니,  배송 시 주의해주세요.</option>/n
 								<option value="배송전에 연락주세요.">배송전에 연락주세요.</option>/n
 								<option value="택배함에 넣어주세요.">택배함에 넣어주세요.</option>/n
 							</select>
@@ -1281,10 +1282,9 @@ element.style {
 							<div class="tbl_cell w700">
 								<div class="prd_info">
 									<div class="prd_img">	
-										<img src="${cartProductList.cart_prImgs }" alt="장바구니 상품 임시 이미지" onerror="common.errorImg(this);">
+										<img src="${cartProductList.cart_prImgs }" alt="장바구니 상품 임시 이미지">
 									</div>
 									<div class="prd_name">
-										<input type="hidden" name="prCode" value="${cartProductList.cart_prCodes }">
 										<span>${cartProductList.cart_brands }</span>
 										<p>${cartProductList.cart_products }</p>
 									</div>
@@ -1366,17 +1366,15 @@ element.style {
 					</div>
 					<ul class="payment_info_form" id="payMethodList" style="display: block;">
 						<li class="bg_area"><!-- 2017-01-18 수정 : 클래스 추가 -->
-							<input type="hidden" id="payCouponIndex" value="" paycd="">
-							<input type="hidden" id="easyPayCd" value="">
-							<span><input type="radio" id="payMethod_11" name="payMethod" value="신용카드" cashreceipt="N" checked="checked"><label id="payMethodLabel_11" for="payMethod_11">신용카드<span class="flag bn">혜택</span></label></span>
-							<span class="pay_24h_sh"><input type="radio" id="payMethod_61" name="payMethod" value="61" cashreceipt="Y" data-attr="결제수단선택^결제수단선택"><label id="payMethodLabel_61" for="payMethod_61">무통장입금</label></span>
-							<span><input type="radio" id="payMethod_25" name="payMethod" value="PAYCO" cashreceipt="N" ><label id="payMethodLabel_25" for="payMethod_25">PAYCO</label></span>
-							<span><input type="radio" id="payMethod_26" name="payMethod" value="카카오페이" cashreceipt="N" ><label id="payMethodLabel_26" for="payMethod_26">카카오페이</label></span>
-							<span><input type="radio" id="payMethod_29" name="payMethod" value="네이버페이" cashreceipt="N" ><label id="payMethodLabel_29" for="payMethod_29">네이버페이</label></span>
-							<span><input type="radio" id="payMethod_22" name="payMethod" value="휴대폰결제" cashreceipt="N" ><label id="payMethodLabel_22" for="payMethod_22">휴대폰결제</label></span>
-							<span><input type="radio" id="payMethod_21" name="payMethod" value="계좌이체" cashreceipt="Y" ><label id="payMethodLabel_21" for="payMethod_21">계좌이체</label></span>
-							<span><input type="radio" id="payMethod_24" name="payMethod" value="도서상품권" cashreceipt="Y" ><label id="payMethodLabel_24" for="payMethod_24">도서상품권</label></span>
-							<span><input type="radio" id="payMethod_23" name="payMethod" value="문화상품권" cashreceipt="N" ><label id="payMethodLabel_23" for="payMethod_23">문화상품권</label></span>
+							<span><input type="radio" id="payMethod_11" name="payMethod" value="신용카드" checked="checked"><label id="payMethodLabel_11" for="payMethod_11">신용카드<span class="flag bn">혜택</span></label></span>
+							<span><input type="radio" id="payMethod_61" name="payMethod" value="무통장입금"><label id="payMethodLabel_61" for="payMethod_61">무통장입금</label></span>
+							<span><input type="radio" id="payMethod_25" name="payMethod" value="PAYCO"><label id="payMethodLabel_25" for="payMethod_25">PAYCO</label></span>
+							<span><input type="radio" id="payMethod_26" name="payMethod" value="카카오페이"><label id="payMethodLabel_26" for="payMethod_26">카카오페이</label></span>
+							<span><input type="radio" id="payMethod_29" name="payMethod" value="네이버페이"><label id="payMethodLabel_29" for="payMethod_29">네이버페이</label></span>
+							<span><input type="radio" id="payMethod_22" name="payMethod" value="휴대폰결제"><label id="payMethodLabel_22" for="payMethod_22">휴대폰결제</label></span>
+							<span><input type="radio" id="payMethod_21" name="payMethod" value="계좌이체"><label id="payMethodLabel_21" for="payMethod_21">계좌이체</label></span>
+							<span><input type="radio" id="payMethod_24" name="payMethod" value="도서상품권"><label id="payMethodLabel_24" for="payMethod_24">도서상품권</label></span>
+							<span><input type="radio" id="payMethod_23" name="payMethod" value="문화상품권"><label id="payMethodLabel_23" for="payMethod_23">문화상품권</label></span>
 						</li>	
 					</ul>
 				</div>
@@ -1465,7 +1463,6 @@ $("#btnPay").on("click", function () {
 	} else{
 		alert("주문 상품정보 및 결제대행 서비스 이용약관에 동의가 필요합니다.");
 	}
-	
 });
 
 // 포인트 전액사용 버튼 클릭시 cjonePnt_btn

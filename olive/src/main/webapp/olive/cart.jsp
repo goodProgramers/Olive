@@ -770,7 +770,7 @@ a {
 <jsp:include page="layout/header.jsp"></jsp:include>
 
 <div id="Container">
-  <form name="cartForm" id="cartForm" action="order.do" method="post">	
+  <form name="cartForm" id="cartForm" action="order.do" method="get">	
 	<div id="Contents"><!-- #Contents -->
 			<!-- title_box -->
 			<div class="title_box">
@@ -874,7 +874,8 @@ a {
 								
 								<div class="tbl_cell w100">
 									<div class="prd_cnt">
-											<select class="amount" name="prCount" prdtp="1" prdcnt="0" ordpsbminqty="1" ordpsbmaxqty="999" qtyaddunit="1" ordqty="1" title="상품 수량 선택">
+											<input type="hidden" name="prCount" value="1">
+											<select class="amount" name="prCount2" prdtp="1" prdcnt="0" ordpsbminqty="1" ordpsbmaxqty="999" qtyaddunit="1" ordqty="1" title="상품 수량 선택">
 												<option value="1" selected="selected">1</option>											
 												<option value="2">2</option>
 												<option value="3">3</option>
@@ -952,7 +953,8 @@ a {
 								
 								<div class="tbl_cell w100">
 									<div class="prd_cnt">
-											<select class="amount" name="prCount" prdtp="1" prdcnt="0" ordpsbminqty="1" ordpsbmaxqty="999" qtyaddunit="1" ordqty="1" title="상품 수량 선택">
+											<input type="hidden" name="prCount" value="1">
+											<select class="amount" name="prCount2" prdtp="1" prdcnt="0" ordpsbminqty="1" ordpsbmaxqty="999" qtyaddunit="1" ordqty="1" title="상품 수량 선택">
 												<option value="1" selected="selected">1</option>											
 												<option value="2">2</option>
 												<option value="3">3</option>
@@ -1076,7 +1078,7 @@ $("checkOrder").on("click", function () {
 <script>
 // 수량이 바뀌면 해당 상품의 구매가와 총 판매가, 총 할인금액, 배송비, 총 결제예상금액 바꾸는 작업(구현해야함)
 $(".amount").on("change", function () {
-	alert($(this).find("option:selected").val());
+	// alert($(this).find("option:selected").val());
 	// var prPrice = $(this).parent().parent().prev().find("span.cur_price").val(); // 129000
 	// var prPrice = $(this).parent().parent().prev().children().text(); // 129000
 	var prPrice = $(this).parent().parent().prev().find("span.cur_price").val(); // 129000

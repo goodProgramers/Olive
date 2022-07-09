@@ -29,8 +29,8 @@ public class OrderFormService {
 			con = ConnectionProvider.getConnection();
 			OrderPaymentDAOImpl dao = OrderPaymentDAOImpl.getInstance();
 
-			int result;
-			result = dao.insertOrder(con, orderDetailPaymentDTO);
+			int result = 0;
+			
 
 			return result;
 

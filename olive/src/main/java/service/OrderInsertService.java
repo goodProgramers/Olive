@@ -2,6 +2,7 @@ package service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Iterator;
 
 import javax.naming.NamingException;
 
@@ -21,34 +22,47 @@ public class OrderInsertService {
 		}
 		return instance;
 	}
-	
-	public int insertOrder(OrderDetailPaymentDTO orderDetailPaymentDTO) {
-		Connection con = null;
 
+	
+	public int insertOrder(OrderDetailPaymentDTO orderDetailPaymentDTO, String[] pr_code, String[] ord_count, String[] ord_price, String[] prpri_code, String[] sa_code
+			, String pa_way, String pa_amount) {
+		
+		Connection con = null;
+		OrderDetailPaymentDTO dto = null;
+		int result = 0;
+		String or_code = null; // 주문상세, 결제 테이블에 사용할 주문번호
+		
 		try {
 			con = ConnectionProvider.getConnection();
 			con.setAutoCommit(false); // 오토커밋 취소
-			int result;
 			
 			OrderPaymentDAOImpl dao = OrderPaymentDAOImpl.getInstance();
 			
-			result = dao.insertOrder(con, orderDetailPaymentDTO);
-			if(result == 1) {
+			// 주문 테이블
+			dto = dao.insertOrder(con, orderDetailPaymentDTO); // 주문 테이블 인서트 후 주문 번호 가져오기
+			or_code = dto.getOr_code();
+			System.out.println(or_code);
+			
+			if(or_code != null) {
 				System.out.println("> 주문 테이블 insert 완료");
 			}
 			
-			/*
-			result = dao.insertOrderDetail(con, orderDetailPaymentDTO);
-			if(result == 1) {
-				System.out.println("> 주문 상세 테이블 insert 완료");
+			// 주문 상세 테이블
+			for (int i = 0; i < pr_code.length; i++) {
+				result = dao.insertOrderDetail(con, or_code, pr_code[i], ord_count[i], ord_price[i], prpri_code[i], sa_code[i]);
+				System.out.println("> 주문 상세 테이블 insert 완료" + (i+1));
 			}
-			*/
 			
-			con.commit(); // 위의 작업이 모두 완료될시 커밋
+			// 결제 테이블
+			result = dao.insertPayment(con, pa_way, pa_amount, or_code);
+			if(result == 1) System.out.println("> 결제 테이블 insert 완료");
+			
+			con.commit(); // 위의 작업이 모두 완료될 시 커밋
 			
 			return result;
 		} catch (NamingException | SQLException e) {
 			JdbcUtil.rollback(con); // 아닌 경우 롤백
+			System.out.println("> Service 내에서 주문 + 주문 상세 + 결제 insert 실패");
 			throw new RuntimeException(e);
 		} finally {
 			JdbcUtil.close(con);

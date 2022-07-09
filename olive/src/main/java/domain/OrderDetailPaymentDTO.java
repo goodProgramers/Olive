@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class OrderDetailPaymentDTO {
 	// 주문 테이블
-	private String or_code; // 주문번호(주문상세에도쓰임)
+	private String or_code; // 주문번호(주문상세테이블, 결제테이블에도쓰임)
 	private int or_price; // 구매가
 	private Date or_date; // 주문일자
 	private int or_shippay; // 배송비
@@ -23,14 +23,23 @@ public class OrderDetailPaymentDTO {
 	private String sa_code; // 할인코드
 	
 	// 결제 테이블
+	private String pa_code; // 결제번호
+	private String pa_way; // 결제수단
+	private int pa_amount; // 실제결제금액
+	private Date pa_date; // 결제일자
+	private String pa_cardnumber; // 카드번호
+	private int pa_status; // 승인상태
+
 	
 	public OrderDetailPaymentDTO() {
 		super();
 	}
 
+
 	public OrderDetailPaymentDTO(String or_code, int or_price, Date or_date, int or_shippay, int or_pay,
 			int or_todaygive, String me_code, String or_addresrequest, String ad_code, String ord_code, String pr_code,
-			int ord_count, int ord_price, String prpri_code, String sa_code) {
+			int ord_count, int ord_price, String prpri_code, String sa_code, String pa_code, String pa_way,
+			int pa_amount, Date pa_date, String pa_cardnumber, int pa_status) {
 		super();
 		this.or_code = or_code;
 		this.or_price = or_price;
@@ -47,7 +56,14 @@ public class OrderDetailPaymentDTO {
 		this.ord_price = ord_price;
 		this.prpri_code = prpri_code;
 		this.sa_code = sa_code;
+		this.pa_code = pa_code;
+		this.pa_way = pa_way;
+		this.pa_amount = pa_amount;
+		this.pa_date = pa_date;
+		this.pa_cardnumber = pa_cardnumber;
+		this.pa_status = pa_status;
 	}
+
 
 	public String getOr_code() {
 		return or_code;
@@ -169,6 +185,53 @@ public class OrderDetailPaymentDTO {
 		this.sa_code = sa_code;
 	}
 
+	public String getPa_code() {
+		return pa_code;
+	}
+
+	public void setPa_code(String pa_code) {
+		this.pa_code = pa_code;
+	}
+
+	public String getPa_way() {
+		return pa_way;
+	}
+
+	public void setPa_way(String pa_way) {
+		this.pa_way = pa_way;
+	}
+
+	public int getPa_amount() {
+		return pa_amount;
+	}
+
+	public void setPa_amount(int pa_amount) {
+		this.pa_amount = pa_amount;
+	}
+
+	public Date getPa_date() {
+		return pa_date;
+	}
+
+	public void setPa_date(Date pa_date) {
+		this.pa_date = pa_date;
+	}
+
+	public String getPa_cardnumber() {
+		return pa_cardnumber;
+	}
+
+	public void setPa_cardnumber(String pa_cardnumber) {
+		this.pa_cardnumber = pa_cardnumber;
+	}
+
+	public int getPa_status() {
+		return pa_status;
+	}
+
+	public void setPa_status(int pa_status) {
+		this.pa_status = pa_status;
+	}
 
 
 } // class
