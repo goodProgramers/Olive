@@ -10,6 +10,7 @@ import com.util.ConnectionProvider;
 import com.util.JdbcUtil;
 
 import domain.ProductDetailDTO;
+import persistence.ProduceViewDAO;
 import persistence.ProductDetailDAO;
 import persistence.ProductDetailPriceDAO;
 
@@ -33,6 +34,7 @@ public class ProductDetailService {
 			return dto;
 		} catch (NamingException | SQLException e) {
 			//e.printStackTrace();
+			JdbcUtil.rollback(con);
 			throw new RuntimeException(e);
 		} finally {
 	    	JdbcUtil.close(con);
@@ -45,6 +47,8 @@ public class ProductDetailService {
 		
 		try {
 			con = ConnectionProvider.getConnection();
+			ProduceViewDAO dao1 = ProduceViewDAO.getInstance();
+			dao1.prView(con, pr_code);
 			ProductDetailPriceDAO dao = ProductDetailPriceDAO.getInstance();
 			ProductDetailDTO dto = null;
 			dto = dao.prd_price(con, pr_code);
@@ -56,9 +60,10 @@ public class ProductDetailService {
 		}finally {
 	    	JdbcUtil.close(con);
 	     }
-				
-		
 		
 	}//ProductDetailDTO
+		
+		
+	//pr_view올리는 메서드
 	
 }

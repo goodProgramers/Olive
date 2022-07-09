@@ -970,6 +970,7 @@ button {
 </head>
 <body>
 
+<%-- ${ prd_price.prpri_price } --%>
 
 <div id="Container">
   <div id="Contents">
@@ -1316,6 +1317,11 @@ button {
 	<input type="hidden" name="realPrice" value="${ prd_price.price }"/> <!-- 1개 구매가 -->
 	<input type="hidden" name="realPricehidden" value=""/> <!-- 수량 * 구매가 -->
 	<input type="hidden" name="prCount" value=""/> <!-- 수량 -->
+	
+	
+	
+	<input type="hidden" name="priceCode" value=""><!-- 단가코드 -->
+	<input type="hidden" name="saleCode" value=""><!-- 할인코드 -->
 </form>
 
 							<span class="option_cnt_box">
@@ -1391,6 +1397,7 @@ button {
 </div>
 
 <script> /* 원가 세일가 뿌리는 스크립트 */
+		
 		var sale_price = ${ prd_price.price };
 		$(".price-2 strong").text(sale_price.toLocaleString());
 		var price= ${ prd_price.prpri_price };
@@ -1405,6 +1412,11 @@ button {
 		 //alert(sale_price.toLocaleString());
 		 $("input[name=prCount]").attr("value", num);
 		 $("input[name=prPrice]").attr("value", price.toLocaleString());
+
+		    var sale_code1 = ${prd_price.prpri_code};
+			var price_code1 = ${prd_price.sale_code}; 
+		 $("input[name=priceCode]").attr("value", price_code1 );
+		 $("input[name=saleCode]").attr("value", sale_code1 );
 		 		 
 </script>		
 		

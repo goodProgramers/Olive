@@ -18,8 +18,23 @@ public class ProductDetailDTO {
 	private double sa_rate;
 	private int price;
 	
+	private String prpri_code;
+	private String sale_code;
 	
 	
+	
+	public String getPrpri_code() {
+		return prpri_code;
+	}
+	public void setPrpri_code(String prpri_code) {
+		this.prpri_code = prpri_code;
+	}
+	public String getSale_code() {
+		return sale_code;
+	}
+	public void setSale_code(String sale_code) {
+		this.sale_code = sale_code;
+	}
 	public String getPr_code() {
 		return pr_code;
 	}
@@ -75,8 +90,11 @@ public class ProductDetailDTO {
 	public String toString() {
 		return "ProductDetailDTO [pr_name=" + pr_name + ", prm_url=" + prm_url + ", br_name=" + br_name + ", pr_code="
 				+ pr_code + ", pr_count=" + pr_count + ", prpri_price=" + prpri_price + ", sa_rate=" + sa_rate
-				+ ", price=" + price + "]";
+				+ ", price=" + price + ", prpri_code=" + prpri_code + ", sale_code=" + sale_code + "]";
 	}
+	
+	
+	
 	
 	
 	

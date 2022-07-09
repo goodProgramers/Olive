@@ -13,7 +13,10 @@ public class ProductDetailHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println(request.getParameter("pr_code"));
+		
+		// pr_code 파라미터 받아옴 .
 		String pr_code = request.getParameter("pr_code");
+		
 		//1. 서비스 연결
 		 ProductDetailService prds= ProductDetailService.getInstance(); 
 		 
