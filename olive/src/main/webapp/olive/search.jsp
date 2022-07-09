@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hwan/2022/07/07-7:00 PM</title>
+    <title>hwan/2022/07/08-9:28 PM</title>
     <link rel="shortcut icon" type="image/x-icon" href="../images/SiSt.ico">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="/css/module.css">
@@ -729,105 +729,65 @@
     </style>
 </head>
 <body>
-
-<body>
 <div id="Wrapper">
     <jsp:include page="layout/header.jsp"></jsp:include>
     <div id="Container">
         <div id="Contents">
-            <div class="page_location">
-                <a href="/olive/main.do" class="loc_home">홈</a>
-                <ul class="loc_history">
-                    <li class="">
-                        <c:forEach items="${totMap}" var="totMap">
-                            <c:if test="${totMap.key.ca_code eq topcategoryList[0].ca_code}">
-                                <a href="#" class="cate_y">${topcategoryList[1].ca_name}</a>
-                                <div class="history_cate_box" style="width: 122px;">
-                                    <ul>
-<%--                                    <c:forEach items="${totMap.value}" var="midList">
-                                        <li><a href="/olive/productMCate.do?ca_code=${midList.key.ca_code}">${midList.key.ca_name}</a></li>
-                                    </c:forEach>--%>
-                                    </ul>
-                                </div>
-                            </c:if>
-                        </c:forEach>
-                    </li>
-                    <li class="">
-                        <c:forEach items="${totMap}" var="totMap">
-                            <c:if test="${totMap.key.ca_code eq topcategoryList[0].ca_code}">
-                                <a href="#" class="cate_y">${topcategoryList[2].ca_name}</a>
-                                <div class="history_cate_box" style="width: 122px;">
-                                    <ul>
-<%--                                    <c:forEach items="${totMap.value}" var="midEntity">
-                                        <c:if test="${midEntity.key.ca_code eq topcategoryList[1].ca_code}">
-                                            <c:forEach items="${midEntity.value}" var="bottList">
-                                                <li><a href="#">${bottList.ca_name}</a></li>
-                                            </c:forEach>
-                                        </c:if>
-                                    </c:forEach>--%>
-                                    </ul>
-                                </div>
-                            </c:if>
-                        </c:forEach>
-                    </li>
-                    <li class="">
-                        <a href="#" class="cate_y">
-                            스킨/토너
-                            <%--<c:forEach items="${dCategoryList}" var="dCategoryList">
-
-                                <li><a href="#" class="on.">${dCategoryList.ca_name}</a></li>
-                            </c:forEach>--%>
-                        </a>
-                        <div class="history_cate_box" style="width: 122px;">
-                            <ul>
-<%--                                <c:forEach items="${dCategoryList}" var="dCategoryList">
-                                    <li><a href="#" class="on.">${dCategoryList.ca_name}</a></li>
-                                </c:forEach>--%>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
+            <div class="searchResultArea">
+                <p class="resultTxt"><strong>${param.searchKeyword}</strong>검색결과 (전체 <span><%--<fmt:formatNumber value="" pattern="###,###">--%>개</span>의 상품)</p>
             </div>
-            <div class="titBox">
-                <h1>${topcategoryList[2].ca_name}</h1>
-            </div>
-            <ul class="cate_list_box">
-                <li class="first on">
-                    <a> 전체</a>
-                </li>
-
-                <c:forEach items="${dCategoryList}" var="dCategoryList">
-                    <li>
-                        <a href="">
-                        ${dCategoryList.ca_name}
-                        </a>
-                    </li>
-                </c:forEach>
-                <c:forEach begin="${fn:length(dCategoryList)}" end="${dCategorySize-1}">
-                    <li>
-                        &nbsp;
-                    </li>
-                </c:forEach>
-            </ul>
-            <div class="cate_brand_box">
-                <div class="tit_area">
-                    <strong>브랜드</strong>
-                    <span class="tx_num">Total ${fn:length(sBrandList)}  </span>
-                </div>
-                <ul class="brand_list">
-                    <c:forEach items="${sBrandList}" var="sBrandList">
+            <div class="detailSearch new">
+                <div class="search_box cate">
+                    <h4 class="tit_th">
+                        카테고리
+                        <button class="btnMore">열기/닫기</button>
+                    </h4>
+                    <ul class="list show">
                         <li>
-                            <input type="checkbox" id="${sBrandList.br_code}" name="searchOnlBrndCdArr">
-                            <label for="${sBrandList.br_code}">${sBrandList.br_name}</label>
+                            <%--<c:forEach></c:forEach>--%>
+                            <a href="" id="category_10000010001">
+                                스킨케어<span></span>
+                            </a>
                         </li>
-                    </c:forEach>
-                </ul>
-                <button class="btn_more">더보기</button>
-                <div class="btn_reset"><button id="onlBrndReSet">선택 초기화</button></div>
+                    </ul>
+                </div>
+                <div class="search_box brand">
+                    <div class="inner">
+                        <h4 class="tit_th">
+                            브랜드
+                            <button class="btnMore">열기/닫기</button>
+                        </h4>
+                    </div>
+                    <ul>
+                        <%--<c:forEach></c:forEach>--%>
+                        <c:forEach items="${searchBrandList}" var="searchBrandList">
+                            <input type="checkbox" id="inpChk1_${searchBrandList.br_code}" name="brand_check" value="${searchBrandList.br_code}">
+                            <label for="inpChk1_${searchBrandList.br_code}">${searchBrandList.br_name}
+                            </label>
+                        </c:forEach>
+                            <%--<li>
+                                <input type="checkbox" id="inpChk1_A000897" name="brand_check" value="A000897">
+                                <label for="inpChk1_A000897">바이오힐보
+                                </label>
+                            </li>--%>
+                    </ul>
+                </div>
+                <div class="search_box">
+                    <div class="inner">
+                        <h4 class="tit_th">가격대</h4>
+                        <div class="priceSearch">
+                            <input type="text" id="sale_below_price" name="sale_below_price" placeholder="최저가" value="" title="">
+                            <span>~</span>
+                            <input type="text" id="sale_over_price" name="sale_over_price" placeholder="최고가" value="" title="">
+                            <input type="submit" value="가격대 적용" title="가격대 적용">
+                        </div>
+                    </div>
+                </div>
             </div>
+
             <p class="cate_info_tx">
-                ${topcategoryList[2].ca_name} 카테고리에
-                <span> ${fn:length(sProductList)}  </span>
+                ${param.keyWord} 검색결과 :
+                <span> ${fn:length(searchProductList)}  </span>
                 개의 상품이 등록되어 있습니다.
             </p>
             <div class="cate_align_box">
@@ -836,47 +796,33 @@
                         <li class="on"><a href="javascript:;" data-prdsoting="01">인기순</a></li>
                         <li><a href="javascript:;" data-prdsoting="02">최근등록순</a></li>
                         <li><a href="javascript:;" data-prdsoting="03">판매수량순</a></li>
-
-
                         <li><a href="javascript:;" data-prdsoting="05">낮은 가격순</a></li>
                         <li><a href="javascript:;" data-prdsoting="06">높은 가격순</a></li>
                     </ul>
                 </div>
-                <div class="count_sort tx_num">
-                    <span class="tx_view">VIEW</span>
-                    <ul>
-                        <li class="on"><a href="javascript:;" title="24개씩 보기">24</a></li>
-                        <li><a href="javascript:;" title="36개씩 보기">36</a></li>
-                        <li><a href="javascript:;" title="48개씩 보기">48</a></li>
-                    </ul>
-                </div>
-                <div class="type_sort">
-                    <button class="btn_thumb  active" data-view-cnt="4">컬럼형식으로 보기</button>
-                    <button class="btn_list" data-view-cnt="1">리스트형식으로 보기</button>
-                </div>
             </div>
-            <c:forEach items="${sProductList}" var="sProductList" varStatus="i">
+            <c:forEach items="${searchProductList}" var="searchProductList" varStatus="i">
                 <c:if test="${i.index%4==0}"><ul class="cate_prd_list gtm_cate_list"></c:if>
-                    <li class="flag">
-                        <div class="prd_info">
-                            <a href="<%=request.getContextPath()%>/olive/productDetail.do?pr_code=${sProductList.pr_code}" class="prd_thumb goodsList">
-                                <img src="${sProductList.prm_url}">
+                <li class="flag">
+                    <div class="prd_info">
+                        <a href="<%=request.getContextPath()%>/olive/productDetail.do?pr_code=${searchProductList.pr_code}" class="prd_thumb goodsList">
+                            <img src="${searchProductList.prm_url}">
+                        </a>
+                        <div class="prd_name">
+                            <a href="<%=request.getContextPath()%>/olive/productDetail.do?pr_code=${searchProductList.pr_code}">
+                                <span class="tx_brand">${searchProductList.br_name}</span>
+                                <p class="tx_name">${searchProductList.pr_name}</p>
                             </a>
-                            <div class="prd_name">
-                                <a href="<%=request.getContextPath()%>/olive/productDetail.do?pr_code=${sProductList.pr_code}">
-                                    <span class="tx_brand">${sProductList.br_name}</span>
-                                    <p class="tx_name">${sProductList.pr_name}</p>
-                                </a>
-                            </div>
-                            <button class="btn_zzim jeem">
-                                <span>찜하기전</span>
-                            </button>
-                            <p class="prd_price">
-                                <span class="tx_org"><span class="tx_num"><fmt:formatNumber value="${sProductList.prpri_price}" pattern="###,###" /></span>원</span>
-                                <span class="tx_cur"><span class="tx_num"><fmt:formatNumber value="${sProductList.realPrice}" pattern="###,###" /></span>원</span>
-                            </p>
                         </div>
-                    </li>
+                        <button class="btn_zzim jeem">
+                            <span>찜하기전</span>
+                        </button>
+                        <p class="prd_price">
+                            <span class="tx_org"><span class="tx_num"><fmt:formatNumber value="${searchProductList.prpri_price}" pattern="###,###" /></span>원</span>
+                            <span class="tx_cur"><span class="tx_num"><fmt:formatNumber value="${searchProductList.realPrice}" pattern="###,###" /></span>원</span>
+                        </p>
+                    </div>
+                </li>
                 <c:if test="${i.index%4==3 or i.end}"></ul></c:if>
             </c:forEach>
         </div>

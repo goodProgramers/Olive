@@ -1,5 +1,6 @@
 package persistence;
 
+import com.util.JdbcUtil;
 import domain.BrandDTO;
 import domain.CategoryDTO;
 import domain.ProductBrandPriceDTO;
@@ -51,18 +52,11 @@ public class SCategoryDAOImpl implements SCategoryDAO{
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
-            try {
-                rs.close();
-                pstmt.close();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+            JdbcUtil.close(rs);
+            JdbcUtil.close(pstmt);
         }
         return list;
     }
-
-
-
 
     @Override
     public List<CategoryDTO> selectDCategory(Connection connection, String ca_code) {
@@ -91,12 +85,8 @@ public class SCategoryDAOImpl implements SCategoryDAO{
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
-            try {
-                rs.close();
-                pstmt.close();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+            JdbcUtil.close(rs);
+            JdbcUtil.close(pstmt);
         }
         return list;
     }
@@ -133,12 +123,8 @@ public class SCategoryDAOImpl implements SCategoryDAO{
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
-            try {
-                rs.close();
-                pstmt.close();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+            JdbcUtil.close(rs);
+            JdbcUtil.close(pstmt);
         }
         return list;
     }
@@ -181,6 +167,9 @@ public class SCategoryDAOImpl implements SCategoryDAO{
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            JdbcUtil.close(rs);
+            JdbcUtil.close(pstmt);
         }
         return list;
     }

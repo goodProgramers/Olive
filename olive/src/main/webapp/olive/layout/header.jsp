@@ -153,7 +153,7 @@
                                                 <div class="moveGoodsBtn slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 260px; position: relative; left: 0px; top: 0px; z-index: 999; opacity: 1;" tabindex="-1" role="option" aria-describedby="slick-slide90">
                                                     <a href="#"><!-- 상품이미지 클릭시 상품 상세페이지로 이동시키기 -->
                                                         <div class="scp_thumb">
-                                                            <img src="${top3List.prm_url }" alt="TOP3 상품이미지">
+                                                            <img src="${top3List.prm_url}" alt="TOP3 상품이미지">
                                                         </div>
                                                         <div class="scp_txt">
                                                             <span class="brand">${top3List.br_name }</span>
@@ -228,10 +228,10 @@
                         <h2>${totMap.key.ca_name}</h2>
                         <c:forEach items="${totMap.value}" var="midMap" varStatus="i">
                             <c:if test="${i.begin or i.index%4 == 0}"><div class="sub_menu_box"></c:if>
-                            <p class="sub_depth"><a href="/olive/productMCate.do?ca_code=${midMap.key.ca_code}">${midMap.key.ca_name}</a></p>
+                            <p class="sub_depth"><a href="<%=request.getContextPath()%>/olive/productMCate.do?ca_code=${midMap.key.ca_code}">${midMap.key.ca_name}</a></p>
                             <ul>
                                 <c:forEach items="${midMap.value}" var="bottList">
-                                    <li><a href="/olive/productSCate.do?ca_code=${bottList.ca_code}">${bottList.ca_name}</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/olive/productSCate.do?ca_code=${bottList.ca_code}">${bottList.ca_name}</a></li>
                                 </c:forEach>
                             </ul>
                             <c:if test="${i.end or i.index%4 == 3}"></div></c:if>
@@ -261,4 +261,48 @@
         $(".layer_all_menu").toggleClass("active"); // 카테고리 메뉴 block-none 토글
     })
 </script>
+
+<script>
+    // 검색창 부분
+    $(".inp_placeholder").on("click", function () {
+        $(".search_layer").css("display", "block");
+        // $(".header_inner .search_box .search_layer .search_tab_cont").css("display", "block");
+        $(".inp_placeholder").focus();
+        $(".inp_placeholder").prev().css("display", "none");/* label 태그 숨김 */
+        $("#searchRecent").addClass('on');
+        $("#searchPop").removeClass("on");
+        $(".no_data").css("display", "block"); // 급상승검색어 일 때는 안뜨게 바꾸기 **
+    });
+
+    $("#searchRecent").on("click", function () {
+        $(this).addClass('on');
+        $("#searchPop").removeClass("on");
+        $(".no_data").css("display", "block");
+        $("#w_pop_cont").css("display", "none");
+    });
+
+    $("#searchPop").on("click", function () {
+        $(this).addClass('on');
+        $("#searchRecent").removeClass("on");
+        $(".no_data").css("display", "none");
+        $("#w_pop_cont").css("display", "block");
+    });
+</script>
+<%--검색 버튼 누르면--%>
+<script>
+    $("#searchSubmit").click(function (event){
+        var keyWord = $("#query").val();
+        var searchInput = $("<input>")
+            .attr("type","hidden")
+            .attr("name","keyWord")
+            .attr("value",keyWord);
+        $("<form>")
+            .attr("method","GET")
+            .attr("action","/olive/search.do")
+            .append(searchInput)
+            .appendTo("body")
+            .submit();
+    });
+</script>
+
 
