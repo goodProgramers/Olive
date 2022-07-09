@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2022. 7. 4. - 오후 9:33:15</title>
 <link rel="shortcut icon" type="image/x-icon" href="../images/SiSt.ico">
+<link rel="stylesheet" href="/css/module.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
@@ -571,6 +572,8 @@ button {
 </style>
 <body>
 
+<jsp:include page="layout/header.jsp"></jsp:include>
+
 	<div id="Container" class="bgf6">
 		<div id="Contents">
 			<div class="loginArea new login">
@@ -652,6 +655,9 @@ button {
 			</div>
 		</div>
 	</div>
+
+
+<jsp:include page="layout/footer.jsp"></jsp:include>
 
 <script>
 /* 

@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2022. 7. 7. - 오후 5:51:53</title>
 <link rel="shortcut icon" type="image/x-icon" href="../images/SiSt.ico">
+<link rel="stylesheet" href="/css/module.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
@@ -743,6 +744,8 @@ select {
 </head>
 <body>
 
+<jsp:include page="layout/header.jsp"></jsp:include>
+
 	<div id="contentsWrap">
 		<div id="contents">
 			<div class="location_wrap">
@@ -1042,6 +1045,8 @@ select {
 			</div>
 		</div>
 	</div>
+	
+<jsp:include page="layout/footer.jsp"></jsp:include>
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
