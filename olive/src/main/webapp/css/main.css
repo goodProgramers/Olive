@@ -1,0 +1,3286 @@
+@charset "UTF-8";
+
+
+@font-face {
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 400;
+	src: local(Montserrat-Light),
+		url("https://www.oliveyoung.co.kr/pc-static-root/fonts/Montserrat-Light.woff2")
+		format("woff2"),
+		url("https://www.oliveyoung.co.kr/pc-static-root/fonts/Montserrat-Light.woff")
+		format("woff")
+}
+
+@font-face {
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 500;
+	src: local(Montserrat),
+		url("https://www.oliveyoung.co.kr/pc-static-root/fonts/Montserrat-Regular.woff2")
+		format("woff2"),
+		url("https://www.oliveyoung.co.kr/pc-static-root/fonts/Montserrat-Regular.woff")
+		format("woff")
+}
+
+@font-face {
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 700;
+	src: local(Montserrat-SemiBold),
+		url("https://www.oliveyoung.co.kr/pc-static-root/fonts/Montserrat-SemiBold.woff2")
+		format("woff2"),
+		url("https://www.oliveyoung.co.kr/pc-static-root/fonts/Montserrat-SemiBold.woff")
+		format("woff")
+}
+
+@font-face {
+	font-family: NotoSansCJKkr;
+	font-style: normal;
+	font-weight: 400;
+	src: local(NotoSansCJKkr),
+		url("https://www.oliveyoung.co.kr/pc-static-root/fonts/NotoSansCJKkr-Regular.woff2")
+		format("woff2"),
+		url("https://www.oliveyoung.co.kr/pc-static-root/fonts/NotoSansCJKkr-Regular.woff")
+		format("woff")
+}
+
+@font-face {
+	font-family: NotoSansCJKkr;
+	font-style: normal;
+	font-weight: 500;
+	src: local(NotoSansCJKkr),
+		url("https://www.oliveyoung.co.kr/pc-static-root/fonts/NotoSansCJKkr-Medium.woff2")
+		format("woff2"),
+		url("https://www.oliveyoung.co.kr/pc-static-root/fonts/NotoSansCJKkr-Medium.woff")
+		format("woff")
+}
+
+@font-face {
+	font-family: NotoSansCJKkr;
+	font-style: normal;
+	font-weight: 700;
+	src: local(NotoSansCJKkr),
+		url("https://www.oliveyoung.co.kr/pc-static-root/fonts/NotoSansCJKkr-Bold.woff2")
+		format("woff2"),
+		url("https://www.oliveyoung.co.kr/pc-static-root/fonts/NotoSansCJKkr-Bold.woff")
+		format("woff")
+}
+
+@font-face {
+	font-family: Dovemayo-Medium;
+	src:
+		url("https://www.oliveyoung.co.kr/pc-static-root/fonts/dovemayo/Dovemayo-Medium.woff")
+		format('woff');
+	font-weight: 400;
+	font-style: normal
+}
+
+body, html {
+	-webkit-font-smoothing: antialiased;
+	-webkit-font-smoothing: antialiased
+}
+
+a, address, blockquote, body, dd, div, dl, dt, em, fieldset, form, h1,
+	h2, h3, h4, h5, h6, img, input, label, li, ol, p, pre, select, span,
+	strong, textarea, ul {
+	margin: 0;
+	padding: 0;
+	border: 0
+}
+
+body, html {
+	word-spacing: -1px;
+	color: #666;
+	font-size: 14px;
+	line-height: 20px;
+	font-family: Montserrat, -apple-system, NotoSansCJKkr, AppleSDGothicNeo,
+		Roboto, dotum, '돋움', sans-serif;
+	letter-spacing: -.04em;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+}
+
+body, html {
+	-webkit-font-smoothing: antialiased;
+	-webkit-font-smoothing: antialiased;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Wrapper, Container, contents */
+#Container, #Footer, #Header, #Wrapper {
+	width: 100%;
+	min-width: 1020px;
+}
+
+#Container {
+	overflow: hidden;
+}
+
+#Container, #Footer, #Header, #Wrapper {
+	width: 100%;
+	min-width: 1020px;
+}
+
+#Contents {
+	width: 1020px;
+	height: 100%;
+	margin: 0 auto;
+}
+
+html[Attributes ] {
+	-webkit-locale: "ko";
+}
+
+user agent stylesheet
+html {
+	display: block;
+}
+
+.main_plan_banner.ty02 {
+	position: relative;
+}
+
+.main_sub_tit {
+	height: 40px;
+	margin: 51px 0 8px;
+	font-size: 26px;
+	color: #000;
+	text-align: center;
+	line-height: 40px;
+}
+
+h3 {
+	display: block;
+	font-size: 1.17em;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	font-weight: bold;
+}
+
+.main_plan_banner.ty02 .banner_wrap {
+	position: relative;
+	width: 1020px;
+	height: 675px;
+	overflow: hidden;
+}
+
+.main_plan_banner .banner_wrap {
+	width: 1020px;
+	height: 675px;
+}
+
+.main_plan_banner.ty02 .banner_wrap .slick_slider {
+	margin-left: -10px;
+	width: 1040px;
+}
+
+.slick-slider {
+	position: relative;
+	display: block;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-touch-callout: none;
+	-khtml-user-select: none;
+	-ms-touch-action: pan-y;
+	touch-action: pan-y;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.slick-slider .slick-list, .slick-slider .slick-track {
+	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	-o-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+}
+
+.slick-list {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+}
+
+element.style {
+	opacity: 1;
+	width: 6240px;
+	transform: translate3d(-1040px, 0px, 0px);
+}
+
+.slick-slider .slick-list, .slick-slider .slick-track {
+	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	-o-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+}
+
+.slick-track {
+	position: relative;
+	top: 0;
+	left: 0;
+	display: block;
+	z-index: 1;
+}
+
+.slick-track:after, .slick-track:before {
+	display: table;
+	content: '';
+}
+
+.main_plan_banner .slider_unit {
+	position: relative;
+	float: left;
+	width: 510px;
+}
+
+.slick-initialized .slick-slide {
+	display: block;
+}
+
+.slick-slide {
+	display: none;
+	float: left;
+	height: 100%;
+	min-height: 1px;
+}
+
+.main_plan_banner.ty02 .slider_unit .plan_top {
+	height: 300px;
+}
+
+.main_plan_banner.ty02 .slider_unit .plan_banner {
+	position: relative;
+	overflow: hidden;
+	width: 500px px;
+	height: 300px;
+	background-size: 500px auto;
+	background-position: 0 0;
+	background-repeat: no-repeat;
+}
+
+.main_plan_banner .slider_unit .plan_banner {
+	position: relative;
+	overflow: hidden;
+}
+
+.main_plan_banner.ty02 .slider_unit .plan_banner>a {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 500px;
+	height: 259px;
+	padding: 0 0 0;
+}
+
+.main_plan_banner .slider_unit .plan_banner>a {
+	display: block;
+	width: 500px;
+	height: 310px;
+	padding: 80px 0 0;
+}
+
+a {
+	color: #666;
+	text-decoration: none;
+}
+
+.main_plan_banner.ty02 .slider_unit .plan_banner>a>p {
+	position: relative;
+	top: inherit;
+	left: inherit;
+	margin-left: 28px;
+	max-width: 360px;
+	color: #000;
+	text-align: left;
+}
+
+.main_plan_banner .slider_unit .plan_banner>a>p {
+	position: absolute;
+	top: 15px;
+	left: 70px;
+	width: 360px;
+	color: #222;
+	font-size: 18px;
+	text-align: center;
+	line-height: 30px;
+	letter-spacing: -.05em;
+}
+
+.main_plan_banner.ty02 .slider_unit .plan_banner>a>p>strong.tit {
+	overflow: hidden;
+	max-width: 222px;
+	height: inherit;
+	margin-top: 0;
+	font-size: 21px;
+	line-height: 1.35;
+	letter-spacing: -.67px;
+	font-weight: 700;
+	color: #333;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.main_plan_banner .slider_unit .plan_banner>a>p>strong {
+	display: block;
+	overflow: hidden;
+	height: 30px;
+	margin-top: -4px;
+	font-size: 20px;
+}
+
+.main_plan_banner.ty02 .slider_unit .plan_banner>a>p>span.desc {
+	overflow: hidden;
+	height: inherit;
+	margin-top: 15px;
+	max-width: 215px;
+	font-size: 16px;
+	line-height: 20px;
+	color: #333;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.main_plan_banner .slider_unit .plan_banner>a>p>span {
+	display: block;
+	overflow: hidden;
+	height: 30px;
+}
+
+.main_plan_banner.ty02 .slider_unit .cate_prd_list {
+	position: relative;
+	margin: -41px auto 0 12px;
+	padding: 15px 15px 0 15px;
+	width: 475px;
+	height: 408px;
+	font-size: 0;
+	background-color: #fff;
+	border-bottom: 0;
+	z-index: 1;
+}
+
+.main_plan_banner .slider_unit .cate_prd_list {
+	border-bottom: 0;
+}
+
+.cate_prd_list {
+	border-bottom: 1px solid #ddd;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+.main_plan_banner.ty02 .slider_unit .cate_prd_list>li:first-child {
+	margin-left: 0;
+}
+
+.main_plan_banner.ty02 .slider_unit .cate_prd_list>li {
+	float: inherit;
+	padding: 0;
+	display: inline-block;
+	margin-left: 15px;
+	width: 215px;
+	vertical-align: top;
+}
+
+.main_plan_banner .slider_unit .cate_prd_list>li {
+	padding-bottom: 0;
+}
+
+.cate_prd_list>li {
+	position: relative;
+	float: left;
+	width: 255px;
+	padding: 30px 20px 35px;
+}
+
+.cate_prd_list>li .prd_info {
+	text-align: center;
+	font-size: 14px;
+}
+
+.cate_prd_list>li .prd_info .prd_thumb {
+	position: relative;
+	display: block;
+	width: 215px;
+	height: 215px;
+	background: #fff;
+}
+
+a {
+	color: #666;
+	text-decoration: none;
+}
+
+.cate_prd_list>li .prd_info .prd_thumb .thumb_flag {
+	position: absolute;
+	top: 10px;
+	left: 12px;
+	line-height: 44px !important;
+}
+
+.thumb_flag.best {
+	color: #f05a5e;
+	line-height: 44px;
+	border-color: #f05a5e;
+}
+
+.thumb_flag {
+	display: inline-block;
+	width: 48px;
+	height: 48px;
+	font-size: 14px;
+	background: #fff;
+	border-radius: 24px;
+	border-width: 2px;
+	border-style: solid;
+	text-align: center;
+	font-weight: 700;
+}
+
+.cate_prd_list>li .prd_info .prd_thumb>img {
+	width: auto !important;
+	max-width: 215px;
+	height: auto !important;
+	max-height: 215px;
+}
+
+button, img, input, select, textarea {
+	border: 0;
+	vertical-align: top;
+	color: #666;
+}
+
+.cate_prd_list>li .prd_info .prd_name {
+	margin-top: 15px;
+}
+
+.cate_prd_list>li .prd_info .prd_name {
+	display: block;
+	min-height: 62px;
+	margin: 8px 0 0;
+	text-decoration: none;
+}
+
+.cate_prd_list>li .prd_info .prd_name>a {
+	display: block;
+}
+
+a {
+	color: #666;
+	text-decoration: none;
+}
+
+.cate_prd_list>li .prd_info .prd_name .tx_brand {
+	display: block;
+	height: 20px;
+	line-height: 20px;
+	color: #777;
+	font-weight: 700;
+}
+
+.cate_prd_list>li .prd_info .prd_name .tx_name {
+	margin-top: 5px;
+}
+
+.cate_prd_list>li .prd_info .prd_name .tx_name {
+	overflow: hidden;
+	height: 40px;
+	margin-top: 2px;
+	padding: 2px 0;
+	-webkit-box-orient: vertical;
+	line-height: 18px;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	word-break: keep-all;
+	color: #000;
+	font-size: 14px;
+	text-align: center;
+}
+
+.main_plan_banner.ty02 .slider_unit .cate_prd_list>li .prd_info .btn_zzim
+	{
+	position: absolute;
+	top: 175px;
+	left: auto;
+	right: 0;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #ebebeb;
+	text-indent: -999999px;
+	font-size: 0;
+	background: #fff
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_zzim.png)
+		no-repeat 50% 50%;
+}
+
+.cate_prd_list>li .prd_info .btn_zzim {
+	position: absolute;
+	top: 205px;
+	left: 195px;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #ebebeb;
+	text-indent: -999999px;
+	font-size: 0;
+	background: #fff
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_zzim.png)
+		no-repeat 50% 50%;
+}
+
+button {
+	text-align: center;
+	color: #fff;
+}
+
+button, input[type=submit] {
+	border: 0;
+	padding: 0;
+	box-shadow: none;
+	cursor: pointer;
+}
+
+button, input[type=submit] {
+	font-family: Montserrat, -apple-system, NotoSansCJKkr, AppleSDGothicNeo,
+		Roboto, sans-serif;
+	font-weight: 700;
+}
+
+button, input.button, input.image, input.submit, label {
+	cursor: pointer;
+}
+
+button, img, input, select, textarea {
+	border: 0;
+	vertical-align: top;
+	color: #666;
+}
+
+button {
+	appearance: auto;
+	writing-mode: horizontal-tb !important;
+	text-rendering: auto;
+	color: buttontext;
+	letter-spacing: normal;
+	word-spacing: normal;
+	line-height: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	text-align: center;
+	align-items: flex-start;
+	cursor: default;
+	box-sizing: border-box;
+	background-color: buttonface;
+	margin: 0em;
+	padding: 1px 6px;
+	border-width: 2px;
+	border-style: outset;
+	border-color: buttonborder;
+	border-image: initial;
+}
+
+.cate_prd_list>li .prd_info .prd_price {
+	height: 25px;
+	line-height: 22px;
+}
+
+p {
+	display: block;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_org {
+	color: #777;
+	font-size: 12px;
+	text-decoration: line-through;
+	vertical-align: middle;
+	font-weight: 700;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_org>span {
+	display: inline-block;
+	font-size: 14px;
+	text-decoration: line-through;
+	vertical-align: 0;
+	letter-spacing: -.02em;
+}
+
+.tx_num {
+	letter-spacing: -.02em !important;
+	font-weight: 500;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_org+.tx_cur {
+	margin: 0 0 0 7px;
+	vertical-align: bottom;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_cur {
+	display: inline-block;
+	color: #e02020;
+	font-weight: 700;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_cur>span {
+	display: inline-block;
+	font-size: 20px;
+	vertical-align: -1px;
+}
+
+.tx_num {
+	letter-spacing: -.02em !important;
+	font-weight: 500;
+}
+
+.cate_prd_list>li .prd_info .prd_flag {
+	margin-top: 5px;
+	padding-bottom: 0;
+}
+
+.prd_flag {
+	overflow: hidden;
+}
+
+.cate_prd_list>li .prd_info .prd_flag>.icon_flag {
+	float: none;
+}
+
+.icon_flag.coupon {
+	background-color: #9bce26;
+}
+
+.prd_flag span {
+	float: left;
+}
+
+.icon_flag {
+	display: inline-block;
+	width: 40px;
+	height: 18px;
+	border-radius: 9px;
+	line-height: 17px !important;
+	color: #fff !important;
+	font-size: 12px !important;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none !important;
+	margin: 0 !important;
+}
+
+.cate_prd_list>li .prd_info .prd_point_area {
+	display: none;
+	line-height: 16px;
+	color: #aaa;
+}
+
+.tx_num {
+	letter-spacing: -.02em !important;
+	font-weight: 500;
+}
+
+.cate_prd_list>li .prd_info .prd_point_area .review_point {
+	vertical-align: top;
+	margin-right: 5px;
+}
+
+.review_point {
+	display: inline-block;
+	overflow: hidden;
+	width: 92px;
+	height: 15px;
+	background:
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_review_point_off.png)
+		no-repeat 0 0;
+	text-indent: -9999px;
+}
+
+.review_point .point {
+	display: inline-block;
+	float: left;
+	width: auto;
+	height: 15px;
+	background:
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_review_point_on.png)
+		no-repeat 0 0;
+	line-height: 0;
+}
+
+.cate_prd_list>li .prd_info .prd_btn_area {
+	display: none;
+}
+
+.prd_btn_area {
+	overflow: hidden;
+	margin: 10px 0 0;
+}
+
+.cate_prd_list>li .prd_info .prd_btn_area button {
+	width: 85px;
+	height: 40px;
+	color: #f27370;
+	border: 1px solid #f27370;
+	background: #fff;
+}
+
+.prd_btn_area button {
+	float: left;
+	height: 70px;
+	font-size: 20px;
+	color: #fff;
+}
+
+button {
+	text-align: center;
+	color: #fff;
+}
+
+button, input[type=submit] {
+	border: 0;
+	padding: 0;
+	box-shadow: none;
+	cursor: pointer;
+}
+
+button, input[type=submit] {
+	font-family: Montserrat, -apple-system, NotoSansCJKkr, AppleSDGothicNeo,
+		Roboto, sans-serif;
+	font-weight: 700;
+}
+
+button, input.button, input.image, input.submit, label {
+	cursor: pointer;
+}
+
+button, img, input, select, textarea {
+	border: 0;
+	vertical-align: top;
+	color: #666;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+user agent stylesheet
+button {
+	appearance: auto;
+	writing-mode: horizontal-tb !important;
+	text-rendering: auto;
+	color: buttontext;
+	letter-spacing: normal;
+	word-spacing: normal;
+	line-height: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	text-align: center;
+	align-items: flex-start;
+	cursor: default;
+	box-sizing: border-box;
+	background-color: buttonface;
+	margin: 0em;
+	padding: 1px 6px;
+	border-width: 2px;
+	border-style: outset;
+	border-color: buttonborder;
+	border-image: initial;
+}
+
+.main_plan_banner.ty02 .slider_unit .cate_prd_list>li {
+	float: inherit;
+	padding: 0;
+	display: inline-block;
+	margin-left: 15px;
+	width: 215px;
+	vertical-align: top;
+}
+
+.main_plan_banner .slider_unit .cate_prd_list>li {
+	padding-bottom: 0;
+}
+
+.cate_prd_list>li {
+	position: relative;
+	float: left;
+	width: 255px;
+	padding: 30px 20px 35px;
+}
+
+.cate_prd_list>li .prd_info {
+	text-align: center;
+	font-size: 14px;
+}
+
+.cate_prd_list>li .prd_info .prd_thumb {
+	position: relative;
+	display: block;
+	width: 215px;
+	height: 215px;
+	background: #fff;
+}
+
+a {
+	color: #666;
+	text-decoration: none;
+}
+
+.cate_prd_list>li .prd_info .prd_name {
+	margin-top: 15px;
+}
+
+.cate_prd_list>li .prd_info .prd_name {
+	display: block;
+	min-height: 62px;
+	margin: 8px 0 0;
+	text-decoration: none;
+}
+
+.cate_prd_list>li .prd_info .prd_name>a {
+	display: block;
+}
+
+.cate_prd_list>li .prd_info .prd_name .tx_brand {
+	display: block;
+	height: 20px;
+	line-height: 20px;
+	color: #777;
+	font-weight: 700;
+}
+
+.cate_prd_list>li .prd_info .prd_name .tx_name {
+	margin-top: 5px;
+}
+
+.cate_prd_list>li .prd_info .prd_name .tx_name {
+	overflow: hidden;
+	height: 40px;
+	margin-top: 2px;
+	padding: 2px 0;
+	-webkit-box-orient: vertical;
+	line-height: 18px;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	word-break: keep-all;
+	color: #000;
+	font-size: 14px;
+	text-align: center;
+}
+
+.main_plan_banner.ty02 .slider_unit .cate_prd_list>li .prd_info .btn_zzim
+	{
+	position: absolute;
+	top: 175px;
+	left: auto;
+	right: 0;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #ebebeb;
+	text-indent: -999999px;
+	font-size: 0;
+	background: #fff
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_zzim.png)
+		no-repeat 50% 50%;
+}
+
+.cate_prd_list>li .prd_info .btn_zzim {
+	position: absolute;
+	top: 205px;
+	left: 195px;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #ebebeb;
+	text-indent: -999999px;
+	font-size: 0;
+	background: #fff
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_zzim.png)
+		no-repeat 50% 50%;
+}
+
+button {
+	text-align: center;
+	color: #fff;
+}
+
+button, input[type=submit] {
+	border: 0;
+	padding: 0;
+	box-shadow: none;
+	cursor: pointer;
+}
+
+button, input[type=submit] {
+	font-family: Montserrat, -apple-system, NotoSansCJKkr, AppleSDGothicNeo,
+		Roboto, sans-serif;
+	font-weight: 700;
+}
+
+button, input.button, input.image, input.submit, label {
+	cursor: pointer;
+}
+
+button, img, input, select, textarea {
+	border: 0;
+	vertical-align: top;
+	color: #666;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+user agent stylesheet
+button {
+	appearance: auto;
+	writing-mode: horizontal-tb !important;
+	text-rendering: auto;
+	color: buttontext;
+	letter-spacing: normal;
+	word-spacing: normal;
+	line-height: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	text-align: center;
+	align-items: flex-start;
+	cursor: default;
+	box-sizing: border-box;
+	background-color: buttonface;
+	margin: 0em;
+	padding: 1px 6px;
+	border-width: 2px;
+	border-style: outset;
+	border-color: buttonborder;
+	border-image: initial;
+}
+
+.cate_prd_list>li .prd_info {
+	text-align: center;
+	font-size: 14px;
+}
+
+user agent stylesheet
+li {
+	text-align: -webkit-match-parent;
+}
+
+.main_plan_banner.ty02 .slider_unit .cate_prd_list {
+	position: relative;
+	margin: -41px auto 0 12px;
+	padding: 15px 15px 0 15px;
+	width: 475px;
+	height: 408px;
+	font-size: 0;
+	background-color: #fff;
+	border-bottom: 0;
+	z-index: 1;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+user agent stylesheet
+ul {
+	list-style-type: disc;
+}
+
+.slick-slider {
+	position: relative;
+	display: block;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-touch-callout: none;
+	-khtml-user-select: none;
+	-ms-touch-action: pan-y;
+	touch-action: pan-y;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.cate_prd_list>li .prd_info .prd_price {
+	height: 25px;
+	line-height: 22px;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_org {
+	color: #777;
+	font-size: 12px;
+	text-decoration: line-through;
+	vertical-align: middle;
+	font-weight: 700;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_org>span {
+	display: inline-block;
+	font-size: 14px;
+	text-decoration: line-through;
+	vertical-align: 0;
+	letter-spacing: -.02em;
+}
+
+.tx_num {
+	letter-spacing: -.02em !important;
+	font-weight: 500;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_org+.tx_cur {
+	margin: 0 0 0 7px;
+	vertical-align: bottom;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_cur {
+	display: inline-block;
+	color: #e02020;
+	font-weight: 700;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_cur>span {
+	display: inline-block;
+	font-size: 20px;
+	vertical-align: -1px;
+}
+
+.tx_num {
+	letter-spacing: -.02em !important;
+	font-weight: 500;
+}
+
+.cate_prd_list>li .prd_info .prd_flag {
+	margin-top: 5px;
+	padding-bottom: 0;
+}
+
+.prd_flag {
+	overflow: hidden;
+}
+
+.cate_prd_list>li .prd_info .prd_flag>.icon_flag {
+	float: none;
+}
+
+.icon_flag.coupon {
+	background-color: #9bce26;
+}
+
+.prd_flag span {
+	float: left;
+}
+
+.icon_flag {
+	display: inline-block;
+	width: 40px;
+	height: 18px;
+	border-radius: 9px;
+	line-height: 17px !important;
+	color: #fff !important;
+	font-size: 12px !important;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none !important;
+	margin: 0 !important;
+}
+
+.cate_prd_list>li .prd_info .prd_point_area {
+	display: none;
+	line-height: 16px;
+	color: #aaa;
+}
+
+.tx_num {
+	letter-spacing: -.02em !important;
+	font-weight: 500;
+}
+
+.cate_prd_list>li .prd_info .prd_point_area .review_point {
+	vertical-align: top;
+	margin-right: 5px;
+}
+
+.review_point {
+	display: inline-block;
+	overflow: hidden;
+	width: 92px;
+	height: 15px;
+	background:
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_review_point_off.png)
+		no-repeat 0 0;
+	text-indent: -9999px;
+}
+
+.review_point .point {
+	display: inline-block;
+	float: left;
+	width: auto;
+	height: 15px;
+	background:
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_review_point_on.png)
+		no-repeat 0 0;
+	line-height: 0;
+}
+
+.cate_prd_list>li .prd_info .prd_btn_area {
+	display: none;
+}
+
+.prd_btn_area {
+	overflow: hidden;
+	margin: 10px 0 0;
+}
+
+.cate_prd_list>li .prd_info .prd_btn_area button {
+	width: 85px;
+	height: 40px;
+	color: #f27370;
+	border: 1px solid #f27370;
+	background: #fff;
+}
+
+.prd_btn_area button {
+	float: left;
+	height: 70px;
+	font-size: 20px;
+	color: #fff;
+}
+
+button {
+	text-align: center;
+	color: #fff;
+}
+
+button, input[type=submit] {
+	border: 0;
+	padding: 0;
+	box-shadow: none;
+	cursor: pointer;
+}
+
+button, input[type=submit] {
+	font-family: Montserrat, -apple-system, NotoSansCJKkr, AppleSDGothicNeo,
+		Roboto, sans-serif;
+	font-weight: 700;
+}
+
+button, input.button, input.image, input.submit, label {
+	cursor: pointer;
+}
+
+button, img, input, select, textarea {
+	border: 0;
+	vertical-align: top;
+	color: #666;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+button {
+	appearance: auto;
+	writing-mode: horizontal-tb !important;
+	text-rendering: auto;
+	color: buttontext;
+	letter-spacing: normal;
+	word-spacing: normal;
+	line-height: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	text-align: center;
+	align-items: flex-start;
+	cursor: default;
+	box-sizing: border-box;
+	background-color: buttonface;
+	margin: 0em;
+	padding: 1px 6px;
+	border-width: 2px;
+	border-style: outset;
+	border-color: buttonborder;
+	border-image: initial;
+}
+
+.main_plan_banner .slider_unit:after {
+	content: '';
+	display: block;
+	width: 1px;
+	height: 685px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #ddd;
+}
+
+.main_plan_banner.ty02 .slider_unit {
+	position: relative;
+	float: left;
+	padding: 0 10px;
+	width: 520px !important;
+	height: 620px;
+}
+
+.main_plan_banner .slider_unit.right {
+	background:
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/bar_1x1.gif)
+		repeat-y 0 0;
+}
+
+.main_plan_banner .slider_unit {
+	position: relative;
+	float: left;
+	width: 510px;
+}
+
+.slick-initialized .slick-slide {
+	display: block;
+}
+
+.slick-slide {
+	display: none;
+	float: left;
+	height: 100%;
+	min-height: 1px;
+}
+
+.main_plan_banner.ty02 .slider_unit .plan_top {
+	height: 300px;
+}
+
+.main_plan_banner.ty02 .slider_unit.right .plan_banner {
+	float: inherit;
+	margin-left: 0;
+}
+
+.main_plan_banner.ty02 .slider_unit .plan_banner {
+	position: relative;
+	overflow: hidden;
+	width: 500px;
+	height: 300px;
+	background-size: 500px auto;
+	background-position: 0 0;
+	background-repeat: no-repeat;
+}
+
+.main_plan_banner .slider_unit.right .plan_banner {
+	float: right;
+}
+
+.main_plan_banner .slider_unit .plan_banner {
+	position: relative;
+	overflow: hidden;
+}
+
+.main_plan_banner.ty02 .slider_unit .plan_banner>a {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 500px;
+	height: 259px;
+	padding: 0 0 0;
+}
+
+.main_plan_banner .slider_unit .plan_banner>a {
+	display: block;
+	width: 500px;
+	height: 310px;
+	padding: 80px 0 0;
+}
+
+.main_plan_banner.ty02 .slider_unit .plan_banner>a>p {
+	position: relative;
+	top: inherit;
+	left: inherit;
+	margin-left: 28px;
+	max-width: 360px;
+	color: #000;
+	text-align: left;
+}
+
+.main_plan_banner .slider_unit .plan_banner>a>p {
+	position: absolute;
+	top: 15px;
+	left: 70px;
+	width: 360px;
+	color: #222;
+	font-size: 18px;
+	text-align: center;
+	line-height: 30px;
+	letter-spacing: -.05em;
+}
+
+.main_plan_banner.ty02 .slider_unit .plan_banner>a>p>strong.tit {
+	overflow: hidden;
+	max-width: 222px;
+	height: inherit;
+	margin-top: 0;
+	font-size: 21px;
+	line-height: 1.35;
+	letter-spacing: -.67px;
+	font-weight: 700;
+	color: #333;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.main_plan_banner .slider_unit .plan_banner>a>p>strong {
+	display: block;
+	overflow: hidden;
+	height: 30px;
+	margin-top: -4px;
+	font-size: 20px;
+}
+
+.main_plan_banner.ty02 .slider_unit .plan_banner>a>p>span.desc {
+	overflow: hidden;
+	height: inherit;
+	margin-top: 15px;
+	max-width: 215px;
+	font-size: 16px;
+	line-height: 20px;
+	color: #333;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.main_plan_banner .slider_unit .plan_banner>a>p>span {
+	display: block;
+	overflow: hidden;
+	height: 30px;
+}
+
+.main_plan_banner.ty02 .slider_unit.right .cate_prd_list {
+	margin: -41px 12px 0 auto;
+}
+
+.main_plan_banner.ty02 .slider_unit .cate_prd_list {
+	position: relative;
+	margin: -41px auto 0 12px;
+	padding: 15px 15px 0 15px;
+	width: 475px;
+	height: 408px;
+	font-size: 0;
+	background-color: #fff;
+	border-bottom: 0;
+	z-index: 1;
+}
+
+.main_plan_banner .slider_unit .cate_prd_list {
+	border-bottom: 0;
+}
+
+.cate_prd_list {
+	border-bottom: 1px solid #ddd;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+.main_plan_banner.ty02 .slider_unit .cate_prd_list>li:first-child {
+	margin-left: 0;
+}
+
+.main_plan_banner.ty02 .slider_unit .cate_prd_list>li {
+	float: inherit;
+	padding: 0;
+	display: inline-block;
+	margin-left: 15px;
+	width: 215px;
+	vertical-align: top;
+}
+
+.main_plan_banner .slider_unit .cate_prd_list>li {
+	padding-bottom: 0;
+}
+
+.cate_prd_list>li {
+	position: relative;
+	float: left;
+	width: 255px;
+	padding: 30px 20px 35px;
+}
+
+.cate_prd_list>li .prd_info {
+	text-align: center;
+	font-size: 14px;
+}
+
+.cate_prd_list>li .prd_info .prd_thumb {
+	position: relative;
+	display: block;
+	width: 215px;
+	height: 215px;
+	background: #fff;
+}
+
+.cate_prd_list>li .prd_info .prd_name {
+	margin-top: 15px;
+}
+
+.cate_prd_list>li .prd_info .prd_name {
+	display: block;
+	min-height: 62px;
+	margin: 8px 0 0;
+	text-decoration: none;
+}
+
+.cate_prd_list>li .prd_info .prd_name>a {
+	display: block;
+}
+
+.cate_prd_list>li .prd_info .prd_name .tx_brand {
+	display: block;
+	height: 20px;
+	line-height: 20px;
+	color: #777;
+	font-weight: 700;
+}
+
+.cate_prd_list>li .prd_info .prd_name .tx_name {
+	margin-top: 5px;
+}
+
+.cate_prd_list>li .prd_info .prd_name .tx_name {
+	overflow: hidden;
+	height: 40px;
+	margin-top: 2px;
+	padding: 2px 0;
+	-webkit-box-orient: vertical;
+	line-height: 18px;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	word-break: keep-all;
+	color: #000;
+	font-size: 14px;
+	text-align: center;
+}
+
+.main_plan_banner.ty02 .slider_unit .cate_prd_list>li .prd_info .btn_zzim
+	{
+	position: absolute;
+	top: 175px;
+	left: auto;
+	right: 0;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #ebebeb;
+	text-indent: -999999px;
+	font-size: 0;
+	background: #fff
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_zzim.png)
+		no-repeat 50% 50%;
+}
+
+.cate_prd_list>li .prd_info .btn_zzim {
+	position: absolute;
+	top: 205px;
+	left: 195px;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #ebebeb;
+	text-indent: -999999px;
+	font-size: 0;
+	background: #fff
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_zzim.png)
+		no-repeat 50% 50%;
+}
+
+button {
+	text-align: center;
+	color: #fff;
+}
+
+button, input[type=submit] {
+	border: 0;
+	padding: 0;
+	box-shadow: none;
+	cursor: pointer;
+}
+
+button, input[type=submit] {
+	font-family: Montserrat, -apple-system, NotoSansCJKkr, AppleSDGothicNeo,
+		Roboto, sans-serif;
+	font-weight: 700;
+}
+
+button, input.button, input.image, input.submit, label {
+	cursor: pointer;
+}
+
+button, img, input, select, textarea {
+	border: 0;
+	vertical-align: top;
+	color: #666;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+user agent stylesheet
+button {
+	appearance: auto;
+	writing-mode: horizontal-tb !important;
+	text-rendering: auto;
+	color: buttontext;
+	letter-spacing: normal;
+	word-spacing: normal;
+	line-height: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	text-align: center;
+	align-items: flex-start;
+	cursor: default;
+	box-sizing: border-box;
+	background-color: buttonface;
+	margin: 0em;
+	padding: 1px 6px;
+	border-width: 2px;
+	border-style: outset;
+	border-color: buttonborder;
+	border-image: initial;
+}
+
+.cate_prd_list>li .prd_info .prd_price {
+	height: 25px;
+	line-height: 22px;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_org {
+	color: #777;
+	font-size: 12px;
+	text-decoration: line-through;
+	vertical-align: middle;
+	font-weight: 700;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_org>span {
+	display: inline-block;
+	font-size: 14px;
+	text-decoration: line-through;
+	vertical-align: 0;
+	letter-spacing: -.02em;
+}
+
+.tx_num {
+	letter-spacing: -.02em !important;
+	font-weight: 500;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_org+.tx_cur {
+	margin: 0 0 0 7px;
+	vertical-align: bottom;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_cur {
+	display: inline-block;
+	color: #e02020;
+	font-weight: 700;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_cur>span {
+	display: inline-block;
+	font-size: 20px;
+	vertical-align: -1px;
+}
+
+.tx_num {
+	letter-spacing: -.02em !important;
+	font-weight: 500;
+}
+
+.cate_prd_list>li .prd_info .prd_flag {
+	margin-top: 5px;
+	padding-bottom: 0;
+}
+
+.prd_flag {
+	overflow: hidden;
+}
+
+.cate_prd_list>li .prd_info .prd_flag>.icon_flag {
+	float: none;
+}
+
+.icon_flag.sale {
+	background-color: #f65c60;
+}
+
+.prd_flag span {
+	float: left;
+}
+
+.icon_flag {
+	display: inline-block;
+	width: 40px;
+	height: 18px;
+	border-radius: 9px;
+	line-height: 17px !important;
+	color: #fff !important;
+	font-size: 12px !important;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none !important;
+	margin: 0 !important;
+}
+
+.cate_prd_list>li .prd_info .prd_flag>.icon_flag {
+	float: none;
+}
+
+.icon_flag.delivery {
+	width: 60px;
+	background-color: #f374b7;
+}
+
+.prd_flag span {
+	float: left;
+}
+
+.icon_flag {
+	display: inline-block;
+	width: 40px;
+	height: 18px;
+	border-radius: 9px;
+	line-height: 17px !important;
+	color: #fff !important;
+	font-size: 12px !important;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none !important;
+	margin: 0 !important;
+}
+
+.cate_prd_list>li .prd_info .prd_point_area {
+	display: none;
+	line-height: 16px;
+	color: #aaa;
+}
+
+.tx_num {
+	letter-spacing: -.02em !important;
+	font-weight: 500;
+}
+
+p {
+	display: block;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+}
+
+.cate_prd_list>li .prd_info .prd_point_area .review_point {
+	vertical-align: top;
+	margin-right: 5px;
+}
+
+.review_point {
+	display: inline-block;
+	overflow: hidden;
+	width: 92px;
+	height: 15px;
+	background:
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_review_point_off.png)
+		no-repeat 0 0;
+	text-indent: -9999px;
+}
+
+.review_point .point {
+	display: inline-block;
+	float: left;
+	width: auto;
+	height: 15px;
+	background:
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_review_point_on.png)
+		no-repeat 0 0;
+	line-height: 0;
+}
+
+.cate_prd_list>li .prd_info .prd_btn_area {
+	display: none;
+}
+
+.prd_btn_area {
+	overflow: hidden;
+	margin: 10px 0 0;
+}
+
+.cate_prd_list>li .prd_info .prd_btn_area button {
+	width: 85px;
+	height: 40px;
+	color: #f27370;
+	border: 1px solid #f27370;
+	background: #fff;
+}
+
+.prd_btn_area button {
+	float: left;
+	height: 70px;
+	font-size: 20px;
+	color: #fff;
+}
+
+button {
+	text-align: center;
+	color: #fff;
+}
+
+button, input[type=submit] {
+	border: 0;
+	padding: 0;
+	box-shadow: none;
+	cursor: pointer;
+}
+
+button, input[type=submit] {
+	font-family: Montserrat, -apple-system, NotoSansCJKkr, AppleSDGothicNeo,
+		Roboto, sans-serif;
+	font-weight: 700;
+}
+
+button, input.button, input.image, input.submit, label {
+	cursor: pointer;
+}
+
+button, img, input, select, textarea {
+	border: 0;
+	vertical-align: top;
+	color: #666;
+}
+
+.main_plan_banner.ty02 .slider_unit .cate_prd_list>li {
+	float: inherit;
+	padding: 0;
+	display: inline-block;
+	margin-left: 15px;
+	width: 215px;
+	vertical-align: top;
+}
+
+.main_plan_banner .slider_unit .cate_prd_list>li {
+	padding-bottom: 0;
+}
+
+.cate_prd_list>li {
+	position: relative;
+	float: left;
+	width: 255px;
+	padding: 30px 20px 35px;
+}
+
+.cate_prd_list>li .prd_info {
+	text-align: center;
+	font-size: 14px;
+}
+
+.cate_prd_list>li .prd_info .prd_thumb {
+	position: relative;
+	display: block;
+	width: 215px;
+	height: 215px;
+	background: #fff;
+}
+
+.cate_prd_list>li .prd_info .prd_thumb>img {
+	width: auto !important;
+	max-width: 215px;
+	height: auto !important;
+	max-height: 215px;
+}
+
+button, img, input, select, textarea {
+	border: 0;
+	vertical-align: top;
+	color: #666;
+}
+
+.cate_prd_list>li .prd_info .prd_name {
+	margin-top: 15px;
+}
+
+.cate_prd_list>li .prd_info .prd_name {
+	display: block;
+	min-height: 62px;
+	margin: 8px 0 0;
+	text-decoration: none;
+}
+
+.cate_prd_list>li .prd_info .prd_name>a {
+	display: block;
+}
+
+a {
+	color: #666;
+	text-decoration: none;
+}
+
+.main_plan_banner.ty02 .slider_unit .cate_prd_list>li .prd_info .btn_zzim
+	{
+	position: absolute;
+	top: 175px;
+	left: auto;
+	right: 0;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #ebebeb;
+	text-indent: -999999px;
+	font-size: 0;
+	background: #fff
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_zzim.png)
+		no-repeat 50% 50%;
+}
+
+.cate_prd_list>li .prd_info .btn_zzim {
+	position: absolute;
+	top: 205px;
+	left: 195px;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #ebebeb;
+	text-indent: -999999px;
+	font-size: 0;
+	background: #fff
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_zzim.png)
+		no-repeat 50% 50%;
+}
+
+button {
+	text-align: center;
+	color: #fff;
+}
+
+button, input[type=submit] {
+	border: 0;
+	padding: 0;
+	box-shadow: none;
+	cursor: pointer;
+}
+
+button, input[type=submit] {
+	font-family: Montserrat, -apple-system, NotoSansCJKkr, AppleSDGothicNeo,
+		Roboto, sans-serif;
+	font-weight: 700;
+}
+
+button, input.button, input.image, input.submit, label {
+	cursor: pointer;
+}
+
+button, img, input, select, textarea {
+	border: 0;
+	vertical-align: top;
+	color: #666;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+user agent stylesheet
+button {
+	appearance: auto;
+	writing-mode: horizontal-tb !important;
+	text-rendering: auto;
+	color: buttontext;
+	letter-spacing: normal;
+	word-spacing: normal;
+	line-height: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	text-align: center;
+	align-items: flex-start;
+	cursor: default;
+	box-sizing: border-box;
+	background-color: buttonface;
+	margin: 0em;
+	padding: 1px 6px;
+	border-width: 2px;
+	border-style: outset;
+	border-color: buttonborder;
+	border-image: initial;
+}
+
+.cate_prd_list>li .prd_info .prd_price {
+	height: 25px;
+	line-height: 22px;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_org {
+	color: #777;
+	font-size: 12px;
+	text-decoration: line-through;
+	vertical-align: middle;
+	font-weight: 700;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_org>span {
+	display: inline-block;
+	font-size: 14px;
+	text-decoration: line-through;
+	vertical-align: 0;
+	letter-spacing: -.02em;
+}
+
+.tx_num {
+	letter-spacing: -.02em !important;
+	font-weight: 500;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_org+.tx_cur {
+	margin: 0 0 0 7px;
+	vertical-align: bottom;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_cur {
+	display: inline-block;
+	color: #e02020;
+	font-weight: 700;
+}
+
+.cate_prd_list>li .prd_info .prd_flag {
+	margin-top: 5px;
+	padding-bottom: 0;
+}
+
+.prd_flag {
+	overflow: hidden;
+}
+
+.cate_prd_list>li .prd_info .prd_flag>.icon_flag {
+	float: none;
+}
+
+.icon_flag.sale {
+	background-color: #f65c60;
+}
+
+.prd_flag span {
+	float: left;
+}
+
+.icon_flag {
+	display: inline-block;
+	width: 40px;
+	height: 18px;
+	border-radius: 9px;
+	line-height: 17px !important;
+	color: #fff !important;
+	font-size: 12px !important;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none !important;
+	margin: 0 !important;
+}
+
+.icon_flag.coupon {
+	background-color: #9bce26;
+}
+
+.icon_flag.gift {
+	background-color: #6fcff7;
+}
+
+.icon_flag.delivery {
+	width: 60px;
+	background-color: #f374b7;
+}
+
+.cate_prd_list>li .prd_info .prd_point_area {
+	display: none;
+	line-height: 16px;
+	color: #aaa;
+}
+
+.tx_num {
+	letter-spacing: -.02em !important;
+	font-weight: 500;
+}
+
+.cate_prd_list>li .prd_info .prd_point_area .review_point {
+	vertical-align: top;
+	margin-right: 5px;
+}
+
+.review_point {
+	display: inline-block;
+	overflow: hidden;
+	width: 92px;
+	height: 15px;
+	background:
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_review_point_off.png)
+		no-repeat 0 0;
+	text-indent: -9999px;
+}
+
+.review_point .point {
+	display: inline-block;
+	float: left;
+	width: auto;
+	height: 15px;
+	background:
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_review_point_on.png)
+		no-repeat 0 0;
+	line-height: 0;
+}
+
+.cate_prd_list>li .prd_info .prd_btn_area {
+	display: none;
+}
+
+.prd_btn_area {
+	overflow: hidden;
+	margin: 10px 0 0;
+}
+
+.cate_prd_list>li .prd_info .prd_btn_area button {
+	width: 85px;
+	height: 40px;
+	color: #f27370;
+	border: 1px solid #f27370;
+	background: #fff;
+}
+
+.prd_btn_area button {
+	float: left;
+	height: 70px;
+	font-size: 20px;
+	color: #fff;
+}
+
+button {
+	text-align: center;
+	color: #fff;
+}
+
+button, input[type=submit] {
+	border: 0;
+	padding: 0;
+	box-shadow: none;
+	cursor: pointer;
+}
+
+button, input[type=submit] {
+	font-family: Montserrat, -apple-system, NotoSansCJKkr, AppleSDGothicNeo,
+		Roboto, sans-serif;
+	font-weight: 700;
+}
+
+button, input.button, input.image, input.submit, label {
+	cursor: pointer;
+}
+
+button, img, input, select, textarea {
+	border: 0;
+	vertical-align: top;
+	color: #666;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+user agent stylesheet
+button {
+	appearance: auto;
+	writing-mode: horizontal-tb !important;
+
+	text-rendering: auto;
+	color: buttontext;
+	letter-spacing: normal;
+	word-spacing: normal;
+	line-height: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	text-align: center;
+	align-items: flex-start;
+	cursor: default;
+	box-sizing: border-box;
+	background-color: buttonface;
+	margin: 0em;
+	padding: 1px 6px;
+	border-width: 2px;
+	border-style: outset;
+	border-color: buttonborder;
+	border-image: initial;
+}
+
+.main_plan_banner.ty02 .slider_unit .cate_prd_list>li {
+	float: inherit;
+	padding: 0;
+	display: inline-block;
+	margin-left: 15px;
+	width: 215px;
+	vertical-align: top;
+}
+
+.main_plan_banner .slider_unit .cate_prd_list>li {
+	padding-bottom: 0;
+}
+
+.cate_prd_list>li {
+	position: relative;
+	float: left;
+	width: 255px;
+	padding: 30px 20px 35px;
+}
+
+.cate_prd_list>li .prd_info {
+	text-align: center;
+	font-size: 14px;
+}
+
+.cate_prd_list>li .prd_info .prd_thumb {
+	position: relative;
+	display: block;
+	width: 215px;
+	height: 215px;
+	background: #fff;
+}
+
+.cate_prd_list>li .prd_info .prd_name {
+	margin-top: 15px;
+}
+
+.cate_prd_list>li .prd_info .prd_name {
+	display: block;
+	min-height: 62px;
+	margin: 8px 0 0;
+	text-decoration: none;
+}
+
+.cate_prd_list>li .prd_info .prd_name>a {
+	display: block;
+}
+
+a {
+	color: #666;
+	text-decoration: none;
+}
+
+.main_plan_banner.ty02 .slider_unit .cate_prd_list>li .prd_info .btn_zzim
+	{
+	position: absolute;
+	top: 175px;
+	left: auto;
+	right: 0;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #ebebeb;
+	text-indent: -999999px;
+	font-size: 0;
+	background: #fff
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_zzim.png)
+		no-repeat 50% 50%;
+}
+
+.cate_prd_list>li .prd_info .btn_zzim {
+	position: absolute;
+	top: 205px;
+	left: 195px;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #ebebeb;
+	text-indent: -999999px;
+	font-size: 0;
+	background: #fff
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_zzim.png)
+		no-repeat 50% 50%;
+}
+
+.cate_prd_list>li .prd_info .prd_price {
+	height: 25px;
+	line-height: 22px;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_org {
+	color: #777;
+	font-size: 12px;
+	text-decoration: line-through;
+	vertical-align: middle;
+	font-weight: 700;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_org>span {
+	display: inline-block;
+	font-size: 14px;
+	text-decoration: line-through;
+	vertical-align: 0;
+	letter-spacing: -.02em;
+}
+
+.tx_num {
+	letter-spacing: -.02em !important;
+	font-weight: 500;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_org+.tx_cur {
+	margin: 0 0 0 7px;
+	vertical-align: bottom;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_cur {
+	display: inline-block;
+	color: #e02020;
+	font-weight: 700;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_cur>span {
+	display: inline-block;
+	font-size: 20px;
+	vertical-align: -1px;
+}
+
+.tx_num {
+	letter-spacing: -.02em !important;
+	font-weight: 500;
+}
+
+.cate_prd_list>li .prd_info .prd_flag {
+	margin-top: 5px;
+	padding-bottom: 0;
+}
+
+.prd_flag {
+	overflow: hidden;
+}
+
+.cate_prd_list>li .prd_info .prd_flag {
+	margin-top: 5px;
+	padding-bottom: 0;
+}
+
+.prd_flag {
+	overflow: hidden;
+}
+
+.cate_prd_list>li .prd_info .prd_flag>.icon_flag {
+	float: none;
+}
+
+.icon_flag.sale {
+	background-color: #f65c60;
+}
+
+.prd_flag span {
+	float: left;
+}
+
+.icon_flag {
+	display: inline-block;
+	width: 40px;
+	height: 18px;
+	border-radius: 9px;
+	line-height: 17px !important;
+	color: #fff !important;
+	font-size: 12px !important;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none !important;
+	margin: 0 !important;
+}
+
+.icon_flag.coupon {
+	background-color: #9bce26;
+}
+
+.icon_flag.gift {
+	background-color: #6fcff7;
+}
+
+.cate_prd_list>li .prd_info .prd_point_area {
+	display: none;
+	line-height: 16px;
+	color: #aaa;
+}
+
+.tx_num {
+	letter-spacing: -.02em !important;
+	font-weight: 500;
+}
+
+.cate_prd_list>li .prd_info .prd_point_area .review_point {
+	vertical-align: top;
+	margin-right: 5px;
+}
+
+.review_point {
+	display: inline-block;
+	overflow: hidden;
+	width: 92px;
+	height: 15px;
+	background:
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_review_point_off.png)
+		no-repeat 0 0;
+	text-indent: -9999px;
+}
+
+.review_point .point {
+	display: inline-block;
+	float: left;
+	width: auto;
+	height: 15px;
+	background:
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_review_point_on.png)
+		no-repeat 0 0;
+	line-height: 0;
+}
+
+.cate_prd_list>li .prd_info .prd_btn_area {
+	display: none;
+}
+
+.prd_btn_area {
+	overflow: hidden;
+	margin: 10px 0 0;
+}
+
+.cate_prd_list>li .prd_info .prd_btn_area button {
+	width: 85px;
+	height: 40px;
+	color: #f27370;
+	border: 1px solid #f27370;
+	background: #fff;
+}
+
+.prd_btn_area button {
+	float: left;
+	height: 70px;
+	font-size: 20px;
+	color: #fff;
+}
+
+.cate_prd_list>li .prd_info .prd_btn_area button {
+	width: 85px;
+	height: 40px;
+	color: #f27370;
+	border: 1px solid #f27370;
+	background: #fff;
+}
+
+.prd_btn_area button {
+	float: left;
+	height: 70px;
+	font-size: 20px;
+	color: #fff;
+}
+
+.main_plan_banner .slider_unit:after {
+	content: '';
+	display: block;
+	width: 1px;
+	height: 685px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #ddd;
+}
+
+.main_plan_banner.ty02 .slider_unit {
+	position: relative;
+	float: left;
+	padding: 0 10px;
+	width: 520px !important;
+	height: 620px;
+}
+
+.main_plan_banner .slider_unit.right {
+	background:
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/bar_1x1.gif)
+		repeat-y 0 0;
+}
+
+.main_plan_banner .slider_unit {
+	position: relative;
+	float: left;
+	width: 510px;
+}
+
+.slick-initialized .slick-slide {
+	display: block;
+}
+
+.slick-slide {
+	display: none;
+	float: left;
+	height: 100%;
+	min-height: 1px;
+}
+
+.main_plan_banner.ty02 .slider_unit .plan_top {
+	height: 300px;
+}
+
+.main_plan_banner.ty02 .slider_unit.right .plan_banner {
+	float: inherit;
+	margin-left: 0;
+}
+
+.main_plan_banner.ty02 .slider_unit .plan_banner {
+	position: relative;
+	overflow: hidden;
+	width: 500px;
+	height: 300px;
+	background-size: 500px auto;
+	background-position: 0 0;
+	background-repeat: no-repeat;
+}
+
+.main_plan_banner .slider_unit.right .plan_banner {
+	float: right;
+}
+
+.main_plan_banner .slider_unit .plan_banner {
+	position: relative;
+	overflow: hidden;
+}
+
+.main_plan_banner.ty02 .slider_unit .plan_banner>a {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 500px;
+	height: 259px;
+	padding: 0 0 0;
+}
+
+.main_plan_banner .slider_unit .plan_banner>a {
+	display: block;
+	width: 500px;
+	height: 310px;
+	padding: 80px 0 0;
+}
+
+.main_plan_banner.ty02 .slider_unit.right .cate_prd_list {
+	margin: -41px 12px 0 auto;
+}
+
+.main_plan_banner.ty02 .slider_unit .cate_prd_list {
+	position: relative;
+	margin: -41px auto 0 12px;
+	padding: 15px 15px 0 15px;
+	width: 475px;
+	height: 408px;
+	font-size: 0;
+	background-color: #fff;
+	border-bottom: 0;
+	z-index: 1;
+}
+
+.main_plan_banner .slider_unit .cate_prd_list {
+	border-bottom: 0;
+}
+
+.cate_prd_list {
+	border-bottom: 1px solid #ddd;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+.main_plan_banner.ty02 .slider_unit .cate_prd_list>li:first-child {
+	margin-left: 0;
+}
+
+.main_plan_banner.ty02 .slider_unit .cate_prd_list>li {
+	float: inherit;
+	padding: 0;
+	display: inline-block;
+	margin-left: 15px;
+	width: 215px;
+	vertical-align: top;
+}
+
+.main_plan_banner .slider_unit .cate_prd_list>li {
+	padding-bottom: 0;
+}
+
+.cate_prd_list>li {
+	position: relative;
+	float: left;
+	width: 255px;
+	padding: 30px 20px 35px;
+}
+
+.cate_prd_list>li .prd_info {
+	text-align: center;
+	font-size: 14px;
+}
+
+.cate_prd_list>li .prd_info .prd_thumb {
+	position: relative;
+	display: block;
+	width: 215px;
+	height: 215px;
+	background: #fff;
+}
+
+.cate_prd_list>li .prd_info .prd_name {
+	margin-top: 15px;
+}
+
+.cate_prd_list>li .prd_info .prd_name {
+	display: block;
+	min-height: 62px;
+	margin: 8px 0 0;
+	text-decoration: none;
+}
+
+.cate_prd_list>li .prd_info .prd_name>a {
+	display: block;
+}
+
+.cate_prd_list>li .prd_info .prd_name .tx_brand {
+	display: block;
+	height: 20px;
+	line-height: 20px;
+	color: #777;
+	font-weight: 700;
+}
+
+.cate_prd_list>li .prd_info .prd_name .tx_name {
+	margin-top: 5px;
+}
+
+.cate_prd_list>li .prd_info .prd_name .tx_name {
+	overflow: hidden;
+	height: 40px;
+	margin-top: 2px;
+	padding: 2px 0;
+	-webkit-box-orient: vertical;
+	line-height: 18px;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	word-break: keep-all;
+	color: #000;
+	font-size: 14px;
+	text-align: center;
+}
+
+.main_plan_banner.ty02 .slider_unit .cate_prd_list>li .prd_info .btn_zzim
+	{
+	position: absolute;
+	top: 175px;
+	left: auto;
+	right: 0;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #ebebeb;
+	text-indent: -999999px;
+	font-size: 0;
+	background: #fff
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_zzim.png)
+		no-repeat 50% 50%;
+}
+
+.cate_prd_list>li .prd_info .btn_zzim {
+	position: absolute;
+	top: 205px;
+	left: 195px;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #ebebeb;
+	text-indent: -999999px;
+	font-size: 0;
+	background: #fff
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_zzim.png)
+		no-repeat 50% 50%;
+}
+
+.cate_prd_list>li .prd_info .prd_price {
+	height: 25px;
+	line-height: 22px;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_org {
+	color: #777;
+	font-size: 12px;
+	text-decoration: line-through;
+	vertical-align: middle;
+	font-weight: 700;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_org>span {
+	display: inline-block;
+	font-size: 14px;
+	text-decoration: line-through;
+	vertical-align: 0;
+	letter-spacing: -.02em;
+}
+
+.tx_num {
+	letter-spacing: -.02em !important;
+	font-weight: 500;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_org+.tx_cur {
+	margin: 0 0 0 7px;
+	vertical-align: bottom;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_cur {
+	display: inline-block;
+	color: #e02020;
+	font-weight: 700;
+}
+
+.cate_prd_list>li .prd_info .prd_price .tx_cur>span {
+	display: inline-block;
+	font-size: 20px;
+	vertical-align: -1px;
+}
+
+.tx_num {
+	letter-spacing: -.02em !important;
+	font-weight: 500;
+}
+
+.main_plan_banner.ty02 .slider_unit {
+	position: relative;
+	float: left;
+	padding: 0 10px;
+	width: 520px !important;
+	height: 620px;
+}
+
+.main_plan_banner .slider_unit {
+	position: relative;
+	float: left;
+	width: 510px;
+}
+
+.slick-initialized .slick-slide {
+	display: block;
+}
+
+.slick-slide {
+	display: none;
+	float: left;
+	height: 100%;
+	min-height: 1px;
+}
+
+.main_plan_banner.ty02 .slider_unit {
+	position: relative;
+	float: left;
+	padding: 0 10px;
+	width: 520px !important;
+	height: 100%;
+}
+
+.main_plan_banner .slider_unit.right {
+	background:
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/bar_1x1.gif)
+		repeat-y 0 0;
+}
+
+.main_plan_banner .slider_unit {
+	position: relative;
+	float: left;
+	width: 510px;
+}
+
+.slick-initialized .slick-slide {
+	display: block;
+}
+
+.slick-slide {
+	display: none;
+	float: left;
+	height: 100%;
+	min-height: 1px;
+}
+
+.main_plan_banner.ty02 .slider_unit .plan_top {
+	height: 300px;
+}
+
+.main_plan_banner.ty02 .slider_unit .plan_banner {
+	position: relative;
+	overflow: hidden;
+	width: 500px;
+	height: 300px;
+	background-size: 500px auto;
+	background-position: 0 0;
+	background-repeat: no-repeat;
+}
+
+.main_plan_banner .slider_unit .plan_banner {
+	position: relative;
+	overflow: hidden;
+}
+
+.main_plan_banner.ty02 .slider_unit .plan_banner>a {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 500px;
+	height: 259px;
+	padding: 0 0 0;
+}
+
+.main_plan_banner .slider_unit .plan_banner>a {
+	display: block;
+	width: 500px;
+	height: 310px;
+	padding: 80px 0 0;
+}
+
+.main_plan_banner.ty02 .slider_unit .plan_banner>a>p {
+	position: relative;
+	top: inherit;
+	left: inherit;
+	margin-left: 28px;
+	max-width: 360px;
+	color: #000;
+	text-align: left;
+}
+
+.main_plan_banner .slider_unit .plan_banner>a>p {
+	position: absolute;
+	top: 15px;
+	left: 70px;
+	width: 360px;
+	color: #222;
+	font-size: 18px;
+	text-align: center;
+	line-height: 30px;
+	letter-spacing: -.05em;
+}
+
+.main_plan_banner.ty02 .slider_unit .plan_banner>a>p>strong.tit {
+	overflow: hidden;
+	max-width: 222px;
+	height: inherit;
+	margin-top: 0;
+	font-size: 21px;
+	line-height: 1.35;
+	letter-spacing: -.67px;
+	font-weight: 700;
+	color: #333;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.main_plan_banner .slider_unit .plan_banner>a>p>strong {
+	display: block;
+	overflow: hidden;
+	height: 30px;
+	margin-top: -4px;
+	font-size: 20px;
+}
+
+.main_plan_banner.ty02 .slider_unit .plan_banner>a>p>span.desc {
+	overflow: hidden;
+	height: inherit;
+	margin-top: 15px;
+	max-width: 215px;
+	font-size: 16px;
+	line-height: 20px;
+	color: #333;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.main_plan_banner .slider_unit .plan_banner>a>p>span {
+	display: block;
+	overflow: hidden;
+	height: 30px;
+}
+
+.main_plan_banner.ty02 .slider_unit .cate_prd_list {
+	position: relative;
+	margin: -41px auto 0 12px;
+	padding: 15px 15px 0 15px;
+	width: 475px;
+	height: 408px;
+	font-size: 0;
+	background-color: #fff;
+	border-bottom: 0;
+	z-index: 1;
+}
+
+.main_plan_banner .slider_unit .cate_prd_list {
+	border-bottom: 0;
+}
+
+.cate_prd_list {
+	border-bottom: 1px solid #ddd;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+.main_plan_banner.ty02 .slider_unit .cate_prd_list>li:first-child {
+	margin-left: 0;
+}
+
+.main_plan_banner.ty02 .slider_unit .cate_prd_list>li {
+	float: inherit;
+	padding: 0;
+	display: inline-block;
+	margin-left: 15px;
+	width: 215px;
+	vertical-align: top;
+}
+
+.main_plan_banner .slider_unit .cate_prd_list>li {
+	padding-bottom: 0;
+}
+
+.cate_prd_list>li {
+	position: relative;
+	float: left;
+	width: 255px;
+	padding: 30px 20px 35px;
+}
+
+.cate_prd_list>li .prd_info {
+	text-align: center;
+	font-size: 14px;
+}
+
+.cate_prd_list>li .prd_info .prd_thumb {
+	position: relative;
+	display: block;
+	width: 215px;
+	height: 215px;
+	background: #fff;
+}
+
+.cate_prd_list>li .prd_info .prd_thumb>img {
+	width: auto !important;
+	max-width: 215px;
+	height: auto !important;
+	max-height: 215px;
+}
+
+.cate_prd_list>li .prd_info .prd_name {
+	margin-top: 15px;
+}
+
+.cate_prd_list>li .prd_info .prd_name {
+	display: block;
+	min-height: 62px;
+	margin: 8px 0 0;
+	text-decoration: none;
+}
+
+.main_plan_banner.ty02 .banner_paging {
+	position: absolute;
+	top: 10px;
+	right: 0;
+}
+
+.main_plan_banner.ty02 .banner_paging .slick-dots {
+	position: relative;
+	top: 0;
+}
+
+.curation_slide .slick-dots, .main_card_banner .slick-dots,
+	.main_onlyone_wrap .slick-dots, .main_plan_banner .slick-dots,
+	.main_recomm_wrap .slick-dots {
+	position: absolute;
+	overflow: hidden;
+}
+
+.main_plan_banner .slick-dots {
+	top: -38px;
+	right: 0;
+}
+
+.curation_slide .slick-dots>li, .main_card_banner .slick-dots>li,
+	.main_onlyone_wrap .slick-dots>li, .main_plan_banner .slick-dots>li,
+	.main_recomm_wrap .slick-dots>li {
+	float: left;
+	text-align: center;
+}
+
+.curation_slide .slick-dots>li.slick-active>button, .main_card_banner .slick-dots>li.slick-active>button,
+	.main_onlyone_wrap .slick-dots>li.slick-active>button,
+	.main_plan_banner .slick-dots>li.slick-active>button, .main_recomm_wrap .slick-dots>li.slick-active>button
+	{
+	color: #fff;
+	background: #2f3030;
+	border-radius: 12px;
+}
+
+.curation_slide .slick-dots>li>button, .main_card_banner .slick-dots>li>button,
+	.main_onlyone_wrap .slick-dots>li>button, .main_plan_banner .slick-dots>li>button,
+	.main_recomm_wrap .slick-dots>li>button {
+	color: #888;
+	width: 24px;
+	height: 24px;
+	background: 0 0;
+	font-size: 14px;
+	line-height: 24px;
+}
+
+button {
+	text-align: center;
+	color: #fff;
+}
+
+button, input[type=submit] {
+	border: 0;
+	padding: 0;
+	box-shadow: none;
+	cursor: pointer;
+}
+
+button, input[type=submit] {
+	font-family: Montserrat, -apple-system, NotoSansCJKkr, AppleSDGothicNeo,
+		Roboto, sans-serif;
+	font-weight: 700;
+}
+
+button, input.button, input.image, input.submit, label {
+	cursor: pointer;
+}
+
+button, img, input, select, textarea {
+	border: 0;
+	vertical-align: top;
+	color: #666;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+user agent stylesheet
+button {
+	appearance: auto;
+	writing-mode: horizontal-tb !important;
+	text-rendering: auto;
+	color: buttontext;
+	letter-spacing: normal;
+	word-spacing: normal;
+	line-height: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	text-align: center;
+	align-items: flex-start;
+	cursor: default;
+	box-sizing: border-box;
+	background-color: buttonface;
+	margin: 0em;
+	padding: 1px 6px;
+	border-width: 2px;
+	border-style: outset;
+	border-color: buttonborder;
+	border-image: initial;
+}
+
+.curation_slide .slick-dots>li>button, .main_card_banner .slick-dots>li>button,
+	.main_onlyone_wrap .slick-dots>li>button, .main_plan_banner .slick-dots>li>button,
+	.main_recomm_wrap .slick-dots>li>button {
+	color: #888;
+	width: 24px;
+	height: 24px;
+	background: 0 0;
+	font-size: 14px;
+	line-height: 24px;
+}
+
+.main_plan_banner.ty02 .slick-arrow.slick-prev {
+	left: -60px;
+}
+
+.main_plan_banner.ty02 .slick-arrow {
+	position: absolute;
+	top: 50%;
+	margin-top: -20px;
+	cursor: pointer;
+	z-index: 2;
+}
+
+.main_plan_banner .slick-arrow.slick-prev {
+	left: -60px;
+}
+
+.main_plan_banner .slick-arrow {
+	position: absolute;
+	top: 50%;
+	margin-top: -20px;
+	z-index: 2;
+}
+
+.slick-arrow.slick-prev {
+	background-position: 0 0;
+}
+
+.slick-arrow {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background:
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_arrow40x40_2.png)
+		no-repeat 0 0;
+	text-indent: -9999px;
+}
+
+.main_plan_banner.ty02 .slick-arrow.slick-next {
+	right: -60px;
+}
+
+.main_plan_banner.ty02 .slick-arrow {
+	position: absolute;
+	top: 50%;
+	margin-top: -20px;
+	cursor: pointer;
+	z-index: 2;
+}
+
+.main_plan_banner .slick-arrow.slick-next {
+	right: -60px;
+}
+
+.main_plan_banner .slick-arrow {
+	position: absolute;
+	top: 50%;
+	margin-top: -20px;
+	z-index: 2;
+}
+
+.slick-arrow.slick-next {
+	background-position: -40px 0;
+}
+
+.slick-arrow {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background:
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_arrow40x40_2.png)
+		no-repeat 0 0;
+	text-indent: -9999px;
+}
+
+.main_plan_banner.ty02 .slick-arrow.slick-prev {
+	left: -60px;
+}
+
+.main_plan_banner.ty02 .slick-arrow {
+	position: absolute;
+	top: 50%;
+	margin-top: -20px;
+	cursor: pointer;
+	z-index: 2;
+}
+
+.main_plan_banner .slick-arrow.slick-prev {
+	left: -60px;
+}
+
+.main_plan_banner .slick-arrow {
+	position: absolute;
+	top: 50%;
+	margin-top: -20px;
+	z-index: 2;
+}
+
+.slick-arrow.slick-prev {
+	background-position: 0 0;
+}
+
+.slick-arrow {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background:
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_arrow40x40_2.png)
+		no-repeat 0 0;
+	text-indent: -9999px;
+}
+
+.main_plan_banner.ty02 .slick-arrow.slick-next {
+	right: -60px;
+}
+
+.main_plan_banner.ty02 .slick-arrow {
+	position: absolute;
+	top: 50%;
+	margin-top: -20px;
+	cursor: pointer;
+	z-index: 2;
+}
+
+.main_plan_banner .slick-arrow.slick-next {
+	right: -60px;
+}
+
+.main_plan_banner .slick-arrow {
+	position: absolute;
+	top: 50%;
+	margin-top: -20px;
+	z-index: 2;
+}
+
+.slick-arrow.slick-next {
+	background-position: -40px 0;
+}
+
+.slick-arrow {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background:
+		url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_arrow40x40_2.png)
+		no-repeat 0 0;
+	text-indent: -9999px;
+}
+
+.main_sub_tit {
+	height: 40px;
+	margin: 51px 0 8px;
+	font-size: 26px;
+	color: #000;
+	text-align: center;
+	line-height: 40px;
+}
+
+.recomm_plan {
+	margin: 0 auto 10px auto;
+	width: 1020px;
+}
+
+.recomm_plan_list {
+	font-size: 0;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+.recomm_plan_list li:first-child {
+	margin-left: 0;
+}
+
+.recomm_plan_list li {
+	overflow: hidden;
+	display: inline-block;
+	margin-left: 20px;
+	width: 500px;
+	height: 227px;
+	border-radius: 0;
+	vertical-align: top;
+}
+
+.recomm_plan_list li a {
+	display: block;
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+a {
+	color: #666;
+	text-decoration: none;
+}
+
+.recomm_plan_list li a img {
+	width: 500px;
+	height: auto;
+}
+
+button, img, input, select, textarea {
+	border: 0;
+	vertical-align: top;
+	color: #666;
+}
+
+.recomm_plan_list li a .text_wrap {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+}
+
+.recomm_plan_list li a:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, .1);
+}
+
+.recomm_plan_list li a .text_wrap dl {
+	margin-left: 28px;
+	color: #000;
+}
+
+.recomm_plan_list li a .text_wrap dt {
+	overflow: hidden;
+	max-width: 222px;
+	font-size: 21px;
+	line-height: 1.35;
+	letter-spacing: -.67px;
+	font-weight: 700;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.recomm_plan_list li a .text_wrap dd {
+	overflow: hidden;
+	margin-top: 15px;
+	max-width: 215px;
+	font-size: 16px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+

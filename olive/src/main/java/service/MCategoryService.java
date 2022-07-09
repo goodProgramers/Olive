@@ -1,6 +1,8 @@
 package service;
 
 import com.util.ConnectionProvider;
+import com.util.JdbcUtil;
+
 import domain.CategoryDTO;
 import domain.ProductBrandPriceDTO;
 import persistence.ProductListDAOImpl;
@@ -56,11 +58,14 @@ public class MCategoryService {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
+        	JdbcUtil.close(connection);
+        	/*
             try {
                 connection.close();
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
+            */
         }
         return list;
     }
@@ -77,11 +82,14 @@ public class MCategoryService {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
+        	JdbcUtil.close(connection);
+        	/*
             try {
                 connection.close();
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
+            */
         }
         return list;
     }

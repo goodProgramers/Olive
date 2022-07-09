@@ -1,6 +1,8 @@
 package service;
 
 import com.util.ConnectionProvider;
+import com.util.JdbcUtil;
+
 import domain.MainFullBannerDTO;
 import persistence.MainFullBannerDAOImpl;
 
@@ -32,11 +34,14 @@ public class MainFullBannerService {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
+        	JdbcUtil.close(connection);
+        	/*
             try {
                 connection.close();
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
+            */
         }
 
         return list;

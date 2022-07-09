@@ -2226,6 +2226,567 @@ rate_span{
 		}
 	</style>
 
+<!-- 이상품 어때요 부분 css -->
+
+<style>
+
+button, input.button, input.image, input.submit, label {
+    cursor: pointer;
+}
+button, input[type=submit] {
+    font-family: Montserrat,-apple-system,NotoSansCJKkr,AppleSDGothicNeo,Roboto,sans-serif;
+    font-weight: 700;
+}
+button, input[type=submit] {
+    border: 0;
+    padding: 0;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.slick-arrow {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_arrow40x40_2.png) no-repeat 0 0;
+    text-indent: -9999px;
+}
+.slick-arrow.slick-prev {
+    background-position: 0 0;
+}
+main_recomm_wrap .slick-arrow {
+    position: absolute;
+    top: 30%;
+    margin-top: -42px;
+    z-index: 2;
+}
+.main_recomm_wrap .slick-arrow.slick-prev {
+    left: -60px;
+}
+.slick-arrow.slick-next {
+    background-position: -40px 0;
+}
+.main_recomm_wrap .slick-arrow.slick-next {
+    right: -60px;
+}
+.main_recomm_wrap .slick-arrow {
+    position: absolute;
+    top: 50%;
+    margin-top: -42px;
+    z-index: 2;
+}
+.slick-arrow.slick-next {
+    background-position: -40px 0;
+}
+</style>
+<style>
+
+.slick-list {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+/* .slick-slider .slick-list, .slick-slider .slick-track {
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+} */
+.slick-track {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    z-index: 1;
+}
+/* .slick-slider .slick-list, .slick-slider .slick-track {
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+} */
+.slick-track:after, .slick-track:before {
+    display: table;
+    content: '';
+}
+.slick-slide { /*바꿈*/
+    display: none;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+}
+.slick-initialized .slick-slide {
+    display: block;
+}
+ol, ul {
+    list-style: none;
+}
+.cate_prd_list {
+    border-bottom: 1px solid #ddd;
+}
+.cate_prd_list.no_line {
+    border-bottom: 0;
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+.cate_prd_list>li {
+    position: relative;
+    float: left;
+    width: 255px;
+    padding: 30px 20px 35px;
+}
+.cate_prd_list>li .prd_info {
+    text-align: center;
+    font-size: 14px;
+}
+a {
+    color: #666;
+    text-decoration: none;
+}
+.cate_prd_list>li .prd_info .prd_thumb {
+    position: relative;
+    display: block;
+    width: 215px;
+    height: 215px;
+    background: #fff;
+}
+.thumb_flag {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    font-size: 14px;
+    background: #fff;
+    border-radius: 24px;
+    border-width: 2px;
+    border-style: solid;
+    text-align: center;
+    font-weight: 700;
+}
+.thumb_flag.best {
+    color: #f05a5e;
+    line-height: 44px;
+    border-color: #f05a5e;
+}
+.cate_prd_list>li .prd_info .prd_thumb .thumb_flag {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    line-height: 44px!important;
+}
+.cate_prd_list>li .prd_info .prd_thumb>img {
+    width: auto!important;
+    max-width: 215px;
+    height: auto!important;
+    max-height: 215px;
+}
+.cate_prd_list>li .prd_info .prd_name {
+    display: block;
+    min-height: 62px;
+    margin: 8px 0 0;
+    text-decoration: none;
+}
+.cate_prd_list>li .prd_info .prd_name {
+    margin-top: 15px;
+}
+.cate_prd_list>li .prd_info .prd_name .tx_brand {
+    display: block;
+    height: 20px;
+    line-height: 20px;
+    color: #777;
+    font-weight: 700;
+}
+.cate_prd_list>li .prd_info .prd_name .tx_name {
+    overflow: hidden;
+    height: 40px;
+    margin-top: 2px;
+    padding: 2px 0;
+    -webkit-box-orient: vertical;
+    line-height: 18px;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    word-break: keep-all;
+    color: #000;
+    font-size: 14px;
+    text-align: center;
+}
+.cate_prd_list>li .prd_info .prd_name .tx_name {
+    margin-top: 5px;
+}
+.cate_prd_list>li .prd_info .btn_zzim {
+    position: absolute;
+    top: 205px;
+    left: 195px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ebebeb;
+    text-indent: -999999px;
+    font-size: 0;
+    background: #fff url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_zzim.png) no-repeat 50% 50%;
+}
+.cate_prd_list>li .prd_info .prd_price {
+    height: 25px;
+    line-height: 22px;
+}
+.cate_prd_list>li .prd_info .prd_price .tx_org {
+    color: #777;
+    font-size: 12px;
+    text-decoration: line-through;
+    vertical-align: middle;
+    font-weight: 700;
+}
+.tx_num {
+    letter-spacing: -.02em!important;
+    font-weight: 500;
+}
+.cate_prd_list>li .prd_info .prd_price .tx_org>span {
+    display: inline-block;
+    font-size: 14px;
+    text-decoration: line-through;
+    vertical-align: 0;
+    letter-spacing: -.02em;
+}
+.cate_prd_list>li .prd_info .prd_price .tx_cur {
+    display: inline-block;
+    color: #e02020;
+    font-weight: 700;
+}
+.cate_prd_list>li .prd_info .prd_price .tx_org+.tx_cur {
+    margin: 0 0 0 7px;
+    vertical-align: bottom;
+}
+.cate_prd_list>li .prd_info .prd_price .tx_cur>span {
+    display: inline-block;
+    font-size: 20px;
+    vertical-align: -1px;
+}
+.prd_flag {
+    overflow: hidden;
+}
+.cate_prd_list>li .prd_info .prd_flag {
+    margin-top: 5px;
+    padding-bottom: 0;
+}
+.icon_flag {
+    display: inline-block;
+    width: 40px;
+    height: 18px;
+    border-radius: 9px;
+    line-height: 17px!important;
+    color: #fff!important;
+    font-size: 12px!important;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none!important;
+    margin: 0!important;
+}
+.prd_flag span {
+    float: left;
+}
+.icon_flag.sale {
+    background-color: #f65c60;
+}
+.cate_prd_list>li .prd_info .prd_flag>.icon_flag {
+    float: none;
+}
+.icon_flag.coupon {
+    background-color: #9bce26;
+}
+.icon_flag.delivery {
+    width: 60px;
+    background-color: #f374b7;
+}
+.cate_prd_list>li .prd_info .prd_point_area {
+    display: none;
+    line-height: 16px;
+    color: #aaa;
+}
+.review_point {
+    display: inline-block;
+    overflow: hidden;
+    width: 92px;
+    height: 15px;
+    background: url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_review_point_off.png) no-repeat 0 0;
+    text-indent: -9999px;
+}
+.cate_prd_list>li .prd_info .prd_point_area .review_point {
+    vertical-align: top;
+    margin-right: 5px;
+}
+.review_point .point {
+    display: inline-block;
+    float: left;
+    width: auto;
+    height: 15px;
+    background: url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_review_point_on.png) no-repeat 0 0;
+    line-height: 0;
+}
+.cate_prd_list>li .prd_info .prd_btn_area {
+    display: none;
+}
+.prd_btn_area {
+    overflow: hidden;
+    margin: 10px 0 0;
+}
+.cate_prd_list>li .prd_info .prd_btn_area button {
+    width: 85px;
+    height: 40px;
+    color: #f27370;
+    border: 1px solid #f27370;
+    background: #fff;
+}
+.prd_btn_area button {
+    float: left;
+    height: 70px;
+    font-size: 20px;
+    color: #fff;
+}
+.prd_btn_area button {
+    float: left;
+    height: 70px;
+    font-size: 20px;
+    color: #fff;
+}
+.cate_prd_list>li {
+    position: relative;
+    float: left;
+    width: 255px;
+    padding: 30px 20px 35px;
+}
+</style>
+<style>
+
+.main_recomm_wrap .slick-dots {
+    top: -38px;
+    right: 0;
+}
+.curation_slide .slick-dots, .main_card_banner .slick-dots, .main_onlyone_wrap .slick-dots, .main_plan_banner .slick-dots, .main_recomm_wrap .slick-dots {
+    position: absolute;
+    overflow: hidden;
+}
+.curation_slide .slick-dots>li, .main_card_banner .slick-dots>li, .main_onlyone_wrap .slick-dots>li, .main_plan_banner .slick-dots>li, .main_recomm_wrap .slick-dots>li {
+    float: left;
+    text-align: center;
+}
+.curation_slide .slick-dots>li.slick-active>button, .main_card_banner .slick-dots>li.slick-active>button, .main_onlyone_wrap .slick-dots>li.slick-active>button, .main_plan_banner .slick-dots>li.slick-active>button, .main_recomm_wrap .slick-dots>li.slick-active>button {
+    color: #fff;
+    background: #2f3030;
+    border-radius: 12px;
+}
+.curation_slide .slick-dots>li>button, .main_card_banner .slick-dots>li>button, .main_onlyone_wrap .slick-dots>li>button, .main_plan_banner .slick-dots>li>button, .main_recomm_wrap .slick-dots>li>button {
+    color: #888;
+    width: 24px;
+    height: 24px;
+    background: 0 0;
+    font-size: 14px;
+    line-height: 24px;
+}
+</style>
+<style>
+ button.nextArrow {
+ 
+     left: initial; 
+    right: -40px;
+}
+ .cate_prd_list{
+   width:1250px;
+}
+
+</style>
+
+<!-- 여기까지 이상품 어때요. 여기부터 헬시라이프 -->
+
+<style>
+.mainHLifeWrap {
+    text-align: center;
+  width: 1020px ;
+  margin: 0 auto;
+}
+.mainHLifeWrap>h3 {
+    display: block;
+    text-align: center ;
+    margin-bottom: 15px;
+    font-size: 26px;
+    line-height: 32px;
+    color: #000;
+}
+.main_sub_tit {
+    height: 40px;
+    margin: 51px 0 8px;
+    font-size: 26px;
+    color: #000;
+    text-align: center;
+    line-height: 40px;
+}
+.hLifeSlide {
+    padding: 0 8px;
+}
+.slick-slider {
+    position: relative;
+    display: block;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+.hLifeSlide>button {
+    position: absolute;
+    left: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+button {
+    text-align: center;
+    color: #fff;
+}
+ .slick-slider .slick-list, .slick-slider .slick-track {
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+} 
+.slick-list {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+ element.style {
+    opacity: 1;
+    width: 4020px;
+    transform: translate3d(-2345px, 0px, 0px);
+}
+.hLifeSlide .itempackage {
+    position: relative;
+    margin: 0 13px 0 12px;
+}
+.slick-initialized .slick-slide {
+    display: block;
+}
+.slick-slide {
+    display: none;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+}
+.hLifeSlide .itempackage .img {
+    overflow: hidden;
+    position: relative;
+    display: block;
+    height: 420px;
+    border-radius: 25px;
+}
+.hLifeSlide .itempackage .img>span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    transform: translate(-50%,-50%) scale(1);
+    transition: all .3s ease-in-out;
+}
+.hLifeSlide .itempackage .img>span>img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.hLifeSlide .itempackage .txt .title {
+    overflow: hidden;
+    display: block;
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: -.45px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+.hLifeSlide .itempackage .txt>span {
+    display: block;
+    margin-top: 5px;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 400;
+    letter-spacing: -.21px;
+    word-break: keep-all;
+    padding-right: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.hLifeSlide button {
+    position: absolute;
+    left: -40px;
+    top: 50%;
+   transform: translateY(-50%); 
+    z-index: 10;
+}
+
+
+.slick-arrow.slick-prev {
+    background-position: 0 0;
+}
+
+.slick-arrow {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: url(https://www.oliveyoung.co.kr/pc-static-root/image/comm/ico_arrow40x40_2.png) no-repeat 0 0;
+    text-indent: -9999px;
+}
+.hLifeSlide button.slick-next {
+     left: initial; 
+    right: -40px;
+}
+/* .hLifeSlide button.slick-prev {
+    left: inherit; 
+    left: -60px;
+} */
+.slick-arrow.slick-next {
+    background-position: -40px 0;
+}
+
+.hLifeSlide .itempackage .txt {
+    position: absolute;
+    top: 310px;
+    left: 20px;
+    right: 20px;
+    color: #fff;
+    text-align: left;
+}
+
+.hLifeSlide .itempackage .txt .title {
+    overflow: hidden;
+    display: block;
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: -.45px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+</style>
+
+<!-- 여기까지 헬시라이프 -->
+
+
+
 </head>
 <body>
 <div id="Wrapper">
@@ -2752,6 +3313,215 @@ rate_span{
 	
   </div><!-- OnlyoneSlider -->
  </div><!-- main_onlyone_wrap -->
+ 
+ 
+<!--  이상품 어때요 -->
+ 
+<h3 class="main_sub_tit"><strong>이 상품 어때요?</strong></h3>
+            <div class="main_recomm_wrap slick-initialized slick-slider slick-dotted" id="mainReComSlider" role="toolbar">
+            <!-- <button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: block;">Previous</button>
+ -->
+                  <!-- <div aria-live="polite" class="slick-list draggable"> -->
+                  <div aria-live="polite" class="please">
+                  <!-- <div class="slick-track" role="listbox" style="opacity: 1; width: 5100px;"> -->
+                  <div class="itemitem">
+                  
+                  <!-- <div class="slick-slide slick-cloned" data-slick-index="-1" aria-hidden="true" style="width: 1020px;" tabindex="-1">
+ -->
+                   <!-- <div class="items">
+ 
+                  <ul class="cate_prd_list no_line">
+                -->
+                    
+                   <c:if test="${not empty recomProductlist}">
+                   <c:forEach items="${recomProductlist}" var="recomProductDto" varStatus="status">
+               
+                   <c:if test="${status.index%4==0}"><div><ul class="cate_prd_list no_line"></c:if>
+               
+               
+                    <li class="flag">
+                  
+                  <div class="prd_info ">
+                  <a href="https://www.oliveyoung.co.kr/store/goods/getGoodsDetail.do?goodsNo=A000000168642&amp;dispCatNo=90000010001&amp;trackingCd=Home_Recommand&amp;curation&amp;egcode&amp;rccode&amp;egrankcode" name="Home_Recommand" class="prd_thumb goodsList" data-ref-goodsno="A000000168642" data-attr="홈^이상품어때요^[블랙핑크 Pick] NEW 헬로버블 염색약 12colors^9" data-ref-dispcatno="90000010001" data-ref-itemno="003" data-trk="null" data-impression="A000000168642^홈_이상품어때요^9" data-impression-visibility="1" tabindex="-1">
+                  <span class="thumb_flag best">베스트</span>
+                  <img src="${recomProductDto.prd_img}" onerror="common.errorImg(this);">
+                 <%--  <img src="${recomProductDto.prd_img}" alt="${recomProductDto.prd_img}"> --%>
+                  </a>
+                  <div class="prd_name">
+                  <a href="javascript:;" name="Home_Recommand" class="goodsList" data-ref-goodsno="A000000168642" data-attr="홈^이상품어때요^[블랙핑크 Pick] NEW 헬로버블 염색약 12colors^9" data-ref-dispcatno="90000010001" data-ref-itemno="003" data-trk="null" tabindex="-1">
+                  <span class="tx_brand">${recomProductDto.br_name}</span>
+                  <p class="tx_name">${recomProductDto.pr_name} </p>
+                  </a>
+                  </div>
+                  <button class="btn_zzim jeem" data-ref-goodsno="A000000168642" tabindex="-1">
+                  <span>찜하기전</span>
+                  </button>
+                  <p class="prd_price">
+                  <span class="tx_org">
+                  <span class="tx_num">${recomProductDto.prpri_price}</span>원</span>
+      
+                  <span class="tx_cur"><span class="tx_num">${recomProductDto.realPrice}</span>원</span>
+                  </p>
+                  <p class="prd_flag">
+                  <span class="icon_flag sale">세일</span>
+                  <span class="icon_flag coupon">쿠폰</span>
+                  <span class="icon_flag delivery">오늘드림</span>
+                  </p>
+                  <p class="prd_point_area tx_num">
+                  <span class="review_point">
+                  <span class="point" style="width:90.0%">10점만점에 5.5점</span>
+                  </span>(131)</p>
+                  <p class="prd_btn_area">
+                  <button class="cartBtn" data-ref-goodsno="A000000168642" data-ref-dispcatno="90000010001" data-ref-itemno="003" tabindex="-1">장바구니</button>
+                  <button class="btn_new_pop goodsList" tabindex="-1">새창보기</button>
+                  </p>
+                  </div>
+                  </li>
+                   
+                   
+                   <c:if test="${status.index%4==3}"></ul></div></c:if>
+                   
+                   
+                   </c:forEach>
+                  </c:if>
+               
+         
+               
+               <!--    </ul>
+                  </div> -->
+                  
+                  
+                  </div>
+                  
+                  </div>
+            
+   <!-- <button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: block;">Next</button>
+    -->
+   
+   
+<!--    <ul class="slick-dots" style="display: block;" role="tablist">
+   <li class="slick-active" aria-hidden="false" role="presentation" aria-selected="true" aria-controls="navigation40" id="slick-slide40">
+   <button type="button" data-role="none" role="button" tabindex="0">1</button>
+   </li>
+   <li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation41" id="slick-slide41">
+   <button type="button" data-role="none" role="button" tabindex="0">2</button>
+   </li>
+   <li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation42" id="slick-slide42">
+   <button type="button" data-role="none" role="button" tabindex="0">3</button>
+   </li>
+   </ul> -->
+   
+   <div class="indicator">
+      <span class="prevArrow">이전</span>
+      <span class="nextArrow"    style="background-position: -40px 0; right: -6px;">다음</span>  
+   </div>
+   
+   
+   
+   
+
+
+ 
+ 
+ 
+ 
+ <script>
+$(document).ready(function(){
+     $(".itemitem").slick({
+         
+      /*    slidesToShow : 3, //한번에 보여질 개수 */
+      /*    slidesToScroll : 2, // 슬라이드 한번에 움직일 개수 */
+         arrows : true,
+           speed: 800
+         
+     })
+     
+   });
+</script> 
+
+<script>
+$('.itemitem').slick({
+	  autoplay : false, 
+	  autoplaySpeed : 1000,
+	 
+	  // 지정한 클래스에 맞게 값을 지정한다.
+	  prevArrow : $('.prevArrow'), 
+	  nextArrow : $('.nextArrow')
+	});
+
+</script>
+
+
+  <!--  여기까지 이상품 어때요 -->
+ 
+<!--  헬시라이프 -->
+ <div class="mainHLifeWrap">
+			<h3 class="main_sub_tit"><strong>Healthy Life</strong></h3>
+			 <div class="hLifeSlide slick-initialized slick-slider">
+			
+		
+						<!--  <button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: block;">Previous</button>
+					 -->
+						<!--  <div class="slick-track" role="listbox" style="opacity: 1; width: 4020px;"> -->
+						  <div class="slick-track">
+						 <c:if test="${empty hLifeList}">
+						 찾는값없음
+						 </c:if>
+						<c:if test="${ not empty hLifeList}">
+						 <c:forEach items="${hLifeList}" var="hlifedto" varStatus="status">
+						
+						
+						
+						 <!--  <div class="slideItem slick-slide slick-cloned" data-slick-index="-3" aria-hidden="false" style="width: 310px;" tabindex="-1">
+						 -->
+					   <div class="itempackage" >
+						
+						 	<a href="javascript:common.wlog('home_healthy_banner' + (3 + 1));common.link.movePlanShop('500000101920047', 'Home_Healthy')" data-attr="홈^헬시라이프^롱보드 라이더의 선케어 비법" data-trk="/" tabindex="-1">
+								<p class="img" position="relative"><span>
+								<img data-src="${hlifedto.hl_img}" alt="${hlifedto.hl_img}" src="${hlifedto.hl_img}"></span>
+								</p>
+								<p class="txt" style="" >
+									<strong class="title">${hlifedto.hl_title}</strong>
+									<span>${hlifedto.hl_desc}</span>
+								</p>
+							</a>
+							</div>
+							 
+							
+							
+						 </c:forEach>
+						</c:if>
+				
+						</div></div>
+						
+			 </div>
+			 
+<script>
+  $(function(){
+	$('.slick-track').slick({
+		slide: 'div',
+		slidesToShow : 3,
+		slidesToScroll : 1,
+		arrows : true,
+		  speed: 800
+		
+	})  
+  })
+</script> 
+			 
+			 
+			 
+			 
+		<!-- 	 여기까지 헬시라이프 -->
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
 </div><!-- Contents -->
 </div><!-- Container -->

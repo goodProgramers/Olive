@@ -1,6 +1,8 @@
 package service;
 
 import com.util.ConnectionProvider;
+import com.util.JdbcUtil;
+
 import domain.CategoryDTO;
 import persistence.CategoryMainDAOImpl;
 
@@ -28,11 +30,14 @@ public class CategoryMainService {
         } catch (NamingException e) {
             throw new RuntimeException(e);
         } finally {
+        	JdbcUtil.close(connection);
+        	/*
             try {
                 connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+            */
         }
     }
 }

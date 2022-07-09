@@ -2,6 +2,7 @@ package service;
 
 import com.util.ConnectionProvider;
 import com.util.JdbcUtil;
+
 import domain.CategoryDTO;
 import domain.ProductBrandPriceDTO;
 import persistence.CategoryMainDAOImpl;
@@ -33,7 +34,14 @@ public class CategoryMidService {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
-            JdbcUtil.close(connection);
+        	JdbcUtil.close(connection);
+        	/*
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            */
         }
         return midCaPrMap;
     }
