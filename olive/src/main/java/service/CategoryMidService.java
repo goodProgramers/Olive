@@ -35,13 +35,7 @@ public class CategoryMidService {
             throw new RuntimeException(e);
         } finally {
         	JdbcUtil.close(connection);
-        	/*
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            */
+
         }
         return midCaPrMap;
     }
