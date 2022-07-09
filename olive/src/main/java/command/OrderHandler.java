@@ -1,6 +1,5 @@
 package command;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import domain.CartProductDTO;
 import domain.OrderDetailPaymentDTO;
 import domain.OrderMemberInfoDTO;
-import service.OrderDetailInsertService;
 import service.OrderInsertService;
 import service.OrderPaymentService;
 
@@ -18,6 +16,7 @@ public class OrderHandler implements CommandHandler{
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
 		if( request.getMethod().equals("GET") ) {
 
 			String memberCode = request.getParameter("memberCode") == null ? "me000004" : request.getParameter("memberCode"); // 회원코드
@@ -72,7 +71,7 @@ public class OrderHandler implements CommandHandler{
 
 			return "/olive/order.jsp";
 
-		}else if(request.getMethod().equals("POST") ) {
+		} else if(request.getMethod().equals("POST") ) {
 
 			String memberCode = request.getParameter("memberCode") == null ? "me000004" : request.getParameter("memberCode"); // 회원코드
 			System.out.println(memberCode);
@@ -103,6 +102,10 @@ public class OrderHandler implements CommandHandler{
 			String pa_way = request.getParameter("payMethod"); // 결제수단
 			String pa_amount = request.getParameter("orderPayAmt"); // 총결제금액(포린트 사용금액 제외 후) - 결제 테이블에도 사용
 			
+			// [ 포인트 관련 ]
+			String de_amount = request.getParameter("pointAmt"); // 사용한 포인트 금액
+			
+			
 			OrderDetailPaymentDTO dto = null;
 			int result = 0;
 
@@ -118,8 +121,9 @@ public class OrderHandler implements CommandHandler{
 
 			OrderInsertService orderInsertService = OrderInsertService.getInstance();
 
-			// 주문 테이블 + 주문상세 테이블 + 결제 테이블 인서트
-			result = orderInsertService.insertOrder(dto, pr_code, ord_count, ord_price, prpri_code, sa_code, pa_way, pa_amount);
+			// 주문 테이블 + 주문상세 테이블 + 결제 테이블 + 포인트 테이블 인서트
+			// result = orderInsertService.insertOrder(dto, pr_code, ord_count, ord_price, prpri_code, sa_code, pa_way, pa_amount);
+			result = orderInsertService.insertOrder(dto, pr_code, ord_count, ord_price, prpri_code, sa_code, pa_way, pa_amount, me_code, de_amount);
 			
 			if (result == 1) {
 				String location = "orderform.do";
@@ -128,7 +132,7 @@ public class OrderHandler implements CommandHandler{
 				System.out.println("주문 실패");
 			} // if
 
-		}else {
+		} else {
 			response.sendError( HttpServletResponse.SC_METHOD_NOT_ALLOWED );
 		} // if
 

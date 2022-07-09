@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import com.util.JdbcUtil;
 
@@ -155,8 +154,8 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 	@Override
 	public List<OrderMemberInfoDTO> selectMemberTotPoint(Connection conn, String memberCode) throws SQLException {
 		String sql = "SELECT m.me_code, me_id, my_point, mp.mbs_code "
-				+ "FROM member m JOIN mypage mp ON m.me_code = mp.me_code "
-				+ "WHERE m.me_code = ? ";
+					+ "FROM member m JOIN mypage mp ON m.me_code = mp.me_code "
+					+ "WHERE m.me_code = ? ";
 
 		ArrayList<OrderMemberInfoDTO> memberTotPoint = null;
 		PreparedStatement pstmt = null;
@@ -205,7 +204,7 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 		OrderDetailPaymentDTO dto = null;
 
 		String sql = "INSERT INTO o_order (or_code, or_price, or_date, or_shippay, or_pay, or_todaygive, me_code, or_addresrequest, ad_code) "
-				+ "VALUES(('or' || LPAD(order_seq.nextval, 6, '0')),  ?, TRUNC(SYSDATE), ?, ?, ?, ?, ?, ?)";
+					+ "VALUES(('or' || LPAD(order_seq.nextval, 6, '0')),  ?, TRUNC(SYSDATE), ?, ?, ?, ?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(sql);
 
@@ -244,8 +243,8 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 		int result;
 
 		String sql = "INSERT INTO orderdetail (ord_code, or_code, pr_code, ord_count, ord_price, prpri_code, sa_code) "
-				+ "VALUES ( ('ord' || LPAD(orderdetail_seq.nextval, 6, '0')), ?, ?, ?, ?, ?, ?)";
-		// + "VALUES ( ('ord' || LPAD(orderdetail_seq.nextval, 6, '0')), ('or' || LPAD(order_seq.currval, 6, '0')), ?, ?, ?, ?, ?)";
+					+ "VALUES ( ('ord' || LPAD(orderdetail_seq.nextval, 6, '0')), ?, ?, ?, ?, ?, ?)";
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 
@@ -279,7 +278,7 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 		}
 
 		String sql = "INSERT INTO payment (pa_code, pa_way, pa_amount, pa_date, pa_cardnumber, pa_status, or_code) "
-				+ "	VALUES(('pa' || LPAD(payment_seq.nextval, 6, '0')), ?, ?, TRUNC(SYSDATE), ?, 0, ?)";
+					+ "	VALUES(('pa' || LPAD(payment_seq.nextval, 6, '0')), ?, ?, TRUNC(SYSDATE), ?, 0, ?)";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -297,7 +296,50 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 
 		return result;
 
-	}
+	} // insertPayment
+	
+	// 주문시 상품 테이블 상품 판매량 update
+	@Override
+	public void increaseProductCount(Connection conn, String pr_code) throws SQLException {
+		PreparedStatement pstmt = null;
+		
+		String sql = "UPDATE product "
+					+ "SET pr_count = pr_count + 1 "
+					+ "WHERE pr_code = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, pr_code);
+			pstmt.executeUpdate();
+			
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+
+	} // increaseProductCount
+
+	// 회원 포인트 사용 insert
+	@Override
+	public int insertDepositUse(Connection conn, String me_code, String or_code, String de_amount) throws SQLException {
+		PreparedStatement pstmt = null;
+		int result;
+		
+		String sql = "INSERT INTO deposit (de_code, me_code, or_code, de_amount, de_date, de_type) "
+					+ "VALUES(('de' || LPAD(deposit_seq.nextval, 6, '0')), ?, ?, ?, TRUNC(SYSDATE), 1)";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, me_code);
+			pstmt.setString(2, or_code);
+			pstmt.setInt(3, Integer.parseInt(de_amount));
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+		
+		return result;
+	} // insertDepositUse
 
 
 } // class

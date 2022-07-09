@@ -26,6 +26,14 @@ public interface OrderPaymentDAO {
 	
 	// 결제 테이블 insert
 	public int insertPayment(Connection conn, String pa_way, String pa_amount, String or_code) throws SQLException;
+	
+	// 주문시 상품판매량 증가
+	public void increaseProductCount(Connection conn, String pr_code) throws SQLException;
+	
+	// 회원 포인트 사용시 insert
+	public int insertDepositUse(Connection conn, String me_code, String or_code, String de_amount) throws SQLException;
+	
+	// 주문시 회원 포인트 적립 insert
 
 
 }

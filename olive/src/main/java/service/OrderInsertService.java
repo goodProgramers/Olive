@@ -25,7 +25,7 @@ public class OrderInsertService {
 
 	
 	public int insertOrder(OrderDetailPaymentDTO orderDetailPaymentDTO, String[] pr_code, String[] ord_count, String[] ord_price, String[] prpri_code, String[] sa_code
-			, String pa_way, String pa_amount) {
+			, String pa_way, String pa_amount, String me_code, String de_amount) {
 		
 		Connection con = null;
 		OrderDetailPaymentDTO dto = null;
@@ -53,9 +53,21 @@ public class OrderInsertService {
 				System.out.println("> 주문 상세 테이블 insert 완료" + (i+1));
 			}
 			
+			// 상품 테이블 해당 상품 판매량 update
+			for (int i = 0; i < pr_code.length; i++) {
+				dao.increaseProductCount(con, pr_code[i]);
+				System.out.println("> 상품 테이블" + pr_code[i] +" update 완료");
+			}
+			
 			// 결제 테이블
 			result = dao.insertPayment(con, pa_way, pa_amount, or_code);
 			if(result == 1) System.out.println("> 결제 테이블 insert 완료");
+
+			// 포인트(deposit) 테이블
+			if(!de_amount.equals("0")) {
+				result = dao.insertDepositUse(con, me_code, or_code, de_amount);
+				if(result == 1) System.out.println("> 포인트 테이블 사용 금액 insert 완료");
+			}
 			
 			con.commit(); // 위의 작업이 모두 완료될 시 커밋
 			

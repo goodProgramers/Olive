@@ -1399,12 +1399,12 @@ element.style {
 						<li>
 							<span class="tx_tit">포인트 사용 금액</span>
 							<span class="tx_cont colorOrange"><span class="tx_num" id="cjonePntAplyAmt_span">0</span>원</span>
+							<input type="hidden" name="pointAmt" value="0">
 						</li>
 						
 						<li class="total">
 							<span class="tx_tit">최종 결제금액</span>
 							<span class="tx_cont"><span class="tx_num" id="totPayAmt_sum_span">112,600</span>원</span>
-							<input type="hidden" name="pointAmt" value="0">
 							<input type="hidden" name="orderPayAmt" value="112600">
 						</li>
 						
