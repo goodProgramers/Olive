@@ -2224,6 +2224,16 @@ rate_span{
 			overflow: hidden;
 			margin : 0;
 		}
+		.main_full_banner .banner_link img {
+			position: absolute;
+			top: 0;
+			left: 50%;
+			transform: translateX(-50%);
+			-webkit-transform: translateX(-50%);
+			-ms-transform: translateX(-50%);
+			-o-transform: translateX(-50%);
+			z-index: 0;
+		}
 	</style>
 
 </head>
@@ -2244,7 +2254,7 @@ rate_span{
 	</div>
 
 	<div class="header_inner">
-		<h1><a href="#"><img src="https://image.oliveyoung.co.kr/pc-static-root/image/comm/h1_logo.png" alt="올리브영"></a></h1>
+		<h1><a href="#"><img src="/images/logo/olive_zero_logo.png"></a></h1>
 
 		<div class="search_box" id="w_search_box">
 			<input type="hidden" name="chkButton" id="chkButton" value="">
