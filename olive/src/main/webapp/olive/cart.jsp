@@ -925,16 +925,16 @@ a {
 								<!-- 장바구니 상품 정보를 핸들러로 보내기 위해서 input 태그에 담기 -->
 								<div class="tbl_cell w40">
 									<input type="checkbox" checked="checked" id="inp_prd_chk1" name="s_checkbox1" value="0" class="chkSmall">
-									<input type="hidden" class="prImg" name="prImg" value="https://image.oliveyoung.co.kr/uploads/images/goods/220/10/0000/0015/A00000015606001ko.jpg?l=ko" style="display:none;">
-									<input type="hidden" class="brand" name="brand" value="돌체앤가바나" style="display:none;">
-									<input type="hidden" class="product" name="product" value="돌체앤가바나 라이트블루 오드뚜왈렛 100ml" style="display:none;">
-									<input type="hidden" class="prPrice" name="prPrice" value="129000" style="display:none;">
-									<input type="hidden" class="prPriceCnt" name="prPriceCnt" value="129000" style="display:none;" >
-									<input type="hidden" class="realPrice" name="realPrice" value="83800" style="display:none;">
-									<input type="hidden" class="realPricehidden" name="realPricehidden" value="83800" style="display:none;">
-									<input type="hidden" class="priceCode" name="priceCode" value="prpr000254"><!-- 단가코드 -->
-									<input type="hidden" class="saleCode" name="saleCode" value="sa000207"><!-- 할인코드 -->
-									<input type="hidden" class="prCode" name="prCode" value="pr001002"><!-- 상품코드 -->
+									<input type="hidden" class="prImg" name="prImg" value="${cartList.prm_url}" style="display:none;">
+									<input type="hidden" class="brand" name="brand" value="${cartList.br_name}" style="display:none;">
+									<input type="hidden" class="product" name="product" value="${cartList.pr_name}" style="display:none;">
+									<input type="hidden" class="prPrice" name="prPrice" value="${cartList.prpri_price}" style="display:none;">
+									<input type="hidden" class="prPriceCnt" name="prPriceCnt" value="${cartList.prpri_price * cartList.prpr_count}" style="display:none;" >
+									<input type="hidden" class="realPrice" name="realPrice" value="${cartList.realPrice}" style="display:none;">
+									<input type="hidden" class="realPricehidden" name="realPricehidden" value="${cartList.realPrice * cartList.prpr_count}" style="display:none;">
+									<input type="hidden" class="priceCode" name="priceCode" value="${cartList.prpri_code}"><!-- 단가코드 -->
+							        <input type="hidden" class="saleCode" name="saleCode" value="${cartList.sa_code}"><!-- 할인코드 --> 
+									<input type="hidden" class="prCode" name="prCode" value="${cartList.pr_code}"><!-- 상품코드 -->
 								</div>
 								
 								<div class="tbl_cell w390">
@@ -970,11 +970,11 @@ a {
 								</div>
 								
 								<div class="tbl_cell w110">
-								<span class="org_price" value="${cartList.prpri_price}">
-								<span class="tx_num">${cartList.prpri_price}</span>
+								<span class="org_price" value="${cartList.prpri_price }">
+								<span class="tx_num">${cartList.prpri_price * cartList.prpr_count}</span>
 								원</span>
 								<span class="pur_price" value="${cartList.realPrice}">
-								<span class="tx_num" value="0">${cartList.realPrice}</span>원</span>
+								<span class="tx_num" value="0">${cartList.realPrice * cartList.prpr_count}</span>원</span>
 								   
 								   </div>
 								
@@ -995,9 +995,9 @@ a {
 						</td>
 					</tr>
 					
-					<c:set var= "totalPrice" value="${totalPrice + cartList.prpri_price}"/>
-					<c:set var= "salePrice" value="${salePrice + cartList.realPrice}"/>
-					<c:set var= "saleAmount" value="${cartList.prpri_price - cartList.realPrice}"/>
+					<c:set var= "totalPrice" value="${totalPrice + cartList.prpri_price * cartList.prpr_count}"/>
+					<c:set var= "salePrice" value="${salePrice + cartList.realPrice * cartList.prpr_count}"/>
+					<c:set var= "saleAmount" value="${cartList.prpri_price* cartList.prpr_count - cartList.realPrice* cartList.prpr_count}"/>
 					
 	
 	</c:forEach>
@@ -1047,7 +1047,9 @@ a {
 		</div>
 
 		</div>
-		</form><!-- form -->
+		</form>
+		
+		<!-- form -->
 		<!-- //#Contents -->	
 	</div>
 
@@ -1101,10 +1103,10 @@ $(".amount").on("change", function () {
 	alert($(this).find("option:selected").val());
 	// var prPrice = $(this).parent().parent().prev().find("span.cur_price").val(); // 129000
 	// var prPrice = $(this).parent().parent().prev().children().text(); // 129000
-	var prPrice = $(this).parent().parent().prev().find("span.cur_price").val(); // 129000
+	//var prPrice = $(this).parent().parent().prev().find("span.cur_price").val(); // 129000
 	// alert(prPrice);
-	var realPrice = $(this).find("option:selected") // pur_price
-	var count = $(this).find("option:selected").val(); 
+	//var realPrice = $(this).find("option:selected") // pur_price
+	//var count = $(this).find("option:selected").val(); 
 	
 	// cur_price : 1개 판매가
 	// org_price : 수량 * 판매가
@@ -1119,6 +1121,40 @@ $(".amount").on("change", function () {
 	*/
 });
 </script>	
+
+<!-- 삭제버튼 누르면 페이지 다시 로드, 세션정보 변경 -->
+<script>
+$(".btnSmall").click(function () {
+	
+	
+}
+
+</script>
+
+<script>
+//전체주문 버튼 눌렀을 때 form 태그 동적으로 생성, 파라미터 값 넘기기
+
+	$(".btnOrange").click(function (event){
+		
+		
+		/* var keyWord = $("#query").val();
+		var searchInput = $("<input>")
+				.attr("type","hidden")
+				.attr("name","keyWord")
+				.attr("value",keyWord);
+		$("<form>")
+				.attr("method","GET")
+				.attr("action","/olive/search.do")
+				.append(searchInput)
+				.appendTo("body")
+				.submit(); */
+	});
+
+
+
+</script>
+
+
 
 
 </body>

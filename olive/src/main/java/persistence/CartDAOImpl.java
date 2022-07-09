@@ -32,7 +32,7 @@ public class CartDAOImpl implements CartDAO {
 	public List<ProductBrandPriceDTO> showCart(Connection conn, List<Cart> getsessionCartList) {
 
 		List<ProductBrandPriceDTO> cartList = null;
-		String sql = " SELECT p.pr_name, b.br_name, prpri_price, prpri_price*(1-NVL(s.sa_rate,0)) realPrice, prm_url "
+		String sql = " SELECT p.pr_name, b.br_name, prpri_price, prpri_price*(1-NVL(s.sa_rate,0)) realPrice, prm_url, pr.prpri_code, s.sa_code "
 				+ " FROM product p JOIN prprice pr ON p.pr_code = pr.pr_code JOIN brand b ON b.br_code = p.br_code "
 				+ "           JOIN productmimg pdi ON p.pr_code = pdi.pr_code "
 				+ "           LEFT OUTER JOIN sale s ON p.pr_code=s.pr_code " + " WHERE p.pr_code = ? ";
@@ -62,6 +62,9 @@ public class CartDAOImpl implements CartDAO {
 					dto.setBr_name(rs.getString("br_name"));
 					dto.setRealPrice(rs.getInt("realPrice"));
 					dto.setPrm_url(rs.getString("prm_url"));
+					dto.setPrpri_code(rs.getString("prpri_code"));
+					dto.setSa_code(rs.getString("sa_code"));
+					
 					dto.setPr_code(pr_code);
 					dto.setPrpr_count(prpr_count);
 
