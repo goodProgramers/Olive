@@ -10,6 +10,7 @@ import com.util.ConnectionProvider;
 import com.util.JdbcUtil;
 
 import domain.OrderDetailPaymentDTO;
+import persistence.OrderDetailPaymentDAOImpl;
 import persistence.OrderPaymentDAOImpl;
 
 public class OrderInsertService {
@@ -25,7 +26,7 @@ public class OrderInsertService {
 
 	
 	public int insertOrder(OrderDetailPaymentDTO orderDetailPaymentDTO, String[] pr_code, String[] ord_count, String[] ord_price, String[] prpri_code, String[] sa_code
-			, String pa_way, String pa_amount, String me_code, String de_amount) {
+			, String pa_way, String pa_amount, String me_code, String myp_amount) {
 		
 		Connection con = null;
 		OrderDetailPaymentDTO dto = null;
@@ -36,7 +37,7 @@ public class OrderInsertService {
 			con = ConnectionProvider.getConnection();
 			con.setAutoCommit(false); // 오토커밋 취소
 			
-			OrderPaymentDAOImpl dao = OrderPaymentDAOImpl.getInstance();
+			OrderDetailPaymentDAOImpl dao = OrderDetailPaymentDAOImpl.getInstance();
 			
 			// 주문 테이블
 			dto = dao.insertOrder(con, orderDetailPaymentDTO); // 주문 테이블 인서트 후 주문 번호 가져오기
@@ -64,9 +65,9 @@ public class OrderInsertService {
 			if(result == 1) System.out.println("> 결제 테이블 insert 완료");
 
 			// 포인트(deposit) 테이블
-			if(!de_amount.equals("0")) {
-				result = dao.insertDepositUse(con, me_code, or_code, de_amount);
-				if(result == 1) System.out.println("> 포인트 테이블 사용 금액 insert 완료");
+			if(!myp_amount.equals("0")) {
+				result = dao.insertMyPointUse(con, me_code, or_code, myp_amount);
+				if(result == 1) System.out.println("> 포인트 테이블 사용 금액 insert 및 mypage update 완료");
 			}
 			
 			con.commit(); // 위의 작업이 모두 완료될 시 커밋
@@ -74,7 +75,7 @@ public class OrderInsertService {
 			return result;
 		} catch (NamingException | SQLException e) {
 			JdbcUtil.rollback(con); // 아닌 경우 롤백
-			System.out.println("> Service 내에서 주문 + 주문 상세 + 결제 insert 실패");
+			System.out.println("> Service 내에서 주문 + 주문 상세 + 결제 등 트랜잭션 처리 실패");
 			throw new RuntimeException(e);
 		} finally {
 			JdbcUtil.close(con);

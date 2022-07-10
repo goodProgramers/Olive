@@ -770,7 +770,7 @@ a {
 <jsp:include page="layout/header.jsp"></jsp:include>
 
 <div id="Container">
-  <form name="cartForm" id="cartForm" action="order.do" method="get">	
+  <form name="cartForm" id="cartForm" action="<%= request.getContextPath() %>/order.do" method="get">	
 	<div id="Contents"><!-- #Contents -->
 			<!-- title_box -->
 			<div class="title_box">

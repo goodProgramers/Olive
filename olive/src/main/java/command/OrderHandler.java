@@ -76,6 +76,9 @@ public class OrderHandler implements CommandHandler{
 			String memberCode = request.getParameter("memberCode") == null ? "me000004" : request.getParameter("memberCode"); // 회원코드
 			System.out.println(memberCode);
 			request.setAttribute("memberCode", memberCode);
+			
+			// 회원코드로 회원의 멤버십등급 알아오기
+			
 
 			// [ 주문 테이블 ]
 			String me_code = request.getParameter("memberCode"); // 회원코드
@@ -92,21 +95,17 @@ public class OrderHandler implements CommandHandler{
 			String[] ord_price = request.getParameterValues("realPricehidden"); // 할인적용된 1개 단가 
 			String[] prpri_code = request.getParameterValues("priceCode"); // 단가코드
 			String[] sa_code = request.getParameterValues("saleCode"); // 할인코드
-			System.out.println("pr_code : " + pr_code.length);
-			System.out.println("ord_count : " + ord_count.length);
-			System.out.println("ord_price : " + ord_price.length);
-			System.out.println("prpri_code : " + prpri_code.length);
-			System.out.println("sa_code : " + sa_code.length);
 
 			// [ 결제 테이블 ]
 			String pa_way = request.getParameter("payMethod"); // 결제수단
 			String pa_amount = request.getParameter("orderPayAmt"); // 총결제금액(포린트 사용금액 제외 후) - 결제 테이블에도 사용
 			
 			// [ 포인트 관련 ]
-			String de_amount = request.getParameter("pointAmt"); // 사용한 포인트 금액
+			String myp_amount = request.getParameter("pointAmt"); // 사용한 포인트 금액
 			
 			
 			OrderDetailPaymentDTO dto = null;
+			OrderInsertService orderInsertService = OrderInsertService.getInstance();
 			int result = 0;
 
 			dto = new OrderDetailPaymentDTO();
@@ -119,11 +118,8 @@ public class OrderHandler implements CommandHandler{
 			dto.setOr_addresrequest(or_addresrequest);
 			dto.setAd_code(ad_code);
 
-			OrderInsertService orderInsertService = OrderInsertService.getInstance();
-
 			// 주문 테이블 + 주문상세 테이블 + 결제 테이블 + 포인트 테이블 인서트
-			// result = orderInsertService.insertOrder(dto, pr_code, ord_count, ord_price, prpri_code, sa_code, pa_way, pa_amount);
-			result = orderInsertService.insertOrder(dto, pr_code, ord_count, ord_price, prpri_code, sa_code, pa_way, pa_amount, me_code, de_amount);
+			result = orderInsertService.insertOrder(dto, pr_code, ord_count, ord_price, prpri_code, sa_code, pa_way, pa_amount, me_code, myp_amount);
 			
 			if (result == 1) {
 				String location = "orderform.do";
