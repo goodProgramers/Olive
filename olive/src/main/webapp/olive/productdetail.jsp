@@ -1308,7 +1308,7 @@ button {
 						<div class="cont_area">
 
 <!-- 바로구매 시 보낼 값들. -->
-<form id="order_hidden_value" method="post" action="/Olivett/olive/order.jsp">  
+<form id="order_hidden_value" method="post" action="/live/olive/order.jsp">
 	<input type="hidden" name="prImg" value="${img_Name.prm_url}"/> <!-- 이미지 -->
 	<input type="hidden" name="brand" value="${img_Name.br_name }"/> <!-- 브랜드 -->
 	<input type="hidden" name="product" value="${img_Name.pr_name}"/> <!-- 제품명 -->
@@ -1317,9 +1317,6 @@ button {
 	<input type="hidden" name="realPrice" value="${ prd_price.price }"/> <!-- 1개 구매가 -->
 	<input type="hidden" name="realPricehidden" value=""/> <!-- 수량 * 구매가 -->
 	<input type="hidden" name="prCount" value=""/> <!-- 수량 -->
-	
-	
-	
 	<input type="hidden" name="priceCode" value=""><!-- 단가코드 -->
 	<input type="hidden" name="saleCode" value=""><!-- 할인코드 -->
 </form>

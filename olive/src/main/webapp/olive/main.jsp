@@ -9,6 +9,7 @@
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+	<link rel="stylesheet" href="<%= request.getContextPath() %>/css/module.css">
 
 <title>잘하셨조 - 올리브영 온라인몰</title>
 <style>
@@ -2031,6 +2032,16 @@ rate_span{
 			color: #666;
 			font-weight: 700;
 		}
+		.main_full_banner .banner_link img {
+			position: absolute;
+			top: 0;
+			left: 50%;
+			transform: translateX(-50%);
+			-webkit-transform: translateX(-50%);
+			-ms-transform: translateX(-50%);
+			-o-transform: translateX(-50%);
+			z-index: 0;
+		}
 		.main_full_banner .banner_link .banner_desc strong {
 			display: block;
 			width: 360px;
@@ -2802,7 +2813,7 @@ button {
 <c:otherwise>
             <li class="logout"><strong>${ loginAuth.mbs_grade } ${ loginAuth.me_name }</strong> 
             <a href="<%= request.getContextPath() %>/olive/logout.do">로그아웃</a></li> 
-            <li class="mypage"><a href="#" >마이페이지</a></li> 형근데 여기 클론에서 작업을 해도되나??
+            <li class="mypage"><a href="#" >마이페이지</a></li>
 </c:otherwise>
 </c:choose>
 			<li class="cart"><a href="javascript:common.link.moveCartPage();" data-attr="공통^헤더^장바구니">장바구니<span id="cartToCnt"></span></a></li>
@@ -3476,13 +3487,7 @@ button {
                   <div aria-live="polite" class="please">
                   <!-- <div class="slick-track" role="listbox" style="opacity: 1; width: 5100px;"> -->
                   <div class="itemitem">
-                  
-                  <!-- <div class="slick-slide slick-cloned" data-slick-index="-1" aria-hidden="true" style="width: 1020px;" tabindex="-1">
- -->
-                   <!-- <div class="items">
- 
-                  <ul class="cate_prd_list no_line">
-                -->
+
                     
                    <c:if test="${not empty recomProductlist}">
                    <c:forEach items="${recomProductlist}" var="recomProductDto" varStatus="status">
@@ -3535,47 +3540,18 @@ button {
                    
                    </c:forEach>
                   </c:if>
-               
-         
-               
-               <!--    </ul>
-                  </div> -->
-                  
+
                   
                   </div>
                   
                   </div>
-            
-   <!-- <button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: block;">Next</button>
-    -->
-   
-   
-<!--    <ul class="slick-dots" style="display: block;" role="tablist">
-   <li class="slick-active" aria-hidden="false" role="presentation" aria-selected="true" aria-controls="navigation40" id="slick-slide40">
-   <button type="button" data-role="none" role="button" tabindex="0">1</button>
-   </li>
-   <li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation41" id="slick-slide41">
-   <button type="button" data-role="none" role="button" tabindex="0">2</button>
-   </li>
-   <li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation42" id="slick-slide42">
-   <button type="button" data-role="none" role="button" tabindex="0">3</button>
-   </li>
-   </ul> -->
+
    
    <div class="indicator">
       <span class="prevArrow">이전</span>
       <span class="nextArrow"    style="background-position: -40px 0; right: -6px;">다음</span>  
    </div>
-   
-   
-   
-   
 
-
- 
- 
- 
- 
  <script>
 $(document).ready(function(){
      $(".itemitem").slick({
@@ -3647,18 +3623,7 @@ $('.itemitem').slick({
 						
 			 </div>
 			 
-<script>
-  $(function(){
-	$('.slick-track').slick({
-		slide: 'div',
-		slidesToShow : 3,
-		slidesToScroll : 1,
-		arrows : true,
-		  speed: 800
-		
-	})  
-  })
-</script> 
+
 			 
 			 
 			 
@@ -3804,6 +3769,17 @@ $(function () {
 			}		 		
 	});
 </script>
+ <script>
+	 $(function(){
+		 $('.slick-track').slick({
+			 slide: 'div',
+			 slidesToShow : 3,
+			 slidesToScroll : 1,
+			 arrows : true,
+			 speed: 800
 
+		 })
+	 })
+ </script>
 </body>
 </html>

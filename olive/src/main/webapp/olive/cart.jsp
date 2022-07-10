@@ -1118,7 +1118,34 @@ $(".amount").on("change", function () {
 	$(this).prev().prev().val(prPrice * count);
 	*/
 });
-</script>	
+</script>
+
+
+
+
+<script>
+	$("주문하기").click(function (event) {
+		event.preventDefault();
+		var orderForm = $("<form").attr("method", "POST").attr("action", "<%=request.getContextPath()%>/olive/order.do");
+
+		$("클래스명:checked").each(function(i, elem) {
+			$(orderForm)
+					.append($("<input>").attr("type","hidden").attr("name","pr_code").val($(elem).parents("tr").find("prCode").val()))
+					.append($("<input>").attr("type","hidden").attr("name","prName").val($(elem).parents("tr").find("prName").val()))
+					.append($("<input>").attr("type","hidden").attr("name","prprice").val($(elem).parents("tr").find("prprice").val()))
+					.append($("<input>").attr("type","hidden").attr("name","pr_code").val($(elem).parents("tr").find("realPrice").val()))
+					.append($("<input>").attr("type","hidden").attr("name","prpr_code").val($(elem).parents("tr").find("prpr_code").val()))
+					.append($("<input>").attr("type","hidden").attr("name","pr_code").val($(elem).parents("tr").find("numberOfProduct").val()))
+		});
+		$(orderForm).submit();
+	});
+
+
+
+
+</script>
+
+
 
 
 </body>
