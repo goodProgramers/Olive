@@ -1308,7 +1308,7 @@ button {
 						<div class="cont_area">
 
 <!-- 바로구매 시 보낼 값들. -->
-<form id="order_hidden_value" method="post" action="/Olivett/olive/order.jsp">  
+<form id="order_hidden_value" method="post" action="<%= request.getContextPath() %>/olive/order.do">  
 	<input type="hidden" name="prImg" value="${img_Name.prm_url}"/> <!-- 이미지 -->
 	<input type="hidden" name="brand" value="${img_Name.br_name }"/> <!-- 브랜드 -->
 	<input type="hidden" name="product" value="${img_Name.pr_name}"/> <!-- 제품명 -->
@@ -1607,3 +1607,16 @@ button {
 	 -->
 </body>
 </html>
+
+<script>
+
+$(".numberOfProduct").on("change",function(){ //수량적는 input태그 변경하면
+    
+    var totalprice = $(".cur_price").find(".x_num").html(); //구매금액- db에서 받아온 값
+    var prcount = $(this).val();  
+    if( $(".chkSmall").checked == true ){ //체크박스 체크됐다면
+         $(".detail_price").find(".tx_num1").val(prcount * totalprice);  //출력할 곳에 넣는다.
+       }
+  });
+  
+</script>

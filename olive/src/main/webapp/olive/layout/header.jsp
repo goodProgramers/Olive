@@ -25,7 +25,7 @@
     </div>
 
     <div class="header_inner">
-        <h1><a href="/olive/main.do"><img src="https://image.oliveyoung.co.kr/pc-static-root/image/comm/h1_logo.png" alt="올리브영"></a></h1>
+        <h1><a href="<%= request.getContextPath() %>/olive/main.do"><img src="https://image.oliveyoung.co.kr/pc-static-root/image/comm/h1_logo.png" alt="올리브영"></a></h1>
 
         <div class="search_box" id="w_search_box">
             <input type="hidden" name="chkButton" id="chkButton" value="">

@@ -829,6 +829,88 @@ a {
 				</tr>
 				</thead>
 				
+				<tbody>				
+					<tr>
+						<input type="hidden" id="soldout_yn" name="soldout_yn" value="N">
+						<td colspan="7">			
+						<div class="tbl_cont_area">		
+								<!-- 장바구니 상품 정보를 핸들러로 보내기 위해서 input 태그에 담기 -->
+								<div class="tbl_cell w40">
+									<input type="checkbox" checked="checked" id="inp_prd_chk1" name="s_checkbox1" value="0" class="chkSmall">
+									<input type="hidden" class="prCode" name="prCode" value="pr001002"><br>
+									<input type="hidden" class="prImg" name="prImg" value="https://image.oliveyoung.co.kr/uploads/images/goods/220/10/0000/0015/A00000015606001ko.jpg?l=ko">
+									<input type="hidden" class="brand" name="brand" value="돌체앤가바나">
+									<input type="hidden" class="product" name="product" value="돌체앤가바나 라이트블루 오드뚜왈렛 100ml">
+									<input type="hidden" class="prPrice" name="prPrice" value="129000">
+									<input type="hidden" class="prPriceCnt" name="prPriceCnt" value="129000">
+									<input type="hidden" class="realPrice" name="realPrice" value="83800">
+									<input type="hidden" class="realPricehidden" name="realPricehidden" value="83800">
+									<input type="hidden" class="priceCode" name="priceCode" value="prpr000003"><!-- 단가코드 -->
+									<input type="hidden" class="saleCode" name="saleCode" value="sa000003"><!-- 할인코드 -->
+								</div>
+								
+								<div class="tbl_cell w390">
+									<div class="prd_info ">
+										<a class="prd_img" href="javascript:common.link.moveGoodsDetail('A000000156060','');">	
+											<img data-original="https://image.oliveyoung.co.kr/uploads/images/goods/220/10/0000/0015/A00000015606001ko.jpg?l=ko" class="completed-seq-lazyload" alt="상품이미지" src="https://image.oliveyoung.co.kr/uploads/images/goods/220/10/0000/0015/A00000015606001ko.jpg?l=ko">
+										</a>
+										<a class="prd_name">
+											<span class="tx_sale_info"></span><!-- 브랜드명 및 할인정보 -->
+											<span id="brandNm">돌체앤가바나 </span>
+											<p id="goodsNm">돌체앤가바나 라이트블루 오드뚜왈렛 100ml</p>
+										</a>
+										<p class="prd_opt"></p>
+										<p class="prd_flag">
+											<span class="icon_flag sale">세일</span>
+										</p>
+									</div>
+								</div>
+								
+								<div class="tbl_cell w110">
+									<span class="cur_price" value="129000">
+										<span class="tx_num">129,000</span>원
+									</span>
+								</div>
+								
+								<div class="tbl_cell w100">
+									<div class="prd_cnt">
+											<select class="amount" name="prCount" prdtp="1" prdcnt="0" ordpsbminqty="1" ordpsbmaxqty="999" qtyaddunit="1" ordqty="1" title="상품 수량 선택">
+												<option value="1" selected="selected">1</option>											
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option value="4">4</option>
+												<option value="5">5</option>
+												<option value="6">6</option>
+												<option value="7">7</option>
+												<option value="8">8</option>
+												<option value="9">9</option>
+												<option value="10">10</option>
+											</select>	
+									</div>
+									<button type="button" class="btnSmall wGray" style="display: none;" name="btnQtyMod"><span>변경</span></button>
+								</div>
+								
+								<div class="tbl_cell w110"><span class="org_price" value="129000"><span class="tx_num">129,000</span>원</span><span class="pur_price" value="83800"><span class="tx_num">83,800</span>원</span></div>
+								
+								<div class="tbl_cell w120  "><!-- 합배송, 배송 예정 class / sum   delay추가 하기 -->
+									<p class="prd_delivery">
+										<strong id="deliStrongText">무료배송<span class="ex">도서·산간 제외</span></strong>
+									</p>
+								</div>
+								
+								<div class="tbl_cell w150">
+									<div class="btn_group">
+										<button id="367587813|A000000156060|001" type="button" class="btnSmall wGreen" name="btn_buy" data-attr="장바구니^장바구니바로구매^바로구매"><span data-attr="장바구니^장바구니바로구매^바로구매">바로구매</span></button><!-- 3440969_PM작업시 오늘드림 레이어 팝업 노출 요청 건 - obj인계 불가능에 따른 고유 ID 선언(즉시 구매 시, find로 찾기 위함) -->
+										<!-- <button type="button" class="btnSmall wGray zzim " name="btnZzim" zim-on-off="" data-ref-goodsno="A000000156060"><span>쇼핑찜<span class="oyblind">해제됨</span></span></button> -->
+										<button type="button" class="btnSmall wGray delete" name="btnDelete" data-attr="장바구니^장바구니상품삭제^삭제"><span data-attr="장바구니^장바구니상품삭제^삭제">삭제</span></button><!-- 버튼 공간(스페이스바)없이 붙여주세요. -->
+									</div>
+								</div>
+						</div>
+						</td>
+					</tr>
+					
+				</tbody>
+<%-- 				
 				<tbody>		
 				
 		<c:set var="totalPrice" value="0">  </c:set>
@@ -927,7 +1009,7 @@ a {
 	
 	</c:forEach>
 	</c:if>	
-				</tbody>
+				</tbody> --%>
 			</table>
 			
 			<!--// 올리브영 배송상품 -->
@@ -935,33 +1017,30 @@ a {
 			<div class="basket_price_info">
 				<div class="btn_area">
 					<button type="button" class="btnSmall wGray type2" id="partDelBtn1" name="partDelBtn"><span>선택상품 삭제</span></button> 
-				</div>
-<<<<<<< HEAD
-				
+				</div>				
 		<script>
 		
 		</script>
-				<div class="sum_price">총 판매가 <span class="tx_num">${totalPrice}</span>원 <span class="tx_sign minus">-</span> 총 할인금액 <span class="tx_num">${saleAmount}</span>원 <span class="tx_sign plus">+</span> 배송비 <span class="tx_num">0</span>원 <span class="span_quickDeliCharge" style="display:none;">(3!4!, 미드나잇 이용시)</span><span class="tx_sign equal">=</span> <span class="tx_total_price">총 결제금액 <span class="tx_price"><span class="tx_num">${salePrice}</span>원</span></span></div>
-
+			<!-- 올리브영 배송상품 결제금액 -->
+			<div class="basket_price_info">
+				<div class="btn_area">
+					<button type="button" class="btnSmall wGray type2" id="partDelBtn1" name="partDelBtn"><span>선택상품 삭제</span></button> 
+				</div>
+				<div class="sum_price">총 판매가 <span class="tx_num">217,000</span>원 <span class="tx_sign minus">-</span> 총 할인금액 <span class="tx_num">71,600</span>원 <span class="tx_sign plus">+</span> 배송비 <span class="tx_num">0</span>원 <span class="span_quickDeliCharge" style="display:none;">(3!4!, 미드나잇 이용시)</span><span class="tx_sign equal">=</span> <span class="tx_total_price">총 결제금액 <span class="tx_price"><span class="tx_num">145,400</span>원</span></span></div>
 			</div>
 			<!--// 올리브영 배송상품 결제금액 -->
 		
 		<div class="total_price_info">
 			<div class="detail_price">
-
-				<p>총 판매가<span><span class="tx_num">${totalPrice}</span>원</span></p>
+				<p>총 판매가<span><span class="tx_num">217,000</span>원</span></p>
 				<span class="tx_sign2 minus">-</span>
-				<p class="tx_sale">총 할인금액<span><span class="tx_num">${saleAmount}</span>원</span></p>
-
+				<p class="tx_sale">총 할인금액<span><span class="tx_num">71,600</span>원</span></p>
 				<span class="tx_sign2 plus">+</span>
 				<p>배송비 <span><span class="tx_num">0</span>원</span></p>
 			</div>	
 			<div class="sum_price">
 				<span class="tx_text">배송비는 쿠폰할인금액에 따라 변경될 수 있습니다.</span>
-
-				총 결제예상금액 <span class="span_quickDeliCharge" style="display:none;">최소</span><span class="tx_price">
-				<span class="tx_num">${salePrice}</span>원</span>
-
+				총 결제예상금액 <span class="span_quickDeliCharge" style="display:none;">최소</span><span class="tx_price"><span class="tx_num">145,400</span>원</span>
 			</div>	
 		</div>
 		
