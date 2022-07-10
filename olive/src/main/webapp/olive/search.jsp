@@ -733,21 +733,22 @@
     <jsp:include page="layout/header.jsp"></jsp:include>
     <div id="Container">
         <div id="Contents">
-            <div class="searchResultArea">
-                <p class="resultTxt"><strong>${param.searchKeyword}</strong>검색결과 (전체 <span><%--<fmt:formatNumber value="" pattern="###,###">--%>개</span>의 상품)</p>
-            </div>
+<%--            <div class="searchResultArea">
+                <p class="resultTxt"><strong>${param.searchKeyword}</strong>검색결과 (전체 <span>&lt;%&ndash;<fmt:formatNumber value="" pattern="###,###">&ndash;%&gt;개</span>의 상품)</p>
+            </div>--%>
             <div class="detailSearch new">
-                <div class="search_box cate">
+<%--                <div class="search_box cate">
                     <h4 class="tit_th">
                         카테고리
                         <button class="btnMore">열기/닫기</button>
                     </h4>
                     <ul class="list show">
                         <li>
-                            <%--<c:forEach></c:forEach>--%>
-                            <a href="" id="category_10000010001">
-                                스킨케어<span></span>
+                            <c:forEach items="${searchCategoryList}" var="searchCategoryList">
+                            <a href="" id="${searchCategoryList.ca_code}">
+                                ${searchCategoryList.ca_name}<span></span>
                             </a>
+                            </c:forEach>
                         </li>
                     </ul>
                 </div>
@@ -759,17 +760,12 @@
                         </h4>
                     </div>
                     <ul>
-                        <%--<c:forEach></c:forEach>--%>
+                        &lt;%&ndash;<c:forEach></c:forEach>&ndash;%&gt;
                         <c:forEach items="${searchBrandList}" var="searchBrandList">
                             <input type="checkbox" id="inpChk1_${searchBrandList.br_code}" name="brand_check" value="${searchBrandList.br_code}">
                             <label for="inpChk1_${searchBrandList.br_code}">${searchBrandList.br_name}
                             </label>
                         </c:forEach>
-                            <%--<li>
-                                <input type="checkbox" id="inpChk1_A000897" name="brand_check" value="A000897">
-                                <label for="inpChk1_A000897">바이오힐보
-                                </label>
-                            </li>--%>
                     </ul>
                 </div>
                 <div class="search_box">
@@ -783,7 +779,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>--%>
 
             <p class="cate_info_tx">
                 ${param.keyWord} 검색결과 :
@@ -793,14 +789,15 @@
             <div class="cate_align_box">
                 <div class="align_sort">
                     <ul>
-                        <li class="on"><a href="javascript:;" data-prdsoting="01">인기순</a></li>
-                        <li><a href="javascript:;" data-prdsoting="02">최근등록순</a></li>
-                        <li><a href="javascript:;" data-prdsoting="03">판매수량순</a></li>
-                        <li><a href="javascript:;" data-prdsoting="05">낮은 가격순</a></li>
-                        <li><a href="javascript:;" data-prdsoting="06">높은 가격순</a></li>
+                        <li value="1"><a href="">인기순</a></li>
+                        <li value="2"><a href="">최근등록순</a></li>
+                        <li value="3"><a href="">판매수량순</a></li>
+                        <li value="4"><a href="">낮은 가격순</a></li>
+                        <li value="5"><a href="">높은 가격순</a></li>
                     </ul>
                 </div>
             </div>
+            <div class="productResult">
             <c:forEach items="${searchProductList}" var="searchProductList" varStatus="i">
                 <c:if test="${i.index%4==0}"><ul class="cate_prd_list gtm_cate_list"></c:if>
                 <li class="flag">
@@ -825,9 +822,58 @@
                 </li>
                 <c:if test="${i.index%4==3 or i.end}"></ul></c:if>
             </c:forEach>
+            </div>
         </div>
     </div>
     <jsp:include page="layout/footer.jsp"></jsp:include>
 </div>
+
+<script>
+
+
+$(".align_sort ul li a").click(function (event){
+    event.preventDefault();
+    var searchSort = $(this).parent().val();
+    $.ajax({
+        url:"/olive/searchConditionAjax.do",
+        dataType:"json",
+        type:"GET",
+        cache:false,
+        data:{"keyWord":"<%=request.getParameter("keyWord")%>", "searchCondition":searchSort},
+        success:function (result){
+            $("#Contents .productResult").empty();
+            var ul;
+            $(result.productList).each(function (i , elem){
+                if(i%4 == 0 ||  i ==0){
+                   ul = $("<ul>").addClass("cate_prd_list gtm_cate_list")
+                }
+                var li = $("<li>").addClass("flag")
+                    .append($("<div>").addClass("prd_info")
+                        .append($("<a>").addClass("prd_thumb goodsList").attr("href","<%=request.getContextPath()%>/olive/productDetail.do?pr_code="+elem.pr_code)
+                            .append($("<img>").attr("src",elem.prm_url)))
+                        .append($("<div>").addClass("prd_name")
+                            .append($("<a>").attr("href","<%=request.getContextPath()%>/olive/productDetail.do?pr_code="+elem.pr_code)
+                                .append($("<span>").addClass("tx_brand").text(elem.br_name))
+                                .append($("<p>").addClass("tx_name").text(elem.pr_name))))
+                        .append($("<p></p>").addClass("prd_price")
+                            .append($("<span>").addClass("tx_org")
+                                .append($("<span><").append(elem.prpri_price))
+                                .append("원"))
+                            .append($("<span>").addClass("tx_cur")
+                                .append($("<span>").append(elem.realPrice))
+                                .append("원")))
+                        )
+                $(ul).append(li);
+                if(i%4 == 3){
+                    $("#Contents .productResult").append(ul)
+                }
+            })
+        },
+    });
+});
+
+
+</script>
+
 </body>
 </html>

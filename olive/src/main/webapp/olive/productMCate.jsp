@@ -706,7 +706,7 @@
                     </p>
                     <ul class="list">
                         <c:forEach items="${MSCatelist}" begin="1" var="MSCatelist">
-                            <li><a href="">
+                            <li><a href="<%=request.getContextPath()%>/olive/productSCate.do?ca_code=${MSCatelist.ca_code}">
                                 <span>${MSCatelist.ca_name}</span>
                             </a></li>
                         </c:forEach>
@@ -718,53 +718,6 @@
                             <p class="ct-tit">${MSCatelist[0].ca_name}의 BEST만 모아봤어요</p>
                             <div class="col-wrap">
                                 <div class="col ct-tab-wrap">
-                                    <%--미구현 영역 : 브랜드 탑 5--%>
-                                    <%--
-                                    <div class="ct-tab">
-                                        <span><a href="#"><span>브랜드</span></a></span>
-                                        <span class="is-active"><a href="#"><span>상품</span></a></span>
-                                    </div>
-                                    <div class="detail" style="display: none">
-                                        <div class="ct-brand">
-
-                                            <a href="javascript:common.link.moveBrandShop('A002756', 'Cat10000010001_Brandrank_PROD');" class="item" onclick="javascript:categoryShop.detail.setBindWlogEvent('rank_brand', '1');" data-attr="카테고리관^스킨케어_랭킹BEST상품브랜드_브랜드랭킹^라운드랩">
-                                                <span class="num">1</span>
-                                                <span class="img"><img src="https://image.oliveyoung.co.kr/uploads/images/onlBrandMgmt/2020/12/8461360608481023208.jpg" onerror="common.errorCrcImg(this);"></span><!-- 브랜드 로고 없을 경우 -->
-                                                <p class="txt">라운드랩</p>
-                                                <p class="link-txt"><span>브랜드관 가기!</span></p>
-                                            </a>
-
-                                            <a href="javascript:common.link.moveBrandShop('A000627', 'Cat10000010001_Brandrank_PROD');" class="item" onclick="javascript:categoryShop.detail.setBindWlogEvent('rank_brand', '2');" data-attr="카테고리관^스킨케어_랭킹BEST상품브랜드_브랜드랭킹^닥터지">
-                                                <span class="num">2</span>
-                                                <span class="img"><img src="https://image.oliveyoung.co.kr/uploads/images/onlBrandMgmt/2021/4/7996462662502374809.jpg" onerror="common.errorCrcImg(this);"></span><!-- 브랜드 로고 없을 경우 -->
-                                                <p class="txt">닥터지</p>
-                                                <p class="link-txt"><span>브랜드관 가기!</span></p>
-                                            </a>
-
-                                            <a href="javascript:common.link.moveBrandShop('A002474', 'Cat10000010001_Brandrank_PROD');" class="item" onclick="javascript:categoryShop.detail.setBindWlogEvent('rank_brand', '3');" data-attr="카테고리관^스킨케어_랭킹BEST상품브랜드_브랜드랭킹^에스트라">
-                                                <span class="num">3</span>
-                                                <span class="img"><img src="https://image.oliveyoung.co.kr/uploads/images/onlBrandMgmt/2020/12/58144562832857706.jpg" onerror="common.errorCrcImg(this);"></span><!-- 브랜드 로고 없을 경우 -->
-                                                <p class="txt">에스트라</p>
-                                                <p class="link-txt"><span>브랜드관 가기!</span></p>
-                                            </a>
-
-                                            <a href="javascript:common.link.moveBrandShop('A003526', 'Cat10000010001_Brandrank_PROD');" class="item" onclick="javascript:categoryShop.detail.setBindWlogEvent('rank_brand', '4');" data-attr="카테고리관^스킨케어_랭킹BEST상품브랜드_브랜드랭킹^CKD">
-                                                <span class="num">4</span>
-                                                <span class="img no-img"><img src="https://image.oliveyoung.co.kr/pc-static-root/image//category/brand_default.png" onerror="common.errorCrcImg(this);"></span><!-- 브랜드 로고 없을 경우 -->
-                                                <p class="txt">CKD</p>
-                                                <p class="link-txt"><span>브랜드관 가기!</span></p>
-                                            </a>
-
-                                            <a href="javascript:common.link.moveBrandShop('A003377', 'Cat10000010001_Brandrank_PROD');" class="item" onclick="javascript:categoryShop.detail.setBindWlogEvent('rank_brand', '5');" data-attr="카테고리관^스킨케어_랭킹BEST상품브랜드_브랜드랭킹^아누아">
-                                                <span class="num">5</span>
-                                                <span class="img"><img src="https://image.oliveyoung.co.kr/uploads/images/onlBrandMgmt/2021/2/140686590235886002.jpg" onerror="common.errorCrcImg(this);"></span><!-- 브랜드 로고 없을 경우 -->
-                                                <p class="txt">아누아</p>
-                                                <p class="link-txt"><span>브랜드관 가기!</span></p>
-                                            </a>
-
-                                        </div>
-                                    </div>
-                                    --%>
                                     <div class="detail">
                                         <div class="ct-product" id="mRnkGoodsSec">
                                             <c:forEach items="${top5list}" var="top5list" varStatus="i">

@@ -726,6 +726,42 @@
             display: block;
             clear: both;
         }
+        .cate_list_box>li.first, .cate_list_box>li:nth-child(6n+1) {
+            margin-left: 0;
+            width: 170px;
+        }
+        .cate_list_box{
+            border-top: 1px solid #ddd;
+            overflow: hidden;
+        }
+        .cate_list_box>li {
+            float: left;
+            width: 171px;
+            height: 40px;
+            margin: -1px 0 0 -1px;
+            background: #fff;
+            border: 1px solid #ddd;
+            overflow: hidden;
+        }
+        .cate_list_box>li.on>a {
+            position: relative;
+            margin: -1px;
+            padding: 0 9px;
+            line-height: 36px;
+            border: 2px solid #9bce26;
+            color: #9bce26;
+            font-weight: 700;
+        }
+
+        .cate_list_box>li>a {
+            display: block;
+            height: 40px;
+            padding: 0 10px;
+            line-height: 38px;
+            color: #333;
+            font-size: 14px;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -833,26 +869,12 @@
             <div class="cate_align_box">
                 <div class="align_sort">
                     <ul>
-                        <li class="on"><a href="javascript:;" data-prdsoting="01">인기순</a></li>
-                        <li><a href="javascript:;" data-prdsoting="02">최근등록순</a></li>
-                        <li><a href="javascript:;" data-prdsoting="03">판매수량순</a></li>
-
-
-                        <li><a href="javascript:;" data-prdsoting="05">낮은 가격순</a></li>
-                        <li><a href="javascript:;" data-prdsoting="06">높은 가격순</a></li>
+                        <li value="1"><a href="">인기순</a></li>
+                        <li value="2"><a href="">최근등록순</a></li>
+                        <li value="3"><a href="">판매수량순</a></li>
+                        <li value="4"><a href="">낮은 가격순</a></li>
+                        <li value="5"><a href="">높은 가격순</a></li>
                     </ul>
-                </div>
-                <div class="count_sort tx_num">
-                    <span class="tx_view">VIEW</span>
-                    <ul>
-                        <li class="on"><a href="javascript:;" title="24개씩 보기">24</a></li>
-                        <li><a href="javascript:;" title="36개씩 보기">36</a></li>
-                        <li><a href="javascript:;" title="48개씩 보기">48</a></li>
-                    </ul>
-                </div>
-                <div class="type_sort">
-                    <button class="btn_thumb  active" data-view-cnt="4">컬럼형식으로 보기</button>
-                    <button class="btn_list" data-view-cnt="1">리스트형식으로 보기</button>
                 </div>
             </div>
             <c:forEach items="${sProductList}" var="sProductList" varStatus="i">

@@ -3129,6 +3129,148 @@ button {
 				 <button id="mainSliderBtn">멈춤</button>
 			 </div>
 		 </div>
+
+
+		 <!-- weekly -->
+		 <div class="main_plan_banner">
+			 <h3 class="main_sub_tit">
+				 <strong>Weekly Special</strong>
+			 </h3>
+			 <div class="recomm_plan">
+				 <ul class="recomm_plan_list">
+
+					 <c:forEach items="${ weekly }" var="dto">
+						 <li><a
+								 href="javascript:common.link.movePlanShop('500000102360020', 'Home_Planshop2_PROD');"
+								 data-ref-dispcatno=""
+								 data-attr="홈^WeeklySpecial기획전^기획전 목록 배너 입니다" data-trk="/">
+							 <img src="${ dto.EXI_IMG }" alt="" />
+							 <div class="text_wrap">
+								 <dl style="color: #000000;">
+									 <dt>${ dto.EXI_TITLE }</dt>
+									 <dt></dt>
+									 <dd>${ dto.EXI_DESC }</dd>
+								 </dl>
+							 </div>
+						 </a></li>
+					 </c:forEach>
+
+				 </ul>
+			 </div>
+		 </div>
+
+
+		 <!-- 이 달의 행사 -->
+		 <div class="main_plan_banner ty02">
+
+
+
+			 <h3 class="main_sub_tit">
+				 <strong>이 달의 행사만 모았어요!</strong>
+			 </h3>
+			 <div class="banner_wrap">
+				 <div
+						 class="slick_slider slick-initialized slick-slider slick-dotted"
+						 id="mainPlanSlider">
+
+
+
+					 <div aria-live="polite" class="slick-list draggable">
+
+						 <!-- 슬릭을 적용하는 부분 ....  -->
+						 <div class="slick-track">
+							 <!-- 반복하는 애들 ?
+                                slider_unit  slick-slide slick-cloned : 홀수면 클래스명 이렇게
+                                slider_unit  right slick-slide slick-cloned : 짝수면 클래스명 이렇게
+                              -->
+
+
+							 <c:forEach items="${ monthPrMap }" var="entity" varStatus="i">
+							 <c:choose>
+							 <c:when test="${ i.index%2 == 1 }">
+							 <div class="slider_unit  right slick-slide slick-cloned" data-slick-index="-1" aria-hidden="true" style="width: 520px;" tabindex="-1">
+								 </c:when>
+
+								 <c:when test="${ i.index%2 == 0 }">
+								 <div class="slider_unit  right slick-slide slick-cloned" data-slick-index="-1" aria-hidden="true" style="width: 520px;" tabindex="-1">
+									 </c:when>
+									 </c:choose>
+
+									 <div class="plan_top">
+										 <div class="plan_banner"
+											  style="background-image: url('${entity.key.EXI_IMG}');">
+											 <a
+													 href="javascript:common.link.movePlanShop('500000101440223', 'Home_Planshop3_PROD');"
+													 data-ref-dispcatno="500000101440223"
+													 data-tracking-cd="Home_Planshop3_PROD"
+													 data-attr="홈^인기행사기획전상세^캠핑용품모음^7" data-trk="/"
+													 data-attr-imp-goodsno="A000000162086" tabindex="-1">
+												 <p>
+													 <strong class="tit" style="color: #000000;">${entity.key.EXI_TITLE}</strong>
+													 <span class="desc" style="color: #000000;">${entity.key.EXI_DESC} </span>
+												 </p>
+											 </a>
+										 </div>
+									 </div>
+
+
+									 <ul class="cate_prd_list">
+										 <c:forEach items="${ entity.value }" var="prDTO" >
+											 <li>
+
+												 <div class="prd_info ">
+													 <a
+															 href="https://www.oliveyoung.co.kr/store/goods/getGoodsDetail.do?goodsNo=B000000167821&amp;dispCatNo=90000010001&amp;trackingCd=Home_Planshop3&amp;curation&amp;egcode&amp;rccode&amp;egrankcode"
+															 name="Home_Planshop3" class="prd_thumb goodsList"
+															 data-ref-goodsno="B000000167821"
+															 data-attr="홈^인기행사만 모았어요^단순생활 넥밴드 휴대용 선풍기 롤링^1"
+															 data-ref-dispcatno="90000010001" data-ref-itemno="002"
+															 data-trk="null"
+															 data-impression="B000000167821^홈_인기행사만 모았어요^1"
+															 data-impression-visibility="1" tabindex="-1"><span
+															 class="thumb_flag best">베스트</span><img
+															 src="${ prDTO.prm_url }"
+															 alt="단순생활 넥밴드 휴대용 선풍기 롤링" onerror="common.errorImg(this);"></a>
+													 <div class="prd_name">
+														 <a href="javascript:;" name="Home_Planshop3"
+															class="goodsList" data-ref-goodsno="B000000167821"
+															data-attr="홈^인기행사만 모았어요^단순생활 넥밴드 휴대용 선풍기 롤링^1"
+															data-ref-dispcatno="90000010001" data-ref-itemno="002"
+															data-trk="null" tabindex="-1"><span class="tx_brand">${ prDTO.br_name }</span>
+															 <p class="tx_name">${ prDTO.pr_name }</p></a>
+													 </div>
+													 <button class="btn_zzim jeem"
+															 data-ref-goodsno="B000000167821" tabindex="-1">
+														 <span>찜하기전</span>
+													 </button>
+													 <p class="prd_price">
+                                          <span class="tx_org"><span class="tx_num"><fmt:formatNumber value="${ prDTO.prpri_price }" pattern="#,###"></fmt:formatNumber> </span>원
+                                          </span><span class="tx_cur"><span class="tx_num"><fmt:formatNumber value="${ prDTO.price }" pattern="#,###"></fmt:formatNumber></span>원
+                                          </span>
+													 </p>
+													 <p class="prd_flag">
+														 <span class="icon_flag coupon">쿠폰</span>
+													 </p>
+													 <p class="prd_point_area tx_num">
+                                          <span class="review_point"><span class="point"
+																		   style="width: 98.0%">10점만점에 5.5점</span></span>(7)
+													 </p>
+													 <p class="prd_btn_area">
+														 <button class="cartBtn" data-ref-goodsno="B000000167821"
+																 data-ref-dispcatno="90000010001" data-ref-itemno="002"
+																 tabindex="-1">장바구니</button>
+														 <button class="btn_new_pop goodsList" tabindex="-1">새창보기</button>
+													 </p>
+												 </div>
+
+
+											 </li>
+										 </c:forEach>
+
+
+									 </ul>
+								 </div>
+								 </c:forEach>
  <!-- Catch Keyword -->
  <div class="catch_keyword_wrap">
   <h3 class="main_sub_tit"><strong>Catch Keyword</strong></h3>
