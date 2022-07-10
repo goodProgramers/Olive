@@ -7,7 +7,7 @@
             driverClassName="oracle.jdbc.OracleDriver"
             url="jdbc:oracle:thin:@db20220529155318_high?TNS_ADMIN=/Users/hwan/Wallet_DB20220529155318/"
             username="goodprogramers"
-            password="Qorrudghks1234"
+            password="Aa123456789"
             maxTotal="20"
             maxIdle="10"
             maxWaitMillis="-1"
