@@ -252,15 +252,15 @@
             </ul>
         </div>
         <ul class="gnb_menu_list">
-            <li><a href="<%=request.getContextPath()%>main/getHotdealList.do"><span>오특</span></a></li>
-            <li><a href="<%=request.getContextPath()%>main/getNewList.do"><span>신상</span></a></li>
-            <li><a href="<%=request.getContextPath()%>main/getBestList.do"><span>랭킹</span></a></li>
-            <li><a href="<%=request.getContextPath()%>planshop/getSpcShopDetail.do?dispCatNo=500000200080001"><span>프리미엄관</span></a></li>
-            <li><a href="<%=request.getContextPath()%>main/getPlanShopList.do"><span>기획전</span></a></li>
-            <li><a href="<%=request.getContextPath()%>main/getSaleList.do"><span>세일</span></a></li>
-            <li><a href="<%=request.getContextPath()%>giftCardGuide/getGiftCardGuide.do"><span>기프트카드</span></a></li>
-            <li><a href="<%=request.getContextPath()%>main/getMembership.do"><span>멤버십/쿠폰</span></a></li>
-            <li><a href="<%=request.getContextPath()%>main/getEventList.do"><span>이벤트</span></a></li>
+            <li><a href="<%=request.getContextPath()%>/main/getHotdealList.do"><span>오특</span></a></li>
+            <li><a href="<%=request.getContextPath()%>/main/getNewList.do"><span>신상</span></a></li>
+            <li><a href="<%=request.getContextPath()%>/main/getBestList.do"><span>랭킹</span></a></li>
+            <li><a href="<%=request.getContextPath()%>/planshop/getSpcShopDetail.do?dispCatNo=500000200080001"><span>프리미엄관</span></a></li>
+            <li><a href="<%=request.getContextPath()%>/main/getPlanShopList.do"><span>기획전</span></a></li>
+            <li><a href="<%=request.getContextPath()%>/main/getSaleList.do"><span>세일</span></a></li>
+            <li><a href="<%=request.getContextPath()%>/giftCardGuide/getGiftCardGuide.do"><span>기프트카드</span></a></li>
+            <li><a href="<%=request.getContextPath()%>/main/getMembership.do"><span>멤버십/쿠폰</span></a></li>
+            <li><a href="<%=request.getContextPath()%>/main/getEventList.do"><span>이벤트</span></a></li>
         </ul>
     </div>
 
@@ -315,5 +315,3 @@
             .submit();
     });
 </script>
-
-

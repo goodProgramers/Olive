@@ -5,81 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="shortcut icon" type="image/x-icon" href="../images/SiSt.ico">
-
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/module.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <title>2022. 6. 27. - 오전 9:06:35</title>
-<style>
-/* 공통 적용 */
-@font-face{
-	font-family:Montserrat;
-	font-style:normal;
-	font-weight:400;
-	src:local(Montserrat-Light),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/Montserrat-Light.woff2") format("woff2"),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/Montserrat-Light.woff") format("woff")
-}
-
-@font-face{
-	font-family:Montserrat;
-	font-style:normal;
-	font-weight:500;
-	src:local(Montserrat),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/Montserrat-Regular.woff2") format("woff2"),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/Montserrat-Regular.woff") format("woff")
-	}
-
-@font-face{
-	font-family:Montserrat;
-	font-style:normal;
-	font-weight:700;
-	src:local(Montserrat-SemiBold),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/Montserrat-SemiBold.woff2") format("woff2"),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/Montserrat-SemiBold.woff") format("woff")}@font-face{font-family:NotoSansCJKkr;font-style:normal;font-weight:400;src:local(NotoSansCJKkr),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/NotoSansCJKkr-Regular.woff2") format("woff2"),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/NotoSansCJKkr-Regular.woff") format("woff")
-}
-
-@font-face{font-family:NotoSansCJKkr;font-style:normal;font-weight:400;src:local(NotoSansCJKkr),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/NotoSansCJKkr-Regular.woff2") format("woff2"),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/NotoSansCJKkr-Regular.woff") format("woff")}
-
-@font-face{font-family:NotoSansCJKkr;font-style:normal;font-weight:500;src:local(NotoSansCJKkr),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/NotoSansCJKkr-Medium.woff2") format("woff2"),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/NotoSansCJKkr-Medium.woff") format("woff")}
-
-@font-face{font-family:NotoSansCJKkr;font-style:normal;font-weight:700;src:local(NotoSansCJKkr),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/NotoSansCJKkr-Bold.woff2") format("woff2"),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/NotoSansCJKkr-Bold.woff") format("woff")}
-
-@font-face{font-family:Dovemayo-Medium;src:url("https://www.oliveyoung.co.kr/pc-static-root/fonts/dovemayo/Dovemayo-Medium.woff") format('woff');font-weight:400;font-style:normal}
-
-body,html{-webkit-font-smoothing:antialiased;-webkit-font-smoothing:antialiased}
-
-a,address,blockquote,body,dd,div,dl,dt,em,fieldset,form,h1,h2,h3,h4,h5,h6,img,input,label,li,ol,p,pre,select,span,strong,textarea,ul{margin:0;padding:0;border:0}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body, html {
-    word-spacing: -1px;
-    color: #666;
-    font-size: 14px;
-    line-height: 20px;
-    font-family: Montserrat,-apple-system,NotoSansCJKkr,AppleSDGothicNeo,Roboto,dotum,'돋움',sans-serif;
-    letter-spacing: -.04em;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-}
-
-#Container, #Footer, #Header, #Wrapper {
-    width: 100%;
-    min-width: 1020px;
-}
-
-#Container {
-    overflow: hidden;
-}
-
-#Contents {
-    width: 1020px;
-    height: 100%;
-    margin: 0 auto;
-}
-</style>
-
-
-
-
 <style>
 /* 장바구니 부분 스타일 */
 input:disabled, input:read-only, select:disabled {
@@ -841,8 +769,7 @@ a {
 <jsp:include page="layout/header.jsp"></jsp:include>
 
 <div id="Container">
-		
-	<form name="cartForm" id="cartForm" action="order.do" method="post">		
+  <form name="cartForm" id="cartForm" action="<%= request.getContextPath() %>/olive/order.do" method="get">	
 	<div id="Contents"><!-- #Contents -->
 			<!-- title_box -->
 			<div class="title_box">
@@ -856,6 +783,7 @@ a {
 			<!--// title_box -->
 			
 			<!-- membership_box --><!-- 예린 : 회원이름, 등급명, 포인트 뿌리기 -->
+			<input type="hidden" class="memberCode" name="memberCode" value="me000004"><!-- 예린 : 회원코드 -->	
 			<div class="membership_box  iconGrade4">
 				<p class="tx_grade_info"><strong>회원</strong>님의 멤버십 등급은 <span class="grade">PINK OLIVE</span>입니다 </p>
 				<ul class="membership_info_list">
@@ -871,7 +799,7 @@ a {
 			<!--// membership_box -->
 			
 <!-- 일반배송, 당일배송 탭 -->
-	<ul class="comm5sTabs" id="ulDelivGb"><!-- 일반 배송 탭에도 상품 갯수 뿌리기 -->
+	<ul class="comm5sTabs" id="ulDelivGb"><!-- 예린 : 일반 배송 탭에도 상품 갯수 뿌리기 -->
 		<li quickyn="N" class="on"><button type="button" data-attr="장바구니^Tab^일반 배송" title="선택됨">일반 배송 (2)</button></li>
 		<li quickyn="Y"><button type="button" data-attr="장바구니^Tab^오늘 드림">오늘드림&amp;픽업 (0)</button></li>
 	</ul>
@@ -922,19 +850,19 @@ a {
 						<input type="hidden" id="soldout_yn" name="soldout_yn" value="N">
 						<td colspan="7">			
 						<div class="tbl_cont_area">		
-								<!-- 장바구니 상품 정보를 핸들러로 보내기 위해서 input 태그에 담기 -->
+								<!-- 예린 : 장바구니 상품 정보를 핸들러로 보내기 위해서 input 태그에 담기(채영구현예정) 각 상품마다 하나씩 -->
 								<div class="tbl_cell w40">
-									<input type="checkbox" checked="checked" id="inp_prd_chk1" name="s_checkbox1" value="0" class="chkSmall">
-									<input type="hidden" class="prImg" name="prImg" value="https://image.oliveyoung.co.kr/uploads/images/goods/220/10/0000/0015/A00000015606001ko.jpg?l=ko" style="display:none;">
-									<input type="hidden" class="brand" name="brand" value="돌체앤가바나" style="display:none;">
-									<input type="hidden" class="product" name="product" value="돌체앤가바나 라이트블루 오드뚜왈렛 100ml" style="display:none;">
-									<input type="hidden" class="prPrice" name="prPrice" value="129000" style="display:none;">
-									<input type="hidden" class="prPriceCnt" name="prPriceCnt" value="129000" style="display:none;" >
-									<input type="hidden" class="realPrice" name="realPrice" value="83800" style="display:none;">
-									<input type="hidden" class="realPricehidden" name="realPricehidden" value="83800" style="display:none;">
-									<input type="hidden" class="priceCode" name="priceCode" value="prpr000254"><!-- 단가코드 -->
-									<input type="hidden" class="saleCode" name="saleCode" value="sa000207"><!-- 할인코드 -->
-									<input type="hidden" class="prCode" name="prCode" value="pr001002"><!-- 상품코드 -->
+									<input type="checkbox" checked="checked" id="inp_prd_chk1" name="s_checkbox1" value="0" class="chkSmall">						
+									<input type="hidden" class="prCode" name="prCode" value="pr001002">
+									<input type="hidden" class="prImg" name="prImg" value="https://image.oliveyoung.co.kr/uploads/images/goods/220/10/0000/0015/A00000015606001ko.jpg?l=ko">
+									<input type="hidden" class="brand" name="brand" value="돌체앤가바나">
+									<input type="hidden" class="product" name="product" value="돌체앤가바나 라이트블루 오드뚜왈렛 100ml">
+									<input type="hidden" class="prPrice" name="prPrice" value="129000">
+									<input type="hidden" class="prPriceCnt" name="prPriceCnt" value="129000">
+									<input type="hidden" class="realPrice" name="realPrice" value="83800">
+									<input type="hidden" class="realPricehidden" name="realPricehidden" value="83800">
+									<input type="hidden" class="priceCode" name="priceCode" value="prpr000003">
+									<input type="hidden" class="saleCode" name="saleCode" value="sa000003">
 								</div>
 								
 								<div class="tbl_cell w390">
@@ -964,7 +892,6 @@ a {
 								<div class="tbl_cell w100">
 									<div class="prd_cnt">
 									      <input type="amount" name="favnum" min="1" max="999" value="${cartList.prpr_count}">
-									      
 									</div>
 									<button type="button" class="btnSmall wGray" style="display: none;" name="btnQtyMod"><span>변경</span></button>
 								</div>
@@ -987,7 +914,6 @@ a {
 								<div class="tbl_cell w150">
 									<div class="btn_group">
 										<button id="367587813|A000000156060|001" type="button" class="btnSmall wGreen" name="btn_buy" data-attr="장바구니^장바구니바로구매^바로구매"><span data-attr="장바구니^장바구니바로구매^바로구매">바로구매</span></button><!-- 3440969_PM작업시 오늘드림 레이어 팝업 노출 요청 건 - obj인계 불가능에 따른 고유 ID 선언(즉시 구매 시, find로 찾기 위함) -->
-										<!-- <button type="button" class="btnSmall wGray zzim " name="btnZzim" zim-on-off="" data-ref-goodsno="A000000156060"><span>쇼핑찜<span class="oyblind">해제됨</span></span></button> -->
 										<button type="button" class="btnSmall wGray delete" name="btnDelete" data-attr="장바구니^장바구니상품삭제^삭제"><span data-attr="장바구니^장바구니상품삭제^삭제">삭제</span></button><!-- 버튼 공간(스페이스바)없이 붙여주세요. -->
 									</div>
 								</div>
@@ -1002,8 +928,6 @@ a {
 	
 	</c:forEach>
 	</c:if>	
-				
-
 				</tbody>
 			</table>
 			
@@ -1018,6 +942,7 @@ a {
 		
 		</script>
 				<div class="sum_price">총 판매가 <span class="tx_num">${totalPrice}</span>원 <span class="tx_sign minus">-</span> 총 할인금액 <span class="tx_num">${saleAmount}</span>원 <span class="tx_sign plus">+</span> 배송비 <span class="tx_num">0</span>원 <span class="span_quickDeliCharge" style="display:none;">(3!4!, 미드나잇 이용시)</span><span class="tx_sign equal">=</span> <span class="tx_total_price">총 결제금액 <span class="tx_price"><span class="tx_num">${salePrice}</span>원</span></span></div>
+
 			</div>
 			<!--// 올리브영 배송상품 결제금액 -->
 		
@@ -1026,6 +951,7 @@ a {
 				<p>총 판매가<span><span class="tx_num">${totalPrice}</span>원</span></p>
 				<span class="tx_sign2 minus">-</span>
 				<p class="tx_sale">총 할인금액<span><span class="tx_num">${saleAmount}</span>원</span></p>
+
 				<span class="tx_sign2 plus">+</span>
 				<p>배송비 <span><span class="tx_num">0</span>원</span></p>
 			</div>	
@@ -1033,6 +959,7 @@ a {
 				<span class="tx_text">배송비는 쿠폰할인금액에 따라 변경될 수 있습니다.</span>
 				총 결제예상금액 <span class="span_quickDeliCharge" style="display:none;">최소</span><span class="tx_price">
 				<span class="tx_num">${salePrice}</span>원</span>
+
 			</div>	
 		</div>
 		
@@ -1045,16 +972,10 @@ a {
 		<div class="cart_comment">
 			<p>장바구니 상품은 90일동안, 판매종료 된 상품은 10일동안 보관됩니다.</p>
 		</div>
-
-		</div>
-		</form><!-- form -->
-		<!-- //#Contents -->	
-	</div>
-
-
-
-
-
+		</div><!-- //#Contents -->
+	  </form><!-- form -->
+	</div><!-- Container -->
+	
 <jsp:include page="layout/footer.jsp"></jsp:include>
 
 

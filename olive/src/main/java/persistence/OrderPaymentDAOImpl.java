@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.util.JdbcUtil;
 
+import domain.OrderDetailPaymentDTO;
 import domain.OrderMemberInfoDTO;
 
 public class OrderPaymentDAOImpl implements OrderPaymentDAO{
@@ -22,23 +23,18 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 		}
 		return instance;
 	}
-
+	
+	// 회원의 배송지 리스트
 	@Override
-	public List<OrderMemberInfoDTO> selectMemberAddr(Connection conn, String memberID) throws SQLException {
-		/*
-		String sql = "SELECT m.me_code, me_id, ad_main, ad_name, ad_member, ad_tel, SUBSTR(ad_tel,5,4) midtel, SUBSTR(ad_tel,5,4) endtel, ad_address "
-				+ "FROM member m JOIN address a ON m.me_code = a.me_code "
-				+ "WHERE m.me_id = ? ";
-		*/
-		
+	public List<OrderMemberInfoDTO> selectMemberAddr(Connection conn, String memberCode) throws SQLException {
 		String sql = "SELECT t.*, mbs_pointrate "
-					+ "FROM( "
-					+ "    SELECT m.me_code, me_id, ad_main, ad_code, ad_name, ad_member, ad_tel, SUBSTR(ad_tel,5,4) midtel, SUBSTR(ad_tel,5,4) endtel, ad_address, my_point, mp.mbs_code "
-					+ "    FROM member m JOIN address a ON m.me_code = a.me_code "
-					+ "    JOIN mypage mp ON m.me_code = mp.me_code "
-					+ ") t JOIN membership ms ON t.mbs_code = ms.mbs_code "
-					+ "WHERE t.me_id = ? ";
-		
+				+ "FROM( "
+				+ "    SELECT m.me_code, me_id, ad_main, ad_code, ad_name, ad_member, ad_tel, SUBSTR(ad_tel,5,4) midtel, SUBSTR(ad_tel,5,4) endtel, ad_address, my_point, mp.mbs_code "
+				+ "    FROM member m JOIN address a ON m.me_code = a.me_code "
+				+ "    JOIN mypage mp ON m.me_code = mp.me_code "
+				+ ") t JOIN membership ms ON t.mbs_code = ms.mbs_code "
+				+ "WHERE t.me_code = ? ";
+
 		ArrayList<OrderMemberInfoDTO> memberAddrList = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -56,10 +52,10 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 		int my_point; // 회원의 총포인트
 		String mbs_code; // 회원등급코드
 		double mbs_pointrate; // 적립율
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, memberID);
+			pstmt.setString(1, memberCode);
 			rs = pstmt.executeQuery();
 
 			if(rs.next()) {
@@ -95,14 +91,13 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 		return memberAddrList;
 	} // selectMemberAddr
 
-
 	// 옵션태그 선택시 해당하는 배송정보 뿌림(jq ajax + JSON)
 	@Override
-	public List<OrderMemberInfoDTO> selectMemAddrInfo(Connection conn, String memberID, String addrName) throws SQLException {
+	public List<OrderMemberInfoDTO> selectMemAddrInfo(Connection conn, String memberCode, String addrName) throws SQLException {
 
 		String sql = "SELECT m.me_code, me_id, ad_main, ad_code, ad_name, ad_member, ad_tel, SUBSTR(ad_tel,5,4) midtel, SUBSTR(ad_tel,5,4) endtel, ad_address "
 				+ "FROM member m JOIN address a ON m.me_code = a.me_code "
-				+ "WHERE m.me_id = ? AND ad_name = ?";
+				+ "WHERE m.me_code = ? AND ad_name = ?";
 
 		ArrayList<OrderMemberInfoDTO> addrInfoList = null;
 		PreparedStatement pstmt = null;
@@ -121,7 +116,7 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, memberID);
+			pstmt.setString(1, memberCode);
 			pstmt.setString(2, addrName);
 			rs = pstmt.executeQuery();
 
@@ -130,7 +125,6 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 				OrderMemberInfoDTO dto = null;
 
 				do {
-
 					dto = new OrderMemberInfoDTO();
 
 					dto.setMe_code(rs.getString("me_code"));
@@ -156,12 +150,12 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 		return addrInfoList;
 	} // selectMemAddrInfo
 
-	// 회원의 총포인트 
+	// 회원의 총포인트 (지금 안쓰는중 삭제 예정)
 	@Override
-	public List<OrderMemberInfoDTO> selectMemberTotPoint(Connection conn, String memberID) throws SQLException {
+	public List<OrderMemberInfoDTO> selectMemberTotPoint(Connection conn, String memberCode) throws SQLException {
 		String sql = "SELECT m.me_code, me_id, my_point, mp.mbs_code "
 					+ "FROM member m JOIN mypage mp ON m.me_code = mp.me_code "
-					+ "WHERE m.me_id = ? ";
+					+ "WHERE m.me_code = ? ";
 
 		ArrayList<OrderMemberInfoDTO> memberTotPoint = null;
 		PreparedStatement pstmt = null;
@@ -174,7 +168,7 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, memberID);
+			pstmt.setString(1, memberCode);
 			rs = pstmt.executeQuery();
 
 			if(rs.next()) {
@@ -199,7 +193,7 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 		}
 
 		return memberTotPoint;
-		
+
 	} // selectMemberTotPoint
 
 } // class
