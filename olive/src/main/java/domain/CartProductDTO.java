@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class CartProductDTO {
 
+	private String cart_prCodes; // 상품코드
     private String cart_prImgs; // 상품이미지
     private String cart_brands; // 브랜드명
     private String cart_products; // 상품명
@@ -14,14 +15,16 @@ public class CartProductDTO {
     private int cart_realPricehiddens; // 1개 실구매가
     private String priceCode; // 단가코드
     private String saleCode; // 할인코드
-    
-	public CartProductDTO() {
+	
+    public CartProductDTO() {
 		super();
 	}
 
-	public CartProductDTO(String cart_prImgs, String cart_brands, String cart_products, int cart_prPrices,
-			int cart_prPriceCnts, int cart_prCounts, int cart_realPrices, int cart_realPricehiddens) {
+	public CartProductDTO(String cart_prCodes, String cart_prImgs, String cart_brands, String cart_products,
+			int cart_prPrices, int cart_prPriceCnts, int cart_prCounts, int cart_realPrices, int cart_realPricehiddens,
+			String priceCode, String saleCode) {
 		super();
+		this.cart_prCodes = cart_prCodes;
 		this.cart_prImgs = cart_prImgs;
 		this.cart_brands = cart_brands;
 		this.cart_products = cart_products;
@@ -30,6 +33,16 @@ public class CartProductDTO {
 		this.cart_prCounts = cart_prCounts;
 		this.cart_realPrices = cart_realPrices;
 		this.cart_realPricehiddens = cart_realPricehiddens;
+		this.priceCode = priceCode;
+		this.saleCode = saleCode;
+	}
+
+	public String getCart_prCodes() {
+		return cart_prCodes;
+	}
+
+	public void setCart_prCodes(String cart_prCodes) {
+		this.cart_prCodes = cart_prCodes;
 	}
 
 	public String getCart_prImgs() {
@@ -96,12 +109,20 @@ public class CartProductDTO {
 		this.cart_realPricehiddens = cart_realPricehiddens;
 	}
 
-	@Override
-	public String toString() {
-		return "CartProductDTO [cart_prImgs=" + cart_prImgs + ", cart_brands=" + cart_brands + ", cart_products="
-				+ cart_products + ", cart_prPrices=" + cart_prPrices + ", cart_prPriceCnts=" + cart_prPriceCnts
-				+ ", cart_prCounts=" + cart_prCounts + ", cart_realPrices=" + cart_realPrices
-				+ ", cart_realPricehiddens=" + cart_realPricehiddens + "]";
+	public String getPriceCode() {
+		return priceCode;
+	}
+
+	public void setPriceCode(String priceCode) {
+		this.priceCode = priceCode;
+	}
+
+	public String getSaleCode() {
+		return saleCode;
+	}
+
+	public void setSaleCode(String saleCode) {
+		this.saleCode = saleCode;
 	}
     
 } // class

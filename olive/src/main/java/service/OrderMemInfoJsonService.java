@@ -23,7 +23,7 @@ public class OrderMemInfoJsonService {
 		return instance;
 	}
 
-	public List<OrderMemberInfoDTO> selectMemAddrInfo(String memberID, String addrName) {
+	public List<OrderMemberInfoDTO> selectMemAddrInfo(String memberCode, String addrName) {
 		Connection con = null;
 
 		try {
@@ -31,7 +31,7 @@ public class OrderMemInfoJsonService {
 			OrderPaymentDAOImpl dao = OrderPaymentDAOImpl.getInstance();
 
 			List<OrderMemberInfoDTO> addrInfoList = null;
-			addrInfoList = dao.selectMemAddrInfo(con, memberID, addrName);
+			addrInfoList = dao.selectMemAddrInfo(con, memberCode, addrName);
 
 			return addrInfoList;
 

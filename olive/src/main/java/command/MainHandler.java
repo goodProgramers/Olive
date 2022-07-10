@@ -22,8 +22,6 @@ public class MainHandler implements CommandHandler{
 		MainOnlyoneService mainOnlyoneService = MainOnlyoneService.getInstance();
 		List<MainOnlyoneDTO> mainOnlyoneList = mainOnlyoneService.onlyoneSelect();
 		request.setAttribute("mainOnlyoneList", mainOnlyoneList);
-		
-
 
 		MainFullBannerService mainFullBannerService = MainFullBannerService.getInstance();
 		List<MainFullBannerDTO> mainFullBannerDTOList = mainFullBannerService.selectMainFullBanner();
