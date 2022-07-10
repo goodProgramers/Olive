@@ -1048,7 +1048,7 @@ element.style {
 		</div>
 		<!--// title_box -->
 
-		<form name="orderForm" id="orderForm" action="<%= request.getContextPath() %>/order.do" method="post">
+		<form name="orderForm" id="orderForm" action="<%= request.getContextPath() %>/olive/order.do" method="post">
 		<!-- <form name="orderForm" id="orderForm" action="orderform_test.jsp" method="post"> -->
 			<input type="hidden" id="memberCode" name="memberCode" value="${param.memberCode }"><!-- 회원코드 -->
 			<input type="hidden" id="memberID" name="memberID" value="${param.memberID }"><!-- 회원ID -->

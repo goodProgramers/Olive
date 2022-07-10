@@ -19,7 +19,8 @@ public class OrderHandler implements CommandHandler{
 		
 		if( request.getMethod().equals("GET") ) {
 
-			String memberCode = request.getParameter("memberCode") == null ? "me000004" : request.getParameter("memberCode"); // 회원코드
+			// String memberCode = request.getParameter("memberCode") == null ? "me000004" : request.getParameter("memberCode"); // 회원코드
+			String memberCode = request.getParameter("memberCode") == null ? "me000001" : request.getParameter("memberCode"); // 회원코드
 			System.out.println(memberCode);
 			request.setAttribute("memberCode", memberCode);
 
@@ -73,7 +74,8 @@ public class OrderHandler implements CommandHandler{
 
 		} else if(request.getMethod().equals("POST") ) {
 
-			String memberCode = request.getParameter("memberCode") == null ? "me000004" : request.getParameter("memberCode"); // 회원코드
+			// String memberCode = request.getParameter("memberCode") == null ? "me000004" : request.getParameter("memberCode"); // 회원코드
+			String memberCode = request.getParameter("memberCode") == null ? "me000001" : request.getParameter("memberCode"); // 회원코드
 			System.out.println(memberCode);
 			request.setAttribute("memberCode", memberCode);
 			
