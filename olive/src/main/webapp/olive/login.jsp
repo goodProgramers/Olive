@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2022. 7. 4. - 오후 9:33:15</title>
 <link rel="shortcut icon" type="image/x-icon" href="../images/SiSt.ico">
-<link rel="stylesheet" href="/css/module.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/module.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
@@ -699,7 +699,7 @@ function doLogin() {
         	
 	        // alert( result ); // result = "true" <- 로그인 핸들러에서 getwriter().write("true");
         	if( result != "false" ) {
-        		location.href="/OliveM/olive_M/main.do";
+        		location.href= "<%= request.getContextPath() %>/olive/main.do";
         	} else {
         		alert("아이디 혹은 비밀번호가 잘못되었습니다.");
         		$("#password").val("");

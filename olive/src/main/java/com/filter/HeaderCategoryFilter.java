@@ -28,7 +28,7 @@ public class HeaderCategoryFilter implements Filter {
         SearchTOP3ProductService searchTop3ProductService = SearchTOP3ProductService.getInstance();
         List<ProductBrandPriceDTO> searchTop3List = searchTop3ProductService.serachTop3ProductSelect();
         servletRequest.setAttribute("searchTop3List", searchTop3List);
-        filterChain.doFilter(servletRequest, servletResponse);
+        filterChain.doFilter(servletRequest, servletResponse); 
     }
 
     @Override

@@ -10,7 +10,7 @@
     <title>hwan/2022/07/07-7:00 PM</title>
     <link rel="shortcut icon" type="image/x-icon" href="../images/SiSt.ico">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="/css/module.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/module.css">
     <style>
         * {
             margin: 0;

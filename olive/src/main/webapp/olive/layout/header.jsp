@@ -1,10 +1,21 @@
+<%@page import="domain.LoginAuth"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="Header">
     <div class="top_util">
         <ul class="menu_list" id="menu_list_header">
-            <li class="join"><a href="javascript:common.link.moveJoinMember();" data-attr="공통^헤더^회원가입">회원가입</a></li>
-            <li class="login"><a href="javascript:common.link.moveLoginPage();" data-attr="공통^헤더^로그인">로그인</a></li>
+
+<c:choose>
+<c:when test="${ empty loginAuth }">
+            <li class="join"><a href="<%= request.getContextPath() %>/olive/signup.do" data-attr="공통^헤더^회원가입">회원가입</a></li>
+            <li class="login"><a href="<%= request.getContextPath() %>/olive/login.do" data-attr="공통^헤더^로그인">로그인</a></li>
+</c:when>
+<c:otherwise>
+            <li class="logout"><strong>${ loginAuth.mbs_grade } ${ loginAuth.me_name }</strong> 
+            <a href="#">로그아웃</a></li>
+            <li class="mypage"><a href="#" >마이페이지</a></li>
+</c:otherwise>
+</c:choose>
             <li class="cart"><a href="javascript:common.link.moveCartPage();" data-attr="공통^헤더^장바구니">장바구니<span id="cartToCnt"></span></a></li>
             <li class="order"><a href="javascript:common.link.moveOrderList();" data-attr="공통^헤더^주문배송">주문배송</a></li>
             <li class="customer"><a href="javascript:common.faq.getFaqList('99');" data-attr="공통^헤더^고객센터">고객센터</a></li>
