@@ -23,6 +23,8 @@ public class ProductDetailHandler implements CommandHandler {
 		//2. 서비스 함수 선언 및 변수 선언
 		 ProductDetailDTO dto = prds.prd_imgName(pr_code); // 상품명 , 대표이미지 , 브랜드 가져오는 부분
 		 ProductDetailDTO dtoPrice = prds.prd_price(pr_code); //원가, 세일가 가져오는 부분.
+		 System.out.println("dto : " + dto);
+		 System.out.println("dtoPrice : " + dtoPrice);
 		 
 		 //3. 요청에 담기
 		 request.setAttribute("img_Name", dto);

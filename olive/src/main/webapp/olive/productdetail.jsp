@@ -1308,7 +1308,7 @@ button {
 						<div class="cont_area">
 
 <!-- 바로구매 시 보낼 값들. -->
-<form id="order_hidden_value" method="post" action="<%= request.getContextPath() %>/olive/order.do">  
+<form id="order_hidden_value" method="get" action="<%= request.getContextPath() %>/olive/order.do">  
 	<input type="hidden" name="prImg" value="${img_Name.prm_url}"/> <!-- 이미지 -->
 	<input type="hidden" name="brand" value="${img_Name.br_name }"/> <!-- 브랜드 -->
 	<input type="hidden" name="product" value="${img_Name.pr_name}"/> <!-- 제품명 -->
