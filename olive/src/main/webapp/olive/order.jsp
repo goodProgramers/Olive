@@ -1531,7 +1531,6 @@ $(function () {
                    $("#rmitCellEndNo_exist").attr("value", elem.endtel);
                    $("#tempRmitDtlAddr_exist").attr("value", elem.ad_address);
                    $("#member_ad_code").attr("value", elem.ad_code);
-                   // $("#orderForm").append($('<input/>', {type: 'text', name: 'member_ad_code', value:elem.ad_code }));
                 });
              }, 
              error:function (){
