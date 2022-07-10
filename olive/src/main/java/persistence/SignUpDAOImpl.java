@@ -60,6 +60,7 @@ public class SignUpDAOImpl {
 			}
 		} catch (SQLException e) {
 			JdbcUtil.rollback(conn);// 여기서 insert 실패시 롤백 + 다시 회원가입 창으로 돌아가기
+			System.out.println("회원가입 안됨");
 			e.printStackTrace();
 		}
 		return null;

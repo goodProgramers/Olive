@@ -36,4 +36,5 @@ public class SearchHandler implements CommandHandler {
 
 	return "/olive/search.jsp";
 }
+	
 }
