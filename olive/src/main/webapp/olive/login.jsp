@@ -168,7 +168,7 @@ input {
 }
 
 #Container, #Footer, #Header, #Wrapper {
-	width: 100%;
+/* 	width: 100%; */
 	min-width: 1020px;
 }
 
@@ -572,6 +572,7 @@ button {
 </style>
 <body>
 
+<div class="Wrapper">
 <jsp:include page="layout/header.jsp"></jsp:include>
 
 	<div id="Container" class="bgf6">
@@ -658,7 +659,7 @@ button {
 
 
 <jsp:include page="layout/footer.jsp"></jsp:include>
-
+</div>
 <script>
 /* 
 if( session.getAttribute("me_code") != null ){

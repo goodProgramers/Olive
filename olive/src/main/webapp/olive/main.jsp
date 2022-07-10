@@ -2790,6 +2790,7 @@ button {
 </head>
 <body>
 <div id="Wrapper">
+
 <div id="Header">
 
 	<div class="top_util">
@@ -3017,7 +3018,7 @@ button {
 		</ul>
 	</div>
 	<div class="header_design_area"></div>
-</div>
+
 	<div id="Gnb" class="main gen1">
 		<div id="gnbWrap">
 			<a href="#" id="btnGnbOpen">카테고리</a>
@@ -3679,6 +3680,8 @@ $('.itemitem').slick({
 
 	<jsp:include page="layout/footer.jsp"></jsp:include>
 </div><!-- Wrapper -->
+
+
 
 
 <%--메인배너 슬릭--%>

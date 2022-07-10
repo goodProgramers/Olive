@@ -8,10 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import domain.*;
 import service.*;
-import domain.MainOnlyoneDTO;
-import domain.ProductBrandPriceDTO;
-import service.MainOnlyoneService;
-import service.SearchTOP3ProductService;
 
 public class MainHandler implements CommandHandler{
 
@@ -38,6 +34,10 @@ public class MainHandler implements CommandHandler{
 		MonthService monthservice = MonthService.getInstance();
 		Map<WeeklyDTO, List<ProductMonthDTO>> monthMap = monthservice.thumbProduct();
 		request.setAttribute("monthPrMap", monthMap); // 기획전에 따라서 상품 2개를 가져오는 부분
+		
+		HLifeService hls = HLifeService.getInstance();
+		List<HLifeDTO> hLifeList = hls.healthyLife();
+		request.setAttribute("hLifeList", hLifeList);
 
 
 		return "/olive/main.jsp";
