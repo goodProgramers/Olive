@@ -4,13 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.util.JdbcUtil;
 
+import domain.MemberAddrDTO;
 import domain.OrderDetailPaymentDTO;
-import domain.OrderMemberInfoDTO;
 
 public class OrderDetailPaymentDAOImpl implements OrderDetailPaymentDAO{
 
@@ -176,14 +174,17 @@ public class OrderDetailPaymentDAOImpl implements OrderDetailPaymentDAO{
 		}
 		
 		return result;
+		
 	} // insertDepositUse
 
-	// 회원 멤버십 등급
+	// 회원 적립율에 따라 결제금액 * 적립율 만큼 포인트 테이블 insert + mypage update
 	@Override
-	public int insertMyPoint(Connection conn, String me_code, String or_code, String myp_amount) throws SQLException {
+	public int insertMyPoint(Connection conn, String me_code, String or_code, String pa_amount) throws SQLException {
 		PreparedStatement pstmt = null;
-		int result;
+		ResultSet rs = null;
+		int result = 0;
 		
+		// 회원의 멤버십 등급에 따른 적립율 가져오기
 		String sql = "SELECT me_code, my_point, ms.mbs_code, mbs_grade, mbs_minorder, mbs_maxorder, mbs_pointrate "
 					+ "FROM mypage mp JOIN membership ms ON mp.mbs_code = ms.mbs_code "
 					+ "WHERE me_code = ?";
@@ -192,32 +193,46 @@ public class OrderDetailPaymentDAOImpl implements OrderDetailPaymentDAO{
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, me_code);
+			rs = pstmt.executeQuery();
 			
-			sql = "INSERT INTO mypoint (myp_code, me_code, or_code, myp_amount, myp_date, myp_type, myp_expire) "
-					+ "VALUES(('myp' || LPAD(mypoint_seq.nextval, 6, '0')), ?, ?, ?, TRUNC(SYSDATE), 0, (TRUNC(SYSDATE) + 365))";
+            if (rs.next()) {
+            	MemberAddrDTO dto = null;
+               	dto = new MemberAddrDTO();
+              	dto.setMbs_pointrate(rs.getDouble("mbs_pointrate"));
+            
+              	// 적립될 포인트 금액
+              	int point = (int) (Integer.parseInt(pa_amount) * dto.getMbs_pointrate());
+              	
+              	// 실결제금액 * 적립율 포인트 적립
+    			sql = "INSERT INTO mypoint (myp_code, me_code, or_code, myp_amount, myp_date, myp_type) "
+    					+ "VALUES(('myp' || LPAD(mypoint_seq.nextval, 6, '0')), ?, ?, ?, TRUNC(SYSDATE), 0)";
+    			
+    			pstmt = conn.prepareStatement(sql);
+    			pstmt.setString(1, me_code);
+    			pstmt.setString(2, or_code);
+    			pstmt.setInt(3, point);
+    			result = pstmt.executeUpdate();
+    			
+    			// 마이페이지 포인트 update
+    			sql = "UPDATE mypage "
+    					+ "SET my_point = my_point + ? "
+    					+ "WHERE me_code = ?";
+    			
+    			pstmt = conn.prepareStatement(sql);
+    			pstmt.setInt(1, point);
+    			pstmt.setString(2, me_code);
+    			
+    			result = pstmt.executeUpdate();
+    			
+            } // if
 			
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, me_code);
-			pstmt.setString(2, or_code);
-			pstmt.setInt(3, Integer.parseInt(myp_amount));
-			result = pstmt.executeUpdate();
-			
-			sql = "UPDATE mypage "
-					+ "SET my_point = my_point - ? "
-					+ "WHERE me_code = ?";
-			
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, Integer.parseInt(myp_amount));
-			pstmt.setString(2, me_code);
-			
-			result = pstmt.executeUpdate();
 		} finally {
 			JdbcUtil.close(pstmt);
+			JdbcUtil.close(rs);
 		}
 		
 		return result;
-	}
-
+	} // insertMyPoint
 	
 
 } // class

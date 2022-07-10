@@ -23,6 +23,6 @@ public interface OrderDetailPaymentDAO {
 	public int insertMyPointUse(Connection conn, String me_code, String or_code, String myp_amount) throws SQLException;
 	
 	// 주문시 회원 포인트 적립 insert + mypage의 회원 총 포인트 update
-	public int insertMyPoint(Connection conn, String me_code, String or_code, String myp_amount) throws SQLException;
+	public int insertMyPoint(Connection conn, String me_code, String or_code, String pa_amount) throws SQLException;
 
 }

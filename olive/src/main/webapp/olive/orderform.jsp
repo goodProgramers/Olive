@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" type="image/x-icon" href="../images/SiSt.ico">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/module.css">
+<script>history.replaceState({}, null, location.pathname);</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <title>2022. 6. 27. - 오전 9:06:35</title>
 <style>
@@ -351,12 +352,12 @@ button, input[type=submit] {
 			</ul>
 		</div>
 		<!--// title_box -->
-
+		<c:forEach items="${orderFormList }" var="orderFormList">
 		<div class="order_end_box"><!-- 2017-01-20 수정 : div 추가 -->
 				<div class="order_title">
 					<p>주문접수가 <span>완료</span>되었습니다.</p>
 					<p class="tx_sub_cont">올리브영을 이용해주셔서 감사합니다.</p>
-					<span class="tx_order_info">주문번호 : <strong class="tx_num">Y2207096944055</strong></span>
+					<span class="tx_order_info">주문번호 : <strong class="tx_num">${orderFormList.or_code}</strong></span>
 				</div>		
 		
 				<div class="inner_box"><!-- 2017-01-20 수정 : div 추가 -->
@@ -371,24 +372,24 @@ button, input[type=submit] {
 						<tbody>
 						<tr>
 							<th scope="row">총상품금액</th><!-- 2017-01-20 수정 : 총상품금액, 총배송비, 총 할인금액 추가 -->
-							<td><span class="tx_num">114,600</span>원</td>
+							<td><span class="tx_num">${orderFormList.or_price}</span>원</td>
 						</tr>
 						<tr>
 							<th scope="row">총할인금액</th>
 							<td>
-								<span class="tx_price">-<span class="tx_num">2,000</span>원</span>
+								<span class="tx_price">-<span class="tx_num">${orderFormList.sale_price}</span>원</span>
 							</td>
 						</tr>
 						<tr>
 							<th scope="row">총배송비</th>
-							<td><span class="tx_num">0</span>원</td>
+							<td><span class="tx_num">${orderFormList.or_shippay}</span>원</td>
 						</tr>
 						
 						<!-- 2017-01-20 수정 : 최종 결제금액 영역 추가  -->
 						<tr class="last_tot_price">
 							<th scope="row">최종 결제금액</th>
 							<td>
-								<span class="tx_price"><span class="tx_num">112,600</span>원</span>
+								<span class="tx_price"><span class="tx_num">${orderFormList.or_pay}</span>원</span>
 							</td>
 						</tr>
 						<!--// 2017-01-20 수정 : 최종 결제금액 영역 추가 -->
@@ -408,27 +409,27 @@ button, input[type=submit] {
 						<tbody>
 						<tr>
 							<th scope="row">받는분</th>
-							<td>박예린</td>
+							<td>${orderFormList.ad_member}</td>
 						</tr>
 						<tr>
 							<th scope="row">연락처1</th>
-							<td>010-6777-7428</td>
+							<td>${orderFormList.ad_tel}</td>
 						</tr>
 						<tr>
 							<th scope="row">주소</th>
 							<td>
-								<p>도로명 주소 : 경기 수원시 권선구 금곡로140번길 29 (금곡동, 수원호매실휴먼시아8단지아파트) 806-2005</p>
-								<p class="colorGrey">지번주소 : 경기 수원시 권선구 금곡동 1095 806-2005</p>
+								<p>${orderFormList.ad_address}</p>
 							</td>
 						</tr>
 						<tr>
 							<th scope="row">배송 메시지</th>
-							<td colspan="3">부재시 문앞에 놓아주세요.</td>
+							<td colspan="3">${orderFormList.or_addresrequest}</td>
 						</tr>
 						</tbody>
 					</table>
 				</div><!--// 배송정보 -->
-		
+				</c:forEach>
+				
 				<ul class="info_dot_list type2 mgT20 mgL100"><!--  2019-12-13 class 변경 -->
 					<li>주문취소는 [결제완료] 상태까지 가능합니다. [상품준비중], [배송중]에는 상품 수령 후 반품요청 부탁드립니다.</li><!--  2019-12-13 취소문구 추가 -->
 				</ul>

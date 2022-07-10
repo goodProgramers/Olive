@@ -1472,6 +1472,7 @@ $(function () {
 		var totalpoint = $("#cjonePnt").text();
 		$("#cjonePntAplyAmt").val(totalpoint); // 인풋태그 변경
 		$("#cjonePntAplyAmt_span").text(addComma(totalpoint)); // 최종 결제정보 변경
+		$("#cjonePntAplyAmt_span").val(totalpoint); // 최종 결제정보 변경
 		$("input[name=pointAmt]").val(totalpoint);
 	});
 });
@@ -1486,11 +1487,13 @@ $(function () {
 			alert("보유하신 포인트를 초과하였습니다.");
 			$("#cjonePntAplyAmt").val(maxpoint);
 			$("#cjonePntAplyAmt_span").text(addComma(maxpoint));
+			$("#cjonePntAplyAmt_span").val(maxpoint);
 			$("input[name=pointAmt]").val(maxpoint);
 		} else{
 			$("#cjonePntAplyAmt").attr("value", totalpoint); // 인풋태그 변경
 			$("#cjonePntAplyAmt").val(totalpoint);
 			$("#cjonePntAplyAmt_span").text(addComma(totalpoint)); // 최종 결제정보 변경
+			$("#cjonePntAplyAmt_span").val(totalpoint); // 최종 결제정보 변경
 			$("input[name=pointAmt]").val(totalpoint);
 		} // if
 		
@@ -1508,12 +1511,14 @@ function addComma(value){
 $(function () {
 	$("#dlvpSelect").change(function (event) {
 		let selAddrName = $("#dlvpSelect option:selected").text();
+		var memberCode = $("input[name=memberCode]").val();
         $.ajax({ 
             url:"<%= request.getContextPath() %>/olive/memberinfo.do", 
             dataType:"json", 
              type:"POST",
              data:{
-            	 selAddrName
+            	 selAddrName,
+            	 memberCode
              },
              cache:false, // 꼭 기억
              success:function (data){ 

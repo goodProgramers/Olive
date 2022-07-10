@@ -15,7 +15,8 @@ public class OrderMemInfoJsonHandler implements CommandHandler{
 		
 		// String memberID = "pyl1234"; // 아이디값은 나중에 받아오기
 		// String memberCode = "me000004";
-		String memberCode = "me000001";
+
+		String memberCode = request.getParameter("memberCode");
 		String addrName = request.getParameter("selAddrName");
 		
 		// 회원 배송지 정보

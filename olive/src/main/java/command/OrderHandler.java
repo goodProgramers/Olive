@@ -77,10 +77,7 @@ public class OrderHandler implements CommandHandler{
 			// String memberCode = request.getParameter("memberCode") == null ? "me000004" : request.getParameter("memberCode"); // 회원코드
 			String memberCode = request.getParameter("memberCode") == null ? "me000001" : request.getParameter("memberCode"); // 회원코드
 			System.out.println(memberCode);
-			request.setAttribute("memberCode", memberCode);
-			
-			// 회원코드로 회원의 멤버십등급 알아오기
-			
+			request.setAttribute("memberCode", memberCode);	
 
 			// [ 주문 테이블 ]
 			String me_code = request.getParameter("memberCode"); // 회원코드
@@ -100,15 +97,15 @@ public class OrderHandler implements CommandHandler{
 
 			// [ 결제 테이블 ]
 			String pa_way = request.getParameter("payMethod"); // 결제수단
-			String pa_amount = request.getParameter("orderPayAmt"); // 총결제금액(포린트 사용금액 제외 후) - 결제 테이블에도 사용
+			String pa_amount = request.getParameter("orderPayAmt"); // 총결제금액(포인트 사용금액 제외 후) - 결제 테이블에도 사용
 			
 			// [ 포인트 관련 ]
-			String myp_amount = request.getParameter("pointAmt"); // 사용한 포인트 금액
-			
+			String myp_amount = request.getParameter("pointAmt").replace(",", ""); // 사용한 포인트 금액
 			
 			OrderDetailPaymentDTO dto = null;
 			OrderInsertService orderInsertService = OrderInsertService.getInstance();
 			int result = 0;
+			String or_code = null;
 
 			dto = new OrderDetailPaymentDTO();
 
@@ -121,10 +118,10 @@ public class OrderHandler implements CommandHandler{
 			dto.setAd_code(ad_code);
 
 			// 주문 테이블 + 주문상세 테이블 + 결제 테이블 + 포인트 테이블 인서트
-			result = orderInsertService.insertOrder(dto, pr_code, ord_count, ord_price, prpri_code, sa_code, pa_way, pa_amount, me_code, myp_amount);
+			or_code = orderInsertService.insertOrder(dto, pr_code, ord_count, ord_price, prpri_code, sa_code, pa_way, pa_amount, me_code, myp_amount);
 			
-			if (result == 1) {
-				String location = "orderform.do";
+			if (or_code != null) {
+				String location = request.getContextPath()+"/olive/orderform.do?"+"or_code="+or_code;
 				response.sendRedirect(location);  // 포워딩 X,  리다이렉트 O
 			} else {
 				System.out.println("주문 실패");

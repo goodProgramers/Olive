@@ -2,6 +2,7 @@ package service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.naming.NamingException;
 
@@ -9,6 +10,9 @@ import com.util.ConnectionProvider;
 import com.util.JdbcUtil;
 
 import domain.OrderDetailPaymentDTO;
+import domain.OrderFormDTO;
+import domain.OrderMemberInfoDTO;
+import persistence.OrderFormDAOImpl;
 import persistence.OrderPaymentDAOImpl;
 
 public class OrderFormService {
@@ -21,25 +25,26 @@ public class OrderFormService {
 		}
 		return instance;
 	}
-	
-	public int insertOrder(OrderDetailPaymentDTO orderDetailPaymentDTO) {
+
+	public List<OrderFormDTO> selectOrderForm(String or_code) {
 		Connection con = null;
 
 		try {
 			con = ConnectionProvider.getConnection();
-			OrderPaymentDAOImpl dao = OrderPaymentDAOImpl.getInstance();
+			OrderFormDAOImpl dao = OrderFormDAOImpl.getInstance();
 
-			int result = 0;
-			
 
-			return result;
+			List<OrderFormDTO> orderFormList = null;
+			orderFormList = dao.selectOrderForm(con, or_code);
+
+			return orderFormList;
 
 		} catch (NamingException | SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
 			JdbcUtil.close(con);
 		}
-		
-	} // insertOrder
-	
+
+	} // selectOrderForm
+
 } // class

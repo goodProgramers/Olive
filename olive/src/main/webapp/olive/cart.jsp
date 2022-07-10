@@ -784,7 +784,7 @@ a {
 			<!--// title_box -->
 			
 			<!-- membership_box --><!-- 예린 : 회원이름, 등급명, 포인트 뿌리기 -->
-			<input type="hidden" class="memberCode" name="memberCode" value="me000001"><!-- 예린 : 회원코드 -->	
+			<input type="hidden" class="memberCode" name="memberCode" value="me000004"><!-- 예린 : 회원코드 -->	
 			<div class="membership_box  iconGrade4">
 				<p class="tx_grade_info"><strong>회원</strong>님의 멤버십 등급은 <span class="grade">PINK OLIVE</span>입니다 </p>
 				<ul class="membership_info_list">
