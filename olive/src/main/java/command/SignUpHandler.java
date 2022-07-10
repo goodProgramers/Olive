@@ -63,10 +63,11 @@ public class SignUpHandler implements CommandHandler{
 			result = signUpService.signup(dto);
 
 			if( result == 0) { // 실패
-				response.sendRedirect("/olive/signup.do"); 
-				// return "/olive_M/signup.do";
+				// response.sendRedirect("/olive/olive/signup.do"); 
+				response.sendRedirect("/olive/olive/signup.jsp"); 
 			}else {// 성공
-				response.sendRedirect("/olive/main.do"); 
+				// response.sendRedirect("/olive/olive/main.do"); 
+				response.sendRedirect("/olive/olive/main.jsp"); 
 			}
 			
 			return null;
