@@ -3610,22 +3610,7 @@ button {
                   </div>
                   
                   </div>
-            
-   <!-- <button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: block;">Next</button>
-    -->
-   
-   
-<!--    <ul class="slick-dots" style="display: block;" role="tablist">
-   <li class="slick-active" aria-hidden="false" role="presentation" aria-selected="true" aria-controls="navigation40" id="slick-slide40">
-   <button type="button" data-role="none" role="button" tabindex="0">1</button>
-   </li>
-   <li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation41" id="slick-slide41">
-   <button type="button" data-role="none" role="button" tabindex="0">2</button>
-   </li>
-   <li aria-hidden="true" role="presentation" aria-selected="false" aria-controls="navigation42" id="slick-slide42">
-   <button type="button" data-role="none" role="button" tabindex="0">3</button>
-   </li>
-   </ul> -->
+ 
    
    <div class="indicator">
       <span class="prevArrow">이전</span>

@@ -23,7 +23,7 @@ public class HLifeHandler implements CommandHandler {
 		request.setAttribute("hLifeList", hLifeList);
 		
 		System.out.println("핸들러"+hLifeList);
-		return "/mainpage/main.jsp";
+		return "/olive/main.jsp";
 	}
 	
 	//
