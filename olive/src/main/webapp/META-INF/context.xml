@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
-    <Resource 
-     name="jdbc/myoracle" 
-     auth="Container"
-     type="javax.sql.DataSource" 
-     driverClassName="oracle.jdbc.OracleDriver"
-     url="jdbc:oracle:thin:@127.0.0.1:1521:xe"
-     username="OLIVE" 
-     password="olive" 
-     maxTotal="20" 
-     maxIdle="10"
-     maxWaitMillis="-1"/>
+    <Resource
+            name="jdbc/myoracle"
+            auth="Container"
+            type="javax.sql.DataSource"
+            driverClassName="oracle.jdbc.OracleDriver"
+            url="jdbc:oracle:thin:@db20220529155318_high?TNS_ADMIN=/Users/hwan/Wallet_DB20220529155318/"
+            username="goodprogramers"
+            password="Aa123456789"
+            maxTotal="20"
+            maxIdle="10"
+            maxWaitMillis="-1"
+    />
 </Context>

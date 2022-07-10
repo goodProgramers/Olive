@@ -15,17 +15,16 @@ public class SearchHandler implements CommandHandler {
     @Override
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
             String keyword = null;
-        if(request.getParameter("keyWord") != null){
+        if(request.getParameter("keyWord") != null && request.getParameter("keyWord") != ""){
             keyword = request.getParameter("keyWord");
         } else {
             //임시
             response.sendRedirect("/olive/main.do");
+            return null;
         }
 
-/*        HttpSession session = request.getSession();
-        if(session.getAttribute("auth") != null){
 
-        }*/
+
 
         SearchService searchService = SearchService.getInstance();
         List<ProductBrandPriceDTO> searchProductList = searchService.selectSearchProduct(keyword);
