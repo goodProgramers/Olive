@@ -1237,7 +1237,16 @@ button {
 	left: 0;
 	background-color: #ddd;
 }
-
+.main_full_banner .banner_link img {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	z-index: 0;
+}
 .main_plan_banner.ty02 .slider_unit {
 	position: relative;
 	float: left;
