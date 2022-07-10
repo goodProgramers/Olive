@@ -2433,7 +2433,7 @@ a {
 </div><!-- Header -->
 
 <div id="Container">
-  <form name="cartForm" id="cartForm" action="order.do" method="post">		
+  <form name="cartForm" id="cartForm" action="<%= request.getContextPath() %>/olive/order.do" method="get">		
 	<div id="Contents"><!-- #Contents -->
 			<!-- title_box -->
 			<div class="title_box">
@@ -2571,84 +2571,6 @@ a {
 						</td>
 					</tr>
 					
-					<tr>
-						<input type="hidden" id="soldout_yn" name="soldout_yn" value="N">
-						<td colspan="7">			
-						<div class="tbl_cont_area">		
-								<div class="tbl_cell w40">
-								<input type="checkbox" checked="checked" id="inp_prd_chk1" name="s_checkbox1" value="0" class="chkSmall">
-									<input type="hidden" class="prImg" name="prImg" value="https://image.oliveyoung.co.kr/uploads/images/goods/220/10/0000/0016/A00000016399217ko.jpg?l=ko" style="display:none;">
-									<input type="hidden" class="brand" name="brand" value="아로마티카" style="display:none;">
-									<input type="hidden" class="product" name="product" value="아로마티카 바디오일 100ml 리츄얼 기획(괄사증정) 3종 택1_어웨이크닝,서렌, 임브레이스)" style="display:none;">
-									<input type="hidden" class="prPrice" name="prPrice" value="44000" style="display:none;">
-									<input type="hidden" class="prPriceCnt" name="prPriceCnt" value="44000" style="display:none;" >
-									<input type="hidden" class="realPrice" name="realPrice" value="30800" style="display:none;">
-									<input type="text" class="realPricehidden" name="realPricehidden" value="30800" style="display:none;">
-								</div>
-								
-								<div class="tbl_cell w390">
-									<div class="prd_info ">
-										<a class="prd_img">	
-											<img data-original="https://image.oliveyoung.co.kr/uploads/images/goods/220/10/0000/0016/A00000016399217ko.jpg?l=ko" class="completed-seq-lazyload" alt="상품이미지" src="https://image.oliveyoung.co.kr/uploads/images/goods/220/10/0000/0016/A00000016399217ko.jpg?l=ko">
-										</a>
-										<a class="prd_name">
-											<span class="tx_sale_info"></span><!-- 브랜드명 및 할인정보 -->
-											<span id="brandNm">아로마티카 </span>
-											<p id="goodsNm">아로마티카 바디오일 100ml 리츄얼 기획(괄사증정) 3종 택1_어웨이크닝,서렌, 임브레이스)</p>
-										</a>
-										<p class="prd_opt"></p>
-										<p class="prd_flag">
-											<span class="icon_flag sale">세일</span>
-										</p>
-									</div>
-								</div>
-								
-								<div class="tbl_cell w110">
-									<span class="cur_price" value="44000">
-										<span class="tx_num">44,000</span>원
-									</span><!-- 1개의 판매가 -->
-								</div>
-								
-								<div class="tbl_cell w100">
-									<div class="prd_cnt">
-											<select class="amount" name="prCount" prdtp="1" prdcnt="0" ordpsbminqty="1" ordpsbmaxqty="999" qtyaddunit="1" ordqty="1" title="상품 수량 선택">
-												<option value="1" selected="selected">1</option>											
-												<option value="2">2</option>
-												<option value="3">3</option>
-												<option value="4">4</option>
-												<option value="5">5</option>
-												<option value="6">6</option>
-												<option value="7">7</option>
-												<option value="8">8</option>
-												<option value="9">9</option>
-												<option value="10">10</option>
-											</select>	
-									</div>
-									<button type="button" class="btnSmall wGray" style="display: none;" name="btnQtyMod"><span>변경</span></button>
-								</div>
-								
-								<div class="tbl_cell w110">
-										<span class="org_price" value="44000">
-											<span class="tx_num">44,000</span>원<!-- 수량*판매가 -->
-										</span>
-										<span class="pur_price" value="30800"><span class="tx_num">30,800</span>원</span><!-- 수량*구매가 -->
-								</div>
-								
-								<div class="tbl_cell w120  "><!-- 합배송, 배송 예정 class / sum   delay추가 하기 -->
-									<p class="prd_delivery">
-										<strong id="deliStrongText">무료배송<span class="ex">도서·산간 제외</span></strong>
-									</p>
-								</div>
-								
-								<div class="tbl_cell w150">
-									<div class="btn_group">
-										<button id="367587813|A000000156060|001" type="button" class="btnSmall wGreen" name="btn_buy" data-attr="장바구니^장바구니바로구매^바로구매"><span data-attr="장바구니^장바구니바로구매^바로구매">바로구매</span></button><!-- 3440969_PM작업시 오늘드림 레이어 팝업 노출 요청 건 - obj인계 불가능에 따른 고유 ID 선언(즉시 구매 시, find로 찾기 위함) -->
-										<button type="button" class="btnSmall wGray delete" name="btnDelete" data-attr="장바구니^장바구니상품삭제^삭제"><span data-attr="장바구니^장바구니상품삭제^삭제">삭제</span></button><!-- 버튼 공간(스페이스바)없이 붙여주세요. -->
-									</div>
-								</div>
-						</div>
-						</td>
-					</tr>
 				</tbody>
 			</table><!--// 올리브영 배송상품 -->
 			

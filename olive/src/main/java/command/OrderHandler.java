@@ -5,8 +5,10 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import domain.CartProductDTO;
+import domain.LoginAuth;
 import domain.OrderDetailPaymentDTO;
 import domain.OrderMemberInfoDTO;
 import service.OrderInsertService;
@@ -18,10 +20,15 @@ public class OrderHandler implements CommandHandler{
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		if( request.getMethod().equals("GET") ) {
-
-			// String memberCode = request.getParameter("memberCode") == null ? "me000004" : request.getParameter("memberCode"); // 회원코드
-			String memberCode = request.getParameter("memberCode") == null ? "me000001" : request.getParameter("memberCode"); // 회원코드
+			/*
+			HttpSession session = request.getSession();
+			LoginAuth loginAuth = null;
+			loginAuth = (LoginAuth) session.getAttribute("loginAuth");
+			String memberCode = loginAuth.getMe_code();
+			
 			System.out.println(memberCode);
+			*/
+			String memberCode = "me000004";
 			request.setAttribute("memberCode", memberCode);
 
 			// 회원 배송지 + 포인트 + 적립율 등 정보
