@@ -5,9 +5,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/module.css">
+<link rel="shortcut icon" type="image/x-icon" href="../images/SiSt.ico">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/module.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <title>2022. 6. 27. - 오전 9:06:35</title>
+<style>
+/* 공통 적용 */
+@font-face{
+	font-family:Montserrat;
+	font-style:normal;
+	font-weight:400;
+	src:local(Montserrat-Light),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/Montserrat-Light.woff2") format("woff2"),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/Montserrat-Light.woff") format("woff")
+}
+
+@font-face{
+	font-family:Montserrat;
+	font-style:normal;
+	font-weight:500;
+	src:local(Montserrat),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/Montserrat-Regular.woff2") format("woff2"),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/Montserrat-Regular.woff") format("woff")
+	}
+
+@font-face{
+	font-family:Montserrat;
+	font-style:normal;
+	font-weight:700;
+	src:local(Montserrat-SemiBold),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/Montserrat-SemiBold.woff2") format("woff2"),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/Montserrat-SemiBold.woff") format("woff")}@font-face{font-family:NotoSansCJKkr;font-style:normal;font-weight:400;src:local(NotoSansCJKkr),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/NotoSansCJKkr-Regular.woff2") format("woff2"),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/NotoSansCJKkr-Regular.woff") format("woff")
+}
+
+@font-face{font-family:NotoSansCJKkr;font-style:normal;font-weight:400;src:local(NotoSansCJKkr),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/NotoSansCJKkr-Regular.woff2") format("woff2"),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/NotoSansCJKkr-Regular.woff") format("woff")}
+
+@font-face{font-family:NotoSansCJKkr;font-style:normal;font-weight:500;src:local(NotoSansCJKkr),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/NotoSansCJKkr-Medium.woff2") format("woff2"),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/NotoSansCJKkr-Medium.woff") format("woff")}
+
+@font-face{font-family:NotoSansCJKkr;font-style:normal;font-weight:700;src:local(NotoSansCJKkr),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/NotoSansCJKkr-Bold.woff2") format("woff2"),url("https://www.oliveyoung.co.kr/pc-static-root/fonts/NotoSansCJKkr-Bold.woff") format("woff")}
+
+@font-face{font-family:Dovemayo-Medium;src:url("https://www.oliveyoung.co.kr/pc-static-root/fonts/dovemayo/Dovemayo-Medium.woff") format('woff');font-weight:400;font-style:normal}
+
+body,html{-webkit-font-smoothing:antialiased;-webkit-font-smoothing:antialiased}
+
+a,address,blockquote,body,dd,div,dl,dt,em,fieldset,form,h1,h2,h3,h4,h5,h6,img,input,label,li,ol,p,pre,select,span,strong,textarea,ul{margin:0;padding:0;border:0}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    word-spacing: -1px;
+    color: #666;
+    font-size: 14px;
+    line-height: 20px;
+    font-family: Montserrat,-apple-system,NotoSansCJKkr,AppleSDGothicNeo,Roboto,dotum,'돋움',sans-serif;
+    letter-spacing: -.04em;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+#Container, #Footer, #Header, #Wrapper {
+    width: 100%;
+    min-width: 1020px;
+}
+
+#Container {
+    overflow: hidden;
+}
+
+#Contents {
+    width: 1020px;
+    height: 100%;
+    margin: 0 auto;
+}
+</style>
+
+
+
+
 <style>
 /* 장바구니 부분 스타일 */
 input:disabled, input:read-only, select:disabled {
@@ -762,6 +834,20 @@ a {
     font-weight: 700;
 }
 </style>
+<style>
+.cartDeleteCheckModal{
+ position:absolute;
+ width:100%;
+ height:100%;
+ background: rgba(0,0,0,0.8);
+ top:0;
+ left:0;
+ display:none;
+}
+
+
+</style>
+
 </head>
 <body>
 <div id="Wrapper">
@@ -769,7 +855,8 @@ a {
 <jsp:include page="layout/header.jsp"></jsp:include>
 
 <div id="Container">
-  <form name="cartForm" id="cartForm" action="<%= request.getContextPath() %>/olive/order.do" method="get">	
+		
+<form name="cartForm" id="cartForm" action="order.do" method="post">		
 	<div id="Contents"><!-- #Contents -->
 			<!-- title_box -->
 			<div class="title_box">
@@ -783,7 +870,6 @@ a {
 			<!--// title_box -->
 			
 			<!-- membership_box --><!-- 예린 : 회원이름, 등급명, 포인트 뿌리기 -->
-			<input type="hidden" class="memberCode" name="memberCode" value="me000004"><!-- 예린 : 회원코드 -->	
 			<div class="membership_box  iconGrade4">
 				<p class="tx_grade_info"><strong>회원</strong>님의 멤버십 등급은 <span class="grade">PINK OLIVE</span>입니다 </p>
 				<ul class="membership_info_list">
@@ -799,7 +885,7 @@ a {
 			<!--// membership_box -->
 			
 <!-- 일반배송, 당일배송 탭 -->
-	<ul class="comm5sTabs" id="ulDelivGb"><!-- 예린 : 일반 배송 탭에도 상품 갯수 뿌리기 -->
+	<ul class="comm5sTabs" id="ulDelivGb"><!-- 일반 배송 탭에도 상품 갯수 뿌리기 -->
 		<li quickyn="N" class="on"><button type="button" data-attr="장바구니^Tab^일반 배송" title="선택됨">일반 배송 (2)</button></li>
 		<li quickyn="Y"><button type="button" data-attr="장바구니^Tab^오늘 드림">오늘드림&amp;픽업 (0)</button></li>
 	</ul>
@@ -834,8 +920,6 @@ a {
 		<c:set var="totalPrice" value="0">  </c:set>
 		<c:set var="salePrice" value="0">  </c:set>
 		<c:set var="saleAmount" value="0">  </c:set>
-	
-
 
 		
 	<c:if test="${empty cartList}">	
@@ -850,19 +934,23 @@ a {
 						<input type="hidden" id="soldout_yn" name="soldout_yn" value="N">
 						<td colspan="7">			
 						<div class="tbl_cont_area">		
-								<!-- 예린 : 장바구니 상품 정보를 핸들러로 보내기 위해서 input 태그에 담기(채영구현예정) 각 상품마다 하나씩 -->
+								<!-- 장바구니 상품 정보를 핸들러로 보내기 위해서 input 태그에 담기 -->
 								<div class="tbl_cell w40">
-									<input type="checkbox" checked="checked" id="inp_prd_chk1" name="s_checkbox1" value="0" class="chkSmall">						
-									<input type="hidden" class="prCode" name="prCode" value="pr001002">
-									<input type="hidden" class="prImg" name="prImg" value="https://image.oliveyoung.co.kr/uploads/images/goods/220/10/0000/0015/A00000015606001ko.jpg?l=ko">
-									<input type="hidden" class="brand" name="brand" value="돌체앤가바나">
-									<input type="hidden" class="product" name="product" value="돌체앤가바나 라이트블루 오드뚜왈렛 100ml">
-									<input type="hidden" class="prPrice" name="prPrice" value="129000">
-									<input type="hidden" class="prPriceCnt" name="prPriceCnt" value="129000">
-									<input type="hidden" class="realPrice" name="realPrice" value="83800">
-									<input type="hidden" class="realPricehidden" name="realPricehidden" value="83800">
-									<input type="hidden" class="priceCode" name="priceCode" value="prpr000003">
-									<input type="hidden" class="saleCode" name="saleCode" value="sa000003">
+								  <input type="checkbox" checked="checked" id="inp_prd_chk1" name="s_checkbox1" value="0" class="chkSmall">
+								
+								
+							       	<input type="hidden" class="prImg" name="prImg" value="${cartList.prm_url}" style="display:none;">
+									<input type="hidden" class="brand" name="brand" value="${cartList.br_name}" style="display:none;">
+									<input type="hidden" class="product" name="product" value="${cartList.pr_name}" style="display:none;">
+									<input type="hidden" class="prPrice" name="prPrice" value="${cartList.prpri_price}" style="display:none;">
+									<input type="hidden" class="prPriceCnt" name="prPriceCnt" value="${cartList.prpri_price * cartList.prpr_count}" style="display:none;" >
+									<input type="hidden" class="realPrice" name="realPrice" value="${cartList.realPrice}" style="display:none;">
+									<input type="hidden" class="realPricehidden" name="realPricehidden" value="${cartList.realPrice * cartList.prpr_count}" style="display:none;">
+									<input type="hidden" class="priceCode" name="priceCode" value="${cartList.prpri_code}"><!-- 단가코드 -->
+							        <input type="hidden" class="saleCode" name="saleCode" value="${cartList.sa_code}"><!-- 할인코드 --> 
+									<input type="hidden" class="prCode" name="prCode" value="${cartList.pr_code}"><!-- 상품코드 -->
+									<input type="hidden" class="prprCount" name="prprCount" value="${cartList.prpr_count}"><!-- 상품수량 -->
+								
 								</div>
 								
 								<div class="tbl_cell w390">
@@ -891,17 +979,18 @@ a {
 							
 								<div class="tbl_cell w100">
 									<div class="prd_cnt">
-									      <input type="amount" name="favnum" min="1" max="999" value="${cartList.prpr_count}">
+									 <input type="amount" class="numberOfProduct" name="favnum" min="1" max="999" value="${cartList.prpr_count}">
+									 <input type="hidden" class="prCode" name="prCode" value="${cartList.pr_code}">
 									</div>
 									<button type="button" class="btnSmall wGray" style="display: none;" name="btnQtyMod"><span>변경</span></button>
 								</div>
 								
 								<div class="tbl_cell w110">
-								<span class="org_price" value="${cartList.prpri_price}">
-								<span class="tx_num">${cartList.prpri_price}</span>
+								<span class="org_price" value="${cartList.prpri_price }">
+								<span class="tx_num">${cartList.prpri_price * cartList.prpr_count}</span>
 								원</span>
 								<span class="pur_price" value="${cartList.realPrice}">
-								<span class="tx_num" value="0">${cartList.realPrice}</span>원</span>
+								<span class="tx_num" value="0">${cartList.realPrice * cartList.prpr_count}</span>원</span>
 								   
 								   </div>
 								
@@ -914,52 +1003,44 @@ a {
 								<div class="tbl_cell w150">
 									<div class="btn_group">
 										<button id="367587813|A000000156060|001" type="button" class="btnSmall wGreen" name="btn_buy" data-attr="장바구니^장바구니바로구매^바로구매"><span data-attr="장바구니^장바구니바로구매^바로구매">바로구매</span></button><!-- 3440969_PM작업시 오늘드림 레이어 팝업 노출 요청 건 - obj인계 불가능에 따른 고유 ID 선언(즉시 구매 시, find로 찾기 위함) -->
-										<button type="button" class="btnSmall wGray delete" name="btnDelete" data-attr="장바구니^장바구니상품삭제^삭제"><span data-attr="장바구니^장바구니상품삭제^삭제">삭제</span></button><!-- 버튼 공간(스페이스바)없이 붙여주세요. -->
+										<!-- <button type="button" class="btnSmall wGray zzim " name="btnZzim" zim-on-off="" data-ref-goodsno="A000000156060"><span>쇼핑찜<span class="oyblind">해제됨</span></span></button> -->
+										<button type="button" class="btnSmall wGray delete" name="btnDelete"><span>삭제</span></button>
+										<input type="hidden" class="prCode" name="prCode" value="${cartList.pr_code}">
 									</div>
 								</div>
 						</div>
 						</td>
 					</tr>
 					
-					<c:set var= "totalPrice" value="${totalPrice + cartList.prpri_price}"/>
-					<c:set var= "salePrice" value="${salePrice + cartList.realPrice}"/>
-					<c:set var= "saleAmount" value="${cartList.prpri_price - cartList.realPrice}"/>
+					<c:set var= "totalPrice" value="${totalPrice + cartList.prpri_price * cartList.prpr_count}"/>
+					<c:set var= "salePrice" value="${salePrice + cartList.realPrice * cartList.prpr_count}"/>
+					<c:set var= "saleAmount" value="${cartList.prpri_price* cartList.prpr_count - cartList.realPrice* cartList.prpr_count}"/>
 					
 	
 	</c:forEach>
 	</c:if>	
+				
+
 				</tbody>
 			</table>
 			
 			<!--// 올리브영 배송상품 -->
 			<!-- 올리브영 배송상품 결제금액 -->
-			<div class="basket_price_info">
-				<div class="btn_area">
-					<button type="button" class="btnSmall wGray type2" id="partDelBtn1" name="partDelBtn"><span>선택상품 삭제</span></button> 
-				</div>
-				
-		<script>
 		
-		</script>
-				<div class="sum_price">총 판매가 <span class="tx_num">${totalPrice}</span>원 <span class="tx_sign minus">-</span> 총 할인금액 <span class="tx_num">${saleAmount}</span>원 <span class="tx_sign plus">+</span> 배송비 <span class="tx_num">0</span>원 <span class="span_quickDeliCharge" style="display:none;">(3!4!, 미드나잇 이용시)</span><span class="tx_sign equal">=</span> <span class="tx_total_price">총 결제금액 <span class="tx_price"><span class="tx_num">${salePrice}</span>원</span></span></div>
-
-			</div>
 			<!--// 올리브영 배송상품 결제금액 -->
 		
 		<div class="total_price_info">
 			<div class="detail_price">
-				<p>총 판매가<span><span class="tx_num">${totalPrice}</span>원</span></p>
+				<p>총 판매가<span><span class="tx_num1">${totalPrice}</span>원</span></p>
 				<span class="tx_sign2 minus">-</span>
-				<p class="tx_sale">총 할인금액<span><span class="tx_num">${saleAmount}</span>원</span></p>
-
+				<p class="tx_sale">총 할인금액<span><span class="tx_num2">${saleAmount}</span>원</span></p>
 				<span class="tx_sign2 plus">+</span>
 				<p>배송비 <span><span class="tx_num">0</span>원</span></p>
 			</div>	
 			<div class="sum_price">
 				<span class="tx_text">배송비는 쿠폰할인금액에 따라 변경될 수 있습니다.</span>
 				총 결제예상금액 <span class="span_quickDeliCharge" style="display:none;">최소</span><span class="tx_price">
-				<span class="tx_num">${salePrice}</span>원</span>
-
+				<span class="tx_num3">${salePrice}</span>원</span>
 			</div>	
 		</div>
 		
@@ -972,10 +1053,23 @@ a {
 		<div class="cart_comment">
 			<p>장바구니 상품은 90일동안, 판매종료 된 상품은 10일동안 보관됩니다.</p>
 		</div>
-		</div><!-- //#Contents -->
-	  </form><!-- form -->
-	</div><!-- Container -->
-	
+
+		</div>
+		</form>
+		
+		<!-- form -->
+		<!-- //#Contents -->	
+	</div>
+
+<div class="cartDeleteCheckModal">
+ <div class="modal_content">
+  상품이 삭제되었습니다.
+  <button onclick="location.href='cart.do'">확인</button>
+ </div>
+</div>
+
+
+
 <jsp:include page="layout/footer.jsp"></jsp:include>
 
 
@@ -1017,29 +1111,133 @@ $("checkOrder").on("click", function () {
 </script>
 
 <script>
-// 수량이 바뀌면 해당 상품의 구매가와 총 판매가, 총 할인금액, 배송비, 총 결제예상금액 바꾸는 작업(구현해야함)
-$(".amount").on("change", function () {	
-	alert($(this).find("option:selected").val());
-	// var prPrice = $(this).parent().parent().prev().find("span.cur_price").val(); // 129000
-	// var prPrice = $(this).parent().parent().prev().children().text(); // 129000
-	var prPrice = $(this).parent().parent().prev().find("span.cur_price").val(); // 129000
-	// alert(prPrice);
-	var realPrice = $(this).find("option:selected") // pur_price
-	var count = $(this).find("option:selected").val(); 
+
+$(".numberOfProduct").on("change", function () {	
+ 
+    var pr_code="";
+	var numberOfProduct=""; 
 	
-	// cur_price : 1개 판매가
-	// org_price : 수량 * 판매가
-	// pur_price : 수량 * 구매가
+	numberOfProduct = $(this).val();
+	pr_code = $(this).next(".prCode").val();
 	
-	/*
-	var prPrice = $(this).prev().prev().prev().prev().val(); // 판매가
-	var realPrice = $(this).next().next().val(); // 구매가
-	var count =	$(this).val();
-	$(this).next().next().next().val(realPrice * count);
-	$(this).prev().prev().val(prPrice * count);
-	*/
+	
+   var cartData = { "pr_code":pr_code, "numberOfProduct":numberOfProduct };
+	$.ajax({ 
+		
+           url:"changePrCount.do", 
+           type:"GET",
+           data:cartData,
+           cache:false,                     
+           success:function(data){ 
+         	  
+           }, 
+           error:function (){
+              alert("에러~~");
+           }
+       });
 });
 </script>	
+<script>
+
+
+function calcPrice(){
+
+   var sum =0;
+   var totalPrice =0;
+   var totalRealPrice =0;
+   var totalsalePrice =0;
+   
+  	 $(".chkSmall:checked").each(function(i, element){
+      
+  	var prPrice =  $(element).parents("tr").find(".prPrice").val();
+  	var prprCount = $(element).parents("tr").find(".numberOfProduct").val();
+    var realPrice = $(element).parents("tr").find(".realPrice").val();
+      
+    totalPrice += (prPrice * prprCount);
+    totalRealPrice += (realPrice*prprCount);
+    totalsalePrice += (totalPrice-totalRealPrice);
+     
+   })
+     $(".tx_num1").html(totalPrice);
+     $(".tx_num2").html(totalsalePrice);
+     $(".tx_num3").html(totalRealPrice);
+}; 
+
+
+$(".numberOfProduct").on("change",calcPrice);
+
+$("input:checkbox").click(calcPrice);
+
+</script>
+
+
+<script>
+
+$(".btnOrangeW").click(function (event) {
+	event.preventDefault();
+	var orderForm = $("<form>").attr("method", "POST").attr("action", "<%=request.getContextPath()%>/olive/order.do");
+
+	$(".chkSmall:checked").each(function(i, elem) {
+		$(orderForm)
+				.append($("<input>").attr("type","hidden").attr("name","prImg").val($(elem).parents("tr").find(".prCode").val()))
+				.append($("<input>").attr("type","hidden").attr("name","brand").val($(elem).parents("tr").find(".brand").val()))
+				.append($("<input>").attr("type","hidden").attr("name","product").val($(elem).parents("tr").find(".product").val()))
+				.append($("<input>").attr("type","hidden").attr("name","prPrice").val($(elem).parents("tr").find(".prPrice").val()))
+				.append($("<input>").attr("type","hidden").attr("name","prPriceCnt").val($(elem).parents("tr").find(".prPriceCnt").val()))
+				.append($("<input>").attr("type","hidden").attr("name","realPrice").val($(elem).parents("tr").find(".realPrice").val()))
+				.append($("<input>").attr("type","hidden").attr("name","realPricehidden").val($(elem).parents("tr").find(".realPricehidden").val()))
+				.append($("<input>").attr("type","hidden").attr("name","priceCode").val($(elem).parents("tr").find(".priceCode").val()))
+				.append($("<input>").attr("type","hidden").attr("name","saleCode").val($(elem).parents("tr").find(".saleCode").val()))
+				.append($("<input>").attr("type","hidden").attr("name","prCode").val($(elem).parents("tr").find(".prCode").val()))
+				.append($("<input>").attr("type","hidden").attr("name","prCount").val($(".numberOfProduct").val()))
+	});
+	$("body").append($(orderForm));
+	
+	$(orderForm).submit();
+});
+
+
+</script>
+
+
+
+
+
+ <script>
+ //삭제버튼 누르면 페이지 다시 로드, 세션정보 변경
+ $("button.delete").click(function cartDeleteAjax(){
+		       
+		    	
+	        	var pr_code="";
+	        	
+	        	pr_code = $(this).next(".prCode").val();
+	        	
+	        	var cartData = { "pr_code":pr_code };
+	        	
+	           $.ajax({
+	                   url:"deleteCart.do", 
+	                   type:"GET",
+	                  
+	                  data:cartData,
+	                  cache:false,                     // 꼭 기억
+	                  success:function(data){ 
+	                   $(".cartDeleteCheckModal").fadeIn();
+	                     
+	                  }, 
+	                  error:function (){
+	                     alert("에러~~");
+	                  }
+	              });
+	 
+	    });		 
+ 
+ 
+    // ready
+ </script>
+
+
+
+
 
 
 </body>
