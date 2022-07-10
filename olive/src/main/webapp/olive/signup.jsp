@@ -185,9 +185,6 @@ p {
 	margin-inline-end: 0px;
 }
 
-#contents .cont_area {
-	padding-top: 60px;
-}
 
 .member_join {
 	margin-top: -10px;
@@ -287,6 +284,7 @@ input[type="hidden" i] {
 	border: 0 none;
 	border-collapse: collapse;
 }
+
 
 caption {
 	display: table-caption;
@@ -401,7 +399,6 @@ input[type='text'], input[type='password'], input[type='text'], input[type='tel'
 
 .input_txt input {
 	display: block;
-	width: 100%;
 	height: 32px;
 	padding: 0 15px;
 	border: 1px solid #ddd;
@@ -489,7 +486,6 @@ button.btn.btn_search {
 a:-webkit-any-link {
 	color: -webkit-link;
 	cursor: pointer;
-	text-decoration: underline;
 }
 
 a {
@@ -727,6 +723,8 @@ select {
 }
 
 .address input{
+   width: 200px;
+   height: 50px;
    border : 1px solid #ddd;
    height: 30px;
 }
@@ -735,8 +733,11 @@ select {
 }
 
 .radio_group input{
+   width: 20px;
+   height: 20px;
    margin: 0 10px 0 10px;
 }
+
 
 </style>
 
@@ -744,7 +745,11 @@ select {
 </head>
 <body>
 
+<div class="Wrapper">
+
 <jsp:include page="layout/header.jsp"></jsp:include>
+
+<div class="Container">
 
 	<div id="contentsWrap">
 		<div id="contents">
@@ -1045,8 +1050,10 @@ select {
 			</div>
 		</div>
 	</div>
-	
+</div>
 <jsp:include page="layout/footer.jsp"></jsp:include>
+
+</div>
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 

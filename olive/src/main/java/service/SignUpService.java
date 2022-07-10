@@ -24,7 +24,6 @@ public class SignUpService {
 	
 	// DB연동, 멤버dto 객체 넘겨주기
 	public int signup( MemberDTO dto ) {
-		System.out.println(" 서비스 넘어옴 ");
 		String me_code;
 		int result = 0;
 		

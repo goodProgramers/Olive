@@ -147,7 +147,6 @@ button, img, input, select, textarea {
 }
 
 input {
-	width: 100%;
 	height: 38px;
 	margin: 0;
 	padding: 0;
@@ -698,8 +697,10 @@ function doLogin() {
         success: function(result) {
         	
 	        // alert( result ); // result = "true" <- 로그인 핸들러에서 getwriter().write("true");
+	        
+	        
         	if( result != "false" ) {
-        		location.href= "<%= request.getContextPath() %>/olive/main.do";
+        			location.href= result;
         	} else {
         		alert("아이디 혹은 비밀번호가 잘못되었습니다.");
         		$("#password").val("");

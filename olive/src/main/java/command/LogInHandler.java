@@ -32,7 +32,16 @@ public class LogInHandler implements CommandHandler{
 	        	 // 세션 생성
 				   session.setAttribute("loginAuth", loginAuth);
 				   
-				   response.getWriter().write("true"); 
+				   String location = (String)session.getAttribute("referer") == null?
+						   "main.do":(String)session.getAttribute("referer");
+				   
+				   session.removeAttribute("referer");
+				   
+				   //if ( location == null ) {
+					//   location = "/olive/olive/main.do";
+				  // }
+				   
+				   response.getWriter().write(location); 
 				   
 				   return null;
 	         }

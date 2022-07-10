@@ -31,6 +31,18 @@
     <dispatcher>REQUEST</dispatcher>
   </filter-mapping>
   
+   <filter>
+    <filter-name>LoginCheckFilter</filter-name>
+    <filter-class>com.filter.LoginCheckFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>LoginCheckFilter</filter-name>
+    <url-pattern>/olive/cart.do</url-pattern>
+    <url-pattern>/olive/cartAjax.do</url-pattern>
+    <url-pattern>/olive/order.do</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  
   <servlet>
     <servlet-name>dispatcher</servlet-name>
     <servlet-class>controller.DispatcherServlet</servlet-class>

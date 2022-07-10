@@ -80,7 +80,6 @@ public class DispatcherServlet extends HttpServlet {
 			viewPage = modelHandler.process(request, response); 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("뷰페이지안넘어옴");
 		} // try
 
 		if(viewPage != null) {

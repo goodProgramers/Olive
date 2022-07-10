@@ -25,7 +25,7 @@ public class SearchHandler implements CommandHandler {
 /*        HttpSession session = request.getSession();
         if(session.getAttribute("auth") != null){
 
-        }*/
+        }*/  
 
         SearchService searchService = SearchService.getInstance();
         List<ProductBrandPriceDTO> searchProductList = searchService.selectSearchProduct(keyword);

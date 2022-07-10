@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.util.JdbcUtil;
+
 import domain.MemberDTO;
 
 public class SignUpDAOImpl {
@@ -57,6 +59,7 @@ public class SignUpDAOImpl {
 				return me_code;
 			}
 		} catch (SQLException e) {
+			JdbcUtil.rollback(conn);// 여기서 insert 실패시 롤백 + 다시 회원가입 창으로 돌아가기
 			e.printStackTrace();
 		}
 		return null;
