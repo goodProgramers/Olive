@@ -10,15 +10,14 @@
 <c:when test="${ empty loginAuth }">
             <li class="join"><a href="<%= request.getContextPath() %>/olive/signup.do" data-attr="공통^헤더^회원가입">회원가입</a></li>
             <li class="login"><a href="<%= request.getContextPath() %>/olive/login.do" data-attr="공통^헤더^로그인">로그인</a></li>
-            <li class="cart"><a href="<%= request.getContextPath() %>/olive/cart.do">장바구니<span id="cartToCnt"></span></a></li>
 </c:when>
 <c:otherwise>
-            <li class="logout"><strong>${ loginAuth.mbs_grade } ${ loginAuth.me_name }</strong> 
-            <a href="<%= request.getContextPath() %>/olive/logout.do">로그아웃</a></li> 
+            <li class="logout"><strong>${ loginAuth.mbs_grade } ${ loginAuth.me_name }</strong>
+            <a href="<%= request.getContextPath() %>/olive/logout.do">로그아웃</a></li>
             <li class="mypage"><a href="#" >마이페이지</a></li>
-            <li class="cart"><a href="<%= request.getContextPath() %>/olive/cart.do">장바구니( ${ fn:length(cart) } )<span id="cartToCnt"></span></a></li>
 </c:otherwise>
 </c:choose>
+            <li class="cart"><a href="<%= request.getContextPath() %>/olive/cart.do">장바구니<span id="cartToCnt"></span></a></li>
             <li class="order"><a href="javascript:common.link.moveOrderList();" data-attr="공통^헤더^주문배송">주문배송</a></li>
             <li class="customer"><a href="javascript:common.faq.getFaqList('99');" data-attr="공통^헤더^고객센터">고객센터</a></li>
             <li class="store"><a href="javascript:common.link.moveStoreMain();" data-attr="공통^헤더^매장안내">매장안내</a></li>

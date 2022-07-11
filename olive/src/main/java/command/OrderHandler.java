@@ -20,20 +20,18 @@ public class OrderHandler implements CommandHandler{
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		if( request.getMethod().equals("GET") ) {
-			/*
+
 			HttpSession session = request.getSession();
 			LoginAuth loginAuth = null;
 			loginAuth = (LoginAuth) session.getAttribute("loginAuth");
 			String memberCode = loginAuth.getMe_code();
-			
-			System.out.println(memberCode);
-			*/
-			String memberCode = "me000004";
+
 			request.setAttribute("memberCode", memberCode);
 
 			// 회원 배송지 + 포인트 + 적립율 등 정보
 			OrderPaymentService orderPaymentService = OrderPaymentService.getInstance();
 			List<OrderMemberInfoDTO> memberAddrList = orderPaymentService.selectMemberAddr(memberCode);
+
 			request.setAttribute("memberAddrList", memberAddrList);
 
 			// 제품상세보기페이지 & 장바구니 페이지에서 주문시 뿌려지는 상품정보(order.jsp로 가져감)

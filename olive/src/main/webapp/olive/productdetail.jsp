@@ -1341,6 +1341,7 @@
                                         <input type="hidden" name="prCount" value=""> <!-- 수량 -->
                                         <input type="hidden" name="priceCode" value=""><!-- 단가코드 -->
                                         <input type="hidden" name="saleCode" value=""><!-- 할인코드 -->
+                                        <input type="hidden" name="prCode" value="${param.pr_code}">
                                     </form>
 
                                     <span class="option_cnt_box">

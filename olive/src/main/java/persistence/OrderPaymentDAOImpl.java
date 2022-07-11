@@ -78,7 +78,7 @@ public class OrderPaymentDAOImpl implements OrderPaymentDAO{
 					dto.setMy_point(rs.getInt("my_point"));
 					dto.setMbs_code(rs.getString("mbs_code"));	
 					dto.setMbs_pointrate(rs.getDouble("mbs_pointrate"));
-
+					System.out.println(dto);
 					memberAddrList.add(dto);
 				} while (rs.next());
 			} // if 

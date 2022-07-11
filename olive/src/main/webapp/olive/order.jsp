@@ -1050,8 +1050,8 @@ element.style {
 
 		<form name="orderForm" id="orderForm" action="<%= request.getContextPath() %>/olive/order.do" method="post">
 		<!-- <form name="orderForm" id="orderForm" action="orderform_test.jsp" method="post"> -->
-			<input type="hidden" id="memberCode" name="memberCode" value="${param.memberCode }"><!-- 회원코드 -->
-			<input type="hidden" id="memberID" name="memberID" value="${param.memberID }"><!-- 회원ID -->
+			<input type="hidden" id="memberCode" name="memberCode" value="${loginAuth.me_code}"><!-- 회원코드 -->
+			<input type="hidden" id="memberID" name="memberID" value="${loginAuth.me_id }"><!-- 회원ID -->
 			<input type="hidden" id="todayGift" name="todayGift" value="0"><!-- 일반배송(오늘드림X) -->
 			
 			<!-- 주문자 정보 : 삭제해도될듯 why? 회원코드로 주문자 정보 가져올수.. 잇... (예린)-->
@@ -1273,6 +1273,8 @@ element.style {
 					</tr>
 				</thead>
 				<tbody>
+					<c:set var="a" value="0"></c:set>
+					<c:set var="b" value="0"></c:set>
 	 				<c:if test="${ not empty cartProductList }">
 					<c:forEach items="${cartProductList }" var="cartProductList">
 					<tr>					
@@ -1304,6 +1306,8 @@ element.style {
 							<div class="tbl_cell w110">
 								<span class="org_price"><span class="tx_num" id="normPrc_A000000116034/001"><fmt:formatNumber value="${cartProductList.cart_prPriceCnts }" pattern="###,###" /></span>원</span><!-- 2017-01-24 수정 : 추가 -->
 								<span class="pur_price"><span class="tx_num" id="salePrc_A000000116034/001"><fmt:formatNumber value="${cartProductList.cart_realPrices }" pattern="###,###" /></span>원</span>
+								<c:set var="a" value="${a+cartProductList.cart_prPriceCnts}"></c:set>
+								<c:set var="b" value="${b+cartProductList.cart_realPrices}"></c:set>
 								<input type="hidden" id="prCount" name="prCount" value="${cartProductList.cart_prCounts }">
 								<input type="hidden" id="realPricehidden" name="realPricehidden" value="${cartProductList.cart_realPricehiddens }">
 								<input type="hidden" id="prCodes" name="prCode" value="${cartProductList.cart_prCodes }">
@@ -1314,12 +1318,12 @@ element.style {
 					</td>
 					</tr>
 					</c:forEach>
-					</c:if>										
+					</c:if>
 				</tbody>
 				</table>
 
 <!--// 주문상품정보 -->
-			
+
 			<!-- 쿠폰 및 포인트, 결제수단, 결제정보 -->
 			<div class="order_payment_box">
 				<div class="left_area">
@@ -1378,7 +1382,7 @@ element.style {
 						</li>	
 					</ul>
 				</div>
-				
+				<c:set value="${cartProductList[0]}" var="cartProductList"></c:set>
 				<div class="right_area">
 					<!-- 최종 결제정보 -->
 					<h2 class="sub-title2">최종 결제정보</h2>
@@ -1386,7 +1390,7 @@ element.style {
 					<ul class="total_payment_box">
 						<li>
 							<span class="tx_tit">총 상품금액</span>
-							<span class="tx_cont"><span class="tx_num">114,600</span>원</span>
+							<span class="tx_cont"><span class="tx_num">${a }</span>원</span>
 							<input type="hidden" name="totalProductAmt" value="114600">
 						</li>
 						
@@ -1404,7 +1408,7 @@ element.style {
 						
 						<li class="total">
 							<span class="tx_tit">최종 결제금액</span>
-							<span class="tx_cont"><span class="tx_num" id="totPayAmt_sum_span">112,600</span>원</span>
+							<span class="tx_cont"><span class="tx_num" id="totPayAmt_sum_span">${b}</span>원</span>
 							<input type="hidden" name="orderPayAmt" value="112600">
 						</li>
 						
@@ -1445,6 +1449,7 @@ element.style {
 					</div>
 				</div>
 			</div>
+
 			<!--// 쿠폰 및 포인트, 결제수단, 결제정보 -->
 		</form>
 	</div><!-- //#Contents -->
@@ -1511,7 +1516,9 @@ function addComma(value){
 $(function () {
 	$("#dlvpSelect").change(function (event) {
 		let selAddrName = $("#dlvpSelect option:selected").text();
-		var memberCode = $("input[name=memberCode]").val();
+
+		var memberCode ="${loginAuth.me_code}"
+
         $.ajax({ 
             url:"<%= request.getContextPath() %>/olive/memberinfo.do", 
             dataType:"json", 

@@ -1176,7 +1176,7 @@ $(".btnOrangeW").click(function (event) {
 	var orderForm = $("<form>").attr("method", "GET").attr("action", "<%=request.getContextPath()%>/olive/order.do");
 	$(".chkSmall:checked").each(function(i, elem) {
 		$(orderForm)
-				.append($("<input>").attr("type","hidden").attr("name","prImg").val($(elem).parents("tr").find(".prCode").val()))
+				.append($("<input>").attr("type","hidden").attr("name","prImg").val($(elem).parents("tr").find(".prImg").val()))
 				.append($("<input>").attr("type","hidden").attr("name","brand").val($(elem).parents("tr").find(".brand").val()))
 				.append($("<input>").attr("type","hidden").attr("name","product").val($(elem).parents("tr").find(".product").val()))
 				.append($("<input>").attr("type","hidden").attr("name","prPrice").val($(elem).parents("tr").find(".prPrice").val()))
