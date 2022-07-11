@@ -10,13 +10,13 @@
 <c:when test="${ empty loginAuth }">
             <li class="join"><a href="<%= request.getContextPath() %>/olive/signup.do" data-attr="공통^헤더^회원가입">회원가입</a></li>
             <li class="login"><a href="<%= request.getContextPath() %>/olive/login.do" data-attr="공통^헤더^로그인">로그인</a></li>
-            <li class="cart"><a href="javascript:common.link.moveCartPage();" data-attr="공통^헤더^장바구니">장바구니<span id="cartToCnt"></span></a></li>
+            <li class="cart"><a href="<%= request.getContextPath() %>/olive/cart.do">장바구니<span id="cartToCnt"></span></a></li>
 </c:when>
 <c:otherwise>
             <li class="logout"><strong>${ loginAuth.mbs_grade } ${ loginAuth.me_name }</strong> 
             <a href="<%= request.getContextPath() %>/olive/logout.do">로그아웃</a></li> 
             <li class="mypage"><a href="#" >마이페이지</a></li>
-            <li class="cart"><a href="javascript:common.link.moveCartPage();" data-attr="공통^헤더^장바구니">장바구니( ${ fn:length(cart) } )<span id="cartToCnt"></span></a></li>
+            <li class="cart"><a href="<%= request.getContextPath() %>/olive/cart.do">장바구니( ${ fn:length(cart) } )<span id="cartToCnt"></span></a></li>
 </c:otherwise>
 </c:choose>
             <li class="order"><a href="javascript:common.link.moveOrderList();" data-attr="공통^헤더^주문배송">주문배송</a></li>
@@ -27,7 +27,7 @@
     </div>
 
     <div class="header_inner">
-        <h1><a href="<%= request.getContextPath() %>/olive/main.do"><img src="https://image.oliveyoung.co.kr/pc-static-root/image/comm/h1_logo.png" alt="올리브영"></a></h1>
+        <h1><a href="<%= request.getContextPath() %>/olive/main.do"><img src="/image/logo.png" alt="올리브영"></a></h1>
 
         <div class="search_box" id="w_search_box">
             <input type="hidden" name="chkButton" id="chkButton" value="">

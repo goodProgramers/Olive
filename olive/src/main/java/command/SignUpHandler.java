@@ -64,10 +64,10 @@ public class SignUpHandler implements CommandHandler{
 
 			if( result == 0) { // 실패
 				// response.sendRedirect("/olive/olive/signup.do"); 
-				response.sendRedirect("/olive/olive/signup.jsp"); 
+				response.sendRedirect(request.getContextPath() + "/olive/signup.do");
 			}else {// 성공
 				// response.sendRedirect("/olive/olive/main.do"); 
-				response.sendRedirect("/olive/olive/main.jsp"); 
+				response.sendRedirect(request.getContextPath() + "/olive/main.do");
 			}
 			
 			return null;

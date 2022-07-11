@@ -75,6 +75,10 @@ body, html {
     height: 100%;
     margin: 0 auto;
 }
+#Header{
+	width: 1020px;
+	margin : 0 auto;
+}
 </style>
 
 
@@ -856,11 +860,11 @@ a {
 
 <div id="Container">
 		
-<form name="cartForm" id="cartForm" action="order.do" method="post">		
+<form>
 	<div id="Contents"><!-- #Contents -->
 			<!-- title_box -->
 			<div class="title_box">
-				<h1>장바구니<span class="tx_num">2</span></h1><!-- 예린 : span 태그 안에 장바구니에 담음 상품 수량 뿌리기 -->
+				<h1>장바구니</h1><!-- 예린 : span 태그 안에 장바구니에 담음 상품 수량 뿌리기 -->
 				<ul class="step_list">
 					<li class="on"><span class="hide">현재단계</span><span class="step_num tx_num">1</span> 장바구니</li><!-- 현재단계 li에 클래스 on과 <span class="hide">현재단계</span> 넣어주세요 -->
 					<li><span class="step_num tx_num">2</span> 주문/결제</li>
@@ -874,20 +878,14 @@ a {
 				<p class="tx_grade_info"><strong>회원</strong>님의 멤버십 등급은 <span class="grade">PINK OLIVE</span>입니다 </p>
 				<ul class="membership_info_list">
 					<li><a href="https://www.oliveyoung.co.kr/store/main/getMembershipBenefitInfo.do" class="grade_benefit"><span>등급혜택</span></a></li>
-					<li><a href="https://www.oliveyoung.co.kr/store/mypage/getCJOnePointInfo.do"><strong><span class="tx_num"></span> 포인트</strong> 
-						<span class="own_point">						
-							<span class="tx_num" value="5000">5,000</span>P
-						</span></a></li>
-					<li><a href="https://www.oliveyoung.co.kr/store/mypage/getCouponList.do"><strong>할인쿠폰</strong> <span class="own_point"><span class="tx_num">0</span>개</span></a></li>
-					<li><a href="https://www.oliveyoung.co.kr/store/mypage/getDepositList.do"><strong>예치금</strong> <span class="own_point"><span class="tx_num">0</span>원</span></a></li>
 				</ul>
 			</div>
 			<!--// membership_box -->
 			
 <!-- 일반배송, 당일배송 탭 -->
 	<ul class="comm5sTabs" id="ulDelivGb"><!-- 일반 배송 탭에도 상품 갯수 뿌리기 -->
-		<li quickyn="N" class="on"><button type="button" data-attr="장바구니^Tab^일반 배송" title="선택됨">일반 배송 (2)</button></li>
-		<li quickyn="Y"><button type="button" data-attr="장바구니^Tab^오늘 드림">오늘드림&amp;픽업 (0)</button></li>
+		<li quickyn="N" class="on"><button type="button" data-attr="장바구니^Tab^일반 배송" title="선택됨">일반 배송</button></li>
+		<li quickyn="Y"><button type="button" data-attr="장바구니^Tab^오늘 드림">오늘드림&amp;픽업 </button></li>
 	</ul>
 <!--// 일반배송, 당일배송 탭 -->
 			<!-- 올리브영 배송상품 -->			
@@ -1045,7 +1043,7 @@ a {
 		</div>
 		
 		<div class="order_btn_area order_cart"><!-- 예린 : 상품 선택에 따라서 선택주문 옆에 숫자 바꾸기 -->
-			<button type="button" class="btnOrangeW" name="partOrderBtn" data-attr="장바구니^주문유형^선택주문">선택주문(2)</button>
+			<button type="button" class="btnOrangeW" name="partOrderBtn" data-attr="장바구니^주문유형^선택주문">선택주문</button>
 			<button type="button" class="btnOrange" name="allOrderBtn" data-attr="장바구니^주문유형^전체주문">전체주문</button>
 		</div>
 
@@ -1175,8 +1173,7 @@ $("input:checkbox").click(calcPrice);
 
 $(".btnOrangeW").click(function (event) {
 	event.preventDefault();
-	var orderForm = $("<form>").attr("method", "POST").attr("action", "<%=request.getContextPath()%>/olive/order.do");
-
+	var orderForm = $("<form>").attr("method", "GET").attr("action", "<%=request.getContextPath()%>/olive/order.do");
 	$(".chkSmall:checked").each(function(i, elem) {
 		$(orderForm)
 				.append($("<input>").attr("type","hidden").attr("name","prImg").val($(elem).parents("tr").find(".prCode").val()))
@@ -1192,7 +1189,6 @@ $(".btnOrangeW").click(function (event) {
 				.append($("<input>").attr("type","hidden").attr("name","prCount").val($(".numberOfProduct").val()))
 	});
 	$("body").append($(orderForm));
-	
 	$(orderForm).submit();
 });
 

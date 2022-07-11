@@ -436,17 +436,13 @@ button, input[type=submit] {
         	 pr_code = $("#pr_code").val();
         	numberOfProduct = $("#numberOfProduct").val();      	
         	
-        	var cartData = { "id":id, "pr_code":pr_code,"numberOfProduct":numberOfProduct };
+        	var cartData = { "pr_code":pr_code,"numberOfProduct":numberOfProduct };
         	
            $.ajax({
-                /*  url:"cartAjax.jsp?id="+id+"&pr_code="+pr_code+"&numberOfProduct="+numberOfProduct,  */
-                 url:"cartAjax.do", 
-                /*  dataType:"jsp",  */      // text, html, xml, script, 등등
+                 url:"<%=request.getContextPath()%>/olive/cartAjax.do",
                   type:"GET",
-                  
-                  //data:"id="+id,
                   data:cartData,
-                  cache:false,                     // 꼭 기억
+                  cache:false,
                   success:function(data){ 
                 	  
                    $(".modal").fadeIn();  /*모달창 보이게 하기*/
@@ -476,7 +472,6 @@ $(function () {
 </script> 
 
 
-</script>
 
 
 

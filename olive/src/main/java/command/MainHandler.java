@@ -41,6 +41,19 @@ public class MainHandler implements CommandHandler{
 		Map<String, List<HotProductDTO>> brProduct = listService.brandProductSelect();
 		request.setAttribute("brProduct", brProduct);
 
+		List<HLifeDTO> hLifeList = null;
+		HLifeService hls = HLifeService.getInstance();
+		hLifeList = hls.healthyLife();
+		request.setAttribute("hLifeList", hLifeList);
+
+
+		List<ProductBrandPriceDTO> recomProductlist = null;
+
+		RecomProductService rps = RecomProductService.getInstance();
+		recomProductlist = rps.recomProduct();
+		System.out.println(recomProductlist);
+		request.setAttribute("recomProductlist", recomProductlist);
+
 
 		return "/olive/main.jsp";
 	}

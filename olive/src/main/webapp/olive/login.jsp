@@ -165,12 +165,10 @@ input {
 	letter-spacing: .5px;
 	vertical-align: top;
 }
-
-#Container, #Footer, #Header, #Wrapper {
-	width: 100%;
-	min-width: 1020px;
+#Header {
+	width: 1020px;
+	margin: 0 auto;
 }
-
 #Container {
 	overflow: hidden;
 }
@@ -570,7 +568,7 @@ button {
 
 </style>
 <body>
-
+<div id="Wrapper">
 <jsp:include page="layout/header.jsp"></jsp:include>
 
 	<div id="Container" class="bgf6">
@@ -582,7 +580,7 @@ button {
 				</div>
 
 				<form id="formLogin" name="formLogin">
-					<input type="hidden" id="bSId" name="bSId" value=""> 
+					<input type="hidden" id="bSId" name="bSId" value="">
 					<input type="hidden" id="captchaYn" name="captchaYn" value="N">
 
 					<div class="loginForm">
@@ -654,9 +652,9 @@ button {
 			</div>
 		</div>
 	</div>
-
-
 <jsp:include page="layout/footer.jsp"></jsp:include>
+</div>
+
 
 <script>
 /* 

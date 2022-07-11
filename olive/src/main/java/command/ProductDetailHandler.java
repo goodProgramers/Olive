@@ -26,8 +26,10 @@ public class ProductDetailHandler implements CommandHandler {
 		 
 		 //3. 요청에 담기
 		 request.setAttribute("img_Name", dto);
+
 		 request.setAttribute("prd_price", dtoPrice);
-		 
+		System.out.println(dto);
+		 System.out.println(dtoPrice);
 		return "/olive/productdetail.jsp";
 		
 		

@@ -67,7 +67,7 @@ public class LoginCheckFilter implements Filter {
 			
 			session.setAttribute("referer", referer);
 			
-			String location = "/olive/olive/login.do";
+			String location = ((HttpServletRequest) request).getContextPath() + "/olive/login.do";
 			httpResponse.sendRedirect(location);
 		} // if		
 	

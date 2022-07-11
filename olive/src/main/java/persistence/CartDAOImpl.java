@@ -38,6 +38,8 @@ public class CartDAOImpl implements CartDAO {
 
 		cartList = new ArrayList<ProductBrandPriceDTO>();
 
+		if (getsessionCartList == null) return null;
+
 		for (int i = 0; i < getsessionCartList.size(); i++) {
 
 			String pr_code = getsessionCartList.get(i).getPr_code();
